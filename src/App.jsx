@@ -1,16 +1,11 @@
 import Hero from "./components/Hero/Hero";
-import "./App.css";
+import IntroSection from "./components/IntroSection/IntroSection";
 
 function App() {
   return (
     <main>
       <Hero />
-
-      <section className="intro-section">
-        <div className="intro-content">
-          <h2>Question Everything</h2>
-        </div>
-      </section>
+      <IntroSection />
     </main>
   );
 }

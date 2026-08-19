@@ -1,0 +1,92 @@
+.intro-section {
+  position: relative;
+
+  min-height: 120vh;
+
+  background: var(--qe-purple);
+
+  z-index: 1;
+}
+
+.intro-content {
+  width: min(1200px, 90vw);
+
+  margin: 0 auto;
+
+  padding: 10rem 0 8rem;
+}
+
+/* ========================================
+   TITLE
+======================================== */
+
+.intro-title {
+  margin: 0 0 2rem;
+
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 900;
+
+  line-height: 0.85;
+
+  text-transform: uppercase;
+
+  color: var(--qe-pink);
+}
+
+/* ========================================
+   COPY
+======================================== */
+
+.intro-copy {
+  max-width: 760px;
+
+  margin: 0;
+
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  color: white;
+}
+
+/* ========================================
+   OPTIONAL PINK LOWER AREA
+======================================== */
+
+.intro-pink-section {
+  margin-top: 8rem;
+
+  min-height: 70vh;
+
+  background: var(--qe-pink);
+
+  clip-path: polygon(
+    0 8%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .intro-content {
+    width: 88vw;
+
+    padding: 7rem 0 5rem;
+  }
+
+  .intro-title {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+
+  .intro-copy {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+  }
+}
