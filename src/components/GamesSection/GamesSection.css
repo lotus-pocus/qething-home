@@ -1,0 +1,190 @@
+/* ========================================
+   GAMES SECTION
+======================================== */
+
+.games-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  /*
+    Purple exists behind the diagonal.
+    The pink layer is added with ::before.
+  */
+  background: var(--qe-blue);
+
+  overflow: hidden;
+
+  /*
+    Pull Games slightly upward towards Intro.
+  */
+  margin-top: -1px;
+
+  /*
+    Space before the actual Games content.
+  */
+  padding-top: 12vw;
+}
+
+
+/* ========================================
+   PINK DIAGONAL BACKGROUND
+======================================== */
+
+.games-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  /*
+    Pink begins lower on the LEFT and
+    rises towards the RIGHT.
+  */
+  background: var(--qe-pink);
+
+  clip-path: polygon(
+    0 7vw,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   WHITE DIAGONAL STRIP
+======================================== */
+
+.games-section::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  /*
+    This uses the SAME diagonal coordinates
+    as the pink edge, but creates a narrow
+    white strip around it.
+  */
+  background: white;
+
+  clip-path: polygon(
+    0 calc(7vw - 4px),
+    100% 0,
+    100% 5px,
+    0 calc(7vw + 5px)
+  );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.games-content {
+  position: relative;
+
+  z-index: 3;
+
+  padding-bottom: 8rem;
+}
+
+
+/* ========================================
+   HEADING
+======================================== */
+
+.games-heading {
+  width: min(1400px, 90vw);
+
+  margin: 0 auto 4rem;
+}
+
+
+.games-kicker {
+  display: block;
+
+  margin-bottom: 0.8rem;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 1rem;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+
+  color: var(--qe-purple);
+}
+
+
+.games-title {
+  margin: 0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(4rem, 9vw, 10rem);
+
+  font-weight: 900;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.04em;
+
+  text-transform: uppercase;
+
+  color: var(--qe-purple);
+}
+
+
+.games-intro {
+  max-width: 700px;
+
+  margin: 2rem 0 0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  color: var(--qe-purple);
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .games-section {
+    padding-top: 18vw;
+  }
+
+
+  .games-heading {
+    width: 88vw;
+
+    margin-bottom: 2rem;
+  }
+
+
+  .games-title {
+    font-size: clamp(4rem, 17vw, 7rem);
+  }
+
+}

@@ -1,0 +1,342 @@
+/* ========================================
+   CAROUSEL WRAPPER
+======================================== */
+
+.games-carousel-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 5rem;
+
+  overflow: visible;
+}
+
+
+/* ========================================
+   CAROUSEL
+======================================== */
+
+.games-carousel {
+  display: flex;
+
+  align-items: center;
+
+  gap: 2rem;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /*
+    Gives the first and last cards enough room
+    to sit towards the centre of the viewport.
+  */
+  padding:
+    1.5rem
+    max(14vw, calc((100vw - 900px) / 2))
+    2rem;
+
+  scroll-behavior: smooth;
+
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+}
+
+
+.games-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ========================================
+   GAME CARD
+======================================== */
+
+.game-card {
+  position: relative;
+
+  flex: 0 0 min(68vw, 900px);
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  scroll-snap-align: center;
+
+  cursor: pointer;
+
+  background: var(--qe-blue);
+
+  border-radius: 24px;
+
+  border: 6px solid rgba(255, 255, 255, 0.18);
+
+  opacity: 0.34;
+
+  transform: scale(0.94);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    border-color 0.4s ease;
+}
+
+
+/* ========================================
+   ACTIVE CARD
+======================================== */
+
+.game-card-active {
+  opacity: 1;
+
+  transform: scale(1);
+
+  border-color: #ffbd00;
+  border-width: 10px;
+
+  cursor: default;
+}
+
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.game-card-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.5s ease,
+    filter 0.4s ease;
+}
+
+
+/*
+  Neighbouring cards are both darker
+  and slightly less saturated.
+*/
+.game-card:not(.game-card-active) .game-card-image {
+  filter:
+    saturate(0.65)
+    brightness(0.68);
+}
+
+
+.game-card-active:hover .game-card-image {
+  transform: scale(1.015);
+}
+
+
+/* ========================================
+   PURPLE FADE
+======================================== */
+
+.game-card-fade {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(83, 0, 112, 0.42);
+
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+}
+
+
+.game-card-active .game-card-fade {
+  opacity: 0;
+}
+
+
+/* ========================================
+   CARD LABEL
+======================================== */
+
+.game-card-label {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 4rem 2rem 1.5rem;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(83, 0, 112, 0.92),
+      rgba(83, 0, 112, 0)
+    );
+
+  opacity: 0;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+.game-card-active .game-card-label {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+.game-card-label h3 {
+  margin: 0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(1.6rem, 3vw, 3rem);
+
+  font-weight: 900;
+
+  text-align: center;
+
+  text-transform: uppercase;
+
+  color: white;
+}
+
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.games-carousel-controls {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: clamp(3rem, 6vw, 6rem);
+
+  margin-top: 2.5rem;
+}
+
+
+/* ========================================
+   ARROWS
+======================================== */
+
+.games-arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: clamp(70px, 7vw, 110px);
+  height: clamp(70px, 7vw, 110px);
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+
+.games-arrow img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+
+/*
+  The SVG points left by default.
+*/
+.games-arrow-left img {
+  transform: rotate(0deg);
+}
+
+
+/*
+  Flip the same SVG for the next arrow.
+*/
+.games-arrow-right img {
+  transform: rotate(180deg);
+}
+
+
+.games-arrow:hover {
+  transform: scale(1.1);
+}
+
+
+.games-arrow:active {
+  transform: scale(0.96);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .games-carousel-wrapper {
+    margin-top: 3rem;
+  }
+
+
+  .games-carousel {
+    gap: 1rem;
+
+    padding:
+      1rem
+      7vw
+      1.5rem;
+  }
+
+
+  .game-card {
+    flex-basis: 82vw;
+
+    border-width: 4px;
+  }
+
+
+  .games-carousel-controls {
+    gap: 4rem;
+
+    margin-top: 1.5rem;
+  }
+
+
+  .games-arrow {
+    width: 54px;
+    height: 54px;
+
+    border-width: 3px;
+
+    font-size: 3.2rem;
+  }
+
+
+  .game-card-label {
+    padding:
+      3rem
+      1rem
+      1rem;
+  }
+
+}

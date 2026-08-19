@@ -3,7 +3,7 @@
 
   min-height: 120vh;
 
-  background: var(--qe-purple);
+  background: var(--qe-blue);
 
   z-index: 1;
 }
@@ -52,24 +52,6 @@
   color: white;
 }
 
-/* ========================================
-   OPTIONAL PINK LOWER AREA
-======================================== */
-
-.intro-pink-section {
-  margin-top: 8rem;
-
-  min-height: 70vh;
-
-  background: var(--qe-pink);
-
-  clip-path: polygon(
-    0 8%,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-}
 
 /* ========================================
    RESPONSIVE
