@@ -164,6 +164,24 @@
   color: var(--qe-purple);
 }
 
+/* ========================================
+   GAMES → ABOUT TRANSITION
+======================================== */
+
+.games-bottom-overlay {
+  display: block;
+
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+  height: auto;
+
+  margin-top: -1px;
+
+  pointer-events: none;
+}
 
 /* ========================================
    RESPONSIVE
