@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+  font-family: "Outfit", sans-serif;
+
+  /* QEthing brand colours */
+  --qe-purple: #61077f;
+  --qe-pink: #eb5ce9;
+  --qe-teal: #84e8d6;
+  --qe-blue: #4148f3;
+
+  /* Player colours */
+  --player-red: #ff3131;
+  --player-orange: #ff6b00;
+  --player-yellow: #ffd600;
+  --player-green: #13a319;
+  --player-cyan: #00b5c0;
+  --player-blue: #2c4dff;
+  --player-purple: #8100e5;
+  --player-pink: #ff1acd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+}

@@ -1,0 +1,147 @@
+.hero {
+  position: relative;
+  height: 200vh;
+  background: var(--qe-purple);
+}
+
+.hero-sticky {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: var(--qe-purple);
+}
+
+/* ========================================
+   VIDEO
+======================================== */
+
+.hero-video-mask {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  z-index: 1;
+
+  will-change: clip-path;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  display: block;
+
+  will-change: transform;
+}
+
+/* ========================================
+   WHITE DIAGONAL EDGE
+======================================== */
+
+.hero-edge {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 3;
+
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hero-edge line {
+  stroke: #ffffff;
+  stroke-width: 5px;
+  stroke-linecap: square;
+}
+
+/* ========================================
+   LOGO
+======================================== */
+
+.hero-logo-wrap {
+  position: absolute;
+
+  top: 32px;
+  left: 32px;
+
+  z-index: 5;
+
+  width: min(14vw, 230px);
+
+  pointer-events: none;
+}
+
+.hero-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   TAGLINE
+======================================== */
+
+.hero-tagline-wrap {
+  position: absolute;
+
+  left: 0;
+
+  width: 100%;
+
+  z-index: 4;
+
+  transform: translateY(14px);
+
+  pointer-events: none;
+}
+
+.hero-tagline {
+  width: 100%;
+
+  padding: 0 4vw;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 3.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+
+  color: var(--qe-pink);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    height: 240vh;
+  }
+
+  .hero-logo-wrap {
+    top: 20px;
+    left: 20px;
+    width: min(28vw, 160px);
+  }
+
+  .hero-edge line {
+    stroke-width: 3px;
+  }
+
+  .hero-tagline {
+    padding: 0 1rem;
+    font-size: clamp(1.3rem, 6vw, 2.4rem);
+  }
+}

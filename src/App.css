@@ -1,0 +1,21 @@
+.intro-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  margin-top: -1px;
+
+  background: var(--qe-pink);
+
+  /* Opposite diagonal to the video edge */
+  clip-path: polygon(
+    0 7%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.intro-content {
+  padding: 10rem 5vw 6rem;
+}
