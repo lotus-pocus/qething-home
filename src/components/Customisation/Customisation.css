@@ -327,29 +327,7 @@
      TOP TRANSITION
   ------------------------------ */
 
-  .customisation-top-edge {
-    height: clamp(60px, 10vw, 90px);
 
-    /*
-      Slightly flatter on tablet.
-    */
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 100%,
-      0 25%
-    );
-  }
-
-
-  .customisation-top-edge::after {
-    clip-path: polygon(
-      0 calc(25% - 5px),
-      100% calc(100% - 5px),
-      100% 100%,
-      0 25%
-    );
-  }
 
 
   /* ------------------------------
@@ -440,32 +418,7 @@
    RESPONSIVE — MOBILE
 ======================================== */
 
-@media (max-width: 520px) {
 
-  /* ------------------------------
-     TOP TRANSITION
-  ------------------------------ */
-
-  .customisation-top-edge {
-    height: 60px;
-
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 100%,
-      0 35%
-    );
-  }
-
-
-  .customisation-top-edge::after {
-    clip-path: polygon(
-      0 calc(35% - 4px),
-      100% calc(100% - 4px),
-      100% 100%,
-      0 35%
-    );
-  }
 
 
   /* ------------------------------
