@@ -40,6 +40,10 @@
 
   scroll-snap-type: x mandatory;
 
+  overscroll-behavior-x: contain;
+
+  -webkit-overflow-scrolling: touch;
+
   scrollbar-width: none;
 }
 
@@ -63,6 +67,8 @@
   overflow: hidden;
 
   scroll-snap-align: center;
+
+  scroll-snap-stop: always;
 
   cursor: pointer;
 
@@ -214,12 +220,17 @@
 ======================================== */
 
 .games-carousel-controls {
-  display: flex;
+  display: grid;
+
+  grid-template-columns:
+    clamp(70px, 7vw, 110px)
+    minmax(220px, 420px)
+    clamp(70px, 7vw, 110px);
 
   justify-content: center;
   align-items: center;
 
-  gap: clamp(3rem, 6vw, 6rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
 
   margin-top: 2.5rem;
 }
@@ -285,6 +296,32 @@
 
 .games-arrow:active {
   transform: scale(0.96);
+}
+
+/* ========================================
+   ACTIVE GAME CATEGORY
+======================================== */
+
+.games-carousel-category {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 70px;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(1.6rem, 2.8vw, 3rem);
+
+  font-weight: 900;
+
+  line-height: 0.95;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  color: white;
 }
 
 /* ========================================
