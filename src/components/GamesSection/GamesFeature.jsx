@@ -64,20 +64,7 @@ const GamesFeature = () => {
           </motion.span>
         </div>
 
-        <svg
-          className="games-feature-bottom-edge"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <line
-            x1="0"
-            y1="100"
-            x2="100"
-            y2="82"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
+        
       </div>
     </section>
   );

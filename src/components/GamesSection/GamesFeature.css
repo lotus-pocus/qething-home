@@ -27,10 +27,56 @@
 
 
 /* ========================================
+   WHITE BOTTOM EDGE
+======================================== */
+
+/*
+  This is now the white diagonal underneath
+  the image.
+
+  It uses almost the same polygon as the image,
+  but extends slightly lower so the white edge
+  remains visible.
+*/
+.games-feature-media::before {
+  content: "";
+
+  position: absolute;
+
+  /*
+    Tiny overshoot prevents a hairline seam
+    caused by browser anti-aliasing.
+  */
+  top: -1px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100% + 3px);
+
+  background: white;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 82.6%,
+    0 100%
+  );
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
    FEATURE IMAGE
 ======================================== */
 
 .games-feature-image {
+  position: relative;
+
+  z-index: 2;
+
   display: block;
 
   width: 100%;
@@ -38,11 +84,15 @@
 
   object-fit: cover;
 
+  /*
+    Image finishes slightly ABOVE the white
+    underlay, creating the white diagonal edge.
+  */
   clip-path: polygon(
     0 0,
     100% 0,
     100% 82%,
-    0 100%
+    0 98%
   );
 }
 
@@ -111,39 +161,6 @@
 
 
 /* ========================================
-   BOTTOM DIAGONAL EDGE
-======================================== */
-
-.games-feature-bottom-edge {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  z-index: 5;
-
-  pointer-events: none;
-
-  /*
-    Leave visible so the lower half of the
-    15px stroke at y=100 is not clipped.
-  */
-  overflow: visible;
-}
-
-
-.games-feature-bottom-edge line {
-  stroke: #ffffff;
-
-  stroke-width: 15px;
-
-  stroke-linecap: square;
-}
-
-
-/* ========================================
    MEDIUM DESKTOP
 ======================================== */
 
@@ -204,9 +221,27 @@
   }
 
 
-  .games-feature-image {
-    display: block;
+  /*
+    Same white shape as desktop.
+    Because it shares the media wrapper,
+    it scales with the mobile image.
+  */
+  .games-feature-media::before {
+    top: -1px;
 
+    width: 100%;
+    height: calc(100% + 3px);
+
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 84%,
+      0 100%
+    );
+  }
+
+
+  .games-feature-image {
     width: 100%;
     height: 100%;
 
@@ -218,7 +253,7 @@
       0 0,
       100% 0,
       100% 82%,
-      0 100%
+      0 98%
     );
   }
 
@@ -248,25 +283,6 @@
     font-size: clamp(1.4rem, 6.3vw, 1.95rem);
 
     line-height: 0.88;
-  }
-
-
-  /*
-    The SVG now shares the exact same
-    dimensions as games-feature-media.
-    No separate calculated height.
-  */
-  .games-feature-bottom-edge {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    transform: none;
-
-    overflow: visible;
   }
 
 }

@@ -33,19 +33,52 @@
 
   z-index: 5;
 
-  overflow: hidden;
-
   pointer-events: none;
 }
 
 
-.games-jagged-transition polyline {
-  stroke: white;
+/* WHITE SHAPE UNDERNEATH */
+.games-jagged-transition::before {
+  content: "";
 
-  stroke-width: 15px;
+  position: absolute;
+  inset: 0;
 
-  stroke-linejoin: miter;
-  stroke-linecap: square;
+  background: white;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    56% 28%,
+    49% 87%,
+    0 22%
+  );
+}
+
+
+/* BLUE SHAPE ON TOP */
+.games-jagged-transition::after {
+  content: "";
+
+  position: absolute;
+
+  top: -2px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100% + 2px);
+
+  background: var(--qe-blue);
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 96%,
+    55.8% 23%,
+    48.7% 82%,
+    0 18%
+  );
 }
 
 
