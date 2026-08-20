@@ -109,8 +109,14 @@
   line-height: 0.9;
 }
 
+
+/* ========================================
+   BOTTOM DIAGONAL EDGE
+======================================== */
+
 .games-feature-bottom-edge {
   position: absolute;
+
   inset: 0;
 
   width: 100%;
@@ -122,15 +128,18 @@
   overflow: visible;
 }
 
+
 .games-feature-bottom-edge line {
   stroke: #ffffff;
+
   stroke-width: 15px;
+
   stroke-linecap: square;
 }
 
 
 /* ========================================
-   RESPONSIVE
+   TABLET
 ======================================== */
 
 @media (max-width: 900px) {
@@ -149,24 +158,25 @@
     max-width: 80%;
   }
 
-
-  .games-feature-overlay {
-    opacity: 0.76;
-  }
-
 }
 
+
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 600px) {
 
   .games-feature {
     width: 100%;
+
     margin-bottom: 1.5rem;
   }
 
 
   .games-feature-media {
     min-height: 0;
+
     height: auto;
   }
 
@@ -184,6 +194,7 @@
   .games-feature-copy {
     left: 6%;
     right: 6%;
+
     bottom: 13%;
 
     max-width: none;
@@ -197,11 +208,17 @@
 
   .games-feature-line-one {
     font-size: clamp(1.25rem, 5.8vw, 1.8rem);
+
+    line-height: 0.95;
   }
 
 
   .games-feature-line-two {
+    margin-top: 0.15em;
+
     font-size: clamp(1.4rem, 6.4vw, 2rem);
+
+    line-height: 0.9;
   }
 
 }
