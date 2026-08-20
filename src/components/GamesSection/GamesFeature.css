@@ -172,38 +172,38 @@
     width: 100%;
 
     /*
-      Pull the feature upward into the
-      jagged transition a little more.
+      Keep the feature high enough to tuck into the
+      jagged transition, but don't pull it so far up
+      that the image is hidden behind the pink shape.
     */
-    margin-top: -7vw;
+    margin-top: -2vw;
 
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
   }
 
 
   .games-feature-media {
-    /*
-      Give the feature proper visual presence
-      instead of allowing the landscape PNG
-      to collapse into a shallow banner.
-    */
-    height: clamp(300px, 76vw, 380px);
+    position: relative;
 
-    min-height: 0;
+    height: clamp(310px, 78vw, 390px);
+
+    overflow: visible;
   }
 
 
   .games-feature-image {
+    display: block;
+
     width: 100%;
     height: 100%;
 
     object-fit: cover;
 
     /*
-      Keeps Pointy Knight and the screen
-      artwork nicely framed on portrait screens.
+      Favour the top of the artwork so the top-left
+      isn't cropped away on mobile.
     */
-    object-position: center center;
+    object-position: center top;
 
     clip-path: polygon(
       0 0,
@@ -218,11 +218,7 @@
     left: 6%;
     right: 5%;
 
-    /*
-      Copy sits within the lower pink/image
-      transition rather than underneath it.
-    */
-    bottom: 15%;
+    bottom: 13%;
 
     max-width: none;
 
@@ -231,22 +227,35 @@
 
 
   .games-feature-line-one {
-    font-size: clamp(1.25rem, 5.7vw, 1.75rem);
+    font-size: clamp(1.2rem, 5.5vw, 1.7rem);
 
     line-height: 0.92;
   }
 
 
   .games-feature-line-two {
-    margin-top: 0.08em;
+    margin-top: 0.06em;
 
-    font-size: clamp(1.45rem, 6.4vw, 2rem);
+    font-size: clamp(1.4rem, 6.3vw, 1.95rem);
 
     line-height: 0.88;
   }
 
 
+  /*
+    Make the SVG match the media area exactly.
+    This keeps the white diagonal aligned with
+    the clipped bottom edge of the image.
+  */
   .games-feature-bottom-edge {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: clamp(310px, 78vw, 390px);
+
     transform: none;
   }
 
