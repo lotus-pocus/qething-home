@@ -9,12 +9,14 @@
 
   background: var(--qe-pink);
 
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: visible;
 
   margin-top: -1px;
 
-  padding-top: 14vw;
+  padding-top: 10vw;
 }
+
 
 /* ========================================
    INTRO → GAMES JAGGED TRANSITION
@@ -31,16 +33,25 @@
 
   z-index: 5;
 
-  overflow: visible;
+  overflow: hidden;
+
   pointer-events: none;
 }
 
+
 .games-jagged-transition polyline {
   stroke: white;
+
   stroke-width: 15px;
+
   stroke-linejoin: miter;
   stroke-linecap: square;
 }
+
+
+/* ========================================
+   TOP EDGE
+======================================== */
 
 .games-top-edge {
   position: absolute;
@@ -54,12 +65,16 @@
   z-index: 2;
 
   pointer-events: none;
-  overflow: visible;
+
+  overflow: hidden;
 }
+
 
 .games-top-edge line {
   stroke: #ffffff;
+
   stroke-width: 15px;
+
   stroke-linecap: square;
 }
 
@@ -86,7 +101,7 @@
 
   margin: 0 auto 4rem;
 
-  padding-top: 4rem;
+  padding-top: 2rem;
 }
 
 
@@ -144,8 +159,9 @@
   color: var(--qe-purple);
 }
 
+
 /* ========================================
-   GAMES → ABOUT TRANSITION
+   GAMES → NEXT SECTION TRANSITION
 ======================================== */
 
 .games-bottom-overlay {
@@ -163,6 +179,7 @@
   pointer-events: none;
 }
 
+
 /* ========================================
    RESPONSIVE
 ======================================== */
@@ -170,7 +187,11 @@
 @media (max-width: 768px) {
 
   .games-section {
-    padding-top: 18vw;
+    /*
+      Don't jump back to 18vw here.
+      Keep the section close to the jagged divider.
+    */
+    padding-top: 12vw;
   }
 
 
@@ -180,6 +201,10 @@
     margin-top: 0;
     margin-bottom: 2rem;
 
+    /*
+      Bring the GAMES copy much closer
+      to the feature above it.
+    */
     padding-top: 0.5rem;
   }
 

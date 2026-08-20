@@ -11,7 +11,6 @@ const GamesFeature = () => {
           alt="QEthing game show scene"
         />
 
-        {/* Animated copy */}
         <div className="games-feature-copy">
           <motion.span
             className="games-feature-line games-feature-line-one"
@@ -64,21 +63,22 @@ const GamesFeature = () => {
             TO SUNDAY AFTERNOON
           </motion.span>
         </div>
+
+        <svg
+          className="games-feature-bottom-edge"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <line
+            x1="0"
+            y1="100"
+            x2="100"
+            y2="82"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
       </div>
-      <svg
-        className="games-feature-bottom-edge"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <line
-          x1="0"
-          y1="100"
-          x2="100"
-          y2="82"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
     </section>
   );
 };

@@ -126,6 +126,10 @@
 
   pointer-events: none;
 
+  /*
+    Leave visible so the lower half of the
+    15px stroke at y=100 is not clipped.
+  */
   overflow: visible;
 }
 
@@ -140,20 +144,35 @@
 
 
 /* ========================================
+   MEDIUM DESKTOP
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .games-feature {
+    margin-top: -11vw;
+  }
+
+}
+
+
+/* ========================================
    TABLET
 ======================================== */
 
 @media (max-width: 900px) {
 
   .games-feature {
-    width: 94vw;
+    width: 100%;
 
-    margin-bottom: 3rem;
+    margin-top: -13vw;
+    margin-bottom: 2rem;
   }
 
 
   .games-feature-copy {
     left: 5%;
+
     bottom: 15%;
 
     max-width: 88%;
@@ -171,14 +190,8 @@
   .games-feature {
     width: 100%;
 
-    /*
-      Keep the feature high enough to tuck into the
-      jagged transition, but don't pull it so far up
-      that the image is hidden behind the pink shape.
-    */
-    margin-top: -2vw;
-
-    margin-bottom: 0.5rem;
+    margin-top: -15vw;
+    margin-bottom: 0;
   }
 
 
@@ -199,10 +212,6 @@
 
     object-fit: cover;
 
-    /*
-      Favour the top of the artwork so the top-left
-      isn't cropped away on mobile.
-    */
     object-position: center top;
 
     clip-path: polygon(
@@ -243,20 +252,21 @@
 
 
   /*
-    Make the SVG match the media area exactly.
-    This keeps the white diagonal aligned with
-    the clipped bottom edge of the image.
+    The SVG now shares the exact same
+    dimensions as games-feature-media.
+    No separate calculated height.
   */
   .games-feature-bottom-edge {
     position: absolute;
 
-    top: 0;
-    left: 0;
+    inset: 0;
 
     width: 100%;
-    height: clamp(310px, 78vw, 390px);
+    height: 100%;
 
     transform: none;
+
+    overflow: visible;
   }
 
 }
