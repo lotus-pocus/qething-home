@@ -27,7 +27,7 @@ const GamesFeature = () => {
             }}
             viewport={{
               once: true,
-              amount: 0.45,
+              amount: 0.15,
             }}
             transition={{
               duration: 1.5,
@@ -52,7 +52,7 @@ const GamesFeature = () => {
             }}
             viewport={{
               once: true,
-              amount: 0.45,
+              amount: 0.15,
             }}
             transition={{
               delay: 1.15,
