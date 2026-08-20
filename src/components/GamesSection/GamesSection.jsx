@@ -56,14 +56,6 @@ const GamesSection = () => {
 
         <GamesCarousel />
       </div>
-
-      {/* Jagged transition into About */}
-      <img
-        className="games-bottom-overlay"
-        src="/images/Overlay02.svg"
-        alt=""
-        aria-hidden="true"
-      />
     </section>
   );
 };

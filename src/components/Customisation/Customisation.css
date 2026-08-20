@@ -1,0 +1,218 @@
+/* ========================================
+   CUSTOMISATION SECTION
+======================================== */
+
+.customisation-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  margin-top: -1px;
+
+  background: #d8d8d8;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.customisation-content {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.45fr);
+  align-items: center;
+
+  gap: clamp(2rem, 5vw, 6rem);
+
+  width: min(1500px, 88vw);
+
+  margin: 0 auto;
+
+  padding: clamp(6rem, 9vw, 10rem) 0 clamp(15rem, 19vw, 21rem);
+}
+
+
+/* ========================================
+   COPY
+======================================== */
+
+.customisation-copy {
+  align-self: center;
+
+  padding-bottom: 3rem;
+}
+
+.customisation-kicker {
+  display: block;
+
+  margin-bottom: 0.85rem;
+
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  color: var(--qe-purple);
+}
+
+.customisation-title {
+  margin: 0;
+
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(3.6rem, 7vw, 8rem);
+  font-weight: 900;
+
+  line-height: 0.8;
+  letter-spacing: -0.045em;
+
+  text-transform: uppercase;
+
+  color: var(--qe-purple);
+}
+
+.customisation-intro {
+  max-width: 390px;
+
+  margin: 2rem 0 0;
+
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+  font-weight: 700;
+
+  line-height: 1.25;
+
+  color: var(--qe-purple);
+}
+
+
+/* ========================================
+   SCREEN + PHONE COMPOSITION
+======================================== */
+
+.customisation-visuals {
+  position: relative;
+
+  width: 100%;
+
+  min-height: clamp(420px, 48vw, 760px);
+}
+
+.customisation-question-maker {
+  position: absolute;
+
+  top: 4%;
+  left: 0;
+
+  display: block;
+
+  width: min(92%, 980px);
+  height: auto;
+
+  object-fit: contain;
+}
+
+.customisation-show-creator {
+  position: absolute;
+
+  right: 0;
+  bottom: 3%;
+
+  display: block;
+
+  width: clamp(120px, 18vw, 280px);
+  height: auto;
+
+  object-fit: contain;
+
+  z-index: 2;
+}
+
+
+/* ========================================
+   CUSTOMISATION → NEW PACKS TRANSITION
+======================================== */
+
+.customisation-divider {
+  position: absolute;
+
+  left: 0;
+  bottom: -1px;
+
+  display: block;
+
+  width: 100%;
+  height: clamp(150px, 16vw, 270px);
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .customisation-content {
+    grid-template-columns: 1fr;
+
+    width: 88vw;
+
+    gap: 1rem;
+
+    padding: 6rem 0 13rem;
+  }
+
+  .customisation-copy {
+    padding-bottom: 0;
+  }
+
+  .customisation-title {
+    font-size: clamp(3.7rem, 15vw, 7rem);
+  }
+
+  .customisation-intro {
+    max-width: 520px;
+  }
+
+  .customisation-visuals {
+    min-height: clamp(360px, 79vw, 650px);
+  }
+
+  .customisation-question-maker {
+    top: 6%;
+
+    width: 94%;
+  }
+
+  .customisation-show-creator {
+    right: 1%;
+    bottom: 2%;
+
+    width: clamp(105px, 26vw, 210px);
+  }
+}
+
+@media (max-width: 520px) {
+  .customisation-content {
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+  }
+
+  .customisation-visuals {
+    min-height: 330px;
+  }
+
+  .customisation-show-creator {
+    width: 29vw;
+  }
+}

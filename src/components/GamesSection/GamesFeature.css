@@ -180,12 +180,16 @@
 
 
   .games-feature-copy {
-    left: 6%;
-    right: 6%;
-    bottom: 10%;
+  left: 6%;
+  right: 6%;
+  bottom: 22%;
 
-    max-width: none;
-  }
+  max-width: none;
+}
+
+.games-feature-bottom-edge {
+  transform: translateY(-12%);
+}
 
 
   .games-feature-line-one {
