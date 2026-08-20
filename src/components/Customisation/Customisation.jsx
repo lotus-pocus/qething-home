@@ -3,9 +3,18 @@ import "./Customisation.css";
 const Customisation = () => {
   return (
     <section id="customisation" className="customisation-section">
+
+      {/* Pink → Customisation diagonal transition */}
+      <div
+        className="customisation-top-edge"
+        aria-hidden="true"
+      />
+
       <div className="customisation-content">
         <div className="customisation-copy">
-          <span className="customisation-kicker">Customisation</span>
+          <span className="customisation-kicker">
+            Customisation
+          </span>
 
           <h2 className="customisation-title">
             IT&apos;S YOUR
@@ -18,7 +27,10 @@ const Customisation = () => {
           </p>
         </div>
 
-        <div className="customisation-visuals" aria-label="QEthing show customisation">
+        <div
+          className="customisation-visuals"
+          aria-label="QEthing show customisation"
+        >
           <img
             className="customisation-question-maker"
             src="/images/GamesSection/question_maker.png"
@@ -33,12 +45,6 @@ const Customisation = () => {
         </div>
       </div>
 
-      <img
-        className="customisation-divider"
-        src="/images/CustomisationDivider.svg"
-        alt=""
-        aria-hidden="true"
-      />
     </section>
   );
 };

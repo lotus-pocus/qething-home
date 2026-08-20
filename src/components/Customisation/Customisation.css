@@ -16,16 +16,101 @@
 
 
 /* ========================================
+   PINK → CUSTOMISATION TOP TRANSITION
+======================================== */
+
+.customisation-top-edge {
+  position: absolute;
+
+  top: -1px;
+  left: 0;
+
+  width: 100%;
+  height: clamp(70px, 7vw, 135px);
+
+  z-index: 4;
+
+  pointer-events: none;
+
+  /*
+    IMPORTANT:
+    No clip-path on this container.
+    This allows the purple layer to extend
+    beneath the pink without being cut off.
+  */
+}
+
+
+/* ========================================
+   LIGHT PURPLE BORDER
+======================================== */
+
+.customisation-top-edge::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: var(--qe-purple-light);
+
+  /*
+    Purple shape extends slightly LOWER
+    than the pink shape.
+  */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 calc(18% + 15px)
+  );
+
+  z-index: 1;
+}
+
+
+/* ========================================
+   PINK FOREGROUND
+======================================== */
+
+.customisation-top-edge::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: var(--qe-pink);
+
+  /*
+    Original pink diagonal.
+  */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 15px),
+    0 18%
+  );
+
+  z-index: 2;
+}
+
+
+/* ========================================
    CONTENT
 ======================================== */
 
 .customisation-content {
   position: relative;
 
-  z-index: 2;
+  z-index: 5;
 
   display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.45fr);
+
+  grid-template-columns:
+    minmax(260px, 0.72fr)
+    minmax(0, 1.45fr);
+
   align-items: center;
 
   gap: clamp(2rem, 5vw, 6rem);
@@ -34,7 +119,10 @@
 
   margin: 0 auto;
 
-  padding: clamp(6rem, 9vw, 10rem) 0 clamp(15rem, 19vw, 21rem);
+  padding:
+    clamp(8rem, 11vw, 12rem)
+    0
+    clamp(15rem, 19vw, 21rem);
 }
 
 
@@ -48,29 +136,37 @@
   padding-bottom: 3rem;
 }
 
+
 .customisation-kicker {
   display: block;
 
   margin-bottom: 0.85rem;
 
   font-family: "Outfit", sans-serif;
+
   font-size: 1rem;
+
   font-weight: 800;
 
   text-transform: uppercase;
+
   letter-spacing: 0.12em;
 
   color: var(--qe-purple);
 }
 
+
 .customisation-title {
   margin: 0;
 
   font-family: "Outfit", sans-serif;
-  font-size: clamp(3.6rem, 7vw, 8rem);
+
+  font-size: clamp(3rem, 5.5vw, 6.5rem);
+
   font-weight: 900;
 
   line-height: 0.8;
+
   letter-spacing: -0.045em;
 
   text-transform: uppercase;
@@ -78,13 +174,16 @@
   color: var(--qe-purple);
 }
 
+
 .customisation-intro {
   max-width: 390px;
 
   margin: 2rem 0 0;
 
   font-family: "Outfit", sans-serif;
+
   font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+
   font-weight: 700;
 
   line-height: 1.25;
@@ -105,6 +204,7 @@
   min-height: clamp(420px, 48vw, 760px);
 }
 
+
 .customisation-question-maker {
   position: absolute;
 
@@ -114,25 +214,28 @@
   display: block;
 
   width: min(92%, 980px);
+
   height: auto;
 
   object-fit: contain;
 }
 
+
 .customisation-show-creator {
   position: absolute;
 
-  right: 0;
-  bottom: 3%;
+  right: -1%;
+  bottom: -50%;
 
   display: block;
 
-  width: clamp(120px, 18vw, 280px);
+  width: clamp(225px, 30vw, 480px);
+
   height: auto;
 
   object-fit: contain;
 
-  z-index: 2;
+  z-index: 4;
 }
 
 
@@ -140,16 +243,34 @@
    CUSTOMISATION → NEW PACKS TRANSITION
 ======================================== */
 
-.customisation-divider {
+/*
+  LIGHT PURPLE UNDERLAY
+
+  This is the slightly larger back layer.
+  The deep-purple shape sits over it,
+  leaving a narrow light-purple border.
+*/
+
+.customisation-section::after {
+  content: "";
+
   position: absolute;
 
   left: 0;
-  bottom: -1px;
+  right: 0;
+  bottom: 0;
 
-  display: block;
-
-  width: 100%;
   height: clamp(150px, 16vw, 270px);
+
+  background: var(--qe-purple-light);
+
+  clip-path: polygon(
+    0 26%,
+    77% 72%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
 
   z-index: 1;
 
@@ -157,11 +278,84 @@
 }
 
 
+/*
+  DEEP PURPLE FOREGROUND
+
+  Same general geometry, but positioned
+  just inside the light-purple layer.
+*/
+
+.customisation-section::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  /*
+    Push the dark-purple shape down slightly,
+    exposing the light-purple shape behind it.
+  */
+  bottom: -15px;
+
+  height: clamp(150px, 16vw, 270px);
+
+  background: var(--qe-purple);
+
+  clip-path: polygon(
+    0 26%,
+    77% 72%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE — TABLET
 ======================================== */
 
 @media (max-width: 900px) {
+
+  /* ------------------------------
+     TOP TRANSITION
+  ------------------------------ */
+
+  .customisation-top-edge {
+    height: clamp(60px, 10vw, 90px);
+
+    /*
+      Slightly flatter on tablet.
+    */
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0 25%
+    );
+  }
+
+
+  .customisation-top-edge::after {
+    clip-path: polygon(
+      0 calc(25% - 5px),
+      100% calc(100% - 5px),
+      100% 100%,
+      0 25%
+    );
+  }
+
+
+  /* ------------------------------
+     CONTENT
+  ------------------------------ */
+
   .customisation-content {
     grid-template-columns: 1fr;
 
@@ -169,24 +363,32 @@
 
     gap: 1rem;
 
-    padding: 6rem 0 13rem;
+    padding:
+      8rem
+      0
+      13rem;
   }
+
 
   .customisation-copy {
     padding-bottom: 0;
   }
 
+
   .customisation-title {
-    font-size: clamp(3.7rem, 15vw, 7rem);
+    font-size: clamp(3.2rem, 12vw, 6rem);
   }
+
 
   .customisation-intro {
     max-width: 520px;
   }
 
+
   .customisation-visuals {
     min-height: clamp(360px, 79vw, 650px);
   }
+
 
   .customisation-question-maker {
     top: 6%;
@@ -194,25 +396,130 @@
     width: 94%;
   }
 
+
   .customisation-show-creator {
     right: 1%;
     bottom: 2%;
 
     width: clamp(105px, 26vw, 210px);
   }
+
+
+  /* ------------------------------
+     BOTTOM TRANSITION
+  ------------------------------ */
+
+  .customisation-section::after {
+    height: clamp(125px, 19vw, 175px);
+
+    clip-path: polygon(
+      0 30%,
+      76% 70%,
+      100% 5%,
+      100% 100%,
+      0 100%
+    );
+  }
+
+
+  .customisation-section::before {
+    height: clamp(120px, 18.5vw, 168px);
+
+    clip-path: polygon(
+      0 32%,
+      76% 72%,
+      100% 5%,
+      100% 100%,
+      0 100%
+    );
+  }
 }
 
+
+/* ========================================
+   RESPONSIVE — MOBILE
+======================================== */
+
 @media (max-width: 520px) {
+
+  /* ------------------------------
+     TOP TRANSITION
+  ------------------------------ */
+
+  .customisation-top-edge {
+    height: 60px;
+
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0 35%
+    );
+  }
+
+
+  .customisation-top-edge::after {
+    clip-path: polygon(
+      0 calc(35% - 4px),
+      100% calc(100% - 4px),
+      100% 100%,
+      0 35%
+    );
+  }
+
+
+  /* ------------------------------
+     CONTENT
+  ------------------------------ */
+
   .customisation-content {
-    padding-top: 5rem;
+    padding-top: 7rem;
+
     padding-bottom: 10rem;
   }
+
+
+  .customisation-title {
+    font-size: clamp(3rem, 14vw, 4.8rem);
+  }
+
 
   .customisation-visuals {
     min-height: 330px;
   }
 
+
   .customisation-show-creator {
     width: 29vw;
+  }
+
+
+  /* ------------------------------
+     BOTTOM TRANSITION
+  ------------------------------ */
+
+  .customisation-section::after {
+    height: 105px;
+
+    clip-path: polygon(
+      0 38%,
+      74% 70%,
+      100% 10%,
+      100% 100%,
+      0 100%
+    );
+  }
+
+
+  .customisation-section::before {
+    height: 100px;
+
+    clip-path: polygon(
+      0 40%,
+      74% 72%,
+      100% 10%,
+      100% 100%,
+      0 100%
+    );
   }
 }
