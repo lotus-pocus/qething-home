@@ -7,7 +7,7 @@
 
   min-height: 100vh;
 
-  background: var(--qe-purple);
+  background: var(--qe-pink);
 
   overflow-x: hidden;
   overflow-y: visible;
@@ -168,13 +168,8 @@
   position: relative;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
-
-  background: #d600b8;
-
-  border-radius: 18px;
 }
 
 
@@ -183,19 +178,15 @@
 ======================================== */
 
 .games-title-sticker-top {
-  width: clamp(320px, 45vw, 620px);
-
-  min-height: clamp(260px, 30vw, 410px);
+  width: fit-content;
 
   margin:
     1rem
-    0
+    4vw
     0
     auto;
 
-  padding:
-    clamp(2rem, 3vw, 3.5rem)
-    clamp(1.5rem, 3vw, 3rem);
+  padding: 2rem;
 }
 
 
@@ -314,9 +305,7 @@
 ======================================== */
 
 .games-title-sticker-bottom {
-  width: clamp(300px, 34vw, 480px);
-
-  min-height: clamp(175px, 20vw, 270px);
+  width: fit-content;
 
   margin:
     clamp(1rem, 2vw, 2rem)
