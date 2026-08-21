@@ -79,6 +79,85 @@
 
 
 /* ========================================
+   PURPLE DIAGONAL ABOVE GAMEPLAY IMAGES
+======================================== */
+
+.new-packs-gameplay-top-edge {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 100vw;
+  height: clamp(45px, 5vw, 90px);
+
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   TOP EDGE — LIGHT PURPLE BORDER
+======================================== */
+
+.new-packs-gameplay-top-edge::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: var(--qe-purple-light);
+
+  /*
+    Same direction as the diagonal
+    above the Customisation section:
+    shallower on the left,
+    lower on the right.
+  */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 30%
+  );
+
+  z-index: 1;
+}
+
+
+/* ========================================
+   TOP EDGE — DEEP PURPLE FOREGROUND
+======================================== */
+
+.new-packs-gameplay-top-edge::after {
+  content: "";
+
+  position: absolute;
+
+  top: -1px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100% - 8px);
+
+  background: var(--qe-purple);
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 94%,
+    0 18%
+  );
+
+  z-index: 2;
+}
+
+
+/* ========================================
    TOP TWO MODE IMAGES
 ======================================== */
 
@@ -90,6 +169,12 @@
   grid-template-columns: 1fr 1fr;
 
   width: 100%;
+
+  /*
+    Keeps the designer's wide,
+    cinematic two-image composition.
+  */
+  aspect-ratio: 16 / 5.4;
 
   overflow: hidden;
 }
@@ -104,9 +189,15 @@
 
   min-width: 0;
 
+  height: 100%;
+
   overflow: hidden;
 }
 
+
+/* ========================================
+   MODE IMAGES
+======================================== */
 
 .new-packs-mode-image {
   display: block;
@@ -133,7 +224,7 @@
 
 
 /* ========================================
-   BLUE DIAGONAL DIVIDER
+   BLUE DIAGONAL BETWEEN MODE IMAGES
 ======================================== */
 
 .new-packs-mode-divider {
@@ -153,73 +244,82 @@
 
   transform-origin: center;
 
-  z-index: 5;
+  z-index: 6;
 
   pointer-events: none;
 }
 
 
 /* ========================================
-   PLAY SOLO COPY
+   DIAGONAL BELOW MODE IMAGES
+
+   This now belongs to the top image
+   composition itself rather than being
+   overlaid onto the 16-player image.
 ======================================== */
 
-.new-packs-play-solo {
+
+/* LIGHT PURPLE UNDERLAY */
+
+.new-packs-modes::before {
+  content: "";
+
   position: absolute;
 
-  top: 35%;
-  right: 8%;
+  left: 0;
+  bottom: -1px;
 
-  z-index: 6;
+  width: 100%;
+  height: clamp(42px, 4.2vw, 78px);
 
-  font-family: "Outfit", sans-serif;
+  background: var(--qe-purple-light);
 
-  font-size: clamp(2rem, 3.6vw, 4.8rem);
+  /*
+    Keep this diagonal low so the images
+    remain as large as possible.
+  */
+  clip-path: polygon(
+    0 82%,
+    100% 18%,
+    100% 100%,
+    0 100%
+  );
 
-  font-weight: 900;
+  z-index: 7;
 
-  line-height: 0.82;
-
-  text-align: left;
-
-  text-transform: uppercase;
-
-  color: white;
-
-  text-shadow:
-    2px 2px 0 rgba(70, 0, 100, 0.95),
-    5px 5px 0 rgba(35, 0, 60, 0.5);
+  pointer-events: none;
 }
 
 
-/* ========================================
-   OR IN TEAMS COPY
-======================================== */
+/* DEEP PURPLE FOREGROUND */
 
-.new-packs-play-teams {
+.new-packs-modes::after {
+  content: "";
+
   position: absolute;
 
-  right: 8%;
-  bottom: 12%;
+  left: 0;
+  bottom: -1px;
 
-  z-index: 6;
+  width: 100%;
+  height: clamp(42px, 4.2vw, 78px);
 
-  font-family: "Outfit", sans-serif;
+  background: var(--qe-purple);
 
-  font-size: clamp(2rem, 3.6vw, 4.8rem);
+  /*
+    Slightly lower than the light-purple
+    layer so the border remains visible.
+  */
+  clip-path: polygon(
+    0 92%,
+    100% 31%,
+    100% 100%,
+    0 100%
+  );
 
-  font-weight: 900;
+  z-index: 8;
 
-  line-height: 0.85;
-
-  text-align: right;
-
-  text-transform: uppercase;
-
-  color: white;
-
-  text-shadow:
-    2px 2px 0 rgba(70, 0, 100, 0.95),
-    5px 5px 0 rgba(35, 0, 60, 0.5);
+  pointer-events: none;
 }
 
 
@@ -233,80 +333,12 @@
   width: 100%;
 
   /*
-    Pull it very slightly underneath the
-    upper composition so there can never be
-    a background seam between the two.
+    Slight overlap prevents a hairline gap
+    between the two compositions.
   */
   margin-top: -2px;
 
   overflow: hidden;
-}
-
-
-/* ========================================
-   PURPLE DIAGONAL EDGE
-
-   Similar idea to GamesFeature:
-   light-purple layer underneath with
-   deep-purple foreground above it.
-======================================== */
-
-.new-packs-players-top-edge {
-  position: absolute;
-
-  top: -1px;
-  left: 0;
-
-  width: 100%;
-  height: clamp(28px, 3.2vw, 58px);
-
-  z-index: 5;
-
-  pointer-events: none;
-}
-
-
-/* LIGHT PURPLE BORDER */
-
-.new-packs-players-top-edge::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: var(--qe-purple-light);
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 14%,
-    0 100%
-  );
-}
-
-
-/* DEEP PURPLE FOREGROUND */
-
-.new-packs-players-top-edge::after {
-  content: "";
-
-  position: absolute;
-
-  top: -3px;
-  left: 0;
-
-  width: 100%;
-  height: calc(100% - 5px);
-
-  background: var(--qe-purple);
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 8%,
-    0 82%
-  );
 }
 
 
@@ -384,7 +416,7 @@
 
 
 /* ========================================
-   LIGHT PURPLE UNDERLAY
+   BOTTOM EDGE — LIGHT PURPLE UNDERLAY
 ======================================== */
 
 .new-packs-bottom-edge::before {
@@ -408,7 +440,7 @@
 
 
 /* ========================================
-   DEEP PURPLE FOREGROUND
+   BOTTOM EDGE — DEEP PURPLE FOREGROUND
 ======================================== */
 
 .new-packs-bottom-edge::after {
@@ -458,6 +490,11 @@
   }
 
 
+  .new-packs-modes {
+    aspect-ratio: 16 / 6;
+  }
+
+
   .new-packs-mode-divider {
     width: 10px;
 
@@ -467,15 +504,9 @@
   }
 
 
-  .new-packs-play-solo {
-    top: 32%;
-    right: 7%;
-  }
-
-
-  .new-packs-play-teams {
-    right: 6%;
-    bottom: 11%;
+  .new-packs-modes::before,
+  .new-packs-modes::after {
+    height: clamp(36px, 5vw, 55px);
   }
 
 
@@ -521,16 +552,43 @@
   }
 
 
-  /*
-    Keep both images beside one another
-    rather than stacking them.
+  /* ========================================
+     TOP EDGE — MOBILE
+  ======================================== */
 
-    This preserves the designer's composition.
-  */
+  .new-packs-gameplay-top-edge {
+    height: clamp(32px, 9vw, 48px);
+  }
+
+
+  .new-packs-gameplay-top-edge::before {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0 30%
+    );
+  }
+
+
+  .new-packs-gameplay-top-edge::after {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 82%,
+      0 18%
+    );
+  }
+
+
+  /* ========================================
+     MODE IMAGES — MOBILE
+  ======================================== */
+
   .new-packs-modes {
     grid-template-columns: 1fr 1fr;
 
-    min-height: clamp(190px, 53vw, 300px);
+    aspect-ratio: 16 / 7;
   }
 
 
@@ -554,26 +612,39 @@
   }
 
 
-  .new-packs-play-solo {
-    top: 36%;
-    right: 6%;
+  /* ========================================
+     LOWER MODE DIAGONAL — MOBILE
+  ======================================== */
 
-    font-size: clamp(1.2rem, 5.5vw, 2rem);
+  .new-packs-modes::before,
+  .new-packs-modes::after {
+    height: clamp(28px, 8vw, 42px);
   }
 
 
-  .new-packs-play-teams {
-    right: 5%;
-    bottom: 12%;
-
-    font-size: clamp(1.15rem, 5vw, 1.9rem);
+  .new-packs-modes::before {
+    clip-path: polygon(
+      0 82%,
+      100% 18%,
+      100% 100%,
+      0 100%
+    );
   }
 
 
-  .new-packs-players-top-edge {
-    height: clamp(20px, 6vw, 34px);
+  .new-packs-modes::after {
+    clip-path: polygon(
+      0 92%,
+      100% 31%,
+      100% 100%,
+      0 100%
+    );
   }
 
+
+  /* ========================================
+     16 PLAYERS — MOBILE
+  ======================================== */
 
   .new-packs-player-count {
     bottom: 8%;
@@ -585,6 +656,10 @@
     white-space: normal;
   }
 
+
+  /* ========================================
+     BOTTOM JAGGED EDGE — MOBILE
+  ======================================== */
 
   .new-packs-bottom-edge {
     height: 80px;
