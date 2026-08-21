@@ -5,12 +5,12 @@
 .play-modes {
   position: relative;
 
-   z-index: 2;
+  z-index: 2;
 
   width: 100vw;
 
   /*
-    More vertical space for the two images.
+    More vertical space for the two panels.
   */
   aspect-ratio: 16 / 6.2;
 
@@ -23,6 +23,7 @@
 
   background: var(--qe-purple);
 }
+
 
 /* ========================================
    ANIMATION STAGE
@@ -37,8 +38,8 @@
   height: 100%;
 
   /*
-    THIS is what hides the images while
-    they fly in from outside.
+    Hides the panels while they animate
+    in from outside the section.
   */
   overflow: hidden;
 
@@ -104,9 +105,6 @@
 
   background: var(--qe-purple);
 
-  /*
-    Your preferred diagonal.
-  */
   clip-path: polygon(
     0 0,
     100% 0,
@@ -129,17 +127,16 @@
 
   height: 100%;
 
+  overflow: hidden;
+
   will-change: transform, opacity;
 }
 
 
 /*
-  Each panel is deliberately wider than 50%.
-
-  They overlap around the centre so the
-  diagonal masks can meet cleanly without
-  exposing the purple background between
-  the images.
+  Panels overlap around the middle so the
+  diagonal edges meet without exposing
+  the purple section background.
 */
 
 .play-modes-panel-solo {
@@ -171,35 +168,14 @@
 
   background: var(--player-red);
 
-  /*
-    Diagonal right-hand edge.
-  */
   clip-path: polygon(
     0 0,
     84% 0,
     100% 100%,
     0 100%
   );
-}
 
-
-/* ========================================
-   SOLO IMAGE
-======================================== */
-
-.play-modes-image-solo {
-  /*
-    Image is clipped slightly inside
-    the red backing shape.
-
-    This exposes the red diagonal edge.
-  */
-  clip-path: polygon(
-    0 0,
-    82.5% 0,
-    98.5% 100%,
-    0 100%
-  );
+  z-index: 1;
 }
 
 
@@ -212,67 +188,97 @@
 
   inset: 0;
 
-  background: var(--qe-blue-light);
-
   /*
-    Complementary diagonal left edge.
+    Fallback included in case
+    --qe-blue-light isn't defined.
   */
+  background: var(--qe-blue-light, var(--qe-blue));
+
   clip-path: polygon(
     0 0,
     100% 0,
     100% 100%,
     16% 100%
   );
+
+  z-index: 1;
 }
 
 
 /* ========================================
-   TEAMS IMAGE
+   BOTH VIDEOS
 ======================================== */
 
-.play-modes-image-teams {
-  /*
-    Slight inset exposes the blue
-    backing along the diagonal.
-  */
-  clip-path: polygon(
-    1.5% 0,
-    100% 0,
-    100% 100%,
-    17.5% 100%
-  );
-}
+/*
+  Supports either:
+    className="play-modes-image"
+  OR
+    className="play-modes-video"
 
+  So the MP4s will still work even if
+  you renamed the class when swapping
+  the JPGs for video elements.
+*/
 
-/* ========================================
-   BOTH IMAGES
-======================================== */
-
-.play-modes-image {
+.play-modes-image,
+.play-modes-video,
+.play-modes-panel video {
   position: absolute;
 
   inset: 0;
+
+  z-index: 2;
 
   display: block;
 
   width: 100%;
   height: 100%;
 
+  max-width: none;
+
   object-fit: cover;
+
+  background: transparent;
+
+  border: 0;
+
+  pointer-events: none;
 }
 
 
 /* ========================================
-   IMAGE POSITION
+   SOLO VIDEO
 ======================================== */
 
-.play-modes-image-solo {
+.play-modes-image-solo,
+.play-modes-video-solo,
+.play-modes-panel-solo video {
   object-position: center;
+
+  clip-path: polygon(
+    0 0,
+    82.5% 0,
+    98.5% 100%,
+    0 100%
+  );
 }
 
 
-.play-modes-image-teams {
+/* ========================================
+   TEAMS VIDEO
+======================================== */
+
+.play-modes-image-teams,
+.play-modes-video-teams,
+.play-modes-panel-teams video {
   object-position: center;
+
+  clip-path: polygon(
+    1.5% 0,
+    100% 0,
+    100% 100%,
+    17.5% 100%
+  );
 }
 
 
@@ -286,18 +292,10 @@
   left: 0;
   right: 0;
 
-  /*
-    Let the edge sit slightly below
-    the image composition.
-  */
   bottom: -13px;
 
   width: 100%;
 
-  /*
-    Slightly shallower edge means more
-    of the images remain visible.
-  */
   height: clamp(44px, 4.8vw, 82px);
 
   z-index: 20;
@@ -447,7 +445,9 @@
   }
 
 
-  .play-modes-image-solo {
+  .play-modes-image-solo,
+  .play-modes-video-solo,
+  .play-modes-panel-solo video {
     clip-path: polygon(
       0 0,
       80.5% 0,
@@ -471,7 +471,9 @@
   }
 
 
-  .play-modes-image-teams {
+  .play-modes-image-teams,
+  .play-modes-video-teams,
+  .play-modes-panel-teams video {
     clip-path: polygon(
       2% 0,
       100% 0,

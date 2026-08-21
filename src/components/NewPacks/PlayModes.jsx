@@ -27,7 +27,6 @@ const soloVariants = {
   },
 };
 
-
 const teamsVariants = {
   hidden: {
     x: "110%",
@@ -62,13 +61,17 @@ const PlayModes = () => {
           TOP DIAGONAL
       ====================================== */}
 
-      <div className="play-modes-top-edge" aria-hidden="true" />
+      <div
+        className="play-modes-top-edge"
+        aria-hidden="true"
+      />
 
       {/* =====================================
           ANIMATION STAGE
       ====================================== */}
 
       <div className="play-modes-stage">
+
         {/* LEFT — PLAY SOLO */}
 
         <motion.div
@@ -76,13 +79,19 @@ const PlayModes = () => {
           variants={soloVariants}
         >
           <div className="play-modes-solo-border">
-            <img
+            <video
               className="play-modes-image play-modes-image-solo"
-              src="/images/NewPacks/PlaySolo.jpg"
-              alt="QEthing solo play"
+              src="/images/NewPacks/solo_1.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-label="QEthing solo play"
             />
           </div>
         </motion.div>
+
 
         {/* RIGHT — OR IN TEAMS */}
 
@@ -91,20 +100,29 @@ const PlayModes = () => {
           variants={teamsVariants}
         >
           <div className="play-modes-teams-border">
-            <img
+            <video
               className="play-modes-image play-modes-image-teams"
-              src="/images/NewPacks/OrInTeams.jpg"
-              alt="QEthing team play"
+              src="/images/NewPacks/teams.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-label="QEthing team play"
             />
           </div>
         </motion.div>
+
       </div>
 
       {/* =====================================
           LOWER DIAGONAL
       ====================================== */}
 
-      <div className="play-modes-bottom-edge" aria-hidden="true" />
+      <div
+        className="play-modes-bottom-edge"
+        aria-hidden="true"
+      />
     </motion.section>
   );
 };
