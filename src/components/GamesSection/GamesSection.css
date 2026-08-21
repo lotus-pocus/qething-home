@@ -7,7 +7,7 @@
 
   min-height: 100vh;
 
-  background: var(--qe-pink);
+  background: var(--qe-purple);
 
   overflow-x: hidden;
   overflow-y: visible;
@@ -38,10 +38,12 @@
 
 
 /* WHITE SHAPE UNDERNEATH */
+
 .games-jagged-transition::before {
   content: "";
 
   position: absolute;
+
   inset: 0;
 
   background: white;
@@ -58,6 +60,7 @@
 
 
 /* BLUE SHAPE ON TOP */
+
 .games-jagged-transition::after {
   content: "";
 
@@ -157,24 +160,194 @@
 }
 
 
-.games-title {
+/* ========================================
+   GAMES TITLE STICKERS
+======================================== */
+
+.games-title-sticker {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #d600b8;
+
+  border-radius: 18px;
+}
+
+
+/* ========================================
+   TOP STICKER
+======================================== */
+
+.games-title-sticker-top {
+  width: clamp(320px, 45vw, 620px);
+
+  min-height: clamp(260px, 30vw, 410px);
+
+  margin:
+    1rem
+    0
+    0
+    auto;
+
+  padding:
+    clamp(2rem, 3vw, 3.5rem)
+    clamp(1.5rem, 3vw, 3rem);
+}
+
+
+/* ========================================
+   CHUNKY TITLE
+======================================== */
+
+.games-sticker-title {
   margin: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  width: fit-content;
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(4rem, 9vw, 10rem);
+  font-size: clamp(3rem, 5.4vw, 6rem);
 
   font-weight: 900;
 
-  line-height: 0.78;
+  line-height: 0.67;
 
-  letter-spacing: -0.04em;
+  letter-spacing: -0.055em;
+
+  text-align: center;
 
   text-transform: uppercase;
 
-  color: var(--qe-purple);
+  color: #ffffff;
+
+
+  /*
+    Slightly reduced from the previous
+    version.
+
+    This keeps the chunky purple sticker
+    outline without making the corners
+    quite so aggressive.
+  */
+
+  -webkit-text-stroke:
+    clamp(6px, 0.55vw, 11px)
+    #6714d8;
+
+  paint-order: stroke fill;
+
+
+  /*
+    IMPORTANT:
+
+    We're no longer using stacked,
+    zero-blur text-shadows to create
+    the extrusion.
+
+    Those copied the sharp corners of
+    the letters several times and caused
+    the little triangular spikes.
+
+    These drop-shadows progressively
+    soften as the depth increases.
+  */
+
+  text-shadow: none;
+
+  filter:
+    drop-shadow(0 3px 0 #6513d3)
+    drop-shadow(0 4px 0 #5511bc)
+    drop-shadow(0 5px 1px #45109d)
+    drop-shadow(2px 8px 3px #351080)
+    drop-shadow(
+      6px
+      13px
+      8px
+      rgba(32, 5, 65, 0.38)
+    )
+    drop-shadow(
+      8px
+      18px
+      16px
+      rgba(22, 0, 45, 0.22)
+    );
 }
 
+
+/* ========================================
+   TITLE LINES
+======================================== */
+
+.games-sticker-title span {
+  display: block;
+
+  white-space: nowrap;
+}
+
+
+.games-sticker-title span + span {
+  margin-top: 0.03em;
+}
+
+
+/*
+  Give the middle line a little extra punch.
+*/
+
+.games-sticker-title span:nth-child(2) {
+  font-size: 1.08em;
+}
+
+
+/* ========================================
+   BOTTOM STICKER
+======================================== */
+
+.games-title-sticker-bottom {
+  width: clamp(300px, 34vw, 480px);
+
+  min-height: clamp(175px, 20vw, 270px);
+
+  margin:
+    clamp(1rem, 2vw, 2rem)
+    auto
+    0;
+
+  padding: 2rem;
+
+  transform: translateY(30%);
+}
+
+
+/* ========================================
+   BOTTOM STICKER TITLE
+======================================== */
+
+.games-sticker-title-small {
+  font-size: clamp(2rem, 3.5vw, 4rem);
+
+  transform: rotate(-7deg);
+}
+
+
+.games-sticker-title-small span:last-child {
+  font-size: 1.08em;
+}
+
+
+/* ========================================
+   INTRO COPY
+======================================== */
 
 .games-intro {
   max-width: 700px;
@@ -214,16 +387,17 @@
 
 
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE — TABLET / MOBILE
 ======================================== */
 
 @media (max-width: 768px) {
 
   .games-section {
     /*
-      Don't jump back to 18vw here.
-      Keep the section close to the jagged divider.
+      Keep the section close to the
+      jagged divider.
     */
+
     padding-top: 12vw;
   }
 
@@ -234,16 +408,60 @@
     margin-top: 0;
     margin-bottom: 2rem;
 
-    /*
-      Bring the GAMES copy much closer
-      to the feature above it.
-    */
     padding-top: 0.5rem;
   }
 
 
-  .games-title {
-    font-size: clamp(4rem, 17vw, 7rem);
+  /* ------------------------------
+     TOP TITLE STICKER
+  ------------------------------ */
+
+  .games-title-sticker-top {
+    width: min(88vw, 500px);
+
+    min-height: auto;
+
+    margin:
+      1rem
+      auto
+      0;
+
+    padding:
+      2.5rem
+      1.5rem;
+  }
+
+
+  .games-sticker-title {
+    font-size: clamp(
+      2.8rem,
+      13vw,
+      5rem
+    );
+  }
+
+
+  /* ------------------------------
+     BOTTOM TITLE STICKER
+  ------------------------------ */
+
+  .games-title-sticker-bottom {
+    width: min(65vw, 300px);
+
+    min-height: 130px;
+
+    padding: 1.25rem;
+
+    transform: translateY(20%);
+  }
+
+
+  .games-sticker-title-small {
+    font-size: clamp(
+      1.8rem,
+      8vw,
+      3rem
+    );
   }
 
 }

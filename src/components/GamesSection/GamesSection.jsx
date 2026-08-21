@@ -5,11 +5,7 @@ import GamesCarousel from "./GamesCarousel";
 const GamesSection = () => {
   return (
     <section id="games" className="games-section">
-
-      <div
-        className="games-jagged-transition"
-        aria-hidden="true"
-      />
+      <div className="games-jagged-transition" aria-hidden="true" />
 
       <div className="games-content">
         <GamesFeature />
@@ -17,10 +13,13 @@ const GamesSection = () => {
         <div className="games-heading">
           <span className="games-kicker">Games</span>
 
-          <h2 className="games-title">
-            IT'S NOT JUST
-            <br />A QUIZ
-          </h2>
+          <div className="games-title-sticker games-title-sticker-top">
+            <h2 className="games-sticker-title">
+              <span>IT&apos;S NOT</span>
+              <span>JUST</span>
+              <span>A QUIZ</span>
+            </h2>
+          </div>
 
           <p className="games-intro">
             From quick-fire questions to frantic challenges, every round brings
@@ -29,6 +28,12 @@ const GamesSection = () => {
         </div>
 
         <GamesCarousel />
+        <div className="games-title-sticker games-title-sticker-bottom">
+          <div className="games-sticker-title games-sticker-title-small">
+            <span>IT&apos;S A</span>
+            <span>GAMESHOW</span>
+          </div>
+        </div>
       </div>
     </section>
   );
