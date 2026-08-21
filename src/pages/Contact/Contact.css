@@ -1,0 +1,91 @@
+/* ========================================
+   CONTACT PAGE
+======================================== */
+
+.contact-page {
+  min-height: 100vh;
+
+  padding-top: clamp(230px, 18vw, 300px);
+  padding-bottom: 6rem;
+
+  background: white;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.contact-page-content {
+  width: min(1200px, 88vw);
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.contact-page-title {
+  margin: 0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(4rem, 9vw, 9rem);
+
+  font-weight: 900;
+
+  line-height: 0.85;
+
+  letter-spacing: -0.04em;
+
+  text-transform: uppercase;
+
+  color: var(--qe-purple);
+}
+
+
+/* ========================================
+   COPY
+======================================== */
+
+.contact-page-copy {
+  max-width: 700px;
+
+  margin: 2rem 0 0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  color: var(--qe-purple);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .contact-page {
+    padding-top: 200px;
+    padding-bottom: 4rem;
+  }
+
+
+  .contact-page-content {
+    width: 88vw;
+  }
+
+
+  .contact-page-title {
+    font-size: clamp(3.5rem, 17vw, 6rem);
+  }
+
+}

@@ -1,18 +1,24 @@
-import Hero from "./components/Hero/Hero";
-import IntroSection from "./components/IntroSection/IntroSection";
-import GamesSection from "./components/GamesSection/GamesSection";
-import Customisation from "./components/Customisation/Customisation";
-import NewPacks from "./components/NewPacks/NewPacks";
+import { Routes, Route } from "react-router-dom";
+
+import Navigation from "./components/Navigation/Navigation";
+
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import News from "./pages/News/News";
+import Contact from "./pages/Contact/Contact";
 
 function App() {
   return (
-    <main>
-      <Hero />
-      <IntroSection />
-      <GamesSection />
-      <Customisation />
-      <NewPacks />
-    </main>
+    <>
+      <Navigation />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </>
   );
 }
 
