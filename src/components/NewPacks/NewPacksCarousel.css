@@ -1,0 +1,353 @@
+/* ========================================
+   NEW PACKS CAROUSEL WRAPPER
+======================================== */
+
+.new-packs-carousel-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 3rem;
+
+  overflow: visible;
+}
+
+
+/* ========================================
+   CAROUSEL
+======================================== */
+
+.new-packs-carousel {
+  display: flex;
+
+  align-items: center;
+
+  gap: clamp(1rem, 2vw, 2rem);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding:
+    1.5rem
+    max(12vw, calc((100vw - 760px) / 2))
+    2rem;
+
+  scroll-behavior: smooth;
+
+  scroll-snap-type: x mandatory;
+
+  overscroll-behavior-x: contain;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+}
+
+
+.new-packs-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ========================================
+   PACK CARD
+======================================== */
+
+.new-pack-card {
+  position: relative;
+
+  flex: 0 0 min(34vw, 620px);
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  scroll-snap-align: center;
+
+  scroll-snap-stop: always;
+
+  cursor: pointer;
+
+  border-radius: 18px;
+
+  border: 5px solid rgba(255, 255, 255, 0.18);
+
+  background: #26003b;
+
+  opacity: 0.42;
+
+  transform: scale(0.9);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* ========================================
+   ACTIVE CARD
+======================================== */
+
+.new-pack-card-active {
+  opacity: 1;
+
+  transform: scale(1);
+
+  border-color: #ffbd00;
+  border-width: 8px;
+
+  cursor: default;
+
+  z-index: 3;
+}
+
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.new-pack-card-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.4s ease,
+    filter 0.35s ease;
+}
+
+
+.new-pack-card:not(.new-pack-card-active)
+.new-pack-card-image {
+  filter:
+    saturate(0.55)
+    brightness(0.55);
+}
+
+
+.new-pack-card-active:hover
+.new-pack-card-image {
+  transform: scale(1.015);
+}
+
+
+/* ========================================
+   PURPLE FADE
+======================================== */
+
+.new-pack-card-fade {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(71, 0, 104, 0.5);
+
+  pointer-events: none;
+
+  transition: opacity 0.35s ease;
+}
+
+
+.new-pack-card-active
+.new-pack-card-fade {
+  opacity: 0;
+}
+
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.new-packs-carousel-controls {
+  display: grid;
+
+  grid-template-columns:
+    clamp(58px, 5vw, 90px)
+    minmax(220px, 380px)
+    clamp(58px, 5vw, 90px);
+
+  justify-content: center;
+  align-items: center;
+
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+
+  margin-top: 1rem;
+}
+
+
+/* ========================================
+   ARROWS
+======================================== */
+
+.new-packs-arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: clamp(58px, 5vw, 90px);
+  height: clamp(58px, 5vw, 90px);
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.new-packs-arrow img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+
+.new-packs-arrow-left img {
+  transform: rotate(0deg);
+}
+
+
+.new-packs-arrow-right img {
+  transform: rotate(180deg);
+}
+
+
+.new-packs-arrow:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+
+.new-packs-arrow:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+
+.new-packs-arrow:disabled {
+  opacity: 0.22;
+
+  cursor: default;
+}
+
+
+/* ========================================
+   CATEGORY
+======================================== */
+
+.new-packs-category {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 60px;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(1.5rem, 2.4vw, 2.6rem);
+
+  font-weight: 900;
+
+  line-height: 0.95;
+
+  text-align: center;
+
+  text-transform: uppercase;
+
+  color: white;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .new-pack-card {
+    flex-basis: 56vw;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .new-packs-carousel-wrapper {
+    margin-top: 2rem;
+  }
+
+
+  .new-packs-carousel {
+    gap: 0.8rem;
+
+    padding:
+      1rem
+      8vw
+      1.5rem;
+  }
+
+
+  .new-pack-card {
+    flex-basis: 76vw;
+
+    border-width: 4px;
+
+    border-radius: 14px;
+  }
+
+
+  .new-pack-card-active {
+    border-width: 6px;
+  }
+
+
+  .new-packs-carousel-controls {
+    grid-template-columns:
+      50px
+      minmax(150px, 1fr)
+      50px;
+
+    gap: 1.25rem;
+
+    width: 88vw;
+
+    margin:
+      0.8rem
+      auto
+      0;
+  }
+
+
+  .new-packs-arrow {
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .new-packs-category {
+    min-height: 50px;
+
+    font-size: clamp(1.25rem, 6vw, 1.8rem);
+  }
+
+}

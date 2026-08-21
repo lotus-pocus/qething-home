@@ -1,18 +1,18 @@
 import { useRef, useState } from "react";
-import { games } from "./gamesData";
-import "./GamesCarousel.css";
+import { packs } from "./newPacksData";
+import "./NewPacksCarousel.css";
 
-const GamesCarousel = () => {
+const NewPacksCarousel = () => {
   const carouselRef = useRef(null);
   const cardRefs = useRef([]);
   const scrollTimeoutRef = useRef(null);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   const goToSlide = (index) => {
     const nextIndex = Math.max(
       0,
-      Math.min(index, games.length - 1)
+      Math.min(index, packs.length - 1)
     );
 
     setActiveIndex(nextIndex);
@@ -75,47 +75,47 @@ const GamesCarousel = () => {
   };
 
   return (
-    <div className="games-carousel-wrapper">
+    <div className="new-packs-carousel-wrapper">
 
       <div
-        className="games-carousel"
+        className="new-packs-carousel"
         ref={carouselRef}
         onScroll={handleScroll}
       >
-        {games.map((game, index) => (
+        {packs.map((pack, index) => (
           <article
-            key={game.id}
+            key={pack.id}
             ref={(element) => {
               cardRefs.current[index] = element;
             }}
-            className={`game-card ${
+            className={`new-pack-card ${
               index === activeIndex
-                ? "game-card-active"
+                ? "new-pack-card-active"
                 : ""
             }`}
             onClick={() => goToSlide(index)}
           >
             <img
-              src={game.image}
-              alt={game.title}
-              className="game-card-image"
+              src={pack.image}
+              alt={pack.title}
+              className="new-pack-card-image"
               draggable="false"
             />
 
-            <div className="game-card-fade" />
+            <div className="new-pack-card-fade" />
           </article>
         ))}
       </div>
 
 
-      <div className="games-carousel-controls">
+      <div className="new-packs-carousel-controls">
 
         <button
-          className="games-arrow games-arrow-left"
+          className="new-packs-arrow new-packs-arrow-left"
           type="button"
           onClick={handlePrevious}
           disabled={activeIndex === 0}
-          aria-label="Previous game"
+          aria-label="Previous pack"
         >
           <img
             src="/images/GamesSection/Arrow.svg"
@@ -126,19 +126,19 @@ const GamesCarousel = () => {
 
 
         <div
-          className="games-carousel-category"
+          className="new-packs-category"
           aria-live="polite"
         >
-          {games[activeIndex].label}
+          {packs[activeIndex].label}
         </div>
 
 
         <button
-          className="games-arrow games-arrow-right"
+          className="new-packs-arrow new-packs-arrow-right"
           type="button"
           onClick={handleNext}
-          disabled={activeIndex === games.length - 1}
-          aria-label="Next game"
+          disabled={activeIndex === packs.length - 1}
+          aria-label="Next pack"
         >
           <img
             src="/images/GamesSection/Arrow.svg"
@@ -153,4 +153,4 @@ const GamesCarousel = () => {
   );
 };
 
-export default GamesCarousel;
+export default NewPacksCarousel;
