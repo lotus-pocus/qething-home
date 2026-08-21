@@ -91,22 +91,12 @@
 
   z-index: 5;
 
-  display: grid;
-
-  grid-template-columns:
-    minmax(260px, 0.72fr)
-    minmax(0, 1.45fr);
-
-  align-items: center;
-
-  gap: clamp(2rem, 5vw, 6rem);
-
-  width: min(1500px, 88vw);
+  width: min(1500px, 92vw);
 
   margin: 0 auto;
 
   padding:
-    clamp(8rem, 11vw, 12rem)
+    clamp(8rem, 10vw, 11rem)
     0
     clamp(15rem, 19vw, 21rem);
 }
@@ -117,21 +107,26 @@
 ======================================== */
 
 .customisation-copy {
-  align-self: center;
+  position: relative;
 
-  padding-bottom: 3rem;
+  z-index: 6;
+
+  width: 100%;
+
+  margin-bottom: -1rem;
+
+  text-align: center;
 }
 
 
 .customisation-kicker {
   display: block;
 
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
 
   font-family: "Outfit", sans-serif;
 
   font-size: 1rem;
-
   font-weight: 800;
 
   text-transform: uppercase;
@@ -142,29 +137,80 @@
 }
 
 
+/* ========================================
+   GAMESHOW TITLE
+======================================== */
+
 .customisation-title {
-  margin: 0;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: fit-content;
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(3rem, 5.5vw, 6.5rem);
-
+  font-size: clamp(3.4rem, 6vw, 7rem);
   font-weight: 900;
 
-  line-height: 0.8;
-
-  letter-spacing: -0.045em;
+  line-height: 0.72;
+  letter-spacing: -0.055em;
 
   text-transform: uppercase;
 
-  color: var(--qe-purple);
+  /* White face */
+  color: #ffffff;
+
+  /*
+    Main chunky purple outline around
+    every individual character.
+  */
+  -webkit-text-stroke:
+    clamp(5px, 0.55vw, 11px)
+    #6714d8;
+
+  paint-order: stroke fill;
+
+  /*
+    Much shallower depth than before.
+    Just enough to lift the sticker off
+    the background.
+  */
+  text-shadow:
+    0 3px 0 #5812c4,
+    0 6px 0 #4810aa,
+    0 9px 0 #351087,
+    0 13px 8px rgba(35, 8, 79, 0.38);
+}
+
+.customisation-title span {
+  display: block;
 }
 
 
-.customisation-intro {
-  max-width: 390px;
+/*
+  Make GAMESHOW slightly larger,
+  like the designer treatment.
+*/
 
-  margin: 2rem 0 0;
+.customisation-title span:last-child {
+  font-size: 1.12em;
+}
+
+
+/* ========================================
+   INTRO
+======================================== */
+
+.customisation-intro {
+  max-width: 520px;
+
+  margin:
+    clamp(2rem, 3vw, 3rem)
+    auto
+    0;
 
   font-family: "Outfit", sans-serif;
 
@@ -173,6 +219,8 @@
   font-weight: 700;
 
   line-height: 1.25;
+
+  text-align: center;
 
   color: var(--qe-purple);
 }

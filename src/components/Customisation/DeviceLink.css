@@ -7,7 +7,9 @@
   position: relative;
 
   width: 100%;
-  height: clamp(350px, 39vw, 620px);
+  height: clamp(420px, 44vw, 680px);
+
+  margin-top: clamp(2rem, 4vw, 4rem);
 
   overflow: visible;
 }
@@ -21,7 +23,7 @@
   position: absolute;
 
   left: 0;
-  bottom: 2%;
+  bottom: -20%;
 
   display: block;
 
@@ -42,7 +44,7 @@
   position: absolute;
 
   right: -1%;
-  top: 15%;
+  top: 14%;
 
   display: block;
 
@@ -76,14 +78,6 @@
 }
 
 
-/*
-  The path starts at the LAPTOP side
-  and travels towards the TV side.
-
-  stroke-dashoffset creates the illusion
-  of the green dashes moving along it.
-*/
-
 .device-link-path {
   fill: none;
 
@@ -103,6 +97,13 @@
 }
 
 
+/* ========================================
+   DIRECTION OF FLOW
+
+   Negative offset reverses the direction.
+   This now travels LAPTOP → TV.
+======================================== */
+
 @keyframes device-link-flow {
 
   from {
@@ -110,7 +111,7 @@
   }
 
   to {
-    stroke-dashoffset: 36;
+    stroke-dashoffset: -36;
   }
 
 }
@@ -118,7 +119,6 @@
 
 /* ========================================
    ACCESSIBILITY
-   Respect reduced-motion preferences
 ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -137,7 +137,7 @@
 @media (max-width: 900px) {
 
   .device-link {
-    height: clamp(340px, 72vw, 610px);
+    height: clamp(360px, 72vw, 610px);
   }
 
 
@@ -163,6 +163,7 @@
 
   .device-link-path {
     stroke-width: 6;
+
     stroke-dasharray: 16 16;
   }
 

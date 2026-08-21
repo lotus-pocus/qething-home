@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import "./DeviceLink.css";
 
 const DeviceLink = () => {
@@ -5,18 +6,59 @@ const DeviceLink = () => {
     <div className="device-link">
 
       {/* TV */}
-      <img
+      <motion.img
         className="device-link-tv"
         src="/images/Customisation/TVScreen.png"
         alt="QEthing displayed on a TV"
+
+        initial={{
+          x: -220,
+          scale: 1.14,
+          opacity: 0,
+        }}
+
+        whileInView={{
+          x: 0,
+          scale: 1,
+          opacity: 1,
+        }}
+
+        viewport={{
+          once: true,
+          amount: 0.25,
+        }}
+
+        transition={{
+          duration: 1.05,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       />
 
-      {/* Animated connection between laptop and TV */}
-      <svg
+
+      {/* Animated connection */}
+      <motion.svg
         className="device-link-connector"
         viewBox="0 0 1000 420"
         preserveAspectRatio="none"
         aria-hidden="true"
+
+        initial={{
+          opacity: 0,
+        }}
+
+        whileInView={{
+          opacity: 1,
+        }}
+
+        viewport={{
+          once: true,
+          amount: 0.25,
+        }}
+
+        transition={{
+          delay: 0.8,
+          duration: 0.4,
+        }}
       >
         <path
           className="device-link-path"
@@ -29,13 +71,36 @@ const DeviceLink = () => {
             L 380 270
           "
         />
-      </svg>
+      </motion.svg>
+
 
       {/* Laptop */}
-      <img
+      <motion.img
         className="device-link-laptop"
         src="/images/Customisation/LapTop.png"
         alt="QEthing question creator displayed on a laptop"
+
+        initial={{
+          x: 220,
+          scale: 1.14,
+          opacity: 0,
+        }}
+
+        whileInView={{
+          x: 0,
+          scale: 1,
+          opacity: 1,
+        }}
+
+        viewport={{
+          once: true,
+          amount: 0.25,
+        }}
+
+        transition={{
+          duration: 1.05,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       />
 
     </div>
