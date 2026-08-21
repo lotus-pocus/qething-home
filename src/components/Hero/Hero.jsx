@@ -40,11 +40,13 @@ const Hero = () => {
         />
       </div>
 
-      {/* TAGLINE */}
-      <div className="hero-tagline-wrap">
-        <div className="hero-tagline">
-          A Premium TV Gameshow Party Experience
-        </div>
+      {/* LARGE OVERLAY LOGO */}
+      <div className="hero-main-logo-wrap">
+        <img
+          className="hero-main-logo"
+          src="/images/IntroSection/qething logo.svg"
+          alt="QEthing"
+        />
       </div>
     </section>
   );

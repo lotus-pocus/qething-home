@@ -7,7 +7,7 @@ const GamesFeature = () => {
       <div className="games-feature-media">
         <img
           className="games-feature-image"
-          src="/images/GamesSection/QE_pointyKnight.png"
+          src="/images/GamesSection/SofaScene.jpg"
           alt="QEthing game show scene"
         />
 

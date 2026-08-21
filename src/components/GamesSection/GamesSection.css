@@ -72,7 +72,7 @@
   width: 100%;
   height: calc(100% + 2px);
 
-  background: var(--qe-blue);
+  background: var(--qe-purple);
 
   clip-path: polygon(
     0 0,
@@ -259,44 +259,46 @@
     drop-shadow(0 3px 0 #6513d3)
     drop-shadow(0 4px 0 #5511bc)
     drop-shadow(0 5px 1px #45109d)
-    drop-shadow(2px 8px 3px #351080)
-    drop-shadow(
-      6px
-      13px
-      8px
-      rgba(32, 5, 65, 0.38)
-    )
-    drop-shadow(
-      8px
-      18px
-      16px
-      rgba(22, 0, 45, 0.22)
-    );
+    drop-shadow(2px 8px 3px #351080);
 }
 
 
 /* ========================================
-   TITLE LINES
+   STICKER LINES
 ======================================== */
 
-.games-sticker-title span {
+.games-sticker-line {
   display: block;
 
   white-space: nowrap;
 }
 
 
-.games-sticker-title span + span {
+.games-sticker-line + .games-sticker-line {
   margin-top: 0.03em;
 }
 
 
 /*
-  Give the middle line a little extra punch.
+  Middle line of the main sticker:
+  JUST
 */
 
-.games-sticker-title span:nth-child(2) {
+.games-sticker-title > .games-sticker-line:nth-child(2) {
   font-size: 1.08em;
+}
+
+
+/* ========================================
+   ANIMATED CHARACTERS
+======================================== */
+
+.games-sticker-character {
+  display: inline-block;
+
+  transform-origin: center center;
+
+  will-change: transform, opacity;
 }
 
 

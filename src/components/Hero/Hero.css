@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
 
-  background: var(--qe-blue);
+  background: var(--qe-purple);
 
   overflow: visible;
 
@@ -62,7 +62,32 @@
   stroke-width: 15px;
   stroke-linecap: square;
 }
+/* ========================================
+   LARGE OVERLAY LOGO
+======================================== */
 
+.hero-main-logo-wrap {
+  position: absolute;
+
+  left: 50%;
+  bottom: 7%;
+
+  z-index: 8;
+
+  width: clamp(320px, 38vw, 650px);
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+
+.hero-main-logo {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
 /* ========================================
    LOGO
 ======================================== */
