@@ -63,267 +63,6 @@
 
 
 /* ========================================
-   GAMEPLAY AREA
-======================================== */
-
-.new-packs-gameplay {
-  position: relative;
-
-  width: min(1500px, 94vw);
-
-  margin:
-    clamp(5rem, 8vw, 9rem)
-    auto
-    0;
-}
-
-
-/* ========================================
-   PURPLE DIAGONAL ABOVE GAMEPLAY IMAGES
-======================================== */
-
-.new-packs-gameplay-top-edge {
-  position: absolute;
-
-  top: 0;
-  left: 50%;
-
-  width: 100vw;
-  height: clamp(45px, 5vw, 90px);
-
-  transform: translateX(-50%);
-
-  z-index: 10;
-
-  pointer-events: none;
-}
-
-
-/* ========================================
-   TOP EDGE — LIGHT PURPLE BORDER
-======================================== */
-
-.new-packs-gameplay-top-edge::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: var(--qe-purple-light);
-
-  /*
-    Same direction as the diagonal
-    above the Customisation section:
-    shallower on the left,
-    lower on the right.
-  */
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 100%,
-    0 30%
-  );
-
-  z-index: 1;
-}
-
-
-/* ========================================
-   TOP EDGE — DEEP PURPLE FOREGROUND
-======================================== */
-
-.new-packs-gameplay-top-edge::after {
-  content: "";
-
-  position: absolute;
-
-  top: -1px;
-  left: 0;
-
-  width: 100%;
-  height: calc(100% - 8px);
-
-  background: var(--qe-purple);
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 94%,
-    0 18%
-  );
-
-  z-index: 2;
-}
-
-
-/* ========================================
-   TOP TWO MODE IMAGES
-======================================== */
-
-.new-packs-modes {
-  position: relative;
-
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  width: 100%;
-
-  /*
-    Keeps the designer's wide,
-    cinematic two-image composition.
-  */
-  aspect-ratio: 16 / 5.4;
-
-  overflow: hidden;
-}
-
-
-/* ========================================
-   INDIVIDUAL MODE PANEL
-======================================== */
-
-.new-packs-mode {
-  position: relative;
-
-  min-width: 0;
-
-  height: 100%;
-
-  overflow: hidden;
-}
-
-
-/* ========================================
-   MODE IMAGES
-======================================== */
-
-.new-packs-mode-image {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-
-/* ========================================
-   IMAGE CROPS
-======================================== */
-
-.new-packs-mode-solo .new-packs-mode-image {
-  object-position: center;
-}
-
-
-.new-packs-mode-teams .new-packs-mode-image {
-  object-position: center;
-}
-
-
-/* ========================================
-   BLUE DIAGONAL BETWEEN MODE IMAGES
-======================================== */
-
-.new-packs-mode-divider {
-  position: absolute;
-
-  top: -8%;
-  left: 50%;
-
-  width: clamp(10px, 1vw, 18px);
-  height: 118%;
-
-  background: var(--qe-blue-light);
-
-  transform:
-    translateX(-50%)
-    rotate(-13deg);
-
-  transform-origin: center;
-
-  z-index: 6;
-
-  pointer-events: none;
-}
-
-
-/* ========================================
-   DIAGONAL BELOW MODE IMAGES
-
-   This now belongs to the top image
-   composition itself rather than being
-   overlaid onto the 16-player image.
-======================================== */
-
-
-/* LIGHT PURPLE UNDERLAY */
-
-.new-packs-modes::before {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -1px;
-
-  width: 100%;
-  height: clamp(42px, 4.2vw, 78px);
-
-  background: var(--qe-purple-light);
-
-  /*
-    Keep this diagonal low so the images
-    remain as large as possible.
-  */
-  clip-path: polygon(
-    0 82%,
-    100% 18%,
-    100% 100%,
-    0 100%
-  );
-
-  z-index: 7;
-
-  pointer-events: none;
-}
-
-
-/* DEEP PURPLE FOREGROUND */
-
-.new-packs-modes::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -1px;
-
-  width: 100%;
-  height: clamp(42px, 4.2vw, 78px);
-
-  background: var(--qe-purple);
-
-  /*
-    Slightly lower than the light-purple
-    layer so the border remains visible.
-  */
-  clip-path: polygon(
-    0 92%,
-    100% 31%,
-    100% 100%,
-    0 100%
-  );
-
-  z-index: 8;
-
-  pointer-events: none;
-}
-
-
-/* ========================================
    16 PLAYERS PANEL
 ======================================== */
 
@@ -333,12 +72,18 @@
   width: 100%;
 
   /*
-    Slight overlap prevents a hairline gap
-    between the two compositions.
+    Pull the panel underneath the PlayModes
+    composition so the two sections overlap.
   */
-  margin-top: -2px;
+  margin-top: -33px;
 
   overflow: hidden;
+
+  /*
+    Sit above the deep-purple background
+    underneath PlayModes.
+  */
+  z-index: 3;
 }
 
 
@@ -353,8 +98,21 @@
   height: auto;
 
   object-fit: cover;
-}
 
+  /*
+    Match the direction of the diagonal
+    above it.
+
+    The image begins lower on the left
+    and higher on the right.
+  */
+  clip-path: polygon(
+    0 5%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
 
 /* ========================================
    UP TO 16 PLAYERS COPY
@@ -483,33 +241,6 @@
   }
 
 
-  .new-packs-gameplay {
-    width: 96vw;
-
-    margin-top: 5rem;
-  }
-
-
-  .new-packs-modes {
-    aspect-ratio: 16 / 6;
-  }
-
-
-  .new-packs-mode-divider {
-    width: 10px;
-
-    transform:
-      translateX(-50%)
-      rotate(-12deg);
-  }
-
-
-  .new-packs-modes::before,
-  .new-packs-modes::after {
-    height: clamp(36px, 5vw, 55px);
-  }
-
-
   .new-packs-player-count {
     bottom: 8%;
   }
@@ -545,106 +276,18 @@
   }
 
 
-  .new-packs-gameplay {
-    width: 100%;
-
-    margin-top: 4rem;
-  }
-
-
   /* ========================================
-     TOP EDGE — MOBILE
+     16 PLAYERS
   ======================================== */
 
-  .new-packs-gameplay-top-edge {
-    height: clamp(32px, 9vw, 48px);
+  .new-packs-players {
+    /*
+      Keep the image tucked behind the
+      PlayModes lower diagonal on mobile too.
+    */
+    margin-top: -13px;
   }
 
-
-  .new-packs-gameplay-top-edge::before {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 100%,
-      0 30%
-    );
-  }
-
-
-  .new-packs-gameplay-top-edge::after {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 82%,
-      0 18%
-    );
-  }
-
-
-  /* ========================================
-     MODE IMAGES — MOBILE
-  ======================================== */
-
-  .new-packs-modes {
-    grid-template-columns: 1fr 1fr;
-
-    aspect-ratio: 16 / 7;
-  }
-
-
-  .new-packs-mode-image {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-  }
-
-
-  .new-packs-mode-divider {
-    top: -10%;
-
-    width: 7px;
-    height: 120%;
-
-    transform:
-      translateX(-50%)
-      rotate(-11deg);
-  }
-
-
-  /* ========================================
-     LOWER MODE DIAGONAL — MOBILE
-  ======================================== */
-
-  .new-packs-modes::before,
-  .new-packs-modes::after {
-    height: clamp(28px, 8vw, 42px);
-  }
-
-
-  .new-packs-modes::before {
-    clip-path: polygon(
-      0 82%,
-      100% 18%,
-      100% 100%,
-      0 100%
-    );
-  }
-
-
-  .new-packs-modes::after {
-    clip-path: polygon(
-      0 92%,
-      100% 31%,
-      100% 100%,
-      0 100%
-    );
-  }
-
-
-  /* ========================================
-     16 PLAYERS — MOBILE
-  ======================================== */
 
   .new-packs-player-count {
     bottom: 8%;
@@ -658,7 +301,7 @@
 
 
   /* ========================================
-     BOTTOM JAGGED EDGE — MOBILE
+     BOTTOM JAGGED EDGE
   ======================================== */
 
   .new-packs-bottom-edge {

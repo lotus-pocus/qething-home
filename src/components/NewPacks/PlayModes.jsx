@@ -15,27 +15,32 @@ const soloVariants = {
     x: "-110%",
     opacity: 0,
   },
+
   visible: {
     x: 0,
     opacity: 1,
+
     transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 1.1,
+      ease: [0.9, 0, 0.86, 0],
     },
   },
 };
+
 
 const teamsVariants = {
   hidden: {
     x: "110%",
     opacity: 0,
   },
+
   visible: {
     x: 0,
     opacity: 1,
+
     transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 1.1,
+      ease: [0.9, 0, 0.86, 0],
     },
   },
 };

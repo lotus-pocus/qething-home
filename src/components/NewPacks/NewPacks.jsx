@@ -4,8 +4,15 @@ import PlayModes from "./PlayModes";
 
 const NewPacks = () => {
   return (
-    <section id="new-packs" className="new-packs-section">
+    <section
+      id="new-packs"
+      className="new-packs-section"
+    >
       <div className="new-packs-content">
+
+        {/* =====================================
+            HEADING
+        ====================================== */}
 
         <div className="new-packs-heading">
           <h2 className="new-packs-title">
@@ -15,9 +22,24 @@ const NewPacks = () => {
           </h2>
         </div>
 
+
+        {/* =====================================
+            PACK CAROUSEL
+        ====================================== */}
+
         <NewPacksCarousel />
 
+
+        {/* =====================================
+            PLAY SOLO / OR IN TEAMS
+        ====================================== */}
+
         <PlayModes />
+
+
+        {/* =====================================
+            UP TO 16 PLAYERS
+        ====================================== */}
 
         <div className="new-packs-players">
           <img
@@ -33,10 +55,16 @@ const NewPacks = () => {
 
       </div>
 
+
+      {/* =====================================
+          NEW PACKS → FOOTER JAGGED EDGE
+      ====================================== */}
+
       <div
         className="new-packs-bottom-edge"
         aria-hidden="true"
       />
+
     </section>
   );
 };
