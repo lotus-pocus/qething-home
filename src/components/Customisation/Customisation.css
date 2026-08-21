@@ -31,13 +31,6 @@
   z-index: 4;
 
   pointer-events: none;
-
-  /*
-    IMPORTANT:
-    No clip-path on this container.
-    This allows the purple layer to extend
-    beneath the pink without being cut off.
-  */
 }
 
 
@@ -54,10 +47,6 @@
 
   background: var(--qe-purple-light);
 
-  /*
-    Purple shape extends slightly LOWER
-    than the pink shape.
-  */
   clip-path: polygon(
     0 0,
     100% 0,
@@ -82,9 +71,6 @@
 
   background: var(--qe-pink);
 
-  /*
-    Original pink diagonal.
-  */
   clip-path: polygon(
     0 0,
     100% 0,
@@ -193,7 +179,7 @@
 
 
 /* ========================================
-   SCREEN + PHONE COMPOSITION
+   DEVICE + PHONE COMPOSITION
 ======================================== */
 
 .customisation-visuals {
@@ -205,21 +191,21 @@
 }
 
 
-.customisation-question-maker {
-  position: absolute;
+/*
+  DeviceLink now contains the TV,
+  laptop and animated connection.
+*/
 
-  top: 4%;
-  left: 0;
+.customisation-visuals .device-link {
+  position: relative;
 
-  display: block;
-
-  width: min(92%, 980px);
-
-  height: auto;
-
-  object-fit: contain;
+  z-index: 2;
 }
 
+
+/* ========================================
+   SHOW CREATOR PHONE
+======================================== */
 
 .customisation-show-creator {
   position: absolute;
@@ -245,10 +231,6 @@
 
 /*
   LIGHT PURPLE UNDERLAY
-
-  This is the slightly larger back layer.
-  The deep-purple shape sits over it,
-  leaving a narrow light-purple border.
 */
 
 .customisation-section::after {
@@ -280,9 +262,6 @@
 
 /*
   DEEP PURPLE FOREGROUND
-
-  Same general geometry, but positioned
-  just inside the light-purple layer.
 */
 
 .customisation-section::before {
@@ -293,10 +272,6 @@
   left: 0;
   right: 0;
 
-  /*
-    Push the dark-purple shape down slightly,
-    exposing the light-purple shape behind it.
-  */
   bottom: -15px;
 
   height: clamp(150px, 16vw, 270px);
@@ -322,17 +297,6 @@
 ======================================== */
 
 @media (max-width: 900px) {
-
-  /* ------------------------------
-     TOP TRANSITION
-  ------------------------------ */
-
-
-
-
-  /* ------------------------------
-     CONTENT
-  ------------------------------ */
 
   .customisation-content {
     grid-template-columns: 1fr;
@@ -368,19 +332,12 @@
   }
 
 
-  .customisation-question-maker {
-    top: 6%;
-
-    width: 94%;
-  }
-
-
   .customisation-show-creator {
-   right: -2%;
-   bottom: -42%;
+    right: -2%;
+    bottom: -42%;
 
-   width: clamp(180px, 38vw, 320px);
- }
+    width: clamp(180px, 38vw, 320px);
+  }
 
 
   /* ------------------------------
@@ -411,6 +368,7 @@
       0 100%
     );
   }
+
 }
 
 
@@ -419,10 +377,6 @@
 ======================================== */
 
 @media (max-width: 520px) {
-
-  /* ------------------------------
-     CONTENT
-  ------------------------------ */
 
   .customisation-content {
     padding-top: 7rem;
@@ -476,4 +430,5 @@
       0 100%
     );
   }
+
 }

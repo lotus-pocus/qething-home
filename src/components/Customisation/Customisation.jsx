@@ -1,8 +1,12 @@
 import "./Customisation.css";
+import DeviceLink from "./DeviceLink";
 
 const Customisation = () => {
   return (
-    <section id="customisation" className="customisation-section">
+    <section
+      id="customisation"
+      className="customisation-section"
+    >
 
       {/* Pink → Customisation diagonal transition */}
       <div
@@ -11,7 +15,10 @@ const Customisation = () => {
       />
 
       <div className="customisation-content">
+
+        {/* COPY */}
         <div className="customisation-copy">
+
           <span className="customisation-kicker">
             Customisation
           </span>
@@ -25,24 +32,26 @@ const Customisation = () => {
           <p className="customisation-intro">
             Create your own personalised show on your phone or computer.
           </p>
+
         </div>
 
+
+        {/* VISUALS */}
         <div
           className="customisation-visuals"
           aria-label="QEthing show customisation"
         >
-          <img
-            className="customisation-question-maker"
-            src="/images/GamesSection/question_maker.png"
-            alt="QEthing question maker shown across TV and laptop screens"
-          />
+
+          <DeviceLink />
 
           <img
             className="customisation-show-creator"
             src="/images/GamesSection/show_creator_02.png"
             alt="QEthing show creator on a mobile phone"
           />
+
         </div>
+
       </div>
 
     </section>
