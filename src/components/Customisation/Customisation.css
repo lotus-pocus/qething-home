@@ -11,7 +11,9 @@
 
   background: #d8d8d8;
 
-  overflow: hidden;
+  overflow: visible;
+
+  z-index: 2;
 }
 
 
