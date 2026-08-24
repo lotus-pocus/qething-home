@@ -86,36 +86,6 @@
 
 
 /* ========================================
-   TOP EDGE
-======================================== */
-
-.games-top-edge {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 7vw;
-
-  z-index: 2;
-
-  pointer-events: none;
-
-  overflow: hidden;
-}
-
-
-.games-top-edge line {
-  stroke: #ffffff;
-
-  stroke-width: 15px;
-
-  stroke-linecap: square;
-}
-
-
-/* ========================================
    CONTENT
 ======================================== */
 
@@ -129,17 +99,26 @@
 
 
 /* ========================================
-   HEADING
+   HEADING AREA
 ======================================== */
 
 .games-heading {
+  position: relative;
+
   width: min(1400px, 90vw);
 
-  margin: 0 auto 4rem;
+  margin:
+    0
+    auto
+    clamp(2rem, 4vw, 4rem);
 
   padding-top: 2rem;
 }
 
+
+/* ========================================
+   KICKER
+======================================== */
 
 .games-kicker {
   display: block;
@@ -161,27 +140,28 @@
 
 
 /* ========================================
-   GAMES TITLE STICKERS
+   STICKER WRAPPER
 ======================================== */
 
 .games-title-sticker {
   position: relative;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
 
 
 /* ========================================
-   TOP STICKER
+   TOP-RIGHT STICKER
 ======================================== */
 
 .games-title-sticker-top {
   width: fit-content;
 
   margin:
-    1rem
+    -1rem
     4vw
     0
     auto;
@@ -191,27 +171,26 @@
 
 
 /* ========================================
-   CHUNKY TITLE
+   CHUNKY STICKER TITLE
 ======================================== */
 
 .games-sticker-title {
-  margin: 0;
+  margin: 0 auto;
 
   display: flex;
 
   flex-direction: column;
-
   align-items: center;
 
   width: fit-content;
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(3rem, 5.4vw, 6rem);
+  font-size: clamp(3.4rem, 6vw, 7rem);
 
   font-weight: 900;
 
-  line-height: 0.67;
+  line-height: 0.72;
 
   letter-spacing: -0.055em;
 
@@ -222,44 +201,22 @@
   color: #ffffff;
 
 
-  /*
-    Slightly reduced from the previous
-    version.
-
-    This keeps the chunky purple sticker
-    outline without making the corners
-    quite so aggressive.
-  */
+  /* PURPLE OUTLINE */
 
   -webkit-text-stroke:
-    clamp(6px, 0.55vw, 11px)
+    clamp(5px, 0.55vw, 11px)
     #6714d8;
 
   paint-order: stroke fill;
 
 
-  /*
-    IMPORTANT:
+  /* CHUNKY DEPTH */
 
-    We're no longer using stacked,
-    zero-blur text-shadows to create
-    the extrusion.
-
-    Those copied the sharp corners of
-    the letters several times and caused
-    the little triangular spikes.
-
-    These drop-shadows progressively
-    soften as the depth increases.
-  */
-
-  text-shadow: none;
-
-  filter:
-    drop-shadow(0 3px 0 #6513d3)
-    drop-shadow(0 4px 0 #5511bc)
-    drop-shadow(0 5px 1px #45109d)
-    drop-shadow(2px 8px 3px #351080);
+  text-shadow:
+    0 3px 0 #5812c4,
+    0 6px 0 #4810aa,
+    0 9px 0 #351087,
+    0 13px 8px rgba(35, 8, 79, 0.38);
 }
 
 
@@ -274,17 +231,20 @@
 }
 
 
-.games-sticker-line + .games-sticker-line {
+.games-sticker-line +
+.games-sticker-line {
   margin-top: 0.03em;
 }
 
 
-/*
-  Middle line of the main sticker:
-  JUST
-*/
+/* ========================================
+   TOP STICKER LINE EMPHASIS
 
-.games-sticker-title > .games-sticker-line:nth-child(2) {
+   JUST is slightly larger.
+======================================== */
+
+.games-title-sticker-top
+.games-sticker-line:nth-child(2) {
   font-size: 1.08em;
 }
 
@@ -298,52 +258,24 @@
 
   transform-origin: center center;
 
-  will-change: transform, opacity;
+  will-change:
+    transform,
+    opacity;
 }
 
 
 /* ========================================
-   BOTTOM STICKER
-======================================== */
-
-.games-title-sticker-bottom {
-  width: fit-content;
-
-  margin:
-    clamp(1rem, 2vw, 2rem)
-    auto
-    0;
-
-  padding: 2rem;
-
-  transform: translateY(30%);
-}
-
-
-/* ========================================
-   BOTTOM STICKER TITLE
-======================================== */
-
-.games-sticker-title-small {
-  font-size: clamp(2rem, 3.5vw, 4rem);
-
-  transform: rotate(-7deg);
-}
-
-
-.games-sticker-title-small span:last-child {
-  font-size: 1.08em;
-}
-
-
-/* ========================================
-   INTRO COPY
+   SUPPORTING COPY
 ======================================== */
 
 .games-intro {
-  max-width: 700px;
+  max-width: 430px;
 
-  margin: 2rem 0 0;
+  margin:
+    0.5rem
+    4vw
+    0
+    auto;
 
   font-family: "Outfit", sans-serif;
 
@@ -358,22 +290,95 @@
 
 
 /* ========================================
-   GAMES → NEXT SECTION TRANSITION
+   CENTRE STICKER
 ======================================== */
 
-.games-bottom-overlay {
+.games-title-sticker-centre {
+  width: fit-content;
+
+  margin:
+    clamp(1.5rem, 2vw, 2.5rem)
+    auto
+    0;
+
+  padding: 2rem;
+}
+
+
+/* ========================================
+   CENTRE STICKER TITLE
+======================================== */
+
+.games-sticker-title-centre {
+  font-size: clamp(3.4rem, 6vw, 7rem);
+}
+
+
+/*
+  Match Customisation:
+
+  make GAMESHOW slightly larger
+  than IT'S A.
+*/
+
+.games-sticker-title-centre
+.games-sticker-line:last-child {
+  font-size: 1.12em;
+}
+
+
+/* ========================================
+   BOTTOM MESSAGE
+======================================== */
+
+.games-bottom-message {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  width: fit-content;
+
+  margin:
+    clamp(2rem, 4vw, 4rem)
+    auto
+    0;
+
+  padding:
+    1rem
+    2rem;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(2.2rem, 3.8vw, 4.5rem);
+
+  font-weight: 900;
+
+  line-height: 0.77;
+
+  letter-spacing: -0.045em;
+
+  text-align: center;
+
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+
+.games-bottom-message span {
   display: block;
+}
 
-  position: relative;
 
-  z-index: 4;
+/*
+  Slight emphasis on final line,
+  matching the designer's hierarchy.
+*/
 
-  width: 100%;
-  height: auto;
-
-  margin-top: -1px;
-
-  pointer-events: none;
+.games-bottom-message span:last-child {
+  font-size: 1.12em;
 }
 
 
@@ -384,12 +389,12 @@
 @media (max-width: 768px) {
 
   .games-section {
-    /*
-      Keep the section close to the
-      jagged divider.
-    */
-
     padding-top: 12vw;
+  }
+
+
+  .games-content {
+    padding-bottom: 5rem;
   }
 
 
@@ -404,21 +409,28 @@
 
 
   /* ------------------------------
-     TOP TITLE STICKER
+     KICKER
+  ------------------------------ */
+
+  .games-kicker {
+    margin-bottom: 0;
+  }
+
+
+  /* ------------------------------
+     TOP STICKER
   ------------------------------ */
 
   .games-title-sticker-top {
     width: min(88vw, 500px);
 
-    min-height: auto;
-
     margin:
-      1rem
-      auto
-      0;
+      0
+      auto;
 
     padding:
       2.5rem
+      1rem
       1.5rem;
   }
 
@@ -433,24 +445,144 @@
 
 
   /* ------------------------------
-     BOTTOM TITLE STICKER
+     SUPPORTING COPY
   ------------------------------ */
 
-  .games-title-sticker-bottom {
-    width: min(65vw, 300px);
+  .games-intro {
+    max-width: 520px;
 
-    min-height: 130px;
+    margin:
+      1.5rem
+      auto
+      0;
 
-    padding: 1.25rem;
+    padding:
+      0
+      1rem;
 
-    transform: translateY(20%);
+    font-size: clamp(
+      1.1rem,
+      4.5vw,
+      1.5rem
+    );
+
+    text-align: center;
   }
 
 
-  .games-sticker-title-small {
+  /* ------------------------------
+     CENTRE STICKER
+  ------------------------------ */
+
+  .games-title-sticker-centre {
+    width: min(88vw, 520px);
+
+    margin:
+      1.5rem
+      auto
+      0;
+
+    padding:
+      2rem
+      1rem;
+  }
+
+
+  .games-sticker-title-centre {
     font-size: clamp(
-      1.8rem,
-      8vw,
+      2.8rem,
+      12vw,
+      5rem
+    );
+  }
+
+
+  /* ------------------------------
+     BOTTOM MESSAGE
+  ------------------------------ */
+
+  .games-bottom-message {
+    margin-top: 2rem;
+
+    padding:
+      1rem
+      1.5rem;
+
+    font-size: clamp(
+      2rem,
+      9vw,
+      3.5rem
+    );
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .games-heading {
+    width: 92vw;
+  }
+
+
+  .games-title-sticker-top {
+    width: 92vw;
+
+    padding:
+      2rem
+      0.75rem
+      1rem;
+  }
+
+
+  .games-sticker-title {
+    font-size: clamp(
+      2.6rem,
+      13vw,
+      4rem
+    );
+
+    -webkit-text-stroke:
+      clamp(4px, 1.5vw, 7px)
+      #6714d8;
+  }
+
+
+  .games-intro {
+    max-width: 90%;
+
+    padding: 0;
+  }
+
+
+  .games-title-sticker-centre {
+    width: 92vw;
+
+    padding:
+      1.75rem
+      0.5rem;
+  }
+
+
+  .games-sticker-title-centre {
+    font-size: clamp(
+      2.5rem,
+      12vw,
+      4rem
+    );
+  }
+
+
+  .games-bottom-message {
+    max-width: 92vw;
+
+    font-size: clamp(
+      1.9rem,
+      9.5vw,
       3rem
     );
   }
