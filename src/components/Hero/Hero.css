@@ -41,6 +41,30 @@
 }
 
 /* ========================================
+   DOT OVERLAY
+======================================== */
+
+.hero-dot-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(
+      rgba(0, 0, 0, 0.35) 1px,
+      transparent 1px
+    );
+
+  background-size: 4px 4px;
+
+  opacity: 0.6;
+}
+
+/* ========================================
    WHITE DIAGONAL EDGE
 ======================================== */
 

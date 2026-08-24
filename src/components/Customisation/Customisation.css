@@ -9,11 +9,103 @@
 
   margin-top: -1px;
 
-  background: #d8d8d8;
+  /*
+    The section itself stays transparent.
+
+    The grey area is created by ::before
+    so its bottom can actually follow
+    the jagged shape.
+  */
+  background: transparent;
 
   overflow: visible;
 
   z-index: 2;
+}
+
+
+/* ========================================
+   GREY CUSTOMISATION BACKGROUND
+
+   IMPORTANT:
+   This is now the actual visible grey
+   background of the section.
+
+   Its bottom edge follows the same
+   geometry as the purple divider.
+======================================== */
+
+.customisation-section::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: #d8d8d8;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+
+    /* RIGHT HIGH POINT */
+    100% calc(100% - 16vw),
+
+    /* CENTRE / LOW POINT */
+    77% calc(100% - 4.48vw),
+
+    /* LEFT POINT */
+    0 calc(100% - 11.84vw)
+  );
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   CUSTOMISATION → NEW PACKS
+   LIGHT PURPLE JAGGED LINE
+
+   This is ONLY the stripe.
+   There is no filled area underneath it.
+======================================== */
+
+.customisation-section::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: clamp(150px, 16vw, 270px);
+
+  background: var(--qe-purple-light);
+
+  /*
+    First three points = top of line.
+
+    Last three points = bottom of line.
+
+    This creates a narrow jagged stripe
+    rather than a filled wedge.
+  */
+  clip-path: polygon(
+    0 26%,
+    77% 72%,
+    100% 0,
+
+    100% 12px,
+    77% calc(72% + 12px),
+    0 calc(26% + 12px)
+  );
+
+  z-index: 7;
+
+  pointer-events: none;
 }
 
 
@@ -37,7 +129,7 @@
 
 
 /* ========================================
-   LIGHT PURPLE BORDER
+   LIGHT PURPLE TOP BORDER
 ======================================== */
 
 .customisation-top-edge::before {
@@ -100,7 +192,7 @@
   padding:
     clamp(8rem, 10vw, 11rem)
     0
-    clamp(15rem, 19vw, 21rem);
+    clamp(7rem, 9vw, 11rem);
 }
 
 
@@ -129,6 +221,7 @@
   font-family: "Outfit", sans-serif;
 
   font-size: 1rem;
+
   font-weight: 800;
 
   text-transform: uppercase;
@@ -144,42 +237,35 @@
 ======================================== */
 
 .customisation-title {
-  margin: 0 auto;
-
   display: flex;
   flex-direction: column;
+
   align-items: center;
 
   width: fit-content;
 
+  margin: 0 auto;
+
   font-family: "Outfit", sans-serif;
 
   font-size: clamp(3.4rem, 6vw, 7rem);
+
   font-weight: 900;
 
   line-height: 0.72;
+
   letter-spacing: -0.055em;
 
   text-transform: uppercase;
 
-  /* White face */
   color: #ffffff;
 
-  /*
-    Main chunky purple outline around
-    every individual character.
-  */
   -webkit-text-stroke:
     clamp(5px, 0.55vw, 11px)
     #6714d8;
 
   paint-order: stroke fill;
 
-  /*
-    Much shallower depth than before.
-    Just enough to lift the sticker off
-    the background.
-  */
   text-shadow:
     0 3px 0 #5812c4,
     0 6px 0 #4810aa,
@@ -187,15 +273,11 @@
     0 13px 8px rgba(35, 8, 79, 0.38);
 }
 
+
 .customisation-title span {
   display: block;
 }
 
-
-/*
-  Make GAMESHOW slightly larger,
-  like the designer treatment.
-*/
 
 .customisation-title span:last-child {
   font-size: 1.12em;
@@ -242,7 +324,7 @@
 
 
 /*
-  DeviceLink now contains the TV,
+  DeviceLink contains the TV,
   laptop and animated connection.
 */
 
@@ -261,7 +343,13 @@
   position: absolute;
 
   right: -1%;
-  bottom: -50%;
+
+  /*
+    Keep it mostly inside Customisation
+    for now rather than forcing it across
+    the new section divider.
+  */
+  bottom: -5%;
 
   display: block;
 
@@ -271,74 +359,7 @@
 
   object-fit: contain;
 
-  z-index: 4;
-}
-
-
-/* ========================================
-   CUSTOMISATION → NEW PACKS TRANSITION
-======================================== */
-
-/*
-  LIGHT PURPLE UNDERLAY
-*/
-
-.customisation-section::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  height: clamp(150px, 16vw, 270px);
-
-  background: var(--qe-purple-light);
-
-  clip-path: polygon(
-    0 26%,
-    77% 72%,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-
-  z-index: 1;
-
-  pointer-events: none;
-}
-
-
-/*
-  DEEP PURPLE FOREGROUND
-*/
-
-.customisation-section::before {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-
-  bottom: -15px;
-
-  height: clamp(150px, 16vw, 270px);
-
-  background: var(--qe-purple);
-
-  clip-path: polygon(
-    0 26%,
-    77% 72%,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-
-  z-index: 2;
-
-  pointer-events: none;
+  z-index: 8;
 }
 
 
@@ -348,17 +369,51 @@
 
 @media (max-width: 900px) {
 
+  /* ----------------------------------------
+     GREY BACKGROUND EDGE
+  ---------------------------------------- */
+
+  .customisation-section::before {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 19vw),
+      76% calc(100% - 5.7vw),
+      0 calc(100% - 13.3vw)
+    );
+  }
+
+
+  /* ----------------------------------------
+     LIGHT PURPLE DIVIDER
+  ---------------------------------------- */
+
+  .customisation-section::after {
+    height: clamp(125px, 19vw, 175px);
+
+    clip-path: polygon(
+      0 30%,
+      76% 70%,
+      100% 5%,
+
+      100% calc(5% + 10px),
+      76% calc(70% + 10px),
+      0 calc(30% + 10px)
+    );
+  }
+
+
+  /* ----------------------------------------
+     CONTENT
+  ---------------------------------------- */
+
   .customisation-content {
-    grid-template-columns: 1fr;
-
     width: 88vw;
-
-    gap: 1rem;
 
     padding:
       8rem
       0
-      13rem;
+      7rem;
   }
 
 
@@ -368,7 +423,11 @@
 
 
   .customisation-title {
-    font-size: clamp(3.2rem, 12vw, 6rem);
+    font-size: clamp(
+      3.2rem,
+      12vw,
+      6rem
+    );
   }
 
 
@@ -377,45 +436,28 @@
   }
 
 
+  /* ----------------------------------------
+     VISUALS
+  ---------------------------------------- */
+
   .customisation-visuals {
-    min-height: clamp(360px, 79vw, 650px);
+    min-height: clamp(
+      360px,
+      79vw,
+      650px
+    );
   }
 
 
   .customisation-show-creator {
     right: -2%;
-    bottom: -42%;
 
-    width: clamp(180px, 38vw, 320px);
-  }
+    bottom: -3%;
 
-
-  /* ------------------------------
-     BOTTOM TRANSITION
-  ------------------------------ */
-
-  .customisation-section::after {
-    height: clamp(125px, 19vw, 175px);
-
-    clip-path: polygon(
-      0 30%,
-      76% 70%,
-      100% 5%,
-      100% 100%,
-      0 100%
-    );
-  }
-
-
-  .customisation-section::before {
-    height: clamp(120px, 18.5vw, 168px);
-
-    clip-path: polygon(
-      0 32%,
-      76% 72%,
-      100% 5%,
-      100% 100%,
-      0 100%
+    width: clamp(
+      180px,
+      38vw,
+      320px
     );
   }
 
@@ -428,16 +470,66 @@
 
 @media (max-width: 520px) {
 
+  /* ----------------------------------------
+     GREY BACKGROUND EDGE
+  ---------------------------------------- */
+
+  .customisation-section::before {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+
+      100% calc(100% - 95px),
+
+      74% calc(100% - 30px),
+
+      0 calc(100% - 63px)
+    );
+  }
+
+
+  /* ----------------------------------------
+     LIGHT PURPLE DIVIDER
+  ---------------------------------------- */
+
+  .customisation-section::after {
+    height: 100px;
+
+    clip-path: polygon(
+      0 38%,
+      74% 70%,
+      100% 10%,
+
+      100% calc(10% + 7px),
+      74% calc(70% + 7px),
+      0 calc(38% + 7px)
+    );
+  }
+
+
+  /* ----------------------------------------
+     CONTENT
+  ---------------------------------------- */
+
   .customisation-content {
     padding-top: 7rem;
-    padding-bottom: 10rem;
+
+    padding-bottom: 5rem;
   }
 
 
   .customisation-title {
-    font-size: clamp(3rem, 14vw, 4.8rem);
+    font-size: clamp(
+      3rem,
+      14vw,
+      4.8rem
+    );
   }
 
+
+  /* ----------------------------------------
+     VISUALS
+  ---------------------------------------- */
 
   .customisation-visuals {
     min-height: 330px;
@@ -445,39 +537,14 @@
 
 
   .customisation-show-creator {
-    right: -15%;
-    bottom: -80%;
+    right: -12%;
 
-    width: clamp(170px, 46vw, 230px);
-  }
+    bottom: 0;
 
-
-  /* ------------------------------
-     BOTTOM TRANSITION
-  ------------------------------ */
-
-  .customisation-section::after {
-    height: 105px;
-
-    clip-path: polygon(
-      0 38%,
-      74% 70%,
-      100% 10%,
-      100% 100%,
-      0 100%
-    );
-  }
-
-
-  .customisation-section::before {
-    height: 100px;
-
-    clip-path: polygon(
-      0 40%,
-      74% 72%,
-      100% 10%,
-      100% 100%,
-      0 100%
+    width: clamp(
+      170px,
+      46vw,
+      230px
     );
   }
 

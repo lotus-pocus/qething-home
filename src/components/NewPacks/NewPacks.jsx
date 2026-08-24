@@ -1,5 +1,6 @@
 import "./NewPacks.css";
-import NewPacksCarousel from "./NewPacksCarousel";
+
+import NewPacksFeature from "./NewPacksFeature";
 import PlayModes from "./PlayModes";
 
 const NewPacks = () => {
@@ -11,23 +12,10 @@ const NewPacks = () => {
       <div className="new-packs-content">
 
         {/* =====================================
-            HEADING
+            NEW PACKS FEATURE
         ====================================== */}
 
-        <div className="new-packs-heading">
-          <h2 className="new-packs-title">
-            NEW PACKS DEPLOYED
-            <br />
-            INSTANTLY
-          </h2>
-        </div>
-
-
-        {/* =====================================
-            PACK CAROUSEL
-        ====================================== */}
-
-        <NewPacksCarousel />
+        <NewPacksFeature />
 
 
         {/* =====================================
@@ -42,6 +30,7 @@ const NewPacks = () => {
         ====================================== */}
 
         <div className="new-packs-players">
+
           <img
             className="new-packs-players-image"
             src="/images/NewPacks/16players.png"
@@ -51,6 +40,7 @@ const NewPacks = () => {
           <div className="new-packs-player-count">
             UP TO 16 PLAYERS!
           </div>
+
         </div>
 
       </div>

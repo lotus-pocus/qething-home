@@ -23,11 +23,11 @@
   position: absolute;
 
   left: 0;
-  bottom: -20%;
+  bottom: 0%;
 
   display: block;
 
-  width: 61%;
+  width: 45%;
   height: auto;
 
   object-fit: contain;
@@ -43,8 +43,8 @@
 .device-link-laptop {
   position: absolute;
 
-  right: -1%;
-  top: 14%;
+  right: -2%;
+  top: 5%;
 
   display: block;
 

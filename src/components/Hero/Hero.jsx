@@ -3,7 +3,6 @@ import "./Hero.css";
 const Hero = () => {
   return (
     <section className="hero">
-
       {/* VIDEO */}
       <div className="hero-video-mask">
         <video
@@ -14,6 +13,8 @@ const Hero = () => {
           loop
           playsInline
         />
+
+        <div className="hero-dot-overlay" aria-hidden="true" />
       </div>
 
       {/* WHITE DIAGONAL EDGE */}
@@ -40,7 +41,6 @@ const Hero = () => {
           alt="QEthing"
         />
       </div>
-
     </section>
   );
 };

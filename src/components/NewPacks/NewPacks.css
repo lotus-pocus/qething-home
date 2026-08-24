@@ -5,11 +5,18 @@
 .new-packs-section {
   position: relative;
 
-   z-index: 1;
+  z-index: 1;
 
   min-height: 100vh;
 
-  margin-top: -1px;
+  /*
+    IMPORTANT:
+
+    Pull the ENTIRE NewPacks section up
+    underneath the transparent jagged
+    bottom of Customisation.
+  */
+  margin-top: -16vw;
 
   background: var(--qe-purple);
 
@@ -17,7 +24,6 @@
 
   padding-bottom: clamp(110px, 11vw, 200px);
 }
-
 
 /* ========================================
    CONTENT
