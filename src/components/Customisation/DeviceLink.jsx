@@ -52,7 +52,7 @@ const DeviceLink = () => {
 
         viewport={{
           once: true,
-          amount: 0.25,
+          amount: 0.05,
         }}
 
         transition={{
@@ -94,7 +94,7 @@ const DeviceLink = () => {
 
         viewport={{
           once: true,
-          amount: 0.25,
+          amount: 0.05,
         }}
 
         transition={{
