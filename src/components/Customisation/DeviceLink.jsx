@@ -6,6 +6,7 @@ const DeviceLink = () => {
     <div className="device-link">
 
       {/* TV */}
+
       <motion.img
         className="device-link-tv"
         src="/images/Customisation/TVScreen.png"
@@ -25,7 +26,7 @@ const DeviceLink = () => {
 
         viewport={{
           once: true,
-          amount: 0.25,
+          amount: 0.05,
         }}
 
         transition={{
@@ -36,6 +37,7 @@ const DeviceLink = () => {
 
 
       {/* Animated connection */}
+
       <motion.svg
         className="device-link-connector"
         viewBox="0 0 1000 420"
@@ -75,6 +77,7 @@ const DeviceLink = () => {
 
 
       {/* Laptop */}
+
       <motion.img
         className="device-link-laptop"
         src="/images/Customisation/LapTop.png"
