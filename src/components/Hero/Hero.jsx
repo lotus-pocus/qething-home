@@ -3,6 +3,7 @@ import "./Hero.css";
 const Hero = () => {
   return (
     <section className="hero">
+
       {/* VIDEO */}
       <div className="hero-video-mask">
         <video
@@ -31,15 +32,6 @@ const Hero = () => {
         />
       </svg>
 
-      {/* LOGO */}
-      <div className="hero-logo-wrap">
-        <img
-          className="hero-logo"
-          src="/images/qething-logo.png"
-          alt="QEthing"
-        />
-      </div>
-
       {/* LARGE OVERLAY LOGO */}
       <div className="hero-main-logo-wrap">
         <img
@@ -48,6 +40,7 @@ const Hero = () => {
           alt="QEthing"
         />
       </div>
+
     </section>
   );
 };

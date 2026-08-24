@@ -35,7 +35,7 @@
 
   position: absolute;
 
-  top: -1px;
+  top: -3px;
   left: 0;
 
   width: 100%;
@@ -46,8 +46,8 @@
   clip-path: polygon(
     0 0,
     100% 0,
-    100% 82.6%,
-    0 100%
+    100% 83%,
+    0 99%
   );
 
   z-index: 1;
@@ -58,9 +58,6 @@
 
 /* ========================================
    SCENE VIEWPORT
-
-   This clips the entire layered scene,
-   rather than clipping each layer.
 ======================================== */
 
 .games-feature-scene {
@@ -83,13 +80,6 @@
 
 /* ========================================
    CAMERA / WORLD
-
-   All scene layers live inside this.
-
-   transform-origin controls where the
-   virtual camera zoom focuses.
-
-   Current point is centred around the TV.
 ======================================== */
 
 .games-feature-world {
@@ -130,38 +120,32 @@
 .games-feature-tv-screen {
   position: absolute;
 
-  /*
-    THESE FOUR VALUES WILL PROBABLY
-    NEED A LITTLE TUNING.
+  left: 21.5%;
+  top: 11%;
 
-    They position the video inside the
-    television in sofaroom.jpg.
-  */
-
-  left: 20.4%;
-  top: 10.5%;
-
-  width: 60.2%;
-  height: 56.5%;
+  width: 57%;
+  height: 54%;
 
   overflow: hidden;
 
   z-index: 2;
 
-  background: #000;
+  background: #050505;
 
   /*
-    Slight softness at the corners helps
-    the video sit naturally inside the TV.
+    Creates the visible TV bezel around
+    the looping video without changing
+    the overall scene/camera positioning.
   */
+
+  border:
+    clamp(5px, 0.6vw, 11px)
+    solid
+    #050505;
+
+  box-sizing: border-box;
 
   border-radius: 1.2%;
-
-  /*
-    If the TV screen turns out to need a
-    slight perspective shape, this can
-    later be changed to a custom polygon.
-  */
 
   clip-path: polygon(
     0.5% 0.5%,
@@ -206,13 +190,7 @@
 
   object-fit: contain;
 
-  transform-origin: 50% 100%;
-
   pointer-events: none;
-
-  will-change:
-    transform,
-    opacity;
 }
 
 
@@ -260,8 +238,6 @@
     4px 4px 0 #61077f,
     6px 6px 0 rgba(55, 0, 75, 0.8),
     10px 12px 18px rgba(0, 0, 0, 0.35);
-
-  transform-origin: left center;
 }
 
 
@@ -300,11 +276,6 @@
   }
 
 
-  /*
-    Slight adjustment to the camera anchor
-    as the viewport becomes narrower.
-  */
-
   .games-feature-world {
     transform-origin: 50% 39%;
   }
@@ -333,10 +304,6 @@
     max-width: 88%;
   }
 
-
-  /*
-    Keep the zoom centred around the TV.
-  */
 
   .games-feature-world {
     transform-origin: 50% 40%;
@@ -408,11 +375,6 @@
   }
 
 
-  /*
-    Give the composition a fixed mobile
-    height so the crop remains cinematic.
-  */
-
   .games-feature-scene {
     width: 100%;
     height: 100%;
@@ -437,19 +399,33 @@
   }
 
 
-  /*
-    Because the background changes from
-    natural aspect ratio to object-fit: cover
-    on mobile, these may need a small visual
-    adjustment after testing on your phone.
-  */
+  /* ========================================
+     MOBILE TV SCREEN
+  ======================================== */
 
   .games-feature-tv-screen {
-    left: 20%;
-    top: 10%;
+    left: 21.5%;
+    top: 11%;
 
-    width: 60%;
-    height: 57%;
+    width: 57%;
+    height: 54%;
+
+    border:
+      clamp(3px, 1.1vw, 6px)
+      solid
+      #050505;
+
+    box-sizing: border-box;
+
+    border-radius: 1%;
+  }
+
+
+  .games-feature-tv-video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
   }
 
 
@@ -524,6 +500,11 @@
       100% 86%,
       0 95%
     );
+  }
+
+
+  .games-feature-tv-screen {
+    border-width: 3px;
   }
 
 }
