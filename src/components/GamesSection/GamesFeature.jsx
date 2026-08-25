@@ -27,7 +27,8 @@ const GamesFeature = () => {
             }}
             viewport={{
               once: true,
-              amount: 0.05,
+              amount: 0,
+              margin: "0px 0px 30% 0px",
             }}
             transition={{
               duration: 2.5,
