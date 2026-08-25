@@ -1,6 +1,6 @@
 import "./NewPacks.css";
 
-import NewPacksFeature from "./NewPacksFeature";
+import GamePacksIntro from "./GamePacksIntro/GamePacksIntro";
 import PlayModes from "./PlayModes";
 
 const NewPacks = () => {
@@ -15,7 +15,7 @@ const NewPacks = () => {
             NEW PACKS FEATURE
         ====================================== */}
 
-        <NewPacksFeature />
+        <GamePacksIntro />
 
 
         {/* =====================================
