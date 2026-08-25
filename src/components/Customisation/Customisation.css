@@ -30,10 +30,6 @@
   left: 0;
   right: 0;
 
-  /*
-    Slight overlap into the jagged mask
-    removes the faint horizontal seam.
-  */
   bottom: calc(
     clamp(150px, 16vw, 270px) - 2px
   );
@@ -150,6 +146,10 @@
 }
 
 
+/* ========================================
+   KICKER
+======================================== */
+
 .customisation-kicker {
   display: block;
 
@@ -175,6 +175,7 @@
 
 .customisation-title {
   display: flex;
+
   flex-direction: column;
 
   align-items: center;
@@ -185,13 +186,7 @@
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(3.4rem, 6vw, 7rem);
-
   font-weight: 900;
-
-  line-height: 0.72;
-
-  letter-spacing: -0.055em;
 
   text-transform: uppercase;
 
@@ -211,13 +206,116 @@
 }
 
 
-.customisation-title span {
+/* ========================================
+   IT'S
+======================================== */
+
+.customisation-title-its {
   display: block;
+
+  position: relative;
+
+  z-index: 2;
+
+  font-size: clamp(
+    2rem,
+    3.2vw,
+    4rem
+  );
+
+  line-height: 0.9;
+
+  letter-spacing: -0.035em;
+
+  margin-bottom: -0.08em;
+
+  transform-origin: center center;
 }
 
 
-.customisation-title span:last-child {
-  font-size: 1.12em;
+/* ========================================
+   YOUR
+======================================== */
+
+.customisation-title-your {
+  position: relative;
+
+  z-index: 3;
+
+  display: block;
+
+  /* YOUR is deliberately the hero word */
+  font-size: clamp(
+    5rem,
+    8.5vw,
+    10rem
+  );
+
+  line-height: 0.78;
+
+  letter-spacing: -0.06em;
+
+  margin-top: -0.02em;
+  margin-bottom: 0.08em;
+
+  color: #ffffff;
+
+  /* Slightly heavier outline than the other words */
+  -webkit-text-stroke:
+    clamp(7px, 0.7vw, 14px)
+    #6714d8;
+
+  paint-order: stroke fill;
+
+  /* Deeper "sticker" depth */
+  text-shadow:
+    0 4px 0 #5812c4,
+    0 8px 0 #4810aa,
+    0 12px 0 #351087,
+    0 17px 10px rgba(35, 8, 79, 0.42);
+
+  transform-origin: center center;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  will-change: transform;
+}
+
+.customisation-title-your {
+  /* your existing styles */
+
+  cursor: default;
+}
+
+
+/* ========================================
+   GAMESHOW
+======================================== */
+
+.customisation-title-gameshow {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  font-size: clamp(
+    3.6rem,
+    6.4vw,
+    7.5rem
+  );
+
+  line-height: 0.78;
+
+  letter-spacing: -0.055em;
+
+  transform-origin: center center;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  will-change: transform;
 }
 
 
@@ -235,7 +333,11 @@
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+  font-size: clamp(
+    1.2rem,
+    1.8vw,
+    1.65rem
+  );
 
   font-weight: 700;
 
@@ -256,19 +358,14 @@
 
   width: 100%;
 
-  min-height: clamp(420px, 48vw, 760px);
+  min-height: clamp(
+    420px,
+    48vw,
+    760px
+  );
 
-  /*
-    IMPORTANT:
-    Allow the devices to extend over the
-    jagged transition without being clipped.
-  */
   overflow: visible;
 
-  /*
-    Keep the device artwork above the
-    lower Customisation transition.
-  */
   z-index: 10;
 }
 
@@ -280,9 +377,6 @@
 .customisation-visuals .device-link {
   position: relative;
 
-  /*
-    Above the grey + purple jagged mask.
-  */
   z-index: 10;
 
   overflow: visible;
@@ -297,20 +391,29 @@
   position: absolute;
 
   right: -1%;
+
   bottom: -5%;
 
   display: block;
 
-  width: clamp(225px, 30vw, 480px);
+  width: clamp(
+    225px,
+    30vw,
+    480px
+  );
 
   height: auto;
 
   object-fit: contain;
 
-  /*
-    Phone sits above the transition.
-  */
   z-index: 12;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  will-change:
+    transform,
+    opacity;
 }
 
 
@@ -327,13 +430,12 @@
 
   width: 100%;
 
-  height: clamp(150px, 16vw, 270px);
+  height: clamp(
+    150px,
+    16vw,
+    270px
+  );
 
-  /*
-    IMPORTANT:
-    Above NewPacksFeature, but underneath
-    the TV / laptop / phone artwork.
-  */
   z-index: 3;
 
   pointer-events: none;
@@ -353,13 +455,6 @@
 
   background: #d8d8d8;
 
-  /*
-    Grey Customisation shape:
-
-    left = 26%
-    centre = 72%
-    right = 0%
-  */
   clip-path: polygon(
     0 0,
     100% 0,
@@ -386,13 +481,6 @@
 
   background: var(--qe-purple-light);
 
-  /*
-    The first three points exactly follow
-    the bottom of the grey mask.
-
-    The second three points create the
-    thickness of the purple border.
-  */
   clip-path: polygon(
     0 26%,
     77% 72%,
@@ -418,7 +506,11 @@
   ---------------------------------------- */
 
   .customisation-section::before {
-    bottom: clamp(125px, 19vw, 175px);
+    bottom: clamp(
+      125px,
+      19vw,
+      175px
+    );
   }
 
 
@@ -441,14 +533,40 @@
   }
 
 
-  .customisation-title {
+  /* ----------------------------------------
+     TITLE
+  ---------------------------------------- */
+
+  .customisation-title-its {
     font-size: clamp(
-      3.2rem,
-      12vw,
-      6rem
+      1.8rem,
+      5vw,
+      3rem
     );
   }
 
+
+  .customisation-title-your {
+    font-size: clamp(
+      3.4rem,
+      12vw,
+      6.5rem
+    );
+  }
+
+
+  .customisation-title-gameshow {
+    font-size: clamp(
+      3.2rem,
+      10vw,
+      5.8rem
+    );
+  }
+
+
+  /* ----------------------------------------
+     INTRO
+  ---------------------------------------- */
 
   .customisation-intro {
     max-width: 520px;
@@ -478,6 +596,10 @@
     overflow: visible;
   }
 
+
+  /* ----------------------------------------
+     PHONE
+  ---------------------------------------- */
 
   .customisation-show-creator {
     right: -2%;
@@ -570,11 +692,57 @@
   }
 
 
+  /* ----------------------------------------
+     TITLE
+  ---------------------------------------- */
+
   .customisation-title {
+    width: 100%;
+  }
+
+
+  .customisation-title-its {
     font-size: clamp(
-      3rem,
-      14vw,
+      1.6rem,
+      6vw,
+      2.4rem
+    );
+  }
+
+
+  .customisation-title-your {
+    font-size: clamp(
+      3.2rem,
+      15vw,
       4.8rem
+    );
+
+    margin-bottom: 0.08em;
+  }
+
+
+  .customisation-title-gameshow {
+    font-size: clamp(
+      2.8rem,
+      12vw,
+      4.2rem
+    );
+  }
+
+
+  /* ----------------------------------------
+     INTRO
+  ---------------------------------------- */
+
+  .customisation-intro {
+    width: 90%;
+
+    margin-top: 1.7rem;
+
+    font-size: clamp(
+      1.05rem,
+      4.5vw,
+      1.4rem
     );
   }
 
@@ -598,6 +766,10 @@
     overflow: visible;
   }
 
+
+  /* ----------------------------------------
+     PHONE
+  ---------------------------------------- */
 
   .customisation-show-creator {
     right: -12%;

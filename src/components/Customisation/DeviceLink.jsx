@@ -5,7 +5,7 @@ const DeviceLink = () => {
   return (
     <div className="device-link">
 
-      {/* TV */}
+      {/* TV — SECOND */}
 
       <motion.img
         className="device-link-tv"
@@ -30,13 +30,14 @@ const DeviceLink = () => {
         }}
 
         transition={{
+          delay: 0.55,
           duration: 1.05,
           ease: [0.22, 1, 0.36, 1],
         }}
       />
 
 
-      {/* Animated connection */}
+      {/* NETWORK LINE — THIRD */}
 
       <motion.svg
         className="device-link-connector"
@@ -58,25 +59,25 @@ const DeviceLink = () => {
         }}
 
         transition={{
-          delay: 0.8,
-          duration: 0.4,
+          delay: 1.45,
+          duration: 0.45,
         }}
       >
         <path
           className="device-link-path"
           d="
-            M 825 250
-            L 825 165
-            C 825 105, 785 75, 720 75
-            L 485 75
-            C 410 75, 380 115, 380 185
-            L 380 270
+            M 790 300
+            L 790 205
+            C 790 155, 755 135, 700 135
+            L 405 135
+            C 350 135, 320 160, 320 210
+            L 320 285
           "
         />
       </motion.svg>
 
 
-      {/* Laptop */}
+      {/* LAPTOP — FIRST */}
 
       <motion.img
         className="device-link-laptop"
@@ -101,6 +102,7 @@ const DeviceLink = () => {
         }}
 
         transition={{
+          delay: 0,
           duration: 1.05,
           ease: [0.22, 1, 0.36, 1],
         }}

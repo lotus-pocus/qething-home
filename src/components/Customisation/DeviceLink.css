@@ -7,9 +7,9 @@
   position: relative;
 
   width: 100%;
-  height: clamp(420px, 44vw, 680px);
+  height: clamp(430px, 39vw, 620px);
 
-  margin-top: clamp(2rem, 4vw, 4rem);
+  margin-top: clamp(1.5rem, 2.5vw, 3rem);
 
   overflow: visible;
 }
@@ -22,18 +22,19 @@
 .device-link-tv {
   position: absolute;
 
-  left: 0;
-  bottom: 0%;
+  left: -1%;
+  bottom: -3%;
 
   display: block;
 
-  width: 45%;
+  width: 43%;
   height: auto;
 
   object-fit: contain;
 
   z-index: 3;
 }
+
 
 
 /* ========================================
@@ -43,12 +44,12 @@
 .device-link-laptop {
   position: absolute;
 
-  right: -2%;
-  top: 5%;
+  right: 10%;
+  bottom: -2%;
 
   display: block;
 
-  width: 39%;
+  width: 37%;
   height: auto;
 
   object-fit: contain;
@@ -64,11 +65,11 @@
 .device-link-connector {
   position: absolute;
 
-  top: 0;
+  top: 6%;
   left: 0;
 
   width: 100%;
-  height: 62%;
+  height: 42%;
 
   overflow: visible;
 
@@ -84,6 +85,10 @@
   stroke: #00ef28;
   stroke-width: 7;
 
+  /* KEEP STROKE THE SAME THICKNESS
+     EVEN WHEN THE SVG IS STRETCHED */
+  vector-effect: non-scaling-stroke;
+
   stroke-linecap: butt;
   stroke-linejoin: round;
 
@@ -96,13 +101,6 @@
     infinite;
 }
 
-
-/* ========================================
-   DIRECTION OF FLOW
-
-   Negative offset reverses the direction.
-   This now travels LAPTOP → TV.
-======================================== */
 
 @keyframes device-link-flow {
 
@@ -137,27 +135,30 @@
 @media (max-width: 900px) {
 
   .device-link {
-    height: clamp(360px, 72vw, 610px);
+    height: clamp(360px, 68vw, 560px);
   }
 
 
   .device-link-tv {
-    left: 0;
+    left: -2%;
+    bottom: 7%;
 
-    width: 62%;
+    width: 52%;
   }
 
 
   .device-link-laptop {
-    right: 0;
-    top: 15%;
+    right: 4%;
+    bottom: 9%;
 
-    width: 40%;
+    width: 39%;
   }
 
 
   .device-link-connector {
-    height: 61%;
+    top: 0;
+
+    height: 47%;
   }
 
 
@@ -182,33 +183,33 @@
 
 
   .device-link-tv {
-    left: -3%;
-    bottom: 7%;
+    left: -4%;
+    bottom: 9%;
 
-    width: 65%;
+    width: 60%;
   }
 
 
   .device-link-laptop {
-    right: -4%;
-    top: 18%;
+    right: -1%;
+    bottom: 14%;
 
-    width: 43%;
+    width: 39%;
   }
 
 
   .device-link-connector {
-    top: 1%;
+    top: 2%;
 
     width: 100%;
-    height: 59%;
+    height: 43%;
   }
 
 
   .device-link-path {
-    stroke-width: 8;
+    stroke-width: 7;
 
-    stroke-dasharray: 20 18;
+    stroke-dasharray: 18 16;
   }
 
 }
