@@ -125,7 +125,7 @@ const Customisation = () => {
               amount: 0.05,
             }}
             transition={{
-              delay: 1.95,
+              delay: 1.6,
               duration: 0.75,
               ease: [0.22, 1, 0.36, 1],
             }}
