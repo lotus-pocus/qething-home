@@ -59,7 +59,7 @@ const DeviceLink = () => {
         }}
 
         transition={{
-          delay: 1.45,
+          delay: 1.2,
           duration: 0.45,
         }}
       >
