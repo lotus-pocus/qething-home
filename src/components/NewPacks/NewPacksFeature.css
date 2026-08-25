@@ -7,7 +7,12 @@
 
   width: 100%;
 
-  margin: 0;
+  /*
+    Move the whole feature DOWN.
+    Increase this if you want more of the
+    NewPacks video visible above the divider.
+  */
+  margin-top: 45px;
 
   overflow: hidden;
 
