@@ -326,6 +326,33 @@
   font-size: 1.12em;
 }
 
+/* ========================================
+   BOTTOM STICKER
+   IT'S NOT / JUST A / GAMESHOW!
+======================================== */
+
+.games-title-sticker-bottom {
+  width: fit-content;
+
+  margin:
+    clamp(6rem, 10vw, 12rem)
+    auto
+    0;
+
+  padding: 2rem;
+}
+
+
+.games-sticker-title-bottom {
+  font-size: clamp(3.4rem, 6vw, 7rem);
+}
+
+
+/* Make GAMESHOW! slightly larger */
+.games-sticker-title-bottom
+.games-sticker-line:last-child {
+  font-size: 1.12em;
+}
 
 /* ========================================
    BOTTOM MESSAGE
