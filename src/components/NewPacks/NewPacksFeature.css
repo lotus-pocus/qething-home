@@ -8,22 +8,44 @@
   width: 100%;
 
   /*
-    Move the whole feature DOWN.
-    Increase this if you want more of the
-    NewPacks video visible above the divider.
+    Keep the Customisation overlap.
   */
-  margin-top: 45px;
+  margin-top:
+    calc(
+      -1 * clamp(150px, 16vw, 270px)
+    );
+
+  /*
+    IMPORTANT:
+    Do NOT collapse the bottom anymore.
+    We want this section to genuinely
+    occupy this vertical space.
+  */
+  margin-bottom: 0;
+
+  /*
+    This is now the actual height of
+    the feature section.
+  */
+  height: clamp(760px, 70vw, 1250px);
 
   overflow: hidden;
 
   z-index: 1;
 }
 
+
+/* ========================================
+   FEATURE MEDIA
+======================================== */
 
 .new-packs-feature-media {
-  position: relative;
+  position: absolute;
+
+  inset: 0;
 
   width: 100%;
+  height: calc(100% + 40px);
 
   overflow: hidden;
 
@@ -31,28 +53,40 @@
 }
 
 
+/* ========================================
+   FEATURE VIDEO
+======================================== */
+
 .new-packs-feature-video {
-  position: relative;
+  position: absolute;
+
+  top: 0;
+  left: 0;
 
   z-index: 1;
 
   display: block;
 
   width: 100%;
-  height: auto;
-
-  aspect-ratio: 16 / 9;
+  height: 100%;
 
   object-fit: cover;
+  object-position: center center;
 
+  /*
+    Let the video reach right down to
+    the PlayModes transition.
+
+    Keep a slight diagonal rather than
+    chopping it off high up.
+  */
   clip-path: polygon(
     0 0,
     100% 0,
-    100% 94%,
-    0 82%
+    100% 100%,
+    0 96%
   );
 }
-
 
 /* ========================================
    COPY
@@ -96,11 +130,6 @@
 
   color: white;
 
-  /*
-    Purple chunky backing similar
-    to the designer reference.
-  */
-
   text-shadow:
     3px 3px 0 var(--qe-purple),
     6px 6px 0 var(--qe-purple),
@@ -114,23 +143,18 @@
 
 
 /* ========================================
-   GREEN BOTTOM DIVIDER
-======================================== */
-
-
-
-@media (min-width: 1700px) {
-  .new-packs-feature {
-    margin-top: -270px;
-  }
-}
-
-
-/* ========================================
    TABLET
 ======================================== */
 
 @media (max-width: 900px) {
+
+  .new-packs-feature {
+    margin-top:
+      calc(
+        -1 * clamp(125px, 19vw, 175px)
+      );
+  }
+
 
   .new-packs-feature-copy {
     left: 6%;
@@ -146,28 +170,6 @@
     );
   }
 
-
-  .new-packs-feature-bottom-edge {
-    height: clamp(34px, 6vw, 60px);
-
-    clip-path: polygon(
-      0 60%,
-      100% 90%,
-      100% 100%,
-      0 100%
-    );
-  }
-
-
-  .new-packs-feature-bottom-edge::after {
-    clip-path: polygon(
-      0 75%,
-      100% 100%,
-      100% 100%,
-      0 100%
-    );
-  }
-
 }
 
 
@@ -177,8 +179,17 @@
 
 @media (max-width: 600px) {
 
+  .new-packs-feature {
+    margin-top: -100px;
+  }
+
+
   .new-packs-feature-media {
-    height: clamp(330px, 90vw, 520px);
+    height: clamp(
+      330px,
+      90vw,
+      520px
+    );
 
     overflow: hidden;
   }
@@ -215,28 +226,6 @@
       2px 2px 0 var(--qe-purple),
       4px 4px 0 var(--qe-purple),
       6px 6px 0 var(--qe-purple);
-  }
-
-
-  .new-packs-feature-bottom-edge {
-    height: 42px;
-
-    clip-path: polygon(
-      0 55%,
-      100% 88%,
-      100% 100%,
-      0 100%
-    );
-  }
-
-
-  .new-packs-feature-bottom-edge::after {
-    clip-path: polygon(
-      0 72%,
-      100% 100%,
-      100% 100%,
-      0 100%
-    );
   }
 
 }
