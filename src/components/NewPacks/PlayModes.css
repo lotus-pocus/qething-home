@@ -5,16 +5,12 @@
 .play-modes {
   position: relative;
 
-  z-index: 3;
+  z-index: 10;
 
   width: 100vw;
 
   aspect-ratio: 16 / 6.2;
 
-  /*
-    Pull PlayModes upward underneath
-    the bottom of NewPacksFeature.
-  */
   margin-top: -36px;
 
   overflow: visible;
@@ -39,10 +35,8 @@
   overflow: hidden;
 
   /*
-    IMPORTANT:
-    This prevents NewPacksFeature from
-    showing through before the animated
-    PlayModes panels arrive.
+    Prevent NewPacksFeature from showing
+    through before the animated panels arrive.
   */
   background:
     linear-gradient(
@@ -79,11 +73,11 @@
 
   width: 100vw;
 
-  /*
-    Slightly taller so the diagonal can
-    descend further on the right.
-  */
-  height: clamp(52px, 5.6vw, 100px);
+  height: clamp(
+    52px,
+    5.6vw,
+    100px
+  );
 
   transform: translateX(-50%);
 
@@ -289,20 +283,23 @@
   width: 100%;
 
   height: clamp(
-    44px,
-    4.8vw,
-    82px
+    55px,
+    5.5vw,
+    100px
   );
 
-  z-index: 20;
+  /*
+    Force the yellow divider above
+    PlayModes and surrounding NewPacks layers.
+  */
+  z-index: 50;
 
   pointer-events: none;
 }
 
 
 /* ========================================
-   LOWER DIAGONAL —
-   LIGHT PURPLE UNDERLAY
+   LOWER DIAGONAL — YELLOW
 ======================================== */
 
 .play-modes-bottom-edge::before {
@@ -312,39 +309,30 @@
 
   inset: 0;
 
-  background:
-    var(--qe-purple-light);
+  background: var(--player-yellow);
 
   clip-path: polygon(
-    0 82%,
+    0 88%,
+    100% 6%,
+
     100% 20%,
-    100% 100%,
     0 100%
   );
+
+  z-index: 2;
 }
 
 
-/* ========================================
-   LOWER DIAGONAL —
-   DEEP PURPLE FOREGROUND
-======================================== */
+/*
+  The old PlayModes transition used a
+  second purple layer here.
+
+  We no longer need it because the
+  divider is now a single yellow stripe.
+*/
 
 .play-modes-bottom-edge::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    var(--qe-purple);
-
-  clip-path: polygon(
-    0 97%,
-    100% 47%,
-    100% 100%,
-    0 100%
-  );
+  display: none;
 }
 
 
@@ -416,7 +404,7 @@
 
 
   /* ------------------------------
-     LOWER EDGE
+     LOWER YELLOW EDGE
   ------------------------------ */
 
   .play-modes-bottom-edge {
@@ -424,6 +412,17 @@
       36px,
       5vw,
       55px
+    );
+  }
+
+
+  .play-modes-bottom-edge::before {
+    clip-path: polygon(
+      0 82%,
+      100% 20%,
+
+      100% 36%,
+      0 98%
     );
   }
 
@@ -550,7 +549,7 @@
 
 
   /* ------------------------------
-     LOWER EDGE
+     LOWER YELLOW EDGE
   ------------------------------ */
 
   .play-modes-bottom-edge {
@@ -558,6 +557,17 @@
       28px,
       8vw,
       42px
+    );
+  }
+
+
+  .play-modes-bottom-edge::before {
+    clip-path: polygon(
+      0 80%,
+      100% 22%,
+
+      100% 40%,
+      0 98%
     );
   }
 

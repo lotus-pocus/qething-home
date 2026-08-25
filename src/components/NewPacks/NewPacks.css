@@ -9,21 +9,15 @@
 
   min-height: 100vh;
 
-  /*
-    IMPORTANT:
-
-    Pull the ENTIRE NewPacks section up
-    underneath the transparent jagged
-    bottom of Customisation.
-  */
   margin-top: -16vw;
 
   background: var(--qe-purple);
 
-  overflow: hidden;
+  overflow: visible;
 
-  padding-bottom: clamp(110px, 11vw, 200px);
+  padding-bottom: 0;
 }
+
 
 /* ========================================
    CONTENT
@@ -71,169 +65,6 @@
 
 
 /* ========================================
-   16 PLAYERS PANEL
-======================================== */
-
-.new-packs-players {
-  position: relative;
-
-  width: 100%;
-
-  /*
-    Pull the panel underneath the PlayModes
-    composition so the two sections overlap.
-  */
-  margin-top: -33px;
-
-  overflow: hidden;
-
-  /*
-    Sit above the deep-purple background
-    underneath PlayModes.
-  */
-  z-index: 3;
-}
-
-
-/* ========================================
-   16 PLAYERS IMAGE
-======================================== */
-
-.new-packs-players-image {
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  object-fit: cover;
-
-  /*
-    Match the direction of the diagonal
-    above it.
-
-    The image begins lower on the left
-    and higher on the right.
-  */
-  clip-path: polygon(
-    0 5%,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-}
-
-/* ========================================
-   UP TO 16 PLAYERS COPY
-======================================== */
-
-.new-packs-player-count {
-  position: absolute;
-
-  left: 50%;
-  bottom: 9%;
-
-  transform: translateX(-50%);
-
-  z-index: 6;
-
-  width: 100%;
-
-  padding: 0 2rem;
-
-  font-family: "Outfit", sans-serif;
-
-  font-size: clamp(2.4rem, 4.8vw, 6rem);
-
-  font-weight: 900;
-
-  line-height: 0.9;
-
-  text-align: center;
-
-  text-transform: uppercase;
-
-  white-space: nowrap;
-
-  color: white;
-
-  text-shadow:
-    2px 2px 0 rgba(70, 0, 100, 0.95),
-    5px 5px 0 rgba(35, 0, 60, 0.5);
-}
-
-
-/* ========================================
-   NEW PACKS → FOOTER JAGGED EDGE
-======================================== */
-
-.new-packs-bottom-edge {
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  height: clamp(95px, 9vw, 170px);
-
-  z-index: 5;
-
-  pointer-events: none;
-}
-
-
-/* ========================================
-   BOTTOM EDGE — LIGHT PURPLE UNDERLAY
-======================================== */
-
-.new-packs-bottom-edge::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: var(--qe-purple-light);
-
-  clip-path: polygon(
-    0 0,
-    55% 0,
-    63% 100%,
-    59% 72%,
-    100% 100%,
-    100% 0
-  );
-}
-
-
-/* ========================================
-   BOTTOM EDGE — DEEP PURPLE FOREGROUND
-======================================== */
-
-.new-packs-bottom-edge::after {
-  content: "";
-
-  position: absolute;
-
-  top: -7px;
-  left: 0;
-
-  width: 100%;
-  height: calc(100% + 7px);
-
-  background: var(--qe-purple);
-
-  clip-path: polygon(
-    0 0,
-    55% 0,
-    62% 87%,
-    59% 64%,
-    100% 88%,
-    100% 0
-  );
-}
-
-
-/* ========================================
    TABLET
 ======================================== */
 
@@ -245,12 +76,11 @@
 
 
   .new-packs-title {
-    font-size: clamp(3.2rem, 10vw, 6rem);
-  }
-
-
-  .new-packs-player-count {
-    bottom: 8%;
+    font-size: clamp(
+      3.2rem,
+      10vw,
+      6rem
+    );
   }
 
 }
@@ -261,11 +91,6 @@
 ======================================== */
 
 @media (max-width: 600px) {
-
-  .new-packs-section {
-    padding-bottom: 90px;
-  }
-
 
   .new-packs-content {
     padding-top: 3rem;
@@ -278,66 +103,13 @@
 
 
   .new-packs-title {
-    font-size: clamp(2.8rem, 12vw, 4.7rem);
+    font-size: clamp(
+      2.8rem,
+      12vw,
+      4.7rem
+    );
 
     line-height: 0.82;
-  }
-
-
-  /* ========================================
-     16 PLAYERS
-  ======================================== */
-
-  .new-packs-players {
-    /*
-      Keep the image tucked behind the
-      PlayModes lower diagonal on mobile too.
-    */
-    margin-top: -13px;
-  }
-
-
-  .new-packs-player-count {
-    bottom: 8%;
-
-    padding: 0 0.75rem;
-
-    font-size: clamp(1.8rem, 8vw, 3rem);
-
-    white-space: normal;
-  }
-
-
-  /* ========================================
-     BOTTOM JAGGED EDGE
-  ======================================== */
-
-  .new-packs-bottom-edge {
-    height: 80px;
-  }
-
-
-  .new-packs-bottom-edge::before {
-    clip-path: polygon(
-      0 0,
-      52% 0,
-      66% 100%,
-      59% 72%,
-      100% 100%,
-      100% 0
-    );
-  }
-
-
-  .new-packs-bottom-edge::after {
-    clip-path: polygon(
-      0 0,
-      52% 0,
-      64% 87%,
-      59% 64%,
-      100% 88%,
-      100% 0
-    );
   }
 
 }
