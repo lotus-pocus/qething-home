@@ -10,10 +10,7 @@ const GamesCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const goToSlide = (index) => {
-    const nextIndex = Math.max(
-      0,
-      Math.min(index, games.length - 1)
-    );
+    const nextIndex = Math.max(0, Math.min(index, games.length - 1));
 
     setActiveIndex(nextIndex);
 
@@ -31,8 +28,7 @@ const GamesCarousel = () => {
 
     const carouselRect = carousel.getBoundingClientRect();
 
-    const carouselCentre =
-      carouselRect.left + carouselRect.width / 2;
+    const carouselCentre = carouselRect.left + carouselRect.width / 2;
 
     let closestIndex = 0;
     let closestDistance = Infinity;
@@ -42,12 +38,9 @@ const GamesCarousel = () => {
 
       const cardRect = card.getBoundingClientRect();
 
-      const cardCentre =
-        cardRect.left + cardRect.width / 2;
+      const cardCentre = cardRect.left + cardRect.width / 2;
 
-      const distance = Math.abs(
-        carouselCentre - cardCentre
-      );
+      const distance = Math.abs(carouselCentre - cardCentre);
 
       if (distance < closestDistance) {
         closestDistance = distance;
@@ -76,12 +69,17 @@ const GamesCarousel = () => {
 
   return (
     <div className="games-carousel-wrapper">
-
       <div
-        className="games-carousel"
-        ref={carouselRef}
-        onScroll={handleScroll}
+        className={`games-carousel-description ${
+          games[activeIndex].descriptionSize === "small"
+            ? "games-carousel-description-small"
+            : "games-carousel-description-large"
+        }`}
+        aria-live="polite"
       >
+        {games[activeIndex].description}
+      </div>
+      <div className="games-carousel" ref={carouselRef} onScroll={handleScroll}>
         {games.map((game, index) => (
           <article
             key={game.id}
@@ -89,9 +87,7 @@ const GamesCarousel = () => {
               cardRefs.current[index] = element;
             }}
             className={`game-card ${
-              index === activeIndex
-                ? "game-card-active"
-                : ""
+              index === activeIndex ? "game-card-active" : ""
             }`}
             onClick={() => goToSlide(index)}
           >
@@ -107,9 +103,7 @@ const GamesCarousel = () => {
         ))}
       </div>
 
-
       <div className="games-carousel-controls">
-
         <button
           className="games-arrow games-arrow-left"
           type="button"
@@ -117,21 +111,12 @@ const GamesCarousel = () => {
           disabled={activeIndex === 0}
           aria-label="Previous game"
         >
-          <img
-            src="/images/GamesSection/Arrow.svg"
-            alt=""
-            aria-hidden="true"
-          />
+          <img src="/images/GamesSection/Arrow.svg" alt="" aria-hidden="true" />
         </button>
 
-
-        <div
-          className="games-carousel-category"
-          aria-live="polite"
-        >
+        <div className="games-carousel-category" aria-live="polite">
           {games[activeIndex].label}
         </div>
-
 
         <button
           className="games-arrow games-arrow-right"
@@ -140,15 +125,9 @@ const GamesCarousel = () => {
           disabled={activeIndex === games.length - 1}
           aria-label="Next game"
         >
-          <img
-            src="/images/GamesSection/Arrow.svg"
-            alt=""
-            aria-hidden="true"
-          />
+          <img src="/images/GamesSection/Arrow.svg" alt="" aria-hidden="true" />
         </button>
-
       </div>
-
     </div>
   );
 };
