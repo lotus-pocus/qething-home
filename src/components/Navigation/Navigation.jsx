@@ -69,7 +69,9 @@ const Navigation = () => {
 
         <Link
           to="/"
-          className="site-navigation-logo-link"
+          className={`site-navigation-logo-link ${
+            !isHome ? "site-navigation-logo-sticky" : ""
+          }`}
           aria-label="QEthing home"
         >
           <img
