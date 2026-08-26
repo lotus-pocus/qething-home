@@ -30,14 +30,24 @@
   pointer-events: auto;
 
   transition:
-    transform 0.2s ease,
+    width 0.3s ease,
+    transform 0.3s ease,
     opacity 0.25s ease,
-    visibility 0.25s ease;
+    background 0.3s ease,
+    filter 0.3s ease;
 }
 
 
 .site-navigation-logo-link:hover {
   transform: scale(1.04);
+}
+
+
+.site-navigation-scrolled
+.site-navigation-logo-link:hover {
+  transform:
+    rotate(-2deg)
+    scale(1.06);
 }
 
 
@@ -140,6 +150,21 @@
 
 
 /* ========================================
+   LIGHT PAGE NAVIGATION
+   ABOUT / NEWS / CONTACT
+======================================== */
+
+.site-navigation-light .nav-link {
+  color: var(--qe-purple);
+}
+
+
+.site-navigation-light .nav-link:hover {
+  color: var(--qe-pink);
+}
+
+
+/* ========================================
    HIDE TOP NAV AFTER SCROLL
 ======================================== */
 
@@ -162,13 +187,46 @@
 }
 
 
+/* ========================================
+   STICKY HOME LOGO
+======================================== */
+
 .site-navigation-scrolled
 .site-navigation-logo-link {
-  opacity: 0;
+  position: fixed;
 
-  visibility: hidden;
+  top: 26px;
+  left: 30px;
 
-  pointer-events: none;
+  width: clamp(105px, 9vw, 150px);
+
+  padding:
+    10px
+    14px;
+
+  background: white;
+
+  clip-path: polygon(
+    3% 5%,
+    100% 0,
+    96% 94%,
+    0 100%
+  );
+
+  filter:
+    drop-shadow(
+      0 6px 10px
+      rgba(35, 8, 79, 0.18)
+    );
+
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform: rotate(-2deg);
+
+  z-index: 1200;
 }
 
 
@@ -383,7 +441,8 @@
 }
 
 
-.navigation-overlay-links .overlay-link-active {
+.navigation-overlay-links
+.overlay-link-active {
   color: var(--qe-pink);
 }
 
@@ -441,6 +500,22 @@
   }
 
 
+  /*
+    Sticky logo position on mobile.
+  */
+  .site-navigation-scrolled
+  .site-navigation-logo-link {
+    top: 18px;
+    left: 18px;
+
+    width: 105px;
+
+    padding:
+      8px
+      11px;
+  }
+
+
   .navigation-burger {
     top: 18px;
     right: 18px;
@@ -465,6 +540,10 @@
 
 
   .navigation-overlay-links a {
-    font-size: clamp(3.8rem, 18vw, 7rem);
+    font-size: clamp(
+      3.8rem,
+      18vw,
+      7rem
+    );
   }
 }
