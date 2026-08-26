@@ -94,9 +94,9 @@ const GamesSection = () => {
             >
               <StickerLine>IT&apos;S NOT</StickerLine>
 
-              <StickerLine>JUST</StickerLine>
+              <StickerLine>JUST A</StickerLine>
 
-              <StickerLine>A QUIZ!</StickerLine>
+              <StickerLine>QUIZ!</StickerLine>
             </motion.h2>
           </div>
 
