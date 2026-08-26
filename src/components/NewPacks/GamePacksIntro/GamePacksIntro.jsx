@@ -7,86 +7,142 @@ const GamePacksIntro = () => {
       className="game-packs-intro"
       aria-labelledby="game-packs-intro-title"
     >
+      {/* Existing gradient / divider geometry */}
       <div className="game-packs-intro-bg" />
 
-      <div className="game-packs-intro-copy">
+      <div className="game-packs-intro-content">
 
-        <motion.h2
-          id="game-packs-intro-title"
-          className="game-packs-intro-title"
-          initial={{
-            opacity: 0,
-            y: 70,
-            scale: 0.92,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.35,
-          }}
-          transition={{
-            duration: 0.8,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        >
-          <span>SAME SOFA.</span>
-          <span>DIFFERENT NIGHT.</span>
-        </motion.h2>
+        {/* ========================================
+            MAIN TWO-COLUMN LAYOUT
+        ======================================== */}
 
+        <div className="game-packs-intro-grid">
 
-        <motion.p
-          className="game-packs-intro-text"
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.4,
-          }}
-          transition={{
-            delay: 0.25,
-            duration: 0.7,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        >
-          Switch up the games, switch up the teams
-          and keep everyone guessing.
-        </motion.p>
+          {/* ========================================
+              LEFT COMPOSITION
+          ======================================== */}
+
+          <div className="game-packs-intro-left">
+
+            {/* TITLE */}
+
+            <motion.h2
+              id="game-packs-intro-title"
+              className="game-packs-intro-title"
+              initial={{
+                opacity: 0,
+                scale: 0.82,
+              }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 0.65,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <span>PLAY LIVE</span>
+              <span>WEEKLY QUIZ</span>
+            </motion.h2>
 
 
-        <motion.div
-          className="game-packs-intro-kicker"
-          initial={{
-            opacity: 0,
-            scale: 0.8,
-          }}
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.4,
-          }}
-          transition={{
-            delay: 0.45,
-            duration: 0.55,
-            ease: "easeOut",
-          }}
-        >
-          <span>NEW GAME PACKS.</span>
-          <span>NEW WAYS TO PLAY.</span>
-        </motion.div>
+            {/* COPY */}
 
+            <motion.p
+              className="game-packs-intro-description"
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.3,
+              }}
+              transition={{
+                delay: 0.12,
+                duration: 0.55,
+              }}
+            >
+              Or just play our curated game packs...
+              plenty to choose from.
+            </motion.p>
+
+
+            {/* LANDSCAPE IMAGE */}
+
+            <motion.div
+              className="game-packs-intro-image-wrap game-packs-intro-image-wrap-left"
+              initial={{
+                opacity: 0,
+                x: -50,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                delay: 0.18,
+                duration: 0.75,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <img
+                className="game-packs-intro-image"
+                src="/images/NewPacks/GamePacksIntro/QEthingWeeklyPack.jpg"
+                alt="QEthing Weekly game pack"
+              />
+            </motion.div>
+
+          </div>
+
+
+          {/* ========================================
+              RIGHT COMPOSITION
+          ======================================== */}
+
+          <motion.div
+            className="game-packs-intro-right"
+            initial={{
+              opacity: 0,
+              x: 50,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              delay: 0.28,
+              duration: 0.75,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            <div className="game-packs-intro-image-wrap game-packs-intro-image-wrap-right">
+              <img
+                className="game-packs-intro-image"
+                src="/images/NewPacks/GamePacksIntro/QEthing_Weekly.jpg"
+                alt="QEthing Weekly quiz game"
+              />
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
