@@ -133,7 +133,7 @@ const PlayModes = () => {
 
         setShowCopy(true);
 
-      }, 650);
+      }, 900);
 
 
     return () => {
