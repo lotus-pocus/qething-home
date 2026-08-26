@@ -58,9 +58,9 @@ const teamsVariants = {
 
 const soloCopyVariants = {
   hidden: {
-    x: "-120%",
+    x: "-140%",
     opacity: 0,
-    scale: 0.9,
+    scale: 0.82,
   },
 
   visible: {
@@ -69,20 +69,20 @@ const soloCopyVariants = {
     scale: 1,
 
     transition: {
-      delay: 1.4,
+      delay: 2.2,
 
       x: {
         type: "spring",
-        stiffness: 180,
-        damping: 13,
+        stiffness: 150,
+        damping: 11,
         mass: 0.9,
       },
 
       scale: {
         type: "spring",
-        stiffness: 240,
-        damping: 10,
-        mass: 0.7,
+        stiffness: 220,
+        damping: 9,
+        mass: 0.75,
       },
 
       opacity: {
@@ -92,16 +92,12 @@ const soloCopyVariants = {
   },
 };
 
-
-/* ========================================
-   RIGHT COPY ANIMATION
-======================================== */
 
 const teamsCopyVariants = {
   hidden: {
-    x: "120%",
+    x: "140%",
     opacity: 0,
-    scale: 0.9,
+    scale: 0.82,
   },
 
   visible: {
@@ -110,20 +106,20 @@ const teamsCopyVariants = {
     scale: 1,
 
     transition: {
-      delay: 1.5,
+      delay: 2.35,
 
       x: {
         type: "spring",
-        stiffness: 180,
-        damping: 13,
+        stiffness: 150,
+        damping: 11,
         mass: 0.9,
       },
 
       scale: {
         type: "spring",
-        stiffness: 240,
-        damping: 10,
-        mass: 0.7,
+        stiffness: 220,
+        damping: 9,
+        mass: 0.75,
       },
 
       opacity: {
@@ -132,7 +128,6 @@ const teamsCopyVariants = {
     },
   },
 };
-
 
 /* ========================================
    COMPONENT
@@ -148,7 +143,7 @@ const PlayModes = () => {
       whileInView="visible"
       viewport={{
         once: true,
-        amount: 0.2,
+        amount: 0.8,
       }}
     >
 
