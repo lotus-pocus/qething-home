@@ -33,6 +33,7 @@
     width 0.3s ease,
     transform 0.3s ease,
     opacity 0.25s ease,
+    visibility 0.25s ease,
     background 0.3s ease,
     filter 0.3s ease;
 }
@@ -40,14 +41,6 @@
 
 .site-navigation-logo-link:hover {
   transform: scale(1.04);
-}
-
-
-.site-navigation-scrolled
-.site-navigation-logo-link:hover {
-  transform:
-    rotate(-2deg)
-    scale(1.06);
 }
 
 
@@ -165,13 +158,15 @@
 
 
 /* ========================================
-   HIDE TOP NAV AFTER SCROLL
+   SCROLLED NAVIGATION
 ======================================== */
 
 .site-navigation-scrolled {
   pointer-events: none;
 }
 
+
+/* Hide ABOUT / NEWS / CONTACT after scroll */
 
 .site-navigation-scrolled
 .site-navigation-links {
@@ -188,7 +183,23 @@
 
 
 /* ========================================
-   STICKY HOME LOGO
+   HOME PAGE LOGO
+   HIDE AFTER SCROLL
+======================================== */
+
+.site-navigation-scrolled
+.site-navigation-logo-link:not(.site-navigation-logo-sticky) {
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   INNER PAGE STICKY HOME LOGO
+   ABOUT / NEWS / CONTACT
 ======================================== */
 
 .site-navigation-scrolled
@@ -220,6 +231,7 @@
     );
 
   opacity: 1;
+
   visibility: visible;
 
   pointer-events: auto;
@@ -227,6 +239,14 @@
   transform: rotate(-2deg);
 
   z-index: 1200;
+}
+
+
+.site-navigation-scrolled
+.site-navigation-logo-sticky:hover {
+  transform:
+    rotate(-2deg)
+    scale(1.06);
 }
 
 
@@ -491,20 +511,19 @@
   }
 
 
-  /*
-    Hide the desktop links on mobile.
-    The burger is always available instead.
-  */
+  /* Hide desktop navigation links */
+
   .site-navigation-links {
     display: none;
   }
 
 
-  /*
-    Sticky logo position on mobile.
-  */
+  /* ======================================
+     INNER PAGE STICKY LOGO — MOBILE
+  ====================================== */
+
   .site-navigation-scrolled
-  .site-navigation-logo-link {
+  .site-navigation-logo-sticky {
     top: 18px;
     left: 18px;
 
@@ -515,6 +534,10 @@
       11px;
   }
 
+
+  /* ======================================
+     BURGER — MOBILE
+  ====================================== */
 
   .navigation-burger {
     top: 18px;
@@ -530,6 +553,10 @@
     transform: scale(1);
   }
 
+
+  /* ======================================
+     OVERLAY — MOBILE
+  ====================================== */
 
   .navigation-overlay {
     padding:
