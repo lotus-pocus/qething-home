@@ -34,14 +34,7 @@
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      90deg,
-      var(--player-red) 0%,
-      var(--player-red) 50%,
-      var(--qe-blue-light, var(--qe-blue)) 50%,
-      var(--qe-blue-light, var(--qe-blue)) 100%
-    );
+  background: var(--qe-pink);
 
   clip-path: polygon(
     0 0%,
