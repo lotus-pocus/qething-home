@@ -1,7 +1,11 @@
 .intro-section {
   position: relative;
 
-  background: var(--qe-purple);
+  background: linear-gradient(
+    90deg,
+    #6600FF 0%,
+    #34005D 100%
+  );
 
   z-index: 1;
 }

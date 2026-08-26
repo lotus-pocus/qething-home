@@ -4,7 +4,11 @@
   width: 100%;
   height: 100vh;
 
-  background: var(--qe-purple);
+  background: linear-gradient(
+    90deg,
+    #6600FF 0%,
+    #34005D 100%
+  );
 
   overflow: visible;
 
