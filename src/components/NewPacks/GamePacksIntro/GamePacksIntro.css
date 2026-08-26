@@ -19,10 +19,10 @@
   margin-bottom: 0;
 
   height: clamp(
-    680px,
-    56vw,
-    900px
-  );
+   760px,
+   68vw,
+   1120px
+ );
 
   overflow: hidden;
 
