@@ -192,7 +192,7 @@
 ======================================== */
 
 .site-navigation-scrolled
-.site-navigation-logo-link {
+.site-navigation-logo-sticky {
   position: fixed;
 
   top: 26px;

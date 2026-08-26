@@ -75,9 +75,7 @@ const Navigation = () => {
           <img
             className="site-navigation-logo"
             src={
-              hasScrolled || !isHome
-                ? "/images/Q_E_logo_Black.png"
-                : "/images/qething-logo.png"
+              isHome ? "/images/qething-logo.png" : "/images/Q_E_logo_Black.png"
             }
             alt="QEthing"
           />
