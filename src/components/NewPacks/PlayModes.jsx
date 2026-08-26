@@ -1,15 +1,11 @@
+import {
+  useEffect,
+  useState,
+} from "react";
+
 import { motion } from "framer-motion";
+
 import "./PlayModes.css";
-
-
-/* ========================================
-   CONTAINER
-======================================== */
-
-const containerVariants = {
-  hidden: {},
-  visible: {},
-};
 
 
 /* ========================================
@@ -53,97 +49,120 @@ const teamsVariants = {
 
 
 /* ========================================
-   LEFT COPY ANIMATION
-======================================== */
-
-const soloCopyVariants = {
-  hidden: {
-    x: "-140%",
-    opacity: 0,
-    scale: 0.82,
-  },
-
-  visible: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-
-    transition: {
-      delay: 2.2,
-
-      x: {
-        type: "spring",
-        stiffness: 150,
-        damping: 11,
-        mass: 0.9,
-      },
-
-      scale: {
-        type: "spring",
-        stiffness: 220,
-        damping: 9,
-        mass: 0.75,
-      },
-
-      opacity: {
-        duration: 0.15,
-      },
-    },
-  },
-};
-
-
-const teamsCopyVariants = {
-  hidden: {
-    x: "140%",
-    opacity: 0,
-    scale: 0.82,
-  },
-
-  visible: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-
-    transition: {
-      delay: 2.35,
-
-      x: {
-        type: "spring",
-        stiffness: 150,
-        damping: 11,
-        mass: 0.9,
-      },
-
-      scale: {
-        type: "spring",
-        stiffness: 220,
-        damping: 9,
-        mass: 0.75,
-      },
-
-      opacity: {
-        duration: 0.15,
-      },
-    },
-  },
-};
-
-/* ========================================
    COMPONENT
 ======================================== */
 
 const PlayModes = () => {
+
+  /* ----------------------------------------
+     VIDEO READY STATES
+  ---------------------------------------- */
+
+  const [
+    soloVideoReady,
+    setSoloVideoReady,
+  ] = useState(false);
+
+
+  const [
+    teamsVideoReady,
+    setTeamsVideoReady,
+  ] = useState(false);
+
+
+  /* ----------------------------------------
+     PANEL ANIMATION COMPLETE STATES
+  ---------------------------------------- */
+
+  const [
+    soloPanelComplete,
+    setSoloPanelComplete,
+  ] = useState(false);
+
+
+  const [
+    teamsPanelComplete,
+    setTeamsPanelComplete,
+  ] = useState(false);
+
+
+  /* ----------------------------------------
+     COPY REVEAL
+  ---------------------------------------- */
+
+  const [
+    showCopy,
+    setShowCopy,
+  ] = useState(false);
+
+
+  /* ========================================
+     WAIT FOR EVERYTHING FIRST
+  ======================================== */
+
+  useEffect(() => {
+
+    const videosReady =
+      soloVideoReady &&
+      teamsVideoReady;
+
+
+    const panelsComplete =
+      soloPanelComplete &&
+      teamsPanelComplete;
+
+
+    if (
+      !videosReady ||
+      !panelsComplete
+    ) {
+      return;
+    }
+
+
+    /*
+      Both MP4 panels are now in place
+      and both videos are ready.
+
+      Give them a little moment on screen
+      before bringing in the stickers.
+    */
+
+    const copyTimer =
+      window.setTimeout(() => {
+
+        setShowCopy(true);
+
+      }, 650);
+
+
+    return () => {
+      window.clearTimeout(
+        copyTimer
+      );
+    };
+
+  }, [
+    soloVideoReady,
+    teamsVideoReady,
+    soloPanelComplete,
+    teamsPanelComplete,
+  ]);
+
+
   return (
     <motion.section
       className="play-modes"
+
       aria-label="QEthing play modes"
-      variants={containerVariants}
+
       initial="hidden"
+
       whileInView="visible"
+
       viewport={{
         once: true,
-        amount: 0.8,
+        amount: 0.35,
       }}
     >
 
@@ -169,23 +188,55 @@ const PlayModes = () => {
         ====================================== */}
 
         <motion.div
-          className="play-modes-panel play-modes-panel-solo"
+          className="
+            play-modes-panel
+            play-modes-panel-solo
+          "
+
           variants={soloVariants}
+
+          onAnimationComplete={(
+            definition
+          ) => {
+
+            if (
+              definition === "visible"
+            ) {
+              setSoloPanelComplete(
+                true
+              );
+            }
+
+          }}
         >
+
           <div className="play-modes-solo-border">
 
             <video
-              className="play-modes-image play-modes-image-solo"
+              className="
+                play-modes-image
+                play-modes-image-solo
+              "
+
               src="/images/NewPacks/solo_1.mp4"
+
               autoPlay
               muted
               loop
               playsInline
               preload="auto"
+
               aria-label="QEthing rivals play"
+
+              onCanPlay={() => {
+                setSoloVideoReady(
+                  true
+                );
+              }}
             />
 
           </div>
+
         </motion.div>
 
 
@@ -194,23 +245,55 @@ const PlayModes = () => {
         ====================================== */}
 
         <motion.div
-          className="play-modes-panel play-modes-panel-teams"
+          className="
+            play-modes-panel
+            play-modes-panel-teams
+          "
+
           variants={teamsVariants}
+
+          onAnimationComplete={(
+            definition
+          ) => {
+
+            if (
+              definition === "visible"
+            ) {
+              setTeamsPanelComplete(
+                true
+              );
+            }
+
+          }}
         >
+
           <div className="play-modes-teams-border">
 
             <video
-              className="play-modes-image play-modes-image-teams"
+              className="
+                play-modes-image
+                play-modes-image-teams
+              "
+
               src="/images/NewPacks/teams.mp4"
+
               autoPlay
               muted
               loop
               playsInline
               preload="auto"
+
               aria-label="QEthing team play"
+
+              onCanPlay={() => {
+                setTeamsVideoReady(
+                  true
+                );
+              }}
             />
 
           </div>
+
         </motion.div>
 
 
@@ -219,15 +302,62 @@ const PlayModes = () => {
         ====================================== */}
 
         <motion.div
-          className="play-modes-copy play-modes-copy-solo"
-          variants={soloCopyVariants}
+          className="
+            play-modes-copy
+            play-modes-copy-solo
+          "
+
+          initial={{
+            x: "-150%",
+            opacity: 0,
+            scale: 0.9,
+          }}
+
+          animate={
+            showCopy
+              ? {
+                  x: 0,
+                  opacity: 1,
+                  scale: 1,
+                }
+              : {
+                  x: "-150%",
+                  opacity: 0,
+                  scale: 0.9,
+                }
+          }
+
+          transition={{
+            x: {
+              type: "spring",
+              stiffness: 80,
+              damping: 14,
+              mass: 1.1,
+            },
+
+            scale: {
+              type: "spring",
+              stiffness: 120,
+              damping: 11,
+              mass: 0.9,
+            },
+
+            opacity: {
+              duration: 0.25,
+            },
+          }}
         >
+
           <span className="play-modes-copy-line">
+
             PLAY AS{" "}
+
             <span className="play-modes-copy-emphasis">
               RIVALS!
             </span>
+
           </span>
+
         </motion.div>
 
 
@@ -236,15 +366,67 @@ const PlayModes = () => {
         ====================================== */}
 
         <motion.div
-          className="play-modes-copy play-modes-copy-teams"
-          variants={teamsCopyVariants}
+          className="
+            play-modes-copy
+            play-modes-copy-teams
+          "
+
+          initial={{
+            x: "150%",
+            opacity: 0,
+            scale: 0.9,
+          }}
+
+          animate={
+            showCopy
+              ? {
+                  x: 0,
+                  opacity: 1,
+                  scale: 1,
+                }
+              : {
+                  x: "150%",
+                  opacity: 0,
+                  scale: 0.9,
+                }
+          }
+
+          transition={{
+            delay:
+              showCopy
+                ? 0.18
+                : 0,
+
+            x: {
+              type: "spring",
+              stiffness: 80,
+              damping: 14,
+              mass: 1.1,
+            },
+
+            scale: {
+              type: "spring",
+              stiffness: 120,
+              damping: 11,
+              mass: 0.9,
+            },
+
+            opacity: {
+              duration: 0.25,
+            },
+          }}
         >
+
           <span className="play-modes-copy-line">
+
             OR PLAY AS{" "}
+
             <span className="play-modes-copy-emphasis">
               TEAMS!
             </span>
+
           </span>
+
         </motion.div>
 
       </div>
