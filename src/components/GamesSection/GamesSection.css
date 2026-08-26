@@ -281,19 +281,15 @@
 
   margin:
     0.5rem
-    4vw
+    auto
     0
-    auto;
+    17vw;
 
   font-family: "Outfit", sans-serif;
-
   font-size: clamp(1.2rem, 2vw, 1.7rem);
-
-  font-weight: 500;
-
+  font-weight: 550;
   line-height: 1.35;
-
-  color: var(--qe-purple);
+  color: white;
 }
 
 
