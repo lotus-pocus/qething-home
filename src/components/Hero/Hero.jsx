@@ -17,22 +17,6 @@ const Hero = () => {
         <div className="hero-dot-overlay" aria-hidden="true" />
       </div>
 
-      {/* WHITE DIAGONAL EDGE */}
-      <svg
-        className="hero-edge"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <line
-          x1="0"
-          y1="92"
-          x2="100"
-          y2="82"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-
       {/* LARGE OVERLAY LOGO */}
       <div className="hero-main-logo-wrap">
         <img

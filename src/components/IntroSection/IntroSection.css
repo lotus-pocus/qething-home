@@ -38,7 +38,7 @@
 ======================================== */
 
 .intro-title {
-  margin: 0 0 2rem;
+  margin: 1.8rem 0 3rem;
 
   font-family: "Outfit", sans-serif;
   font-size: clamp(3.5rem, 8vw, 8rem);

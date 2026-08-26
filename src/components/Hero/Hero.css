@@ -1,3 +1,7 @@
+/* ========================================
+   HERO
+======================================== */
+
 .hero {
   position: relative;
 
@@ -14,6 +18,7 @@
 
   z-index: 5;
 }
+
 
 /* ========================================
    VIDEO
@@ -35,6 +40,7 @@
   z-index: 1;
 }
 
+
 .hero-video {
   display: block;
 
@@ -43,6 +49,7 @@
 
   object-fit: cover;
 }
+
 
 /* ========================================
    DOT OVERLAY
@@ -68,28 +75,39 @@
   opacity: 0.3;
 }
 
+
 /* ========================================
-   WHITE DIAGONAL EDGE
+   CSS DIAGONAL EDGE
+
+   Matches the video clip:
+   left = 92%
+   right = 82%
+
+   White currently at 50% opacity
 ======================================== */
 
-.hero-edge {
-  position: absolute;
-  inset: 0;
+.hero::after {
+  content: "";
 
-  width: 100%;
-  height: 100%;
+  position: absolute;
+
+  inset: 0;
 
   z-index: 3;
 
   pointer-events: none;
-  overflow: visible;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  clip-path: polygon(
+    0% calc(92% - 7px),
+    100% calc(82% - 7px),
+    100% calc(82% + 7px),
+    0% calc(92% + 7px)
+  );
 }
 
-.hero-edge line {
-  stroke: #ffffff;
-  stroke-width: 15px;
-  stroke-linecap: square;
-}
+
 /* ========================================
    LARGE OVERLAY LOGO
 ======================================== */
@@ -116,6 +134,8 @@
   width: 100%;
   height: auto;
 }
+
+
 /* ========================================
    LOGO
 ======================================== */
@@ -133,12 +153,14 @@
   pointer-events: none;
 }
 
+
 .hero-logo {
   display: block;
 
   width: 100%;
   height: auto;
 }
+
 
 /* ========================================
    TAGLINE
@@ -159,6 +181,7 @@
   pointer-events: none;
 }
 
+
 .hero-tagline {
   width: 100%;
 
@@ -175,11 +198,13 @@
   color: var(--qe-pink);
 }
 
+
 /* ========================================
    RESPONSIVE
 ======================================== */
 
 @media (max-width: 768px) {
+
   .hero-logo-wrap {
     top: 20px;
     left: 20px;
@@ -187,9 +212,18 @@
     width: min(28vw, 160px);
   }
 
-  .hero-edge line {
-    stroke-width: 3px;
+
+  /* Thinner diagonal edge on mobile */
+
+  .hero::after {
+    clip-path: polygon(
+      0% calc(92% - 2px),
+      100% calc(82% - 2px),
+      100% calc(82% + 2px),
+      0% calc(92% + 2px)
+    );
   }
+
 
   .hero-tagline {
     padding: 0 1rem;
