@@ -10,6 +10,7 @@ import GamesSection from "../../components/GamesSection/GamesSection";
 import Customisation from "../../components/Customisation/Customisation";
 import NewPacks from "../../components/NewPacks/NewPacks";
 import ComingSoon from "../../components/ComingSoon/ComingSoon";
+import Unique from "../../components/Unique/Unique";
 
 
 const Home = () => {
@@ -73,6 +74,8 @@ const Home = () => {
         <IntroSection />
 
         <GamesSection />
+
+        <Unique />
 
         <Customisation />
 

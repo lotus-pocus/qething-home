@@ -1,0 +1,311 @@
+/* ========================================
+   UNIQUE SECTION
+======================================== */
+
+.unique-section {
+  position: relative;
+
+  width: 100%;
+
+  min-height: clamp(180px, 18vw, 320px);
+
+  margin-top: -4vw;
+  margin-bottom: -10.5vw;
+
+  /*
+    This becomes the visible diagonal
+    stripe around the purple panel.
+  */
+  background: var(--qe-pink);
+
+  z-index: 6;
+
+  overflow: visible;
+}
+
+
+/* ========================================
+   PURPLE UNIQUE PANEL
+======================================== */
+
+.unique-section::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  /*
+    Move the purple shape slightly down
+    to expose the QE-pink stripe along
+    the top diagonal.
+  */
+  top: 14px;
+
+  background: linear-gradient(
+    90deg,
+    #6600FF 0%,
+    #34005D 100%
+  );
+
+  clip-path: polygon(
+    0 12%,
+    100% 0,
+    100% 87%,
+    0 72%
+  );
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   CUT THE WHOLE SECTION TO ITS SHAPE
+======================================== */
+
+.unique-section {
+  clip-path: polygon(
+    0 12%,
+    100% 0,
+    100% 87%,
+    0 72%
+  );
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.unique-content {
+  position: relative;
+
+  display: grid;
+  grid-template-columns:
+    minmax(240px, 0.8fr)
+    minmax(320px, 1fr);
+
+  align-items: center;
+
+  gap: clamp(2rem, 5vw, 7rem);
+
+  width: min(1200px, 84vw);
+
+  min-height: clamp(180px, 18vw, 320px);
+
+  margin: 0 auto;
+
+  /*
+    Extra room compensates for the
+    clipped top/bottom.
+  */
+  padding:
+    clamp(3.5rem, 5vw, 6rem)
+    0
+    clamp(4rem, 6vw, 7rem);
+
+  z-index: 2;
+}
+
+
+/* ========================================
+   STAR GRAPHIC
+======================================== */
+
+.unique-star {
+  display: block;
+
+  width: clamp(180px, 23vw, 360px);
+  height: auto;
+
+  justify-self: center;
+
+  /*
+    Let the star poke beyond the purple
+    strip like the designer version.
+  */
+  transform-origin: center;
+
+  margin-top: -1rem;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.unique-title {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin: 0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(
+    2.8rem,
+    5.2vw,
+    6.2rem
+  );
+
+  font-weight: 900;
+
+  line-height: 0.76;
+
+  letter-spacing: -0.045em;
+
+  text-align: center;
+
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  /*
+    Purple depth/outline similar to
+    the sticker typography elsewhere.
+  */
+  -webkit-text-stroke:
+    clamp(2px, 0.22vw, 4px)
+    #5020a8;
+
+  paint-order: stroke fill;
+
+  text-shadow:
+    0 3px 0 #481493,
+    0 6px 0 #35106e,
+    0 9px 8px rgba(21, 4, 48, 0.3);
+
+  position: relative;
+
+  z-index: 4;
+}
+
+
+.unique-title span {
+  display: block;
+
+  white-space: nowrap;
+}
+
+
+/* GAMESHOW! slightly larger */
+
+.unique-title span:last-child {
+  font-size: 1.08em;
+}
+
+
+/* ========================================
+   TABLET / MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .unique-section {
+    min-height: 300px;
+
+    margin-top: -30px;
+
+    clip-path: polygon(
+      0 10%,
+      100% 0,
+      100% 90%,
+      0 78%
+    );
+  }
+
+
+  .unique-section::before {
+    inset: -4px;
+
+    clip-path: polygon(
+      0 10%,
+      100% 0,
+      100% 90%,
+      0 78%
+    );
+  }
+
+
+  .unique-content {
+    grid-template-columns: 1fr;
+
+    gap: 0.5rem;
+
+    width: 90vw;
+
+    min-height: 300px;
+
+    padding:
+      3.5rem
+      0
+      4.5rem;
+  }
+
+
+  .unique-star {
+    width: clamp(
+      160px,
+      46vw,
+      260px
+    );
+
+    margin:
+      -1rem
+      auto
+      0;
+  }
+
+
+  .unique-title {
+    font-size: clamp(
+      2.4rem,
+      10vw,
+      4.5rem
+    );
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .unique-section {
+    min-height: 270px;
+  }
+
+
+  .unique-content {
+    min-height: 270px;
+
+    padding:
+      3rem
+      0
+      4rem;
+  }
+
+
+  .unique-star {
+    width: 48vw;
+  }
+
+
+  .unique-title {
+    font-size: clamp(
+      2rem,
+      9.5vw,
+      3.5rem
+    );
+  }
+}

@@ -148,31 +148,7 @@ const GamesSection = () => {
 
         <GamesCarousel />
 
-        {/* =====================================
-            BOTTOM MESSAGE
-            IT'S NOT / JUST A / GAMESHOW!
-        ====================================== */}
-
-        <div className="games-title-sticker games-title-sticker-bottom">
-          <motion.div
-            className="games-sticker-title games-sticker-title-bottom"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.4,
-            }}
-            transition={{
-              staggerChildren: 0.18,
-            }}
-          >
-            <StickerLine>IT&apos;S NOT</StickerLine>
-
-            <StickerLine>JUST A</StickerLine>
-
-            <StickerLine>GAMESHOW!</StickerLine>
-          </motion.div>
-        </div>
+              
       </div>
     </section>
   );
