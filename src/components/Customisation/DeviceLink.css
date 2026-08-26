@@ -1,15 +1,24 @@
 /* ========================================
    DEVICE LINK
-   TV + animated connector + laptop
+   TV + laptop + compact connector
 ======================================== */
 
 .device-link {
   position: relative;
 
   width: 100%;
-  height: clamp(430px, 39vw, 620px);
 
-  margin-top: clamp(1.5rem, 2.5vw, 3rem);
+  height: clamp(
+    350px,
+    34vw,
+    540px
+  );
+
+  margin-top: clamp(
+    0.5rem,
+    1vw,
+    1.2rem
+  );
 
   overflow: visible;
 }
@@ -22,19 +31,18 @@
 .device-link-tv {
   position: absolute;
 
-  left: -1%;
-  bottom: -3%;
+  left: -4%;
+  bottom: 1%;
 
   display: block;
 
-  width: 43%;
+  width: 51%;
   height: auto;
 
   object-fit: contain;
 
   z-index: 3;
 }
-
 
 
 /* ========================================
@@ -44,12 +52,12 @@
 .device-link-laptop {
   position: absolute;
 
-  right: 10%;
-  bottom: -2%;
+  right: 4%;
+  bottom: 2%;
 
   display: block;
 
-  width: 37%;
+  width: 44%;
   height: auto;
 
   object-fit: contain;
@@ -59,48 +67,80 @@
 
 
 /* ========================================
-   ANIMATED CONNECTOR
+   COMPACT ANIMATED CONNECTOR
 ======================================== */
 
 .device-link-connector {
   position: absolute;
 
-  top: 6%;
-  left: 0;
+  left: 43%;
+  top: 52%;
 
-  width: 100%;
-  height: 42%;
+  width: 15%;
+  height: auto;
 
   overflow: visible;
 
-  z-index: 2;
+  z-index: 6;
 
   pointer-events: none;
+
+  transform-origin: center;
 }
 
+
+/* ========================================
+   DOTTED LINE
+======================================== */
 
 .device-link-path {
   fill: none;
 
   stroke: #00ef28;
+
   stroke-width: 7;
 
-  /* KEEP STROKE THE SAME THICKNESS
-     EVEN WHEN THE SVG IS STRETCHED */
   vector-effect: non-scaling-stroke;
 
-  stroke-linecap: butt;
-  stroke-linejoin: round;
+  stroke-linecap: round;
 
-  stroke-dasharray: 18 18;
+  stroke-dasharray: 12 17;
 
   animation:
     device-link-flow
-    0.9s
+    0.8s
     linear
     infinite;
 }
 
+
+/* ========================================
+   ARROW HEAD
+======================================== */
+
+.device-link-arrow {
+  fill: none;
+
+  stroke: #00ef28;
+
+  stroke-width: 7;
+
+  vector-effect: non-scaling-stroke;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(0, 239, 40, 0.45)
+    );
+}
+
+
+/* ========================================
+   FLOW RIGHT → LEFT
+======================================== */
 
 @keyframes device-link-flow {
 
@@ -109,7 +149,7 @@
   }
 
   to {
-    stroke-dashoffset: -36;
+    stroke-dashoffset: -29;
   }
 
 }
@@ -135,37 +175,46 @@
 @media (max-width: 900px) {
 
   .device-link {
-    height: clamp(360px, 68vw, 560px);
+    height: clamp(
+      330px,
+      61vw,
+      520px
+    );
+
+    margin-top: 0.5rem;
   }
 
 
   .device-link-tv {
-    left: -2%;
-    bottom: 7%;
+    left: -7%;
 
-    width: 52%;
+    bottom: 8%;
+
+    width: 56%;
   }
 
 
   .device-link-laptop {
-    right: 4%;
-    bottom: 9%;
+    right: 0;
 
-    width: 39%;
+    bottom: 10%;
+
+    width: 45%;
   }
 
 
   .device-link-connector {
-    top: 0;
+    left: 44%;
 
-    height: 47%;
+    top: 51%;
+
+    width: 14%;
   }
 
 
-  .device-link-path {
+  .device-link-path,
+  .device-link-arrow {
     stroke-width: 6;
-
-    stroke-dasharray: 16 16;
   }
 
 }
@@ -178,38 +227,42 @@
 @media (max-width: 520px) {
 
   .device-link {
-    height: 300px;
+    height: 280px;
+
+    margin-top: 0.3rem;
   }
 
 
   .device-link-tv {
-    left: -4%;
-    bottom: 9%;
+    left: -9%;
 
-    width: 60%;
+    bottom: 13%;
+
+    width: 62%;
   }
 
 
   .device-link-laptop {
-    right: -1%;
-    bottom: 14%;
+    right: -3%;
 
-    width: 39%;
+    bottom: 18%;
+
+    width: 44%;
   }
 
 
   .device-link-connector {
-    top: 2%;
+    left: 45%;
 
-    width: 100%;
-    height: 43%;
+    top: 48%;
+
+    width: 13%;
   }
 
 
-  .device-link-path {
-    stroke-width: 7;
-
-    stroke-dasharray: 18 16;
+  .device-link-path,
+  .device-link-arrow {
+    stroke-width: 6;
   }
 
 }

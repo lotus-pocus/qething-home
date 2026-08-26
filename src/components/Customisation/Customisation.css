@@ -44,6 +44,7 @@
 
 /* ========================================
    PINK → CUSTOMISATION TOP TRANSITION
+   UNCHANGED
 ======================================== */
 
 .customisation-top-edge {
@@ -63,6 +64,7 @@
 
 /* ========================================
    LIGHT PURPLE TOP BORDER
+   UNCHANGED
 ======================================== */
 
 .customisation-top-edge::before {
@@ -87,6 +89,7 @@
 
 /* ========================================
    PINK FOREGROUND
+   UNCHANGED
 ======================================== */
 
 .customisation-top-edge::after {
@@ -118,7 +121,7 @@
 
   z-index: 5;
 
-  width: min(1500px, 92vw);
+  width: min(1500px, 94vw);
 
   margin: 0 auto;
 
@@ -140,7 +143,7 @@
 
   width: 100%;
 
-  margin-bottom: -1rem;
+  margin-bottom: 0;
 
   text-align: center;
 }
@@ -244,7 +247,6 @@
 
   display: block;
 
-  /* YOUR is deliberately the hero word */
   font-size: clamp(
     5rem,
     8.5vw,
@@ -260,14 +262,12 @@
 
   color: #ffffff;
 
-  /* Slightly heavier outline than the other words */
   -webkit-text-stroke:
     clamp(7px, 0.7vw, 14px)
     #6714d8;
 
   paint-order: stroke fill;
 
-  /* Deeper "sticker" depth */
   text-shadow:
     0 4px 0 #5812c4,
     0 8px 0 #4810aa,
@@ -280,10 +280,6 @@
   -webkit-backface-visibility: hidden;
 
   will-change: transform;
-}
-
-.customisation-title-your {
-  /* your existing styles */
 
   cursor: default;
 }
@@ -324,10 +320,10 @@
 ======================================== */
 
 .customisation-intro {
-  max-width: 520px;
+  max-width: 620px;
 
   margin:
-    clamp(2rem, 3vw, 3rem)
+    clamp(1.5rem, 2vw, 2.2rem)
     auto
     0;
 
@@ -359,8 +355,8 @@
   width: 100%;
 
   min-height: clamp(
-    420px,
-    48vw,
+    550px,
+    49vw,
     760px
   );
 
@@ -390,16 +386,20 @@
 .customisation-show-creator {
   position: absolute;
 
-  right: -1%;
+  right: -0.5%;
 
-  bottom: -5%;
+  top: clamp(
+    205px,
+    21vw,
+    335px
+  );
 
   display: block;
 
   width: clamp(
-    225px,
-    30vw,
-    480px
+    220px,
+    23vw,
+    365px
   );
 
   height: auto;
@@ -418,8 +418,156 @@
 
 
 /* ========================================
+   FEATURE ICONS
+======================================== */
+
+.customisation-features {
+  position: relative;
+
+  z-index: 15;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: clamp(
+    1.5rem,
+    4vw,
+    5rem
+  );
+
+  align-items: start;
+
+  width: min(
+    1150px,
+    86%
+  );
+
+  /* lower the whole feature row */
+  margin-top: clamp(
+    2rem,
+    3vw,
+    3.5rem
+  );
+
+  /* shift the whole row towards the left */
+  margin-left: 3%;
+
+  margin-right: auto;
+}
+
+
+/* ========================================
+   INDIVIDUAL FEATURE
+======================================== */
+
+.customisation-feature {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: clamp(
+    0.75rem,
+    1.2vw,
+    1.3rem
+  );
+
+  min-width: 0;
+}
+
+
+/* ========================================
+   FEATURE ICON
+======================================== */
+
+.customisation-feature-icon {
+  display: block;
+
+  flex: 0 0 auto;
+
+  width: clamp(
+    46px,
+    4vw,
+    70px
+  );
+
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(0, 239, 40, 0.55)
+    )
+    drop-shadow(
+      0 0 10px
+      rgba(0, 239, 40, 0.22)
+    );
+}
+
+
+/* ========================================
+   FEATURE COPY
+======================================== */
+
+.customisation-feature-copy {
+  min-width: 0;
+
+  text-align: left;
+}
+
+
+.customisation-feature-copy h3 {
+  margin: 0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(
+    1.05rem,
+    1.65vw,
+    1.65rem
+  );
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  color: var(--qe-purple);
+}
+
+
+.customisation-feature-copy p {
+  margin:
+    0.3rem
+    0
+    0;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: clamp(
+    0.85rem,
+    1.15vw,
+    1.05rem
+  );
+
+  font-weight: 600;
+
+  line-height: 1.15;
+
+  color: var(--qe-purple);
+}
+
+
+/* ========================================
    CUSTOMISATION → NEW PACKS
    JAGGED TRANSITION
+   UNCHANGED
 ======================================== */
 
 .customisation-bottom-edge {
@@ -444,6 +592,7 @@
 
 /* ========================================
    GREY JAGGED MASK
+   UNCHANGED
 ======================================== */
 
 .customisation-bottom-edge::before {
@@ -470,6 +619,7 @@
 
 /* ========================================
    LIGHT PURPLE JAGGED STRIPE
+   UNCHANGED
 ======================================== */
 
 .customisation-bottom-edge::after {
@@ -519,7 +669,7 @@
   ---------------------------------------- */
 
   .customisation-content {
-    width: 88vw;
+    width: 90vw;
 
     padding:
       8rem
@@ -570,6 +720,8 @@
 
   .customisation-intro {
     max-width: 520px;
+
+    margin-top: 1.7rem;
   }
 
 
@@ -579,9 +731,9 @@
 
   .customisation-visuals {
     min-height: clamp(
-      360px,
-      79vw,
-      650px
+      520px,
+      93vw,
+      730px
     );
 
     overflow: visible;
@@ -602,14 +754,18 @@
   ---------------------------------------- */
 
   .customisation-show-creator {
-    right: -2%;
+    right: -4%;
 
-    bottom: -3%;
+    top: clamp(
+      190px,
+      38vw,
+      310px
+    );
 
     width: clamp(
       180px,
-      38vw,
-      320px
+      31vw,
+      285px
     );
 
     z-index: 12;
@@ -617,7 +773,53 @@
 
 
   /* ----------------------------------------
+     FEATURES
+  ---------------------------------------- */
+
+  .customisation-features {
+    width: 94%;
+
+    gap: 1rem;
+
+    margin-top: -1rem;
+  }
+
+
+  .customisation-feature {
+    gap: 0.65rem;
+  }
+
+
+  .customisation-feature-icon {
+    width: clamp(
+      38px,
+      6vw,
+      56px
+    );
+  }
+
+
+  .customisation-feature-copy h3 {
+    font-size: clamp(
+      0.9rem,
+      2.1vw,
+      1.3rem
+    );
+  }
+
+
+  .customisation-feature-copy p {
+    font-size: clamp(
+      0.75rem,
+      1.7vw,
+      0.95rem
+    );
+  }
+
+
+  /* ----------------------------------------
      BOTTOM TRANSITION
+     UNCHANGED
   ---------------------------------------- */
 
   .customisation-bottom-edge {
@@ -633,6 +835,7 @@
 
   /* ----------------------------------------
      GREY JAGGED MASK
+     UNCHANGED
   ---------------------------------------- */
 
   .customisation-bottom-edge::before {
@@ -649,6 +852,7 @@
 
   /* ----------------------------------------
      PURPLE JAGGED STRIPE
+     UNCHANGED
   ---------------------------------------- */
 
   .customisation-bottom-edge::after {
@@ -752,7 +956,7 @@
   ---------------------------------------- */
 
   .customisation-visuals {
-    min-height: 330px;
+    min-height: 490px;
 
     overflow: visible;
 
@@ -774,12 +978,12 @@
   .customisation-show-creator {
     right: -12%;
 
-    bottom: 0;
+    top: 154px;
 
     width: clamp(
-      170px,
-      46vw,
-      230px
+      155px,
+      42vw,
+      210px
     );
 
     z-index: 12;
@@ -787,7 +991,48 @@
 
 
   /* ----------------------------------------
+     FEATURES
+  ---------------------------------------- */
+
+  .customisation-features {
+    grid-template-columns: 1fr;
+
+    gap: 0.9rem;
+
+    width: min(
+      330px,
+      86%
+    );
+
+    margin-top: -0.25rem;
+  }
+
+
+  .customisation-feature {
+    justify-content: flex-start;
+
+    gap: 1rem;
+  }
+
+
+  .customisation-feature-icon {
+    width: 46px;
+  }
+
+
+  .customisation-feature-copy h3 {
+    font-size: 1rem;
+  }
+
+
+  .customisation-feature-copy p {
+    font-size: 0.85rem;
+  }
+
+
+  /* ----------------------------------------
      BOTTOM TRANSITION
+     UNCHANGED
   ---------------------------------------- */
 
   .customisation-bottom-edge {
@@ -799,6 +1044,7 @@
 
   /* ----------------------------------------
      GREY JAGGED MASK
+     UNCHANGED
   ---------------------------------------- */
 
   .customisation-bottom-edge::before {
@@ -815,6 +1061,7 @@
 
   /* ----------------------------------------
      PURPLE JAGGED STRIPE
+     UNCHANGED
   ---------------------------------------- */
 
   .customisation-bottom-edge::after {
