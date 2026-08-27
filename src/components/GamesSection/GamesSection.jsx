@@ -67,7 +67,7 @@ const GamesSection = () => {
         ====================================== */}
 
         <div className="games-heading">
-          <span className="games-kicker">Games</span>
+          
 
           {/* ===================================
               TOP-RIGHT STICKER

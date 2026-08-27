@@ -197,34 +197,7 @@
 }
 
 
-/* ========================================
-   KICKER
-======================================== */
 
-.games-kicker {
-  display: block;
-
-  margin-bottom: 0.8rem;
-
-  font-family:
-    "Outfit",
-    sans-serif;
-
-  font-size:
-    clamp(
-      0.9rem,
-      0.9vw,
-      1rem
-    );
-
-  font-weight: 800;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.12em;
-
-  color: var(--qe-purple);
-}
 
 
 /* ========================================
