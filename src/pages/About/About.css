@@ -3,29 +3,46 @@
 ======================================== */
 
 .about-page {
-  /* Diagonal system */
   --about-diagonal: clamp(55px, 5.5vw, 100px);
-  --about-divider: clamp(10px, 0.8vw, 16px);
 
-  /* Alignment system */
   --about-content-width: 1400px;
   --about-copy-width: 900px;
-  --about-page-gutter: clamp(40px, 6vw, 110px);
+
+  --about-page-gutter: clamp(
+    40px,
+    6vw,
+    110px
+  );
 
   width: 100%;
+
   overflow: hidden;
 
   background: #ffffff;
+
   color: var(--qe-purple);
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 }
 
+
+/* ========================================
+   SHARED CONTAINER
+======================================== */
+
 .about-container {
-  width: min(
-    var(--about-content-width),
-    calc(100% - (var(--about-page-gutter) * 2))
-  );
+  width:
+    min(
+      var(--about-content-width),
+      calc(
+        100% -
+        (
+          var(--about-page-gutter) * 2
+        )
+      )
+    );
 
   margin: 0 auto;
 }
@@ -33,29 +50,45 @@
 
 /* ========================================
    HERO
+   Owns HERO → STORY diagonal
 ======================================== */
 
 .about-hero {
   position: relative;
 
-  padding-top: clamp(220px, 18vw, 290px);
+  z-index: 3;
+
+  padding-top:
+    clamp(
+      220px,
+      18vw,
+      290px
+    );
 
   padding-bottom:
     calc(
-      clamp(70px, 9vw, 130px)
-      + var(--about-diagonal)
+      clamp(
+        70px,
+        9vw,
+        130px
+      )
+      +
+      var(--about-diagonal)
     );
 
   background: #ffffff;
 
-  z-index: 3;
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - var(--about-diagonal)),
-    0 100%
-  );
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100%
+        calc(
+          100% -
+          var(--about-diagonal)
+        ),
+      0 100%
+    );
 }
 
 
@@ -66,16 +99,41 @@
 .about-studios-logo {
   display: block;
 
-  width: clamp(180px, 22vw, 320px);
+  width:
+    clamp(
+      180px,
+      22vw,
+      320px
+    );
+
   height: auto;
 
-  margin-bottom: clamp(4rem, 7vw, 7rem);
+  margin-bottom:
+    clamp(
+      4rem,
+      7vw,
+      7rem
+    );
 }
 
-.about-eyebrow {
-  margin: 0 0 1rem;
 
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+/* ========================================
+   HERO EYEBROW
+======================================== */
+
+.about-eyebrow {
+  margin:
+    0
+    0
+    1rem;
+
+  font-size:
+    clamp(
+      0.9rem,
+      1.2vw,
+      1.1rem
+    );
+
   font-weight: 800;
 
   letter-spacing: 0.14em;
@@ -83,13 +141,25 @@
   color: var(--qe-purple);
 }
 
+
+/* ========================================
+   HERO TITLE
+======================================== */
+
 .about-title {
   display: flex;
+
   flex-direction: column;
 
   margin: 0;
 
-  font-size: clamp(4.2rem, 9vw, 9rem);
+  font-size:
+    clamp(
+      4.2rem,
+      9vw,
+      9rem
+    );
+
   font-weight: 900;
 
   line-height: 0.82;
@@ -101,16 +171,43 @@
   color: var(--qe-purple);
 }
 
+
+.about-title span {
+  display: block;
+
+  white-space: nowrap;
+}
+
+
 .about-title-pink {
   color: var(--qe-pink);
 }
 
+
+/* ========================================
+   HERO INTRO
+======================================== */
+
 .about-intro {
-  max-width: var(--about-copy-width);
+  max-width:
+    var(--about-copy-width);
 
-  margin: clamp(2rem, 4vw, 4rem) 0 0;
+  margin:
+    clamp(
+      2rem,
+      4vw,
+      4rem
+    )
+    0
+    0;
 
-  font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+  font-size:
+    clamp(
+      1.45rem,
+      2.4vw,
+      2.2rem
+    );
+
   font-weight: 700;
 
   line-height: 1.25;
@@ -120,52 +217,96 @@
 
 
 /* ========================================
-   STORY / WORKSTATION
+   WHY WE BUILT QETHING
+   Owns STORY → NETWORK diagonal
 ======================================== */
 
 .about-story {
   position: relative;
 
-  padding:
-    calc(clamp(70px, 9vw, 130px) + var(--about-diagonal))
-    0
-    calc(
-      clamp(100px, 12vw, 170px)
-      + var(--about-diagonal)
-    );
-
-  margin-top: calc(-1 * var(--about-diagonal));
-
-  background: var(--qe-purple);
-  color: white;
-
   z-index: 2;
 
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - var(--about-diagonal)),
-    0 100%
-  );
+  margin-top:
+    calc(
+      -1 *
+      var(--about-diagonal)
+    );
+
+  padding:
+    calc(
+      clamp(
+        70px,
+        9vw,
+        130px
+      )
+      +
+      var(--about-diagonal)
+    )
+    0
+    calc(
+      clamp(
+        100px,
+        12vw,
+        170px
+      )
+      +
+      var(--about-diagonal)
+    );
+
+  background:
+    var(--qe-purple);
+
+  color: #ffffff;
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100%
+        calc(
+          100% -
+          var(--about-diagonal)
+        ),
+      0 100%
+    );
+}
+
+
+.about-built-content {
+  padding-top:
+    clamp(
+      1rem,
+      2vw,
+      2rem
+    );
+
+  padding-bottom:
+    clamp(
+      1rem,
+      3vw,
+      3rem
+    );
 }
 
 
 /* ========================================
-   WHY WE BUILT QETHING
+   STORY TITLE
 ======================================== */
-
-.about-built-content {
-  padding-top: clamp(1rem, 2vw, 2rem);
-  padding-bottom: clamp(1rem, 3vw, 3rem);
-}
 
 .about-built-title {
   margin: 0;
 
-  font-size: clamp(3.3rem, 6.4vw, 7rem);
+  font-size:
+    clamp(
+      3.3rem,
+      6.4vw,
+      7rem
+    );
+
   font-weight: 900;
 
   line-height: 0.9;
+
   letter-spacing: -0.055em;
 
   text-transform: uppercase;
@@ -173,20 +314,37 @@
   color: #ffffff;
 }
 
+
+/* ========================================
+   STORY SUBTITLE
+======================================== */
+
 .about-built-subtitle {
   margin:
-    clamp(1rem, 2vw, 1.8rem)
+    clamp(
+      1rem,
+      2vw,
+      1.8rem
+    )
     0
     0;
 
-  font-size: clamp(1.7rem, 3vw, 3rem);
+  font-size:
+    clamp(
+      1.7rem,
+      3vw,
+      3rem
+    );
+
   font-weight: 800;
 
   line-height: 1.05;
+
   letter-spacing: -0.025em;
 
   color: #ffffff;
 }
+
 
 .about-built-subtitle span {
   display: inline-block;
@@ -194,17 +352,35 @@
   margin-top: 0.15em;
 
   font-size: 1.16em;
+
   font-weight: 900;
 
   color: var(--qe-pink);
 }
 
+
+/* ========================================
+   STORY COPY
+======================================== */
+
 .about-built-copy {
-  max-width: var(--about-copy-width);
+  max-width:
+    var(--about-copy-width);
 
-  margin-top: clamp(2.5rem, 4vw, 4rem);
+  margin-top:
+    clamp(
+      2.5rem,
+      4vw,
+      4rem
+    );
 
-  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+  font-size:
+    clamp(
+      1.05rem,
+      1.45vw,
+      1.35rem
+    );
+
   font-weight: 700;
 
   line-height: 1.1;
@@ -212,12 +388,18 @@
   color: #ffffff;
 }
 
+
 .about-built-copy p {
   margin:
     0
     0
-    clamp(2rem, 3.5vw, 3.5rem);
+    clamp(
+      2rem,
+      3.5vw,
+      3.5rem
+    );
 }
+
 
 .about-built-copy p:last-child {
   margin-bottom: 0;
@@ -231,54 +413,105 @@
 .about-network {
   position: relative;
 
-  margin-top: calc(-1 * var(--about-diagonal));
+  z-index: 1;
+
+  margin-top:
+    calc(
+      -1 *
+      var(--about-diagonal)
+    );
 
   padding:
     calc(
-      clamp(100px, 12vw, 170px)
-      + var(--about-diagonal)
+      clamp(
+        100px,
+        12vw,
+        170px
+      )
+      +
+      var(--about-diagonal)
     )
     0
-    clamp(110px, 12vw, 160px);
+    clamp(
+      110px,
+      12vw,
+      160px
+    );
 
   background: #ffffff;
-
-  z-index: 1;
 }
+
+
+/* ========================================
+   NETWORK HEADING
+======================================== */
 
 .about-network-heading {
   display: flex;
+
   flex-direction: column;
 
-  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+  margin-bottom:
+    clamp(
+      2.5rem,
+      4vw,
+      4rem
+    );
 
-  font-size: clamp(3rem, 5.6vw, 6rem);
+  font-size:
+    clamp(
+      3rem,
+      5.6vw,
+      6rem
+    );
+
   font-weight: 900;
 
   line-height: 0.86;
+
   letter-spacing: -0.055em;
 
   text-transform: uppercase;
 }
 
+
+.about-network-heading span {
+  display: block;
+}
+
+
 .about-network-heading span:first-child {
   color: var(--qe-purple);
 }
+
 
 .about-network-heading span:last-child {
   color: var(--qe-pink);
 }
 
-.about-network-copy {
-  max-width: var(--about-copy-width);
 
-  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+/* ========================================
+   NETWORK COPY
+======================================== */
+
+.about-network-copy {
+  max-width:
+    var(--about-copy-width);
+
+  font-size:
+    clamp(
+      1.05rem,
+      1.45vw,
+      1.35rem
+    );
+
   font-weight: 700;
 
   line-height: 1.1;
 
   color: var(--qe-purple);
 }
+
 
 .about-network-copy p {
   margin: 0;
@@ -292,12 +525,27 @@
 .about-experience {
   position: relative;
 
+  z-index: 3;
+
   padding:
-    clamp(110px, 11vw, 160px)
+    calc(
+      clamp(
+        95px,
+        10vw,
+        150px
+      )
+      +
+      var(--about-diagonal)
+    )
     0
     calc(
-      clamp(120px, 12vw, 180px)
-      + var(--about-diagonal)
+      clamp(
+        120px,
+        12vw,
+        180px
+      )
+      +
+      var(--about-diagonal)
     );
 
   background:
@@ -309,27 +557,48 @@
 
   color: #ffffff;
 
-  z-index: 3;
-
-  clip-path: polygon(
-    0 var(--about-diagonal),
-    100% 0,
-    100% calc(100% - var(--about-diagonal)),
-    0 100%
-  );
+  clip-path:
+    polygon(
+      0 var(--about-diagonal),
+      100% 0,
+      100%
+        calc(
+          100% -
+          var(--about-diagonal)
+        ),
+      0 100%
+    );
 }
+
 
 .about-commercial-content {
-  padding-top: clamp(1rem, 2vw, 2rem);
+  padding-top:
+    clamp(
+      1rem,
+      2vw,
+      2rem
+    );
 }
+
+
+/* ========================================
+   COMMERCIAL TITLE
+======================================== */
 
 .about-commercial-title {
   margin: 0;
 
-  font-size: clamp(3.3rem, 6vw, 6.5rem);
+  font-size:
+    clamp(
+      3.3rem,
+      6vw,
+      6.5rem
+    );
+
   font-weight: 900;
 
   line-height: 0.9;
+
   letter-spacing: -0.055em;
 
   text-transform: uppercase;
@@ -337,12 +606,29 @@
   color: #ffffff;
 }
 
+
+/* ========================================
+   COMMERCIAL COPY
+======================================== */
+
 .about-commercial-copy {
-  max-width: var(--about-copy-width);
+  max-width:
+    var(--about-copy-width);
 
-  margin-top: clamp(2rem, 3.5vw, 3.5rem);
+  margin-top:
+    clamp(
+      2rem,
+      3.5vw,
+      3.5rem
+    );
 
-  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+  font-size:
+    clamp(
+      1.05rem,
+      1.45vw,
+      1.35rem
+    );
+
   font-weight: 700;
 
   line-height: 1.1;
@@ -350,12 +636,18 @@
   color: #ffffff;
 }
 
+
 .about-commercial-copy p {
   margin:
     0
     0
-    clamp(1rem, 1.8vw, 1.6rem);
+    clamp(
+      1rem,
+      1.8vw,
+      1.6rem
+    );
 }
+
 
 .about-commercial-copy p:last-child {
   margin-bottom: 0;
@@ -369,30 +661,52 @@
 .about-london {
   position: relative;
 
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-
-  min-height: clamp(500px, 60vw, 780px);
-
-  margin-top: calc(-1 * var(--about-diagonal));
-
-  background: var(--qe-purple);
-
   z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.25fr)
+    minmax(280px, 0.75fr);
+
+  min-height:
+    clamp(
+      500px,
+      60vw,
+      780px
+    );
+
+  margin-top:
+    calc(
+      -1 *
+      var(--about-diagonal)
+    );
+
+  background:
+    var(--qe-purple);
 }
+
+
+/* ========================================
+   LONDON IMAGE
+======================================== */
 
 .about-london-image-wrap {
   position: relative;
 
+  min-width: 0;
+
   overflow: hidden;
 
-  clip-path: polygon(
-    0 var(--about-diagonal),
-    100% 0,
-    92% 100%,
-    0 100%
-  );
+  clip-path:
+    polygon(
+      0 var(--about-diagonal),
+      100% 0,
+      92% 100%,
+      0 100%
+    );
 }
+
 
 .about-london-image {
   display: block;
@@ -403,30 +717,63 @@
   object-fit: cover;
 }
 
+
+/* ========================================
+   LONDON COPY
+======================================== */
+
 .about-london-copy {
   display: flex;
+
   flex-direction: column;
 
   justify-content: center;
 
-  padding:
-    clamp(3rem, 6vw, 6rem)
-    clamp(2.5rem, 4vw, 4.5rem);
+  min-width: 0;
 
-  color: white;
+  padding:
+    clamp(
+      3rem,
+      6vw,
+      6rem
+    )
+    clamp(
+      2rem,
+      4vw,
+      4.5rem
+    );
+
+  color: #ffffff;
 }
 
+
 .about-london-copy span {
-  font-size: clamp(1rem, 1.6vw, 1.4rem);
+  font-size:
+    clamp(
+      1rem,
+      1.6vw,
+      1.4rem
+    );
+
   font-weight: 800;
 
   letter-spacing: 0.08em;
 }
 
-.about-london-copy strong {
-  margin: 0.5rem 0 1rem;
 
-  font-size: clamp(3.3rem, 6.5vw, 7rem);
+.about-london-copy strong {
+  margin:
+    0.5rem
+    0
+    1rem;
+
+  font-size:
+    clamp(
+      3.3rem,
+      6.5vw,
+      7rem
+    );
+
   font-weight: 900;
 
   line-height: 0.84;
@@ -441,16 +788,27 @@
 
 .about-closing {
   padding:
-    clamp(100px, 12vw, 170px)
+    clamp(
+      100px,
+      12vw,
+      170px
+    )
     0;
 
-  background: white;
+  background: #ffffff;
 }
+
 
 .about-closing-copy {
   margin: 0;
 
-  font-size: clamp(3.2rem, 6.4vw, 7rem);
+  font-size:
+    clamp(
+      3.2rem,
+      6.4vw,
+      7rem
+    );
+
   font-weight: 900;
 
   line-height: 0.88;
@@ -462,179 +820,331 @@
   color: var(--qe-purple);
 }
 
+
 .about-closing-copy span {
   color: var(--qe-pink);
 }
 
 
 /* ========================================
-   TABLET
+   SMALL DESKTOP
+   1100px AND BELOW
 ======================================== */
 
-@media (max-width: 950px) {
+@media (max-width: 1100px) {
 
-  .about-story-grid,
-  .about-network-layout {
-    grid-template-columns: 1fr;
+  .about-page {
+    --about-page-gutter:
+      clamp(
+        36px,
+        5vw,
+        60px
+      );
   }
 
-  .about-story-copy {
-    max-width: 680px;
+
+  .about-hero {
+    padding-top:
+      clamp(
+        200px,
+        21vw,
+        240px
+      );
   }
 
-  .about-workstation-frame {
-    width: 92%;
-    margin-left: auto;
-    margin-right: auto;
+
+  .about-studios-logo {
+    width:
+      clamp(
+        180px,
+        25vw,
+        270px
+      );
+
+    margin-bottom:
+      clamp(
+        3.5rem,
+        6vw,
+        5rem
+      );
   }
 
-  .about-network-copy {
-    max-width: var(--about-copy-width);
+
+  .about-title {
+    font-size:
+      clamp(
+        4rem,
+        8.7vw,
+        6rem
+      );
   }
 
-  .about-photo-cluster {
-    min-height: 600px;
+
+  .about-built-title {
+    font-size:
+      clamp(
+        3.2rem,
+        7vw,
+        5rem
+      );
+  }
+
+
+  .about-network-heading {
+    font-size:
+      clamp(
+        3rem,
+        6vw,
+        4.8rem
+      );
+  }
+
+
+  .about-commercial-title {
+    font-size:
+      clamp(
+        3.2rem,
+        6.5vw,
+        5rem
+      );
+  }
+
+
+  .about-london {
+    grid-template-columns:
+      minmax(0, 1.15fr)
+      minmax(250px, 0.85fr);
+
+    min-height:
+      clamp(
+        480px,
+        60vw,
+        650px
+      );
+  }
+
+
+  .about-london-copy {
+    padding:
+      clamp(
+        3rem,
+        5vw,
+        4rem
+      )
+      clamp(
+        2rem,
+        3vw,
+        3rem
+      );
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.2rem,
+        6vw,
+        5.2rem
+      );
   }
 
 }
 
 
 /* ========================================
-   MOBILE
+   TABLET
+   900px AND BELOW
 ======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
   .about-page {
-    --about-page-gutter: 6vw;
+    --about-diagonal:
+      clamp(
+        45px,
+        6vw,
+        60px
+      );
+
+    --about-page-gutter:
+      clamp(
+        32px,
+        5.5vw,
+        50px
+      );
   }
 
-  .about-container {
-    width: calc(
-      100% - (var(--about-page-gutter) * 2)
-    );
-  }
-
-
-  /* HERO */
 
   .about-hero {
-    padding-top: 190px;
-    padding-bottom: 80px;
+    padding-top:
+      clamp(
+        190px,
+        23vw,
+        215px
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          70px,
+          9vw,
+          90px
+        )
+        +
+        var(--about-diagonal)
+      );
   }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        180px,
+        28vw,
+        240px
+      );
+
+    margin-bottom:
+      clamp(
+        3rem,
+        7vw,
+        4.5rem
+      );
+  }
+
 
   .about-title {
-    font-size: clamp(3.7rem, 17vw, 6rem);
+    font-size:
+      clamp(
+        3.7rem,
+        8.5vw,
+        5rem
+      );
   }
+
 
   .about-intro {
-    font-size: 1.4rem;
+    max-width: 700px;
+
+    font-size:
+      clamp(
+        1.3rem,
+        2.8vw,
+        1.65rem
+      );
   }
 
-
-  /* STORY */
 
   .about-story {
-    padding-top: 100px;
-    padding-bottom: 110px;
+    padding-top:
+      calc(
+        clamp(
+          70px,
+          9vw,
+          90px
+        )
+        +
+        var(--about-diagonal)
+      );
 
-    clip-path: polygon(
-      0 35px,
-      100% 0,
-      100% 100%,
-      0 100%
-    );
+    padding-bottom:
+      calc(
+        clamp(
+          90px,
+          11vw,
+          120px
+        )
+        +
+        var(--about-diagonal)
+      );
   }
 
-  .about-story-grid {
-    gap: 3rem;
-  }
 
-  .about-story-copy {
-    padding-top: 0;
-  }
-
-  .about-workstation-frame {
-    width: 100%;
-
-    transform: rotate(1deg);
+  .about-built-title {
+    font-size:
+      clamp(
+        3rem,
+        7vw,
+        4.3rem
+      );
   }
 
 
-  /* NETWORK */
+  .about-built-subtitle {
+    font-size:
+      clamp(
+        1.65rem,
+        3.5vw,
+        2.3rem
+      );
+  }
+
 
   .about-network {
-    padding-top: 90px;
-    padding-bottom: 110px;
+    padding-top:
+      calc(
+        clamp(
+          90px,
+          11vw,
+          120px
+        )
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      clamp(
+        90px,
+        11vw,
+        120px
+      );
   }
+
 
   .about-network-heading {
-    font-size: clamp(2.8rem, 13vw, 4.8rem);
+    font-size:
+      clamp(
+        2.9rem,
+        6.5vw,
+        4rem
+      );
   }
 
-  .about-photo-cluster {
-    min-height: 470px;
-
-    margin-top: 1rem;
-  }
-
-  .about-photo {
-    border-width: 5px;
-  }
-
-  .about-photo-arcade {
-    left: 0;
-    top: 0;
-
-    width: 39%;
-    height: 70%;
-  }
-
-  .about-photo-pool {
-    right: 0;
-    top: 10%;
-
-    width: 57%;
-    height: 46%;
-  }
-
-  .about-photo-lava {
-    right: 15%;
-    bottom: 0;
-
-    width: 31%;
-    height: 45%;
-  }
-
-
-  /* EXPERIENCE */
 
   .about-experience {
-    padding-top: 100px;
-    padding-bottom: 110px;
+    padding-top:
+      calc(
+        clamp(
+          80px,
+          10vw,
+          110px
+        )
+        +
+        var(--about-diagonal)
+      );
 
-    clip-path: polygon(
-      0 0,
-      100% 35px,
-      100% 100%,
-      0 calc(100% - 30px)
-    );
+    padding-bottom:
+      calc(
+        clamp(
+          95px,
+          11vw,
+          120px
+        )
+        +
+        var(--about-diagonal)
+      );
   }
 
-  .about-section-title {
-    font-size: clamp(3.5rem, 15vw, 6rem);
+
+  .about-commercial-title {
+    font-size:
+      clamp(
+        3rem,
+        7vw,
+        4.3rem
+      );
   }
 
-  .about-experience-copy {
-    grid-template-columns: 1fr;
-
-    gap: 1.5rem;
-
-    margin-top: 3rem;
-  }
-
-
-  /* LONDON */
 
   .about-london {
     grid-template-columns: 1fr;
@@ -642,38 +1152,893 @@
     min-height: auto;
   }
 
-  .about-london-image-wrap {
-    height: 65vw;
-    min-height: 330px;
 
-    clip-path: polygon(
-      0 0,
-      100% 20px,
-      100% 100%,
-      0 94%
-    );
+  .about-london-image-wrap {
+    height:
+      clamp(
+        400px,
+        62vw,
+        540px
+      );
+
+    clip-path:
+      polygon(
+        0 var(--about-diagonal),
+        100% 0,
+        100% 100%,
+        0 94%
+      );
   }
+
 
   .about-london-copy {
     padding:
-      4rem
+      clamp(
+        4rem,
+        8vw,
+        5rem
+      )
       var(--about-page-gutter)
-      5rem;
+      clamp(
+        4.5rem,
+        9vw,
+        6rem
+      );
   }
 
+
   .about-london-copy strong {
-    font-size: clamp(3.6rem, 17vw, 6rem);
+    font-size:
+      clamp(
+        4rem,
+        10vw,
+        6rem
+      );
+  }
+
+
+  .about-closing-copy {
+    font-size:
+      clamp(
+        3rem,
+        7vw,
+        4.5rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+   768px AND BELOW
+======================================== */
+
+@media (max-width: 768px) {
+
+  .about-page {
+    --about-diagonal:
+      clamp(
+        35px,
+        7vw,
+        52px
+      );
+
+    --about-page-gutter:
+      clamp(
+        24px,
+        6vw,
+        42px
+      );
+  }
+
+
+  /* HERO */
+
+  .about-hero {
+    padding-top:
+      clamp(
+        170px,
+        25vw,
+        195px
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          65px,
+          11vw,
+          85px
+        )
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        170px,
+        34vw,
+        220px
+      );
+
+    margin-bottom:
+      clamp(
+        2.75rem,
+        8vw,
+        4rem
+      );
+  }
+
+
+  .about-eyebrow {
+    margin-bottom: 0.8rem;
+
+    font-size:
+      clamp(
+        0.8rem,
+        2.3vw,
+        0.95rem
+      );
+  }
+
+
+  .about-title {
+    font-size:
+      clamp(
+        3rem,
+        8.6vw,
+        4.2rem
+      );
+
+    line-height: 0.84;
+  }
+
+
+  .about-intro {
+    margin-top:
+      clamp(
+        1.75rem,
+        5vw,
+        2.5rem
+      );
+
+    font-size:
+      clamp(
+        1.2rem,
+        3.3vw,
+        1.45rem
+      );
+  }
+
+
+  /* STORY */
+
+  .about-story {
+    padding-top:
+      calc(
+        clamp(
+          65px,
+          11vw,
+          85px
+        )
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          80px,
+          13vw,
+          105px
+        )
+        +
+        var(--about-diagonal)
+      );
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100%
+          calc(
+            100% -
+            var(--about-diagonal)
+          ),
+        0 100%
+      );
+  }
+
+
+  .about-built-content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+
+  .about-built-title {
+    font-size:
+      clamp(
+        2.8rem,
+        8vw,
+        3.8rem
+      );
+  }
+
+
+  .about-built-subtitle {
+    margin-top:
+      clamp(
+        1.2rem,
+        4vw,
+        1.7rem
+      );
+
+    font-size:
+      clamp(
+        1.45rem,
+        4vw,
+        2rem
+      );
+
+    line-height: 1.08;
+  }
+
+
+  .about-built-copy {
+    margin-top:
+      clamp(
+        2rem,
+        7vw,
+        3rem
+      );
+
+    font-size:
+      clamp(
+        1rem,
+        2.8vw,
+        1.15rem
+      );
+
+    line-height: 1.2;
+  }
+
+
+  .about-built-copy p {
+    margin-bottom:
+      clamp(
+        1.75rem,
+        6vw,
+        2.5rem
+      );
+  }
+
+
+  /* NETWORK */
+
+  .about-network {
+    padding-top:
+      calc(
+        clamp(
+          75px,
+          12vw,
+          95px
+        )
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      clamp(
+        80px,
+        13vw,
+        105px
+      );
+  }
+
+
+  .about-network-heading {
+    margin-bottom:
+      clamp(
+        2rem,
+        6vw,
+        3rem
+      );
+
+    font-size:
+      clamp(
+        2.7rem,
+        8vw,
+        3.8rem
+      );
+
+    line-height: 0.9;
+  }
+
+
+  .about-network-copy {
+    font-size:
+      clamp(
+        1rem,
+        2.8vw,
+        1.15rem
+      );
+
+    line-height: 1.2;
+  }
+
+
+  /* COMMERCIAL */
+
+  .about-experience {
+    padding-top:
+      calc(
+        clamp(
+          75px,
+          12vw,
+          95px
+        )
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          85px,
+          14vw,
+          110px
+        )
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-commercial-content {
+    padding-top: 0;
+  }
+
+
+  .about-commercial-title {
+    font-size:
+      clamp(
+        2.8rem,
+        8vw,
+        3.8rem
+      );
+  }
+
+
+  .about-commercial-copy {
+    margin-top:
+      clamp(
+        2rem,
+        6vw,
+        2.75rem
+      );
+
+    font-size:
+      clamp(
+        1rem,
+        2.8vw,
+        1.15rem
+      );
+
+    line-height: 1.2;
+  }
+
+
+  /* LONDON */
+
+  .about-london-image-wrap {
+    height:
+      clamp(
+        340px,
+        68vw,
+        470px
+      );
+
+    min-height: 0;
+  }
+
+
+  .about-london-copy {
+    padding:
+      clamp(
+        3.5rem,
+        11vw,
+        4.5rem
+      )
+      var(--about-page-gutter)
+      clamp(
+        4rem,
+        12vw,
+        5rem
+      );
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.6rem,
+        12vw,
+        5.2rem
+      );
   }
 
 
   /* CLOSING */
 
   .about-closing {
-    padding: 90px 0;
+    padding:
+      clamp(
+        80px,
+        14vw,
+        105px
+      )
+      0;
   }
 
+
   .about-closing-copy {
-    font-size: clamp(2.8rem, 13vw, 5rem);
+    font-size:
+      clamp(
+        2.7rem,
+        8vw,
+        3.8rem
+      );
+
+    line-height: 0.92;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   600px AND BELOW
+======================================== */
+
+@media (max-width: 600px) {
+
+  .about-page {
+    --about-page-gutter:
+      clamp(
+        22px,
+        6vw,
+        32px
+      );
+  }
+
+
+  /* HERO */
+
+  .about-hero {
+    padding-top:
+      clamp(
+        155px,
+        31vw,
+        180px
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        160px,
+        42vw,
+        205px
+      );
+
+    margin-bottom:
+      clamp(
+        2.5rem,
+        10vw,
+        3.5rem
+      );
+  }
+
+
+  /*
+    Deliberately keeps the two title
+    phrases on one line each.
+
+    The lower vw value prevents the
+    title exceeding the container.
+  */
+  .about-title {
+    font-size:
+      clamp(
+        2rem,
+        8.4vw,
+        3.15rem
+      );
+
+    line-height: 0.87;
+
+    letter-spacing: -0.055em;
+  }
+
+
+  .about-intro {
+    max-width: 470px;
+
+    font-size:
+      clamp(
+        1.1rem,
+        4.2vw,
+        1.35rem
+      );
+  }
+
+
+  /* STORY */
+
+  .about-built-title {
+    font-size:
+      clamp(
+        2.45rem,
+        10.5vw,
+        3.2rem
+      );
+
+    line-height: 0.92;
+  }
+
+
+  .about-built-subtitle {
+    font-size:
+      clamp(
+        1.35rem,
+        5vw,
+        1.75rem
+      );
+  }
+
+
+  /* NETWORK */
+
+  .about-network-heading {
+    font-size:
+      clamp(
+        2.35rem,
+        10vw,
+        3.2rem
+      );
+
+    line-height: 0.92;
+  }
+
+
+  /* COMMERCIAL */
+
+  .about-commercial-title {
+    font-size:
+      clamp(
+        2.45rem,
+        10.5vw,
+        3.2rem
+      );
+
+    line-height: 0.92;
+  }
+
+
+  /* LONDON */
+
+  .about-london-image-wrap {
+    height:
+      clamp(
+        320px,
+        78vw,
+        410px
+      );
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.4rem,
+        15vw,
+        4.8rem
+      );
+  }
+
+
+  /* CLOSING */
+
+  .about-closing-copy {
+    font-size:
+      clamp(
+        2.3rem,
+        9.5vw,
+        3.1rem
+      );
+
+    line-height: 0.94;
+  }
+
+}
+
+
+/* ========================================
+   PHONE
+   430px AND BELOW
+======================================== */
+
+@media (max-width: 430px) {
+
+  .about-page {
+    --about-diagonal:
+      clamp(
+        32px,
+        9vw,
+        39px
+      );
+
+    --about-page-gutter:
+      clamp(
+        20px,
+        5.8vw,
+        25px
+      );
+  }
+
+
+  /* HERO */
+
+  .about-hero {
+    padding-top:
+      clamp(
+        145px,
+        38vw,
+        165px
+      );
+
+    padding-bottom:
+      calc(
+        60px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        155px,
+        45vw,
+        190px
+      );
+
+    margin-bottom:
+      clamp(
+        2.25rem,
+        10vw,
+        2.8rem
+      );
+  }
+
+
+  .about-eyebrow {
+    font-size:
+      clamp(
+        0.76rem,
+        3vw,
+        0.86rem
+      );
+
+    letter-spacing: 0.12em;
+  }
+
+
+  /*
+    430px:
+    approximately 35.7px.
+
+    375px:
+    approximately 31px.
+
+    This should keep both phrases
+    fully inside the content width.
+  */
+  .about-title {
+    font-size: 8.3vw;
+
+    line-height: 0.88;
+
+    letter-spacing: -0.055em;
+  }
+
+
+  .about-intro {
+    margin-top: 1.7rem;
+
+    font-size:
+      clamp(
+        1.08rem,
+        4.8vw,
+        1.25rem
+      );
+  }
+
+
+  /* STORY */
+
+  .about-story {
+    padding-top:
+      calc(
+        65px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        80px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-built-title {
+    font-size:
+      clamp(
+        2.25rem,
+        10vw,
+        2.7rem
+      );
+  }
+
+
+  .about-built-subtitle {
+    font-size:
+      clamp(
+        1.25rem,
+        5.4vw,
+        1.5rem
+      );
+  }
+
+
+  .about-built-copy {
+    font-size:
+      clamp(
+        1rem,
+        4.2vw,
+        1.08rem
+      );
+  }
+
+
+  /* NETWORK */
+
+  .about-network {
+    padding-top:
+      calc(
+        75px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom: 85px;
+  }
+
+
+  .about-network-heading {
+    font-size:
+      clamp(
+        2.2rem,
+        9.7vw,
+        2.6rem
+      );
+  }
+
+
+  .about-network-copy {
+    font-size:
+      clamp(
+        1rem,
+        4.2vw,
+        1.08rem
+      );
+  }
+
+
+  /* COMMERCIAL */
+
+  .about-experience {
+    padding-top:
+      calc(
+        75px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        85px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-commercial-title {
+    font-size:
+      clamp(
+        2.2rem,
+        9.7vw,
+        2.6rem
+      );
+  }
+
+
+  .about-commercial-copy {
+    font-size:
+      clamp(
+        1rem,
+        4.2vw,
+        1.08rem
+      );
+  }
+
+
+  /* LONDON */
+
+  .about-london-image-wrap {
+    height:
+      clamp(
+        300px,
+        82vw,
+        350px
+      );
+  }
+
+
+  .about-london-copy {
+    padding:
+      3.5rem
+      var(--about-page-gutter)
+      4rem;
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.2rem,
+        16vw,
+        4rem
+      );
+  }
+
+
+  /* CLOSING */
+
+  .about-closing {
+    padding:
+      75px
+      0;
+  }
+
+
+  .about-closing-copy {
+    font-size:
+      clamp(
+        2.15rem,
+        9.3vw,
+        2.5rem
+      );
   }
 
 }
