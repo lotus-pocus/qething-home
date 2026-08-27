@@ -11,9 +11,7 @@ const PlayGame = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const [unlocked, setUnlocked] = useState(() => {
-    return sessionStorage.getItem("qething-demo-unlocked") === "true";
-  });
+ const [unlocked, setUnlocked] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,7 +44,7 @@ const PlayGame = () => {
             >
               <div className="play-game-logo-wrap">
                 <img
-                  src="/images/IntroSection/qething logo.svg"
+                  src="/images/IntroSection/Qething_logo1.png"
                   alt="QEthing"
                   className="play-game-logo"
                 />
@@ -150,7 +148,7 @@ const PlayGame = () => {
             >
               <div className="play-game-logo-wrap">
                 <img
-                  src="/images/IntroSection/qething logo.svg"
+                  src="/images/IntroSection/Qething_logo1.png"
                   alt="QEthing"
                   className="play-game-logo"
                 />
