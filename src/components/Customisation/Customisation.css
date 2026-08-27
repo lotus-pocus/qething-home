@@ -1110,28 +1110,38 @@
   }
 
 
-  .customisation-show-creator {
-    top:
-      clamp(
-        500px,
-        126vw,
-        555px
-      );
+ .customisation-show-creator {
+   top:
+     clamp(
+       430px,
+       108vw,
+       500px
+     );
 
-    right:
-      clamp(
-        4px,
-        2vw,
-        12px
-      );
+   left: auto;
 
-    width:
-      clamp(
-        100px,
-        25vw,
-        130px
-      );
-  }
+   right:
+     clamp(
+       6px,
+       3vw,
+       16px
+     );
+
+   bottom: auto;
+
+   width:
+     clamp(
+       95px,
+       24vw,
+       120px
+     );
+
+   translate: 0 0;
+
+   z-index: 30;
+
+  display: block;
+}
 
 
   /* ========================================
