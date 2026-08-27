@@ -20,17 +20,17 @@ const ComingSoon = () => {
         <div className="coming-soon-video-wrap">
           <iframe
             className="coming-soon-video"
-            src="https://www.youtube.com/embed/HwxaTgaaK58"
+            src="https://www.youtube.com/embed/gBG46jVc-RM"
             title="QEthing trailer"
             allow="
-    accelerometer;
-    autoplay;
-    clipboard-write;
-    encrypted-media;
-    gyroscope;
-    picture-in-picture;
-    web-share
-  "
+      accelerometer;
+      autoplay;
+      clipboard-write;
+      encrypted-media;
+      gyroscope;
+      picture-in-picture;
+      web-share
+    "
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
