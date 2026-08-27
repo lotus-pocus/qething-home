@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import News from "./pages/News/News";
 import Contact from "./pages/Contact/Contact";
+import PlayGame from "./pages/PlayGame/PlayGame";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/PlayGame" element={<PlayGame />} />
       </Routes>
     </>
   );

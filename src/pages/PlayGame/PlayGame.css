@@ -1,0 +1,479 @@
+/* ========================================
+   PLAY GAME PAGE
+======================================== */
+
+.play-game-page {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  font-family: "Outfit", sans-serif;
+
+  color: var(--qe-purple);
+}
+
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
+
+.play-game-main {
+  position: relative;
+
+  min-height: 72vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    clamp(120px, 11vw, 170px)
+    6vw
+    clamp(120px, 10vw, 160px);
+
+  z-index: 2;
+}
+
+.play-game-content {
+  width: min(900px, 88vw);
+
+  text-align: center;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.play-game-logo-wrap {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.play-game-logo {
+  display: block;
+
+  width: clamp(180px, 20vw, 300px);
+  height: auto;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.play-game-title {
+  margin: 0;
+
+  font-size: clamp(3.4rem, 6vw, 6.5rem);
+  font-weight: 900;
+
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+
+  color: var(--qe-pink);
+}
+
+
+/* ========================================
+   ACCESS COPY
+======================================== */
+
+.play-game-access {
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+}
+
+.play-game-kicker {
+  margin: 0;
+
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: var(--qe-purple);
+}
+
+.play-game-intro {
+  margin:
+    clamp(0.8rem, 1.5vw, 1.3rem)
+    auto
+    0;
+
+  max-width: 680px;
+
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: var(--qe-purple);
+}
+
+
+/* ========================================
+   PASSWORD FORM
+======================================== */
+
+.play-game-form {
+  width: min(720px, 100%);
+
+  margin:
+    clamp(2rem, 3vw, 3rem)
+    auto
+    0;
+
+  text-align: left;
+}
+
+.play-game-label {
+  display: block;
+
+  margin-bottom: 0.65rem;
+
+  font-size: 0.85rem;
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+
+  color: var(--qe-purple);
+}
+
+.play-game-form-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  gap: 0.75rem;
+}
+
+.play-game-input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding:
+    1.1rem
+    1.3rem;
+
+  border:
+    4px solid
+    var(--qe-purple);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background: #ffffff;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+
+  color: var(--qe-purple);
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.play-game-input::placeholder {
+  color: rgba(61, 35, 146, 0.45);
+}
+
+.play-game-input:focus {
+  border-color: var(--qe-pink);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(255, 17, 222, 0.12);
+}
+
+.play-game-input-error {
+  border-color: var(--qe-pink);
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.play-game-submit,
+.play-game-launch {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.8rem;
+
+  padding:
+    1.05rem
+    1.6rem;
+
+  border: 0;
+
+  background: var(--qe-purple);
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 1rem;
+  font-weight: 900;
+
+  letter-spacing: 0.04em;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+.play-game-submit span,
+.play-game-launch span {
+  font-size: 1.35em;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   ERROR
+======================================== */
+
+.play-game-error-wrap {
+  min-height: 2rem;
+}
+
+.play-game-error {
+  margin:
+    0.65rem
+    0
+    0;
+
+  font-size: 0.9rem;
+  font-weight: 800;
+
+  color: var(--qe-pink);
+}
+
+
+/* ========================================
+   UNLOCKED
+======================================== */
+
+.play-game-unlocked {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.play-game-ready {
+  display: flex;
+  flex-direction: column;
+
+  margin:
+    clamp(1.3rem, 2vw, 2rem)
+    0
+    0;
+
+  font-size: clamp(4rem, 7vw, 7.5rem);
+  font-weight: 900;
+
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+
+  color: var(--qe-purple);
+}
+
+.play-game-ready span {
+  color: var(--qe-pink);
+}
+
+.play-game-ready-copy {
+  margin:
+    clamp(2rem, 3vw, 3rem)
+    0
+    0;
+
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  color: var(--qe-purple);
+}
+
+.play-game-launch {
+  margin-top: clamp(2rem, 3vw, 3rem);
+
+  padding:
+    1.2rem
+    2rem;
+
+  background: var(--qe-pink);
+}
+
+
+/* ========================================
+   BOTTOM GRADIENT
+======================================== */
+
+.play-game-gradient {
+  position: relative;
+
+  min-height: clamp(230px, 27vw, 400px);
+
+  margin-top: calc(-1 * clamp(60px, 6vw, 100px));
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff11de 0%,
+      #ffcf67 100%
+    );
+
+  clip-path: polygon(
+    0 24%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  z-index: 1;
+}
+
+.play-game-gradient-copy {
+  position: absolute;
+
+  left: 6vw;
+  bottom: clamp(3rem, 5vw, 5rem);
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.play-game-gradient-copy span {
+  font-size: clamp(1.1rem, 1.8vw, 1.7rem);
+  font-weight: 800;
+}
+
+.play-game-gradient-copy strong {
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-weight: 900;
+
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 950px) {
+
+  .play-game-main {
+    min-height: 70vh;
+
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  .play-game-content {
+    width: 100%;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .play-game-page {
+    min-height: 100svh;
+  }
+
+  .play-game-main {
+    min-height: 72svh;
+
+    padding:
+      120px
+      6vw
+      100px;
+  }
+
+  .play-game-logo {
+    width: clamp(160px, 48vw, 230px);
+  }
+
+  .play-game-title {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+
+  .play-game-access {
+    margin-top: 2.5rem;
+  }
+
+  .play-game-intro br {
+    display: none;
+  }
+
+  .play-game-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .play-game-submit {
+    width: 100%;
+  }
+
+  .play-game-ready {
+    font-size: clamp(3.5rem, 15vw, 5.5rem);
+  }
+
+  .play-game-gradient {
+    min-height: 280px;
+
+    clip-path: polygon(
+      0 14%,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+  }
+
+  .play-game-gradient-copy {
+    left: 6vw;
+    right: 6vw;
+
+    bottom: 3rem;
+  }
+
+}

@@ -10,7 +10,7 @@ const Navigation = () => {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
-  const isLightPage = ["/home", "/about", "/news", "/contact"].includes(
+  const isLightPage = ["/home", "/about", "/news", "/contact", "/PlayGame"].includes(
     location.pathname,
   );
 
@@ -119,6 +119,15 @@ const Navigation = () => {
             }
           >
             Contact
+          </NavLink>
+
+          <NavLink
+            to="/PlayGame"
+            className={({ isActive }) =>
+              isActive ? "nav-link nav-link-active" : "nav-link"
+            }
+          >
+            Play Game
           </NavLink>
         </nav>
       </header>

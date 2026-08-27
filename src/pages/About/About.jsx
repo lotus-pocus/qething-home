@@ -1,48 +1,4 @@
-import { motion } from "framer-motion";
 import "./About.css";
-
-const characterVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.65,
-  },
-
-  visible: {
-    opacity: 1,
-    scale: [0.65, 1.12, 1],
-
-    transition: {
-      duration: 0.28,
-      ease: "easeOut",
-    },
-  },
-};
-
-const lineVariants = {
-  hidden: {},
-
-  visible: {
-    transition: {
-      staggerChildren: 0.06,
-    },
-  },
-};
-
-const AboutStickerLine = ({ children }) => {
-  return (
-    <motion.span className="about-sticker-line" variants={lineVariants}>
-      {children.split("").map((character, index) => (
-        <motion.span
-          key={`${character}-${index}`}
-          className="about-sticker-character"
-          variants={characterVariants}
-        >
-          {character === " " ? "\u00A0" : character}
-        </motion.span>
-      ))}
-    </motion.span>
-  );
-};
 
 const About = () => {
   return (
