@@ -3,32 +3,31 @@
 ======================================== */
 
 .about-page {
+  /* Diagonal system */
+  --about-diagonal: clamp(55px, 5.5vw, 100px);
+  --about-divider: clamp(10px, 0.8vw, 16px);
+
+  /* Alignment system */
+  --about-content-width: 1400px;
+  --about-copy-width: 900px;
+  --about-page-gutter: clamp(40px, 6vw, 110px);
+
   width: 100%;
   overflow: hidden;
+
   background: #ffffff;
   color: var(--qe-purple);
+
   font-family: "Outfit", sans-serif;
 }
 
 .about-container {
-  width: min(1400px, 94vw);
+  width: min(
+    var(--about-content-width),
+    calc(100% - (var(--about-page-gutter) * 2))
+  );
+
   margin: 0 auto;
-}
-/* ========================================
-   ABOUT DIAGONAL SYSTEM
-======================================== */
-
-.about-page {
-  --about-diagonal: clamp(55px, 5.5vw, 100px);
-  --about-divider: clamp(10px, 0.8vw, 16px);
-
-  width: 100%;
-  overflow: hidden;
-
-  background: #ffffff;
-  color: var(--qe-purple);
-
-  font-family: "Outfit", sans-serif;
 }
 
 
@@ -58,6 +57,7 @@
     0 100%
   );
 }
+
 
 /* ========================================
    STUDIOS LOGO
@@ -106,7 +106,7 @@
 }
 
 .about-intro {
-  max-width: 760px;
+  max-width: var(--about-copy-width);
 
   margin: clamp(2rem, 4vw, 4rem) 0 0;
 
@@ -148,6 +148,7 @@
     0 100%
   );
 }
+
 
 /* ========================================
    WHY WE BUILT QETHING
@@ -199,7 +200,7 @@
 }
 
 .about-built-copy {
-  max-width: 900px;
+  max-width: var(--about-copy-width);
 
   margin-top: clamp(2.5rem, 4vw, 4rem);
 
@@ -212,8 +213,6 @@
 }
 
 .about-built-copy p {
-  max-width: 820px;
-
   margin:
     0
     0
@@ -223,6 +222,7 @@
 .about-built-copy p:last-child {
   margin-bottom: 0;
 }
+
 
 /* ========================================
    ONE CORE TEAM
@@ -244,10 +244,6 @@
   background: #ffffff;
 
   z-index: 1;
-}
-
-.about-network-content {
-  max-width: 1200px;
 }
 
 .about-network-heading {
@@ -274,7 +270,7 @@
 }
 
 .about-network-copy {
-  max-width: 950px;
+  max-width: var(--about-copy-width);
 
   font-size: clamp(1.05rem, 1.45vw, 1.35rem);
   font-weight: 700;
@@ -342,7 +338,7 @@
 }
 
 .about-commercial-copy {
-  max-width: 980px;
+  max-width: var(--about-copy-width);
 
   margin-top: clamp(2rem, 3.5vw, 3.5rem);
 
@@ -355,8 +351,6 @@
 }
 
 .about-commercial-copy p {
-  max-width: 900px;
-
   margin:
     0
     0
@@ -366,6 +360,7 @@
 .about-commercial-copy p:last-child {
   margin-bottom: 0;
 }
+
 
 /* ========================================
    WEST LONDON
@@ -416,7 +411,7 @@
 
   padding:
     clamp(3rem, 6vw, 6rem)
-    clamp(2rem, 5vw, 5rem);
+    clamp(2.5rem, 4vw, 4.5rem);
 
   color: white;
 }
@@ -494,7 +489,7 @@
   }
 
   .about-network-copy {
-    max-width: 680px;
+    max-width: var(--about-copy-width);
   }
 
   .about-photo-cluster {
@@ -510,8 +505,14 @@
 
 @media (max-width: 768px) {
 
+  .about-page {
+    --about-page-gutter: 6vw;
+  }
+
   .about-container {
-    width: 88vw;
+    width: calc(
+      100% - (var(--about-page-gutter) * 2)
+    );
   }
 
 
@@ -654,7 +655,10 @@
   }
 
   .about-london-copy {
-    padding: 4rem 6vw 5rem;
+    padding:
+      4rem
+      var(--about-page-gutter)
+      5rem;
   }
 
   .about-london-copy strong {

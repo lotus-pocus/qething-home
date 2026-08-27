@@ -21,7 +21,7 @@ const Hero = () => {
       <div className="hero-main-logo-wrap">
         <img
           className="hero-main-logo"
-          src="/images/IntroSection/Qething_logo.png"
+          src="/images/IntroSection/Qething_logo1.png"
           alt="QEthing"
         />
       </div>
