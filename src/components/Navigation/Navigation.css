@@ -23,19 +23,22 @@
 ======================================== */
 
 .site-navigation-logo-link {
+  position: fixed;
+  top: 24px;
+  left: 28px;
+  z-index: 1000;
+
   display: block;
 
-  width: min(14vw, 230px);
-
+  opacity: 1;
+  visibility: visible;
   pointer-events: auto;
+}
 
-  transition:
-    width 0.3s ease,
-    transform 0.3s ease,
-    opacity 0.25s ease,
-    visibility 0.25s ease,
-    background 0.3s ease,
-    filter 0.3s ease;
+.site-navigation-logo {
+  display: block;
+  width: clamp(72px, 7vw, 105px);
+  height: auto;
 }
 
 
@@ -43,13 +46,6 @@
   transform: scale(1.04);
 }
 
-
-.site-navigation-logo {
-  display: block;
-
-  width: 100%;
-  height: auto;
-}
 
 
 /* ========================================

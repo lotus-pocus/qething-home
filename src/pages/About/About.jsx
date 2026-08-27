@@ -52,6 +52,12 @@ const About = () => {
       ======================================== */}
       <section className="about-hero">
         <div className="about-container">
+          <img
+            src="/images/About/QEthing_Studios_black.svg"
+            alt="QEthing Studios"
+            className="about-studios-logo"
+          />
+
           <p className="about-eyebrow">ABOUT QETHING STUDIOS</p>
 
           <h1 className="about-title">
@@ -67,138 +73,82 @@ const About = () => {
       </section>
 
       {/* ========================================
-          INTRO / WORKSTATION
-      ======================================== */}
+    WHY WE BUILT QETHING
+======================================== */}
       <section className="about-story">
-        <div className="about-container about-story-grid">
-          <div className="about-story-copy">
-            <p>
-              We are a compact, senior-led studio built around a simple idea:
-              keep the creative vision focused and give it room to grow.
-            </p>
+        <div className="about-container about-built-content">
+          <h2 className="about-built-title">WHY WE BUILT QETHING</h2>
 
-            <p>
-              QEthing Studios brings together the game-development and creative
-              experience of Gamoola with the backend engineering expertise of
-              BigJump.
-            </p>
-
-            <p>
-              We operate as one team, sharing responsibility for the product,
-              its technology and its future.
-            </p>
-          </div>
-
-          <div className="about-workstation-frame">
-            <img
-              src="/images/About/workStation.jpg"
-              alt="Game development in progress at QEthing Studios"
-              className="about-workstation-image"
-            />
-
-            <motion.div
-              className="about-image-label"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.4,
-              }}
-              transition={{
-                staggerChildren: 0.18,
-              }}
-            >
-              <AboutStickerLine>MAKING THINGS</AboutStickerLine>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================
-          HOW WE WORK
-      ======================================== */}
-      <section className="about-network">
-        <div className="about-container">
-          <div className="about-network-heading">
-            <span>ONE CORE TEAM.</span>
-            <span>MORE WHEN WE NEED IT.</span>
-          </div>
-
-          <div className="about-network-layout">
-            <div className="about-network-copy">
-              <p>
-                Our core team is integral to every creative and technical
-                decision.
-              </p>
-
-              <p>
-                Around that core, we have access to a trusted network of
-                specialist artists, developers, producers and content creators
-                whom we can bring into the project as required.
-              </p>
-
-              <p>
-                It means we can move quickly during development and scale
-                intelligently for launch, new content and live operations.
-              </p>
-            </div>
-
-            <div className="about-photo-cluster">
-              <div className="about-photo about-photo-arcade">
-                <img
-                  src="/images/About/ArcadeMachine.webp"
-                  alt="Arcade machine at QEthing Studios"
-                />
-              </div>
-
-              <div className="about-photo about-photo-pool">
-                <img
-                  src="/images/About/poolTable.webp"
-                  alt="Pool table at the QEthing studio"
-                />
-              </div>
-
-              <div className="about-photo about-photo-lava">
-                <img
-                  src="/images/About/LavaLamp.webp"
-                  alt="Lava lamp and game characters in the studio"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================
-          EXPERIENCE
-      ======================================== */}
-      <section className="about-experience">
-        <div className="about-container">
-          <p className="about-section-kicker">WE'VE BEEN DOING THIS A WHILE</p>
-
-          <h2 className="about-section-title">
-            DECADES OF
+          <p className="about-built-subtitle">
+            We came together not simply to make a game,
             <br />
-            EXPERIENCE.
-          </h2>
+            <span>BUT TO BUILD A PLATFORM.</span>
+          </p>
 
-          <div className="about-experience-copy">
+          <div className="about-built-copy">
             <p>
-              Between us, we have decades of experience spanning games,
-              television, interactive entertainment and scalable digital
-              products.
+              From day one, QEthing was designed as a scalable, constantly
+              evolving platform. Its content is managed through a secure,
+              scalable backend, allowing us to introduce new question packs,
+              game types and experiences without rebuilding the core game.
             </p>
 
             <p>
-              That includes the first-party PlayStation 3 title Snakeball, more
-              than ten games developed for Sky's in-store experiences, work for
-              the BBC and other major broadcasters, and the design of the
-              real-time multiplayer, CMS and live-service technology powering
-              QEthing.
+              Localisation was considered from the beginning, giving QEthing the
+              flexibility to adapt its content, language and commercial
+              partnerships for different territories and audiences.
             </p>
           </div>
         </div>
       </section>
+
+      {/* ========================================
+    ONE CORE TEAM
+======================================== */}
+<section className="about-network">
+  <div className="about-container about-network-content">
+    <div className="about-network-heading">
+      <span>ONE CORE TEAM.</span>
+      <span>MORE WHEN WE NEED IT.</span>
+    </div>
+
+    <div className="about-network-copy">
+      <p>
+        Although we are a compact development team, we bring decades of experience
+        across games, television, interactive entertainment and technology. We
+        understand that creating a successful product involves much more than
+        developing a great game. It requires a clear audience, a sustainable content
+        strategy, reliable technology and multiple routes to market.
+      </p>
+    </div>
+  </div>
+</section>
+
+      {/* ========================================
+    COMMERCIAL THINKING
+======================================== */}
+<section className="about-experience">
+  <div className="about-container about-commercial-content">
+    <h2 className="about-commercial-title">
+      COMMERCIAL THINKING.
+    </h2>
+
+    <div className="about-commercial-copy">
+      <p>
+        That commercial thinking has influenced the design of QEthing at every
+        level. The modular structure supports new content and regular updates,
+        while individual mini-games have been designed with streaming, social
+        media, branded content and live events in mind.
+      </p>
+
+      <p>
+        QEthing is not intended to be a game that launches once and stands still.
+        It is a flexible social entertainment platform, built to grow with its
+        players, its content and its market.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* ========================================
           LONDON
@@ -229,14 +179,13 @@ const About = () => {
       <section className="about-closing">
         <div className="about-container">
           <p className="about-closing-copy">
-            WE MAY BE COMPACT,
+            QEthing studios
             <br />
-            BUT WE ARE
-            <span> AMBITIOUS,</span>
+                <span> AMBITIOUS </span>
+                experienced
             <br />
-            EXPERIENCED AND
+            AND BUILT TO SCALE.
             <br />
-            BUILT TO SCALE.
           </p>
         </div>
       </section>
