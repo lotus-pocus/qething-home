@@ -10,7 +10,7 @@ const Navigation = () => {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
-  const isLightPage = ["/about", "/news", "/contact"].includes(
+  const isLightPage = ["/home", "/about", "/news", "/contact"].includes(
     location.pathname,
   );
 
@@ -86,6 +86,14 @@ const Navigation = () => {
         {/* DESKTOP NAVIGATION */}
 
         <nav className="site-navigation-links" aria-label="Main navigation">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "nav-link nav-link-active" : "nav-link"
+            }
+          >
+            Home
+          </NavLink>
           <NavLink
             to="/about"
             className={({ isActive }) =>
