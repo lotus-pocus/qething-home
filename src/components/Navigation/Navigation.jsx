@@ -190,6 +190,16 @@ const Navigation = () => {
           >
             News
           </NavLink>
+          
+          <NavLink
+            to="/PlayGame"
+            onClick={closeMenu}
+            className={({ isActive }) =>
+              isActive ? "overlay-link-active" : ""
+            }
+          >
+            Play Game
+          </NavLink>
 
           <NavLink
             to="/contact"
