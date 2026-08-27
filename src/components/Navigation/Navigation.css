@@ -562,11 +562,50 @@
   }
 
 
-  .navigation-overlay-links a {
-    font-size: clamp(
-      3.8rem,
-      18vw,
-      7rem
-    );
+  .navigation-overlay-links {
+    gap: 0.08em;
   }
+
+
+  .navigation-overlay-links a {
+    font-size:
+      clamp(
+        2.9rem,
+        12.5vw,
+        5.4rem
+      );
+
+    line-height: 0.88;
+
+    white-space: nowrap;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 430px) {
+
+  .navigation-overlay {
+    padding:
+      5.5rem
+      6vw
+      2.5rem;
+  }
+
+
+  .navigation-overlay-links a {
+    font-size:
+      clamp(
+        2.55rem,
+        11.5vw,
+        3.1rem
+      );
+
+    line-height: 0.9;
+  }
+
 }
