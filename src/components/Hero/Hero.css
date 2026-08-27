@@ -3,16 +3,21 @@
 ======================================== */
 
 .hero {
+  --hero-diagonal: clamp(70px, 7vw, 130px);
+  --hero-edge: clamp(4px, 0.45vw, 7px);
+
   position: relative;
 
   width: 100%;
-  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
 
-  background: linear-gradient(
-    90deg,
-    #6600FF 0%,
-    #34005D 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #6600FF 0%,
+      #34005D 100%
+    );
 
   overflow: visible;
 
@@ -26,15 +31,16 @@
 
 .hero-video-mask {
   position: absolute;
+
   inset: 0;
 
   overflow: hidden;
 
   clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 82%,
-    0% 92%
+    0 0,
+    100% 0,
+    100% calc(100% - var(--hero-diagonal)),
+    0 100%
   );
 
   z-index: 1;
@@ -48,6 +54,7 @@
   height: 100%;
 
   object-fit: cover;
+  object-position: center;
 }
 
 
@@ -77,13 +84,7 @@
 
 
 /* ========================================
-   CSS DIAGONAL EDGE
-
-   Matches the video clip:
-   left = 92%
-   right = 82%
-
-   White currently at 50% opacity
+   DIAGONAL WHITE EDGE
 ======================================== */
 
 .hero::after {
@@ -100,10 +101,18 @@
   background: rgba(255, 255, 255, 0.7);
 
   clip-path: polygon(
-    0% calc(92% - 7px),
-    100% calc(82% - 7px),
-    100% calc(82% + 7px),
-    0% calc(92% + 7px)
+    0 calc(100% - var(--hero-edge)),
+    100% calc(
+      100%
+      - var(--hero-diagonal)
+      - var(--hero-edge)
+    ),
+    100% calc(
+      100%
+      - var(--hero-diagonal)
+      + var(--hero-edge)
+    ),
+    0 calc(100% + var(--hero-edge))
   );
 }
 
@@ -116,7 +125,7 @@
   position: absolute;
 
   left: 50%;
-  bottom: -4%;
+  bottom: clamp(-36px, -2vw, -12px);
 
   z-index: 8;
 
@@ -137,18 +146,18 @@
 
 
 /* ========================================
-   LOGO
+   OPTIONAL TOP-LEFT LOGO
 ======================================== */
 
 .hero-logo-wrap {
   position: absolute;
 
-  top: 32px;
-  left: 32px;
+  top: clamp(20px, 2vw, 32px);
+  left: clamp(20px, 2vw, 32px);
 
   z-index: 5;
 
-  width: min(14vw, 230px);
+  width: clamp(120px, 14vw, 230px);
 
   pointer-events: none;
 }
@@ -169,14 +178,16 @@
 .hero-tagline-wrap {
   position: absolute;
 
-  top: 92%;
   left: 0;
+  bottom: clamp(
+    -30px,
+    -1.5vw,
+    -12px
+  );
 
   width: 100%;
 
   z-index: 10;
-
-  transform: translateY(14px);
 
   pointer-events: none;
 }
@@ -185,13 +196,22 @@
 .hero-tagline {
   width: 100%;
 
-  padding: 0 4vw;
+  padding:
+    0
+    clamp(20px, 4vw, 80px);
 
   text-align: center;
   text-transform: uppercase;
 
   font-family: "Outfit", sans-serif;
-  font-size: clamp(1.5rem, 3vw, 3.5rem);
+
+  font-size:
+    clamp(
+      1.5rem,
+      3vw,
+      3.5rem
+    );
+
   font-weight: 900;
   line-height: 0.95;
 
@@ -200,34 +220,153 @@
 
 
 /* ========================================
-   RESPONSIVE
+   LARGE / ULTRA-WIDE DESKTOP
+======================================== */
+
+@media (min-width: 1800px) {
+
+  .hero {
+    --hero-diagonal: clamp(95px, 5vw, 140px);
+  }
+
+  .hero-main-logo-wrap {
+    width: min(34vw, 650px);
+  }
+
+  .hero-video {
+    object-position: center;
+  }
+
+}
+
+
+/* ========================================
+   VERY WIDE SCREENS
+======================================== */
+
+@media (min-width: 2200px) {
+
+  .hero {
+    --hero-diagonal: 140px;
+  }
+
+  .hero-main-logo-wrap {
+    width: 620px;
+  }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .hero {
+    --hero-diagonal:
+      clamp(
+        60px,
+        8vw,
+        90px
+      );
+
+    min-height: 560px;
+  }
+
+  .hero-main-logo-wrap {
+    width:
+      clamp(
+        280px,
+        48vw,
+        520px
+      );
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
 ======================================== */
 
 @media (max-width: 768px) {
+
+  .hero {
+    --hero-diagonal:
+      clamp(
+        45px,
+        12vw,
+        70px
+      );
+
+    --hero-edge: 2px;
+
+    min-height: 540px;
+  }
+
+
+  .hero-video {
+    object-position: center;
+  }
+
+
+  .hero-main-logo-wrap {
+    width:
+      clamp(
+        260px,
+        72vw,
+        420px
+      );
+
+    bottom:
+      clamp(
+        -24px,
+        -4vw,
+        -10px
+      );
+  }
+
 
   .hero-logo-wrap {
     top: 20px;
     left: 20px;
 
-    width: min(28vw, 160px);
-  }
-
-
-  /* Thinner diagonal edge on mobile */
-
-  .hero::after {
-    clip-path: polygon(
-      0% calc(92% - 2px),
-      100% calc(82% - 2px),
-      100% calc(82% + 2px),
-      0% calc(92% + 2px)
-    );
+    width:
+      min(
+        28vw,
+        160px
+      );
   }
 
 
   .hero-tagline {
     padding: 0 1rem;
 
-    font-size: clamp(1.3rem, 6vw, 2.4rem);
+    font-size:
+      clamp(
+        1.3rem,
+        6vw,
+        2.4rem
+      );
   }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .hero {
+    min-height: 520px;
+  }
+
+
+  .hero-main-logo-wrap {
+    width: 78vw;
+  }
+
 }

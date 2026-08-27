@@ -3,22 +3,55 @@
 ======================================== */
 
 .games-section {
+  /* Jagged divider */
+  --games-transition-height:
+    clamp(
+      105px,
+      9vw,
+      180px
+    );
+
+  --games-transition-edge:
+    clamp(
+      6px,
+      0.45vw,
+      10px
+    );
+
+  /* Shared content gutter */
+  --games-gutter:
+    clamp(
+      32px,
+      5vw,
+      90px
+    );
+
   position: relative;
 
   min-height: 100vh;
 
-  background: linear-gradient(
-  90deg,
-  #FF11DE 0%,
-  #FFCF67 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #FF11DE 0%,
+      #FFCF67 100%
+    );
 
   overflow-x: hidden;
+
+  /*
+    Important:
+    allow Unique to overlap vertically.
+  */
   overflow-y: visible;
 
   margin-top: -1px;
 
-  padding-top: 10vw;
+  padding-top:
+    calc(
+      var(--games-transition-height)
+      * 0.82
+    );
 }
 
 
@@ -33,7 +66,9 @@
   left: 0;
 
   width: 100%;
-  height: 12vw;
+
+  height:
+    var(--games-transition-height);
 
   z-index: 5;
 
@@ -41,7 +76,9 @@
 }
 
 
-/* WHITE SHAPE UNDERNEATH */
+/* ========================================
+   WHITE SHAPE UNDERNEATH
+======================================== */
 
 .games-jagged-transition::before {
   content: "";
@@ -63,24 +100,37 @@
 }
 
 
-/* BLUE SHAPE ON TOP */
+/* ========================================
+   PURPLE SHAPE ON TOP
+======================================== */
 
 .games-jagged-transition::after {
   content: "";
 
   position: absolute;
 
-  top: -2px;
+  top:
+    calc(
+      -1
+      * var(--games-transition-edge)
+    );
+
   left: 0;
 
   width: 100%;
-  height: calc(100% + 2px);
 
-  background: linear-gradient(
-    90deg,
-    #6600FF 0%,
-    #34005D 100%
-  );
+  height:
+    calc(
+      100%
+      + var(--games-transition-edge)
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      #6600FF 0%,
+      #34005D 100%
+    );
 
   clip-path: polygon(
     0 0,
@@ -102,7 +152,14 @@
 
   z-index: 3;
 
-  padding-bottom: 8rem;
+  padding-bottom:
+    clamp(
+      5rem,
+      7vw,
+      8rem
+    );
+
+  margin-bottom: 0;
 }
 
 
@@ -113,14 +170,30 @@
 .games-heading {
   position: relative;
 
-  width: min(1400px, 90vw);
+  width:
+    min(
+      1400px,
+      calc(
+        100%
+        - (var(--games-gutter) * 2)
+      )
+    );
 
   margin:
     0
     auto
-    clamp(2rem, 4vw, 4rem);
+    clamp(
+      2rem,
+      4vw,
+      4rem
+    );
 
-  padding-top: 2rem;
+  padding-top:
+    clamp(
+      1rem,
+      2vw,
+      2rem
+    );
 }
 
 
@@ -133,9 +206,16 @@
 
   margin-bottom: 0.8rem;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: 1rem;
+  font-size:
+    clamp(
+      0.9rem,
+      0.9vw,
+      1rem
+    );
 
   font-weight: 800;
 
@@ -170,11 +250,20 @@
 
   margin:
     -1rem
-    4vw
+    clamp(
+      1rem,
+      4vw,
+      5rem
+    )
     0
     auto;
 
-  padding: 2rem;
+  padding:
+    clamp(
+      1.25rem,
+      2vw,
+      2rem
+    );
 }
 
 
@@ -183,18 +272,26 @@
 ======================================== */
 
 .games-sticker-title {
-  margin: 0 auto;
-
   display: flex;
 
   flex-direction: column;
+
   align-items: center;
 
   width: fit-content;
 
-  font-family: "Outfit", sans-serif;
+  margin: 0 auto;
 
-  font-size: clamp(3.4rem, 6vw, 7rem);
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    clamp(
+      3.4rem,
+      5.8vw,
+      6.8rem
+    );
 
   font-weight: 900;
 
@@ -208,17 +305,15 @@
 
   color: #ffffff;
 
-
-  /* PURPLE OUTLINE */
-
   -webkit-text-stroke:
-    clamp(5px, 0.55vw, 11px)
+    clamp(
+      5px,
+      0.5vw,
+      10px
+    )
     #6714d8;
 
   paint-order: stroke fill;
-
-
-  /* CHUNKY DEPTH */
 
   text-shadow:
     0 3px 0 #5812c4,
@@ -246,9 +341,7 @@
 
 
 /* ========================================
-   TOP STICKER LINE EMPHASIS
-
-   JUST is slightly larger.
+   TOP STICKER EMPHASIS
 ======================================== */
 
 .games-title-sticker-top
@@ -264,7 +357,8 @@
 .games-sticker-character {
   display: inline-block;
 
-  transform-origin: center center;
+  transform-origin:
+    center center;
 
   will-change:
     transform,
@@ -277,18 +371,37 @@
 ======================================== */
 
 .games-intro {
-  max-width: 430px;
+  width:
+    min(
+      430px,
+      36vw
+    );
 
   margin:
     0.5rem
     auto
     0
-    17vw;
+    clamp(
+      60px,
+      10vw,
+      180px
+    );
 
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.15rem,
+      1.45vw,
+      1.65rem
+    );
+
   font-weight: 550;
+
   line-height: 1.35;
+
   color: white;
 }
 
@@ -301,11 +414,20 @@
   width: fit-content;
 
   margin:
-    clamp(1.5rem, 2vw, 2.5rem)
+    clamp(
+      1.5rem,
+      2vw,
+      2.5rem
+    )
     auto
     0;
 
-  padding: 2rem;
+  padding:
+    clamp(
+      1.25rem,
+      2vw,
+      2rem
+    );
 }
 
 
@@ -314,49 +436,61 @@
 ======================================== */
 
 .games-sticker-title-centre {
-  font-size: clamp(3.4rem, 6vw, 7rem);
+  font-size:
+    clamp(
+      3.4rem,
+      5.8vw,
+      6.8rem
+    );
 }
 
-
-/*
-  Match Customisation:
-
-  make GAMESHOW slightly larger
-  than IT'S A.
-*/
 
 .games-sticker-title-centre
 .games-sticker-line:last-child {
   font-size: 1.12em;
 }
 
+
 /* ========================================
    BOTTOM STICKER
-   IT'S NOT / JUST A / GAMESHOW!
 ======================================== */
 
 .games-title-sticker-bottom {
   width: fit-content;
 
   margin:
-    clamp(6rem, 10vw, 12rem)
+    clamp(
+      6rem,
+      9vw,
+      11rem
+    )
     auto
     0;
 
-  padding: 2rem;
+  padding:
+    clamp(
+      1.25rem,
+      2vw,
+      2rem
+    );
 }
 
 
 .games-sticker-title-bottom {
-  font-size: clamp(3.4rem, 6vw, 7rem);
+  font-size:
+    clamp(
+      3.4rem,
+      5.8vw,
+      6.8rem
+    );
 }
 
 
-/* Make GAMESHOW! slightly larger */
 .games-sticker-title-bottom
 .games-sticker-line:last-child {
   font-size: 1.12em;
 }
+
 
 /* ========================================
    BOTTOM MESSAGE
@@ -372,7 +506,11 @@
   width: fit-content;
 
   margin:
-    clamp(2rem, 4vw, 4rem)
+    clamp(
+      2rem,
+      4vw,
+      4rem
+    )
     auto
     0;
 
@@ -380,9 +518,16 @@
     1rem
     2rem;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(2.2rem, 3.8vw, 4.5rem);
+  font-size:
+    clamp(
+      2.2rem,
+      3.6vw,
+      4.3rem
+    );
 
   font-weight: 900;
 
@@ -403,24 +548,267 @@
 }
 
 
-/*
-  Slight emphasis on final line,
-  matching the designer's hierarchy.
-*/
-
 .games-bottom-message span:last-child {
   font-size: 1.12em;
 }
 
 
 /* ========================================
-   RESPONSIVE — TABLET / MOBILE
+   2560px / ULTRA-WIDE
+======================================== */
+
+@media (min-width: 2200px) {
+
+  .games-section {
+    --games-transition-height: 180px;
+    --games-transition-edge: 10px;
+    --games-gutter: 100px;
+  }
+
+
+  .games-heading {
+    max-width: 1450px;
+  }
+
+
+  .games-sticker-title,
+  .games-sticker-title-centre,
+  .games-sticker-title-bottom {
+    font-size: 6.4rem;
+  }
+
+
+  .games-title-sticker-top {
+    margin-right: 6rem;
+  }
+
+
+  .games-intro {
+    width: 430px;
+
+    margin-left: 170px;
+
+    font-size: 1.55rem;
+  }
+
+}
+
+
+/* ========================================
+   1920px / LARGE DESKTOP
+======================================== */
+
+@media (
+  min-width: 1800px
+) and (
+  max-width: 2199px
+) {
+
+  .games-section {
+    --games-transition-height:
+      clamp(
+        150px,
+        8vw,
+        175px
+      );
+
+    --games-gutter:
+      clamp(
+        70px,
+        5vw,
+        95px
+      );
+  }
+
+
+  .games-heading {
+    max-width: 1450px;
+  }
+
+
+  .games-sticker-title,
+  .games-sticker-title-centre,
+  .games-sticker-title-bottom {
+    font-size:
+      clamp(
+        5.6rem,
+        5vw,
+        6.5rem
+      );
+  }
+
+
+  .games-intro {
+    width: 430px;
+
+    margin-left:
+      clamp(
+        120px,
+        8vw,
+        170px
+      );
+  }
+
+}
+
+
+/* ========================================
+   1440px / STANDARD DESKTOP
+======================================== */
+
+@media (
+  min-width: 1101px
+) and (
+  max-width: 1799px
+) {
+
+  .games-section {
+    --games-transition-height:
+      clamp(
+        110px,
+        9vw,
+        155px
+      );
+  }
+
+
+  .games-heading {
+    width:
+      min(
+        1320px,
+        calc(
+          100%
+          - (var(--games-gutter) * 2)
+        )
+      );
+  }
+
+
+  .games-intro {
+    margin-left:
+      clamp(
+        70px,
+        10vw,
+        150px
+      );
+  }
+
+}
+
+
+/* ========================================
+   1024px
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .games-section {
+    --games-transition-height:
+      clamp(
+        90px,
+        10vw,
+        120px
+      );
+
+    --games-gutter:
+      clamp(
+        36px,
+        5vw,
+        60px
+      );
+
+    padding-top:
+      calc(
+        var(--games-transition-height)
+        * 0.86
+      );
+  }
+
+
+  .games-heading {
+    width:
+      calc(
+        100%
+        - (var(--games-gutter) * 2)
+      );
+  }
+
+
+  .games-title-sticker-top {
+    margin-right: 1rem;
+  }
+
+
+  .games-sticker-title,
+  .games-sticker-title-centre {
+    font-size:
+      clamp(
+        3.2rem,
+        7vw,
+        5.2rem
+      );
+  }
+
+
+  .games-intro {
+    width:
+      min(
+        430px,
+        48vw
+      );
+
+    margin-left: 5vw;
+  }
+
+}
+
+
+/* ========================================
+   768px / TABLET
 ======================================== */
 
 @media (max-width: 768px) {
 
   .games-section {
-    padding-top: 12vw;
+    --games-transition-height:
+      clamp(
+        75px,
+        13vw,
+        100px
+      );
+
+    --games-transition-edge:
+      clamp(
+        4px,
+        0.9vw,
+        7px
+      );
+
+    --games-gutter: 6vw;
+  }
+
+
+  .games-jagged-transition::before {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      59% 35%,
+      50% 84%,
+      0 28%
+    );
+  }
+
+
+  .games-jagged-transition::after {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 94%,
+      58.5% 30%,
+      49.5% 78%,
+      0 23%
+    );
   }
 
 
@@ -430,7 +818,11 @@
 
 
   .games-heading {
-    width: 88vw;
+    width:
+      calc(
+        100%
+        - (var(--games-gutter) * 2)
+      );
 
     margin-top: 0;
     margin-bottom: 2rem;
@@ -439,21 +831,17 @@
   }
 
 
-  /* ------------------------------
-     KICKER
-  ------------------------------ */
-
   .games-kicker {
     margin-bottom: 0;
   }
 
 
-  /* ------------------------------
-     TOP STICKER
-  ------------------------------ */
-
   .games-title-sticker-top {
-    width: min(88vw, 500px);
+    width:
+      min(
+        88vw,
+        500px
+      );
 
     margin:
       0
@@ -467,19 +855,18 @@
 
 
   .games-sticker-title {
-    font-size: clamp(
-      2.8rem,
-      13vw,
-      5rem
-    );
+    font-size:
+      clamp(
+        2.8rem,
+        12vw,
+        5rem
+      );
   }
 
 
-  /* ------------------------------
-     SUPPORTING COPY
-  ------------------------------ */
-
   .games-intro {
+    width: auto;
+
     max-width: 520px;
 
     margin:
@@ -491,22 +878,23 @@
       0
       1rem;
 
-    font-size: clamp(
-      1.1rem,
-      4.5vw,
-      1.5rem
-    );
+    font-size:
+      clamp(
+        1.1rem,
+        4vw,
+        1.45rem
+      );
 
     text-align: center;
   }
 
 
-  /* ------------------------------
-     CENTRE STICKER
-  ------------------------------ */
-
   .games-title-sticker-centre {
-    width: min(88vw, 520px);
+    width:
+      min(
+        88vw,
+        520px
+      );
 
     margin:
       1.5rem
@@ -520,17 +908,14 @@
 
 
   .games-sticker-title-centre {
-    font-size: clamp(
-      2.8rem,
-      12vw,
-      5rem
-    );
+    font-size:
+      clamp(
+        2.8rem,
+        11vw,
+        4.8rem
+      );
   }
 
-
-  /* ------------------------------
-     BOTTOM MESSAGE
-  ------------------------------ */
 
   .games-bottom-message {
     margin-top: 2rem;
@@ -539,24 +924,70 @@
       1rem
       1.5rem;
 
-    font-size: clamp(
-      2rem,
-      9vw,
-      3.5rem
-    );
+    font-size:
+      clamp(
+        2rem,
+        8vw,
+        3.4rem
+      );
   }
 
 }
 
 
 /* ========================================
-   SMALL MOBILE
+   430px / LARGE PHONE
 ======================================== */
 
 @media (max-width: 480px) {
 
+  .games-section {
+    --games-transition-height:
+      clamp(
+        65px,
+        16vw,
+        82px
+      );
+
+    --games-gutter:
+      clamp(
+        18px,
+        5vw,
+        24px
+      );
+  }
+
+
+  .games-jagged-transition::before {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      61% 40%,
+      51% 82%,
+      0 32%
+    );
+  }
+
+
+  .games-jagged-transition::after {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 93%,
+      60.5% 35%,
+      50.5% 75%,
+      0 27%
+    );
+  }
+
+
   .games-heading {
-    width: 92vw;
+    width:
+      calc(
+        100%
+        - (var(--games-gutter) * 2)
+      );
   }
 
 
@@ -571,14 +1002,19 @@
 
 
   .games-sticker-title {
-    font-size: clamp(
-      2.6rem,
-      13vw,
-      4rem
-    );
+    font-size:
+      clamp(
+        2.5rem,
+        12vw,
+        3.8rem
+      );
 
     -webkit-text-stroke:
-      clamp(4px, 1.5vw, 7px)
+      clamp(
+        4px,
+        1.4vw,
+        7px
+      )
       #6714d8;
   }
 
@@ -587,6 +1023,13 @@
     max-width: 90%;
 
     padding: 0;
+
+    font-size:
+      clamp(
+        1.05rem,
+        4.8vw,
+        1.35rem
+      );
   }
 
 
@@ -600,22 +1043,110 @@
 
 
   .games-sticker-title-centre {
-    font-size: clamp(
-      2.5rem,
-      12vw,
-      4rem
-    );
+    font-size:
+      clamp(
+        2.4rem,
+        11.5vw,
+        3.8rem
+      );
   }
 
 
   .games-bottom-message {
     max-width: 92vw;
 
-    font-size: clamp(
-      1.9rem,
-      9.5vw,
-      3rem
-    );
+    font-size:
+      clamp(
+        1.85rem,
+        9vw,
+        2.8rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   375px / SMALL PHONE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .games-section {
+    --games-transition-height:
+      clamp(
+        58px,
+        16vw,
+        70px
+      );
+  }
+
+
+  .games-title-sticker-top {
+    width: 94vw;
+
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+
+
+  .games-sticker-title {
+    font-size:
+      clamp(
+        2.25rem,
+        11.8vw,
+        3.2rem
+      );
+
+    -webkit-text-stroke:
+      clamp(
+        3px,
+        1.3vw,
+        6px
+      )
+      #6714d8;
+  }
+
+
+  .games-title-sticker-centre {
+    width: 94vw;
+  }
+
+
+  .games-sticker-title-centre {
+    font-size:
+      clamp(
+        2.2rem,
+        11vw,
+        3.1rem
+      );
+  }
+
+
+  .games-intro {
+    max-width: 92%;
+
+    font-size:
+      clamp(
+        1rem,
+        4.6vw,
+        1.2rem
+      );
+  }
+
+
+  .games-bottom-message {
+    max-width: 94vw;
+
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    font-size:
+      clamp(
+        1.7rem,
+        8.8vw,
+        2.5rem
+      );
   }
 
 }

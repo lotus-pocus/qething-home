@@ -3,11 +3,33 @@
 ======================================== */
 
 .customisation-section {
+  --customisation-bottom-height:
+    clamp(
+      150px,
+      16vw,
+      270px
+    );
+
+  --customisation-stripe-thickness:
+   clamp(
+     16px,
+     1.2vw,
+     24px
+   );
+
+  --customisation-gutter:
+    clamp(
+      28px,
+      4vw,
+      70px
+    );
+
   position: relative;
 
+  width: 100%;
   min-height: 100vh;
 
-  margin-top: -1px;
+  margin-top: 0;
 
   background: transparent;
 
@@ -30,9 +52,11 @@
   left: 0;
   right: 0;
 
-  bottom: calc(
-    clamp(150px, 16vw, 270px) - 2px
-  );
+  bottom:
+    calc(
+      var(--customisation-bottom-height)
+      - 2px
+    );
 
   background: #d8d8d8;
 
@@ -43,72 +67,13 @@
 
 
 /* ========================================
-   PINK → CUSTOMISATION TOP TRANSITION
-   UNCHANGED
+   TOP EDGE
+
+   Unique owns this diagonal.
 ======================================== */
 
 .customisation-top-edge {
-  position: absolute;
-
-  top: -1px;
-  left: 0;
-
-  width: 100%;
-  height: clamp(70px, 7vw, 135px);
-
-  z-index: 4;
-
-  pointer-events: none;
-}
-
-
-/* ========================================
-   LIGHT PURPLE TOP BORDER
-   UNCHANGED
-======================================== */
-
-.customisation-top-edge::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: var(--qe-pink);
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 100%,
-    0 calc(18% + 15px)
-  );
-
-  z-index: 1;
-}
-
-
-/* ========================================
-   PINK FOREGROUND
-   UNCHANGED
-======================================== */
-
-.customisation-top-edge::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: var(--qe-pink);
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - 15px),
-    0 18%
-  );
-
-  z-index: 2;
+  display: none;
 }
 
 
@@ -121,14 +86,29 @@
 
   z-index: 5;
 
-  width: min(1500px, 94vw);
+  width:
+    min(
+      1500px,
+      calc(
+        100%
+        - (var(--customisation-gutter) * 2)
+      )
+    );
 
   margin: 0 auto;
 
   padding:
-    clamp(8rem, 10vw, 11rem)
+    clamp(
+      7rem,
+      9vw,
+      11rem
+    )
     0
-    clamp(7rem, 9vw, 11rem);
+    clamp(
+      7rem,
+      9vw,
+      11rem
+    );
 }
 
 
@@ -160,7 +140,12 @@
 
   font-family: "Outfit", sans-serif;
 
-  font-size: 1rem;
+  font-size:
+    clamp(
+      0.9rem,
+      0.9vw,
+      1rem
+    );
 
   font-weight: 800;
 
@@ -173,7 +158,7 @@
 
 
 /* ========================================
-   GAMESHOW TITLE
+   TITLE
 ======================================== */
 
 .customisation-title {
@@ -196,7 +181,11 @@
   color: #ffffff;
 
   -webkit-text-stroke:
-    clamp(5px, 0.55vw, 11px)
+    clamp(
+      5px,
+      0.55vw,
+      11px
+    )
     #6714d8;
 
   paint-order: stroke fill;
@@ -214,23 +203,24 @@
 ======================================== */
 
 .customisation-title-its {
-  display: block;
-
   position: relative;
 
   z-index: 2;
 
-  font-size: clamp(
-    2rem,
-    3.2vw,
-    4rem
-  );
+  display: block;
+
+  margin-bottom: -0.08em;
+
+  font-size:
+    clamp(
+      2rem,
+      3.2vw,
+      4rem
+    );
 
   line-height: 0.9;
 
   letter-spacing: -0.035em;
-
-  margin-bottom: -0.08em;
 
   transform-origin: center center;
 }
@@ -247,23 +237,28 @@
 
   display: block;
 
-  font-size: clamp(
-    5rem,
-    8.5vw,
-    10rem
-  );
+  margin-top: -0.02em;
+  margin-bottom: 0.08em;
+
+  font-size:
+    clamp(
+      5rem,
+      8.5vw,
+      10rem
+    );
 
   line-height: 0.78;
 
   letter-spacing: -0.06em;
 
-  margin-top: -0.02em;
-  margin-bottom: 0.08em;
-
   color: #ffffff;
 
   -webkit-text-stroke:
-    clamp(7px, 0.7vw, 14px)
+    clamp(
+      7px,
+      0.7vw,
+      14px
+    )
     #6714d8;
 
   paint-order: stroke fill;
@@ -296,11 +291,12 @@
 
   display: block;
 
-  font-size: clamp(
-    3.6rem,
-    6.4vw,
-    7.5rem
-  );
+  font-size:
+    clamp(
+      3.6rem,
+      6.4vw,
+      7.5rem
+    );
 
   line-height: 0.78;
 
@@ -323,17 +319,22 @@
   max-width: 620px;
 
   margin:
-    clamp(1.5rem, 2vw, 2.2rem)
+    clamp(
+      1.5rem,
+      2vw,
+      2.2rem
+    )
     auto
     0;
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(
-    1.2rem,
-    1.8vw,
-    1.65rem
-  );
+  font-size:
+    clamp(
+      1.2rem,
+      1.8vw,
+      1.65rem
+    );
 
   font-weight: 700;
 
@@ -346,29 +347,26 @@
 
 
 /* ========================================
-   DEVICE + PHONE COMPOSITION
+   DEVICE COMPOSITION
 ======================================== */
 
 .customisation-visuals {
   position: relative;
 
+  z-index: 10;
+
   width: 100%;
 
-  min-height: clamp(
-    550px,
-    49vw,
-    760px
-  );
+  min-height:
+    clamp(
+      550px,
+      49vw,
+      760px
+    );
 
   overflow: visible;
-
-  z-index: 10;
 }
 
-
-/* ========================================
-   DEVICE LINK
-======================================== */
 
 .customisation-visuals .device-link {
   position: relative;
@@ -388,25 +386,27 @@
 
   right: -0.5%;
 
-  top: clamp(
-    205px,
-    21vw,
-    335px
-  );
+  top:
+    clamp(
+      205px,
+      21vw,
+      335px
+    );
+
+  z-index: 20;
 
   display: block;
 
-  width: clamp(
-    220px,
-    23vw,
-    365px
-  );
+  width:
+    clamp(
+      220px,
+      23vw,
+      365px
+    );
 
   height: auto;
 
   object-fit: contain;
-
-  z-index: 12;
 
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -418,7 +418,7 @@
 
 
 /* ========================================
-   FEATURE ICONS
+   FEATURES
 ======================================== */
 
 .customisation-features {
@@ -429,51 +429,54 @@
   display: grid;
 
   grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: clamp(
-    1.5rem,
-    4vw,
-    5rem
-  );
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
 
   align-items: start;
 
-  width: min(
-    1150px,
-    86%
-  );
+  gap:
+    clamp(
+      1.5rem,
+      4vw,
+      5rem
+    );
 
-  /* lower the whole feature row */
-  margin-top: clamp(
-    2rem,
-    3vw,
-    3.5rem
-  );
+  width:
+    min(
+      1150px,
+      86%
+    );
 
-  /* shift the whole row towards the left */
+  margin-top:
+    clamp(
+      2rem,
+      3vw,
+      3.5rem
+    );
+
   margin-left: 3%;
-
   margin-right: auto;
 }
 
 
 /* ========================================
-   INDIVIDUAL FEATURE
+   FEATURE
 ======================================== */
 
 .customisation-feature {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
-  gap: clamp(
-    0.75rem,
-    1.2vw,
-    1.3rem
-  );
+  gap:
+    clamp(
+      0.75rem,
+      1.2vw,
+      1.3rem
+    );
 
   min-width: 0;
 }
@@ -488,11 +491,12 @@
 
   flex: 0 0 auto;
 
-  width: clamp(
-    46px,
-    4vw,
-    70px
-  );
+  width:
+    clamp(
+      46px,
+      4vw,
+      70px
+    );
 
   height: auto;
 
@@ -526,11 +530,12 @@
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(
-    1.05rem,
-    1.65vw,
-    1.65rem
-  );
+  font-size:
+    clamp(
+      1.05rem,
+      1.65vw,
+      1.65rem
+    );
 
   font-weight: 900;
 
@@ -550,11 +555,12 @@
 
   font-family: "Outfit", sans-serif;
 
-  font-size: clamp(
-    0.85rem,
-    1.15vw,
-    1.05rem
-  );
+  font-size:
+    clamp(
+      0.85rem,
+      1.15vw,
+      1.05rem
+    );
 
   font-weight: 600;
 
@@ -565,9 +571,7 @@
 
 
 /* ========================================
-   CUSTOMISATION → NEW PACKS
-   JAGGED TRANSITION
-   UNCHANGED
+   BOTTOM EDGE
 ======================================== */
 
 .customisation-bottom-edge {
@@ -578,11 +582,8 @@
 
   width: 100%;
 
-  height: clamp(
-    150px,
-    16vw,
-    270px
-  );
+  height:
+    var(--customisation-bottom-height);
 
   z-index: 3;
 
@@ -592,7 +593,6 @@
 
 /* ========================================
    GREY JAGGED MASK
-   UNCHANGED
 ======================================== */
 
 .customisation-bottom-edge::before {
@@ -607,7 +607,6 @@
   clip-path: polygon(
     0 0,
     100% 0,
-
     100% 0,
     77% 72%,
     0 26%
@@ -618,8 +617,7 @@
 
 
 /* ========================================
-   LIGHT PURPLE JAGGED STRIPE
-   UNCHANGED
+   PURPLE JAGGED STRIPE
 ======================================== */
 
 .customisation-bottom-edge::after {
@@ -646,214 +644,220 @@
 
 
 /* ========================================
-   RESPONSIVE — TABLET
+   2560px+
 ======================================== */
 
-@media (max-width: 900px) {
+@media (min-width: 2200px) {
 
-  /* ----------------------------------------
-     MAIN GREY BACKGROUND
-  ---------------------------------------- */
-
-  .customisation-section::before {
-    bottom: clamp(
-      125px,
-      19vw,
-      175px
-    );
+  .customisation-section {
+    --customisation-bottom-height: 260px;
+    --customisation-gutter: 90px;
   }
 
 
-  /* ----------------------------------------
-     CONTENT
-  ---------------------------------------- */
+  .customisation-content {
+    max-width: 1500px;
+
+    padding-top: 10rem;
+  }
+
+
+  .customisation-visuals {
+    min-height: 740px;
+  }
+
+
+  .customisation-show-creator {
+    right: 0;
+
+    top: 315px;
+
+    width: 340px;
+  }
+
+}
+
+
+/* ========================================
+   1920px
+======================================== */
+
+@media (
+  min-width: 1800px
+) and (
+  max-width: 2199px
+) {
 
   .customisation-content {
-    width: 90vw;
+    width:
+      min(
+        1500px,
+        calc(100% - 9vw)
+      );
+  }
+
+
+  .customisation-visuals {
+    min-height:
+      clamp(
+        650px,
+        38vw,
+        740px
+      );
+  }
+
+}
+
+
+/* ========================================
+   1440px
+======================================== */
+
+@media (
+  min-width: 1101px
+) and (
+  max-width: 1799px
+) {
+
+  .customisation-content {
+    width:
+      min(
+        1400px,
+        calc(100% - 7vw)
+      );
+  }
+
+}
+
+
+/* ========================================
+   HIDE FEATURES BELOW LARGE DESKTOP
+======================================== */
+
+@media (max-width: 1450px) {
+
+  .customisation-features {
+    display: none;
+  }
+
+}
+
+
+/* ========================================
+   1024px
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .customisation-section {
+    --customisation-bottom-height:
+      clamp(
+        125px,
+        17vw,
+        175px
+      );
+
+    --customisation-gutter:
+      clamp(
+        28px,
+        5vw,
+        55px
+      );
+  }
+
+
+  .customisation-content {
+    width:
+      calc(
+        100%
+        - (var(--customisation-gutter) * 2)
+      );
 
     padding:
-      8rem
+      clamp(
+        7rem,
+        10vw,
+        8rem
+      )
       0
       7rem;
   }
 
 
-  .customisation-copy {
-    padding-bottom: 0;
-  }
-
-
-  /* ----------------------------------------
-     TITLE
-  ---------------------------------------- */
-
   .customisation-title-its {
-    font-size: clamp(
-      1.8rem,
-      5vw,
-      3rem
-    );
+    font-size:
+      clamp(
+        1.8rem,
+        4vw,
+        3rem
+      );
   }
 
 
   .customisation-title-your {
-    font-size: clamp(
-      3.4rem,
-      12vw,
-      6.5rem
-    );
+    font-size:
+      clamp(
+        3.8rem,
+        10vw,
+        6.5rem
+      );
   }
 
 
   .customisation-title-gameshow {
-    font-size: clamp(
-      3.2rem,
-      10vw,
-      5.8rem
-    );
+    font-size:
+      clamp(
+        3.2rem,
+        8.5vw,
+        5.8rem
+      );
   }
 
-
-  /* ----------------------------------------
-     INTRO
-  ---------------------------------------- */
 
   .customisation-intro {
     max-width: 520px;
-
-    margin-top: 1.7rem;
   }
 
-
-  /* ----------------------------------------
-     VISUALS
-  ---------------------------------------- */
 
   .customisation-visuals {
-    min-height: clamp(
-      520px,
-      93vw,
-      730px
-    );
-
-    overflow: visible;
-
-    z-index: 10;
+    min-height:
+      clamp(
+        520px,
+        72vw,
+        700px
+      );
   }
 
-
-  .customisation-visuals .device-link {
-    z-index: 10;
-
-    overflow: visible;
-  }
-
-
-  /* ----------------------------------------
-     PHONE
-  ---------------------------------------- */
 
   .customisation-show-creator {
-    right: -4%;
+    right: -2%;
 
-    top: clamp(
-      190px,
-      38vw,
-      310px
-    );
+    top:
+      clamp(
+        210px,
+        33vw,
+        310px
+      );
 
-    width: clamp(
-      180px,
-      31vw,
-      285px
-    );
-
-    z-index: 12;
+    width:
+      clamp(
+        180px,
+        28vw,
+        270px
+      );
   }
 
-
-  /* ----------------------------------------
-     FEATURES
-  ---------------------------------------- */
-
-  .customisation-features {
-    width: 94%;
-
-    gap: 1rem;
-
-    margin-top: -1rem;
-  }
-
-
-  .customisation-feature {
-    gap: 0.65rem;
-  }
-
-
-  .customisation-feature-icon {
-    width: clamp(
-      38px,
-      6vw,
-      56px
-    );
-  }
-
-
-  .customisation-feature-copy h3 {
-    font-size: clamp(
-      0.9rem,
-      2.1vw,
-      1.3rem
-    );
-  }
-
-
-  .customisation-feature-copy p {
-    font-size: clamp(
-      0.75rem,
-      1.7vw,
-      0.95rem
-    );
-  }
-
-
-  /* ----------------------------------------
-     BOTTOM TRANSITION
-     UNCHANGED
-  ---------------------------------------- */
-
-  .customisation-bottom-edge {
-    height: clamp(
-      125px,
-      19vw,
-      175px
-    );
-
-    z-index: 3;
-  }
-
-
-  /* ----------------------------------------
-     GREY JAGGED MASK
-     UNCHANGED
-  ---------------------------------------- */
 
   .customisation-bottom-edge::before {
     clip-path: polygon(
       0 0,
       100% 0,
-
       100% 5%,
       76% 70%,
       0 30%
     );
   }
 
-
-  /* ----------------------------------------
-     PURPLE JAGGED STRIPE
-     UNCHANGED
-  ---------------------------------------- */
 
   .customisation-bottom-edge::after {
     clip-path: polygon(
@@ -871,34 +875,179 @@
 
 
 /* ========================================
-   RESPONSIVE — MOBILE
+   900px AND BELOW
+
+   Switch the entire visual composition
+   straight to the successful mobile-style
+   arrangement.
+
+   There is deliberately NO intermediate
+   tablet phone layout anymore.
 ======================================== */
 
-@media (max-width: 520px) {
+@media (max-width: 900px) {
 
-  /* ----------------------------------------
-     MAIN GREY BACKGROUND
-  ---------------------------------------- */
-
-  .customisation-section::before {
-    bottom: 100px;
+  .customisation-section {
+    --customisation-gutter:
+      clamp(
+        18px,
+        5vw,
+        36px
+      );
   }
 
-
-  /* ----------------------------------------
-     CONTENT
-  ---------------------------------------- */
 
   .customisation-content {
-    padding-top: 7rem;
-
-    padding-bottom: 5rem;
+    width:
+      calc(
+        100%
+        - (var(--customisation-gutter) * 2)
+      );
   }
 
 
-  /* ----------------------------------------
-     TITLE
-  ---------------------------------------- */
+  .customisation-visuals {
+    min-height:
+      clamp(
+        720px,
+        92vw,
+        840px
+      );
+
+    margin-top:
+      clamp(
+        1.5rem,
+        5vw,
+        2.5rem
+      );
+
+    overflow: visible;
+  }
+
+
+  /*
+    Phone uses the same lower-right
+    relationship as the mobile layout.
+  */
+  .customisation-show-creator {
+    top:
+      clamp(
+        500px,
+        68vw,
+        555px
+      );
+
+    bottom: auto;
+
+    left: auto;
+
+    right:
+      clamp(
+        4px,
+        2vw,
+        12px
+      );
+
+    width:
+      clamp(
+        100px,
+        14vw,
+        130px
+      );
+
+    translate: 0 0;
+
+    z-index: 20;
+  }
+
+}
+
+
+/* ========================================
+   768px
+
+   Typography tuning only.
+   Device layout already switched at 900px.
+======================================== */
+
+@media (max-width: 768px) {
+
+  .customisation-content {
+    padding-top:
+      clamp(
+        6rem,
+        12vw,
+        7rem
+      );
+  }
+
+
+  .customisation-title-its {
+    font-size:
+      clamp(
+        1.7rem,
+        4.8vw,
+        2.5rem
+      );
+  }
+
+
+  .customisation-title-your {
+    font-size:
+      clamp(
+        3.5rem,
+        11vw,
+        5.5rem
+      );
+  }
+
+
+  .customisation-title-gameshow {
+    font-size:
+      clamp(
+        3rem,
+        9.5vw,
+        5rem
+      );
+  }
+
+
+  .customisation-intro {
+    width:
+      min(
+        520px,
+        90%
+      );
+  }
+
+}
+
+
+/* ========================================
+   600px
+======================================== */
+
+@media (max-width: 600px) {
+
+  .customisation-section {
+    --customisation-bottom-height: 105px;
+
+    --customisation-gutter:
+      clamp(
+        18px,
+        5vw,
+        24px
+      );
+  }
+
+
+  .customisation-content {
+    padding:
+      5rem
+      0
+      5rem;
+  }
+
 
   .customisation-title {
     width: 100%;
@@ -906,163 +1055,105 @@
 
 
   .customisation-title-its {
-    font-size: clamp(
-      1.6rem,
-      6vw,
-      2.4rem
-    );
+    font-size:
+      clamp(
+        1.5rem,
+        6vw,
+        2.1rem
+      );
   }
 
 
   .customisation-title-your {
-    font-size: clamp(
-      3.2rem,
-      15vw,
-      4.8rem
-    );
+    font-size:
+      clamp(
+        3.1rem,
+        14vw,
+        4.6rem
+      );
 
     margin-bottom: 0.08em;
   }
 
 
   .customisation-title-gameshow {
-    font-size: clamp(
-      2.8rem,
-      12vw,
-      4.2rem
-    );
+    font-size:
+      clamp(
+        2.7rem,
+        11vw,
+        3.9rem
+      );
   }
 
-
-  /* ----------------------------------------
-     INTRO
-  ---------------------------------------- */
 
   .customisation-intro {
-    width: 90%;
+    width: 92%;
 
-    margin-top: 1.7rem;
+    margin-top: 1.6rem;
 
-    font-size: clamp(
-      1.05rem,
-      4.5vw,
-      1.4rem
-    );
+    font-size:
+      clamp(
+        1rem,
+        4.2vw,
+        1.3rem
+      );
   }
 
-
-  /* ----------------------------------------
-     VISUALS
-  ---------------------------------------- */
 
   .customisation-visuals {
-    min-height: 490px;
-
-    overflow: visible;
-
-    z-index: 10;
+    min-height:
+      clamp(
+        720px,
+        180vw,
+        840px
+      );
   }
 
-
-  .customisation-visuals .device-link {
-    z-index: 10;
-
-    overflow: visible;
-  }
-
-
-  /* ----------------------------------------
-     PHONE
-  ---------------------------------------- */
 
   .customisation-show-creator {
-    right: -12%;
+    top:
+      clamp(
+        500px,
+        126vw,
+        555px
+      );
 
-    top: 154px;
+    right:
+      clamp(
+        4px,
+        2vw,
+        12px
+      );
 
-    width: clamp(
-      155px,
-      42vw,
-      210px
-    );
-
-    z-index: 12;
+    width:
+      clamp(
+        100px,
+        25vw,
+        130px
+      );
   }
 
 
-  /* ----------------------------------------
-     FEATURES
-  ---------------------------------------- */
-
-  .customisation-features {
-    grid-template-columns: 1fr;
-
-    gap: 0.9rem;
-
-    width: min(
-      330px,
-      86%
-    );
-
-    margin-top: -0.25rem;
-  }
-
-
-  .customisation-feature {
-    justify-content: flex-start;
-
-    gap: 1rem;
-  }
-
-
-  .customisation-feature-icon {
-    width: 46px;
-  }
-
-
-  .customisation-feature-copy h3 {
-    font-size: 1rem;
-  }
-
-
-  .customisation-feature-copy p {
-    font-size: 0.85rem;
-  }
-
-
-  /* ----------------------------------------
+  /* ========================================
      BOTTOM TRANSITION
-     UNCHANGED
-  ---------------------------------------- */
+  ======================================== */
 
   .customisation-bottom-edge {
-    height: 100px;
-
-    z-index: 3;
+    height:
+      var(--customisation-bottom-height);
   }
 
-
-  /* ----------------------------------------
-     GREY JAGGED MASK
-     UNCHANGED
-  ---------------------------------------- */
 
   .customisation-bottom-edge::before {
     clip-path: polygon(
       0 0,
       100% 0,
-
       100% 10%,
       74% 70%,
       0 38%
     );
   }
 
-
-  /* ----------------------------------------
-     PURPLE JAGGED STRIPE
-     UNCHANGED
-  ---------------------------------------- */
 
   .customisation-bottom-edge::after {
     clip-path: polygon(
@@ -1074,6 +1165,95 @@
       74% calc(70% + 7px),
       0 calc(38% + 7px)
     );
+  }
+
+}
+
+
+/* ========================================
+   430px
+======================================== */
+
+@media (max-width: 480px) {
+
+  .customisation-content {
+    padding-top: 4.5rem;
+  }
+
+
+  .customisation-visuals {
+    min-height:
+      clamp(
+        690px,
+        176vw,
+        770px
+      );
+  }
+
+
+  .customisation-show-creator {
+    top:
+      clamp(
+        455px,
+        118vw,
+        495px
+      );
+
+    right: 4px;
+
+    width:
+      clamp(
+        92px,
+        24vw,
+        110px
+      );
+  }
+
+}
+
+
+/* ========================================
+   375px / IPHONE SE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .customisation-title-your {
+    font-size:
+      clamp(
+        2.9rem,
+        13.5vw,
+        3.8rem
+      );
+  }
+
+
+  .customisation-title-gameshow {
+    font-size:
+      clamp(
+        2.5rem,
+        10.5vw,
+        3.3rem
+      );
+  }
+
+
+  .customisation-visuals {
+    min-height: 650px;
+  }
+
+
+  .customisation-show-creator {
+    top: 410px;
+
+    left: auto;
+    right: 4px;
+
+    width: 88px;
+
+    translate: 0 0;
+
+    z-index: 25;
   }
 
 }

@@ -1,6 +1,5 @@
 /* ========================================
    DEVICE LINK
-   TV + laptop + compact connector
 ======================================== */
 
 .device-link {
@@ -8,17 +7,19 @@
 
   width: 100%;
 
-  height: clamp(
-    350px,
-    34vw,
-    540px
-  );
+  height:
+    clamp(
+      350px,
+      34vw,
+      540px
+    );
 
-  margin-top: clamp(
-    0.5rem,
-    1vw,
-    1.2rem
-  );
+  margin-top:
+    clamp(
+      0.5rem,
+      1vw,
+      1.2rem
+    );
 
   overflow: visible;
 }
@@ -34,14 +35,14 @@
   left: -4%;
   bottom: 1%;
 
+  z-index: 3;
+
   display: block;
 
   width: 51%;
   height: auto;
 
   object-fit: contain;
-
-  z-index: 3;
 }
 
 
@@ -55,19 +56,19 @@
   right: 4%;
   bottom: 2%;
 
+  z-index: 3;
+
   display: block;
 
   width: 44%;
   height: auto;
 
   object-fit: contain;
-
-  z-index: 3;
 }
 
 
 /* ========================================
-   COMPACT ANIMATED CONNECTOR
+   CONNECTOR
 ======================================== */
 
 .device-link-connector {
@@ -85,7 +86,7 @@
 
   pointer-events: none;
 
-  transform-origin: center;
+  transform-origin: center center;
 }
 
 
@@ -139,7 +140,8 @@
 
 
 /* ========================================
-   FLOW RIGHT → LEFT
+   FLOW
+   LAPTOP → TV
 ======================================== */
 
 @keyframes device-link-flow {
@@ -156,7 +158,7 @@
 
 
 /* ========================================
-   ACCESSIBILITY
+   REDUCED MOTION
 ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -169,100 +171,309 @@
 
 
 /* ========================================
-   TABLET
+   2560px+
 ======================================== */
 
-@media (max-width: 900px) {
+@media (min-width: 2200px) {
 
   .device-link {
-    height: clamp(
-      330px,
-      61vw,
-      520px
-    );
-
-    margin-top: 0.5rem;
+    height: 540px;
   }
 
 
   .device-link-tv {
-    left: -7%;
+    left: -2%;
 
-    bottom: 8%;
-
-    width: 56%;
+    width: 50%;
   }
 
 
   .device-link-laptop {
-    right: 0;
+    right: 5%;
 
-    bottom: 10%;
-
-    width: 45%;
-  }
-
-
-  .device-link-connector {
-    left: 44%;
-
-    top: 51%;
-
-    width: 14%;
-  }
-
-
-  .device-link-path,
-  .device-link-arrow {
-    stroke-width: 6;
+    width: 43%;
   }
 
 }
 
 
 /* ========================================
-   MOBILE
+   1024px — SIDE BY SIDE
 ======================================== */
 
-@media (max-width: 520px) {
+@media (
+  min-width: 901px
+) and (
+  max-width: 1100px
+) {
 
   .device-link {
-    height: 280px;
-
-    margin-top: 0.3rem;
+    height:
+      clamp(
+        340px,
+        49vw,
+        500px
+      );
   }
 
 
   .device-link-tv {
-    left: -9%;
+    left: -5%;
 
-    bottom: 13%;
+    bottom: 6%;
 
-    width: 62%;
+    width: 54%;
   }
 
 
   .device-link-laptop {
-    right: -3%;
+    right: 0;
 
-    bottom: 18%;
+    bottom: 8%;
 
-    width: 44%;
+    width: 45%;
   }
 
 
   .device-link-connector {
-    left: 45%;
+    left: 43%;
 
-    top: 48%;
+    top: 51%;
 
-    width: 13%;
+    width: 15%;
+  }
+
+}
+
+
+/* ========================================
+   900px AND BELOW
+
+   USE MOBILE-STYLE STACK IMMEDIATELY
+
+        LAPTOP
+           ↓
+          TV
+
+   This removes the old intermediate
+   tablet composition.
+======================================== */
+
+@media (max-width: 900px) {
+
+  .device-link {
+    position: relative;
+
+    width: 100%;
+
+    height:
+      clamp(
+        590px,
+        82vw,
+        670px
+      );
+
+    margin-top: 0;
+
+    overflow: visible;
+  }
+
+
+  /* ========================================
+     LAPTOP
+  ======================================== */
+
+  .device-link-laptop {
+    top: 0;
+    bottom: auto;
+
+    left: 50%;
+    right: auto;
+
+    width:
+      min(
+        82vw,
+        360px
+      );
+
+    /*
+      Use translate rather than transform
+      because Framer Motion controls transform.
+    */
+    translate: -50% 0;
+
+    z-index: 4;
+  }
+
+
+  /* ========================================
+     CONNECTOR
+     LAPTOP → TV
+  ======================================== */
+
+  .device-link-connector {
+    top:
+      clamp(
+        265px,
+        38vw,
+        305px
+      );
+
+    left: 50%;
+
+    width:
+      clamp(
+        115px,
+        16vw,
+        135px
+      );
+
+    translate: -50% 0;
+
+    rotate: -90deg;
+
+    transform-origin: center center;
+
+    z-index: 7;
   }
 
 
   .device-link-path,
   .device-link-arrow {
     stroke-width: 6;
+  }
+
+
+  /* ========================================
+     TV
+  ======================================== */
+
+  .device-link-tv {
+    top:
+      clamp(
+        345px,
+        48vw,
+        390px
+      );
+
+    bottom: auto;
+
+    left: 50%;
+    right: auto;
+
+    width:
+      min(
+        88vw,
+        390px
+      );
+
+    translate: -50% 0;
+
+    z-index: 3;
+  }
+
+}
+
+
+/* ========================================
+   430px
+======================================== */
+
+@media (max-width: 480px) {
+
+  .device-link {
+    height:
+      clamp(
+        550px,
+        142vw,
+        620px
+      );
+  }
+
+
+  .device-link-laptop {
+    width: 80vw;
+  }
+
+
+  .device-link-connector {
+    top:
+      clamp(
+        235px,
+        62vw,
+        270px
+      );
+
+    width:
+      clamp(
+        102px,
+        27vw,
+        120px
+      );
+  }
+
+
+  .device-link-tv {
+    top:
+      clamp(
+        310px,
+        80vw,
+        345px
+      );
+
+    width: 86vw;
+  }
+
+}
+
+
+/* ========================================
+   375px / IPHONE SE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .device-link {
+    height:
+      clamp(
+        510px,
+        136vw,
+        560px
+      );
+  }
+
+
+  .device-link-laptop {
+    width: 74vw;
+  }
+
+
+  .device-link-connector {
+    top:
+      clamp(
+        215px,
+        60vw,
+        228px
+      );
+
+    width:
+      clamp(
+        96px,
+        27vw,
+        105px
+      );
+  }
+
+
+  .device-link-tv {
+    top:
+      clamp(
+        285px,
+        76vw,
+        300px
+      );
+
+    width: 78vw;
   }
 
 }

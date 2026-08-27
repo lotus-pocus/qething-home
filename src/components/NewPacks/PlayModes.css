@@ -7,11 +7,58 @@
 
   z-index: 10;
 
-  width: 100vw;
+  width: 100%;
 
   aspect-ratio: 16 / 6.2;
 
-  margin-top: -36px;
+  /*
+    Match the GamePacksIntro diagonal depth.
+
+    PlayModes moves upward behind the
+    GamePacksIntro-owned teal transition.
+  */
+  --play-modes-top-overlap:
+    clamp(
+      32px,
+      2.6vw,
+      52px
+    );
+
+
+  /*
+    YELLOW STRIPE THICKNESS
+
+    Kept deliberately slim and bounded.
+
+    The slope is handled separately below,
+    so reducing this does NOT alter the
+    diagonal angle.
+  */
+  --play-modes-bottom-stripe-height:
+    clamp(
+      10px,
+      0.8vw,
+      16px
+    );
+
+
+  /*
+    Vertical difference between the left
+    and right ends of the lower diagonal.
+  */
+  --play-modes-bottom-slope:
+    clamp(
+      34px,
+      3.4vw,
+      68px
+    );
+
+
+  margin-top:
+    calc(
+      -1 *
+      var(--play-modes-top-overlap)
+    );
 
   overflow: visible;
 
@@ -26,24 +73,43 @@
 .play-modes-stage {
   position: absolute;
 
-  top: -10px;
-  left: 0;
-
-  width: 100%;
-  height: calc(100% + 10px);
+  inset: 0;
 
   overflow: hidden;
 
-  background: var(--qe-pink);
+  background: transparent;
 
-  clip-path: polygon(
-    0 0%,
-    100% 5.8%,
-    100% 90%,
-    0 100%
-  );
+  /*
+    GamePacksIntro owns the upper edge.
+
+    PlayModes owns only its lower
+    video → yellow transition.
+  */
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+
+      100% calc(
+        100% -
+        var(--play-modes-bottom-slope)
+      ),
+
+      0 100%
+    );
 
   z-index: 2;
+}
+
+
+/* ========================================
+   TOP EDGE
+
+   GamePacksIntro now owns this transition.
+======================================== */
+
+.play-modes-top-edge {
+  display: none;
 }
 
 
@@ -60,13 +126,16 @@
 
   align-items: center;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(
-    1.9rem,
-    3.5vw,
-    4.6rem
-  );
+  font-size:
+    clamp(
+      1.9rem,
+      3.5vw,
+      4.6rem
+    );
 
   font-weight: 900;
 
@@ -80,17 +149,15 @@
 
   white-space: nowrap;
 
-
-  /* STRONG PURPLE OUTLINE */
-
   -webkit-text-stroke:
-    clamp(5px, 0.48vw, 10px)
+    clamp(
+      5px,
+      0.48vw,
+      10px
+    )
     #6714d8;
 
   paint-order: stroke fill;
-
-
-  /* CHUNKY STICKER DEPTH */
 
   text-shadow:
     0 0 2px #25004f,
@@ -103,13 +170,11 @@
 
     0 17px 12px rgba(15, 0, 35, 0.65);
 
-
   filter:
     drop-shadow(
       0 4px 3px
       rgba(0, 0, 0, 0.5)
     );
-
 
   pointer-events: none;
 
@@ -167,11 +232,6 @@
 
   letter-spacing: -0.065em;
 
-  /*
-    Give the important word slightly
-    deeper sticker extrusion.
-  */
-
   text-shadow:
     0 0 2px #25004f,
     0 0 5px #25004f,
@@ -182,54 +242,6 @@
     0 16px 0 #290568,
 
     0 20px 14px rgba(15, 0, 35, 0.7);
-}
-
-
-/* ========================================
-   TOP DIAGONAL
-======================================== */
-
-.play-modes-top-edge {
-  position: absolute;
-
-  top: -45px;
-  left: 50%;
-
-  width: 100vw;
-
-  height: clamp(
-    52px,
-    5.6vw,
-    100px
-  );
-
-  transform: translateX(-50%);
-
-  z-index: 20;
-
-  pointer-events: none;
-}
-
-
-/* ========================================
-   TEAL DIAGONAL
-======================================== */
-
-.play-modes-top-edge::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: var(--qe-teal);
-
-  clip-path: polygon(
-    0 24%,
-    100% 80%,
-    100% 92%,
-    0 36%
-  );
 }
 
 
@@ -283,12 +295,13 @@
 
   background: var(--player-red);
 
-  clip-path: polygon(
-    0 0,
-    84% 0,
-    100% 100%,
-    0 100%
-  );
+  clip-path:
+    polygon(
+      0 0,
+      84% 0,
+      100% 100%,
+      0 100%
+    );
 
   z-index: 1;
 }
@@ -309,12 +322,13 @@
       var(--qe-blue)
     );
 
-  clip-path: polygon(
-    1.5% 0,
-    100% 5%,
-    100% 100%,
-    17.5% 100%
-  );
+  clip-path:
+    polygon(
+      1.5% 0,
+      100% 5%,
+      100% 100%,
+      17.5% 100%
+    );
 
   z-index: 1;
 }
@@ -359,12 +373,13 @@
 .play-modes-panel-solo video {
   object-position: center;
 
-  clip-path: polygon(
-    0 0,
-    82.5% 0,
-    98.5% 100%,
-    0 100%
-  );
+  clip-path:
+    polygon(
+      0 0,
+      82.5% 0,
+      98.5% 100%,
+      0 100%
+    );
 }
 
 
@@ -377,17 +392,21 @@
 .play-modes-panel-teams video {
   object-position: center;
 
-  clip-path: polygon(
-    1.5% 0,
-    100% 0,
-    100% 100%,
-    17.5% 100%
-  );
+  clip-path:
+    polygon(
+      1.5% 0,
+      100% 0,
+      100% 100%,
+      17.5% 100%
+    );
 }
 
 
 /* ========================================
    LOWER DIAGONAL
+
+   PLAYMODES OWNS:
+   VIDEO → YELLOW → PURPLE
 ======================================== */
 
 .play-modes-bottom-edge {
@@ -396,24 +415,41 @@
   left: 0;
   right: 0;
 
-  bottom: -13px;
+  bottom:
+    calc(
+      -1 *
+      var(--play-modes-bottom-stripe-height)
+    );
 
   width: 100%;
 
-  height: clamp(
-    55px,
-    5.5vw,
-    100px
-  );
+  /*
+    Slope controls the angle.
+    Stripe-height controls ONLY thickness.
+  */
+  height:
+    calc(
+      var(--play-modes-bottom-slope)
+      +
+      var(--play-modes-bottom-stripe-height)
+    );
 
   z-index: 50;
 
   pointer-events: none;
+
+  overflow: hidden;
 }
 
 
 /* ========================================
    LOWER DIAGONAL — YELLOW
+
+   The TOP edge matches the bottom edge
+   of .play-modes-stage exactly.
+
+   The lower edge is simply offset by
+   --play-modes-bottom-stripe-height.
 ======================================== */
 
 .play-modes-bottom-edge::before {
@@ -425,12 +461,32 @@
 
   background: var(--player-yellow);
 
-  clip-path: polygon(
-    0 88%,
-    100% 6%,
-    100% 20%,
-    0 100%
-  );
+  clip-path:
+    polygon(
+
+      /* LEFT TOP */
+      0
+      var(--play-modes-bottom-slope),
+
+
+      /* RIGHT TOP */
+      100%
+      0,
+
+
+      /* RIGHT BOTTOM */
+      100%
+      var(--play-modes-bottom-stripe-height),
+
+
+      /* LEFT BOTTOM */
+      0
+      calc(
+        var(--play-modes-bottom-slope)
+        +
+        var(--play-modes-bottom-stripe-height)
+      )
+    );
 
   z-index: 2;
 }
@@ -442,69 +498,34 @@
 
 
 /* ========================================
-   TABLET
+   1024PX / SMALL DESKTOP
 ======================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
 
   .play-modes {
-    width: 100vw;
-
-    aspect-ratio: 16 / 6;
-
-    margin-top: -26px;
-  }
+    aspect-ratio: 16 / 6.1;
 
 
-  /* ------------------------------
-     STAGE
-  ------------------------------ */
-
-  .play-modes-stage {
-    top: -8px;
-
-    height:
-      calc(
-        100% + 8px
+    /*
+      Slimmer stripe for smaller screens.
+    */
+    --play-modes-bottom-stripe-height:
+      clamp(
+        8px,
+        1vw,
+        12px
       );
 
-    clip-path: polygon(
-      0 2%,
-      100% 12%,
-      100% 100%,
-      0 100%
-    );
+
+    --play-modes-bottom-slope:
+      clamp(
+        28px,
+        3.5vw,
+        42px
+      );
   }
 
-
-  /* ------------------------------
-     TOP EDGE
-  ------------------------------ */
-
-  .play-modes-top-edge {
-    top: -36px;
-
-    height: clamp(
-      42px,
-      6.5vw,
-      64px
-    );
-  }
-
-
-  .play-modes-top-edge::before {
-    clip-path: polygon(
-      0 18%,
-      100% 97%,
-      100% 100%,
-      0 30%
-    );
-  }
-
-
-  /* ------------------------------
-     PANELS
-  ------------------------------ */
 
   .play-modes-panel-solo,
   .play-modes-panel-teams {
@@ -512,27 +533,30 @@
   }
 
 
-  /* ------------------------------
-     COPY
-  ------------------------------ */
-
   .play-modes-copy {
-    font-size: clamp(
-      1.25rem,
-      3.7vw,
-      2.6rem
-    );
+    font-size:
+      clamp(
+        1.3rem,
+        3.6vw,
+        2.8rem
+      );
 
     -webkit-text-stroke:
-      clamp(3px, 0.5vw, 6px)
+      clamp(
+        3px,
+        0.5vw,
+        6px
+      )
       #6714d8;
 
     text-shadow:
       0 0 2px #25004f,
       0 0 4px #25004f,
+
       0 2px 0 #5d14ce,
       0 4px 0 #4f11b7,
       0 6px 0 #3c0e94,
+
       0 9px 6px rgba(15, 0, 35, 0.55);
   }
 
@@ -543,9 +567,11 @@
     text-shadow:
       0 0 2px #25004f,
       0 0 4px #25004f,
+
       0 3px 0 #5d14ce,
       0 6px 0 #4f11b7,
       0 9px 0 #3c0e94,
+
       0 12px 8px rgba(15, 0, 35, 0.6);
   }
 
@@ -563,27 +589,86 @@
     bottom: 17%;
   }
 
+}
 
-  /* ------------------------------
-     LOWER EDGE
-  ------------------------------ */
 
-  .play-modes-bottom-edge {
-    height: clamp(
-      36px,
-      5vw,
-      55px
-    );
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 820px) {
+
+  .play-modes {
+    aspect-ratio: 16 / 6.8;
+
+
+    /*
+      Must match GamePacksIntro's tablet
+      diagonal depth.
+    */
+    --play-modes-top-overlap:
+      clamp(
+        28px,
+        4vw,
+        36px
+      );
+
+
+    /*
+      Keep the yellow accent narrow.
+    */
+    --play-modes-bottom-stripe-height:
+      clamp(
+        7px,
+        1.3vw,
+        10px
+      );
+
+
+    --play-modes-bottom-slope:
+      clamp(
+        24px,
+        4.5vw,
+        34px
+      );
   }
 
 
-  .play-modes-bottom-edge::before {
-    clip-path: polygon(
-      0 82%,
-      100% 20%,
-      100% 36%,
-      0 98%
-    );
+  .play-modes-copy {
+    font-size:
+      clamp(
+        1rem,
+        3.9vw,
+        2.1rem
+      );
+
+    -webkit-text-stroke:
+      clamp(
+        2px,
+        0.6vw,
+        4px
+      )
+      #6714d8;
+  }
+
+
+  .play-modes-copy-solo {
+    left: 4%;
+
+    bottom: 15%;
+  }
+
+
+  .play-modes-copy-teams {
+    right: 3%;
+
+    bottom: 15%;
+  }
+
+
+  .play-modes-panel-solo,
+  .play-modes-panel-teams {
+    width: 57%;
   }
 
 }
@@ -596,58 +681,68 @@
 @media (max-width: 600px) {
 
   .play-modes {
-    width: 100%;
-
-    aspect-ratio: 16 / 7;
-
-    margin-top: -20px;
-  }
+    aspect-ratio: 16 / 7.2;
 
 
-  /* ------------------------------
-     STAGE
-  ------------------------------ */
-
-  .play-modes-stage {
-    top: -6px;
-
-    height:
-      calc(
-        100% + 6px
+    /*
+      Matches GamePacksIntro's mobile
+      diagonal depth.
+    */
+    --play-modes-top-overlap:
+      clamp(
+        22px,
+        6vw,
+        28px
       );
 
-    clip-path: polygon(
-      0 2%,
-      100% 11%,
-      100% 100%,
-      0 100%
-    );
+
+    /*
+      Small but still clearly visible
+      yellow accent.
+    */
+    --play-modes-bottom-stripe-height:
+      clamp(
+        6px,
+        1.8vw,
+        8px
+      );
+
+
+    --play-modes-bottom-slope:
+      clamp(
+        20px,
+        6vw,
+        28px
+      );
   }
 
 
-  /* ------------------------------
-     COPY
-  ------------------------------ */
-
   .play-modes-copy {
-    font-size: clamp(
-      0.75rem,
-      3.5vw,
-      1.35rem
-    );
+    font-size:
+      clamp(
+        0.75rem,
+        3.5vw,
+        1.35rem
+      );
 
     line-height: 0.9;
 
     -webkit-text-stroke:
-      clamp(2px, 0.65vw, 4px)
+      clamp(
+        2px,
+        0.65vw,
+        4px
+      )
       #6714d8;
 
     text-shadow:
       0 0 1px #25004f,
       0 0 3px #25004f,
+
       0 1px 0 #5d14ce,
       0 3px 0 #4f11b7,
       0 5px 0 #3c0e94,
+
       0 7px 5px rgba(15, 0, 35, 0.55);
   }
 
@@ -658,9 +753,11 @@
     text-shadow:
       0 0 1px #25004f,
       0 0 3px #25004f,
+
       0 2px 0 #5d14ce,
       0 4px 0 #4f11b7,
       0 6px 0 #3c0e94,
+
       0 8px 5px rgba(15, 0, 35, 0.6);
   }
 
@@ -668,124 +765,109 @@
   .play-modes-copy-solo {
     left: 3%;
 
-    bottom: 17%;
+    bottom: 16%;
   }
 
 
   .play-modes-copy-teams {
     right: 3%;
 
-    bottom: 17%;
+    bottom: 16%;
   }
 
 
-  /* ------------------------------
-     TOP EDGE
-  ------------------------------ */
-
-  .play-modes-top-edge {
-    top: -28px;
-
-    height: clamp(
-      34px,
-      9.5vw,
-      50px
-    );
-  }
-
-
-  .play-modes-top-edge::before {
-    clip-path: polygon(
-      0 18%,
-      100% 96%,
-      100% 100%,
-      0 30%
-    );
-  }
-
-
-  /* ------------------------------
-     PANELS
-  ------------------------------ */
-
-  .play-modes-panel-solo,
-  .play-modes-panel-teams {
-    width: 57%;
-  }
-
-
-  /* ------------------------------
+  /* ========================================
      SOLO MASK
-  ------------------------------ */
+  ======================================== */
 
   .play-modes-solo-border {
-    clip-path: polygon(
-      0 0,
-      82% 0,
-      100% 100%,
-      0 100%
-    );
+    clip-path:
+      polygon(
+        0 0,
+        82% 0,
+        100% 100%,
+        0 100%
+      );
   }
 
 
   .play-modes-image-solo,
   .play-modes-video-solo,
   .play-modes-panel-solo video {
-    clip-path: polygon(
-      0 0,
-      80.5% 0,
-      98% 100%,
-      0 100%
-    );
+    clip-path:
+      polygon(
+        0 0,
+        80.5% 0,
+        98% 100%,
+        0 100%
+      );
   }
 
 
-  /* ------------------------------
+  /* ========================================
      TEAMS MASK
-  ------------------------------ */
+  ======================================== */
 
   .play-modes-teams-border {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 100%,
-      18% 100%
-    );
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        18% 100%
+      );
   }
 
 
   .play-modes-image-teams,
   .play-modes-video-teams,
   .play-modes-panel-teams video {
-    clip-path: polygon(
-      2% 0,
-      100% 0,
-      100% 100%,
-      19.5% 100%
-    );
+    clip-path:
+      polygon(
+        2% 0,
+        100% 0,
+        100% 100%,
+        19.5% 100%
+      );
+  }
+
+}
+
+
+/* ========================================
+   375PX / SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .play-modes {
+    aspect-ratio: 16 / 7.5;
+
+    /*
+      Prevent the stripe becoming too heavy
+      relative to a narrow phone viewport.
+    */
+    --play-modes-bottom-stripe-height: 6px;
   }
 
 
-  /* ------------------------------
-     LOWER EDGE
-  ------------------------------ */
-
-  .play-modes-bottom-edge {
-    height: clamp(
-      28px,
-      8vw,
-      42px
-    );
+  .play-modes-copy {
+    font-size:
+      clamp(
+        0.7rem,
+        3.4vw,
+        1rem
+      );
   }
 
 
-  .play-modes-bottom-edge::before {
-    clip-path: polygon(
-      0 80%,
-      100% 22%,
-      100% 40%,
-      0 98%
-    );
+  .play-modes-copy-solo {
+    left: 2.5%;
+  }
+
+
+  .play-modes-copy-teams {
+    right: 2.5%;
   }
 
 }

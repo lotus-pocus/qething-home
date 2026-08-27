@@ -9,7 +9,28 @@
 
   min-height: 100vh;
 
-  margin-top: -16vw;
+  /*
+    BOUNDED OVERLAP WITH CUSTOMISATION
+
+    Previously:
+      margin-top: -16vw;
+
+    That became far too aggressive on
+    large screens.
+
+    This still lets NewPacks tuck beneath
+    the Customisation divider, but caps
+    the amount of overlap.
+  */
+  margin-top:
+    calc(
+      -1 *
+      clamp(
+        90px,
+        8vw,
+        160px
+      )
+    );
 
   background: var(--qe-purple);
 
@@ -30,7 +51,17 @@
 
   width: 100%;
 
-  padding-top: clamp(4rem, 7vw, 8rem);
+  /*
+    Keep a little breathing room inside
+    the NewPacks section before the
+    GamePacksIntro internal overlap begins.
+  */
+  padding-top:
+    clamp(
+      4.5rem,
+      6vw,
+      7rem
+    );
 }
 
 
@@ -39,7 +70,11 @@
 ======================================== */
 
 .new-packs-heading {
-  width: min(1400px, 88vw);
+  width:
+    min(
+      1400px,
+      88vw
+    );
 
   margin: 0 auto;
 }
@@ -48,9 +83,16 @@
 .new-packs-title {
   margin: 0;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(3.2rem, 7vw, 8rem);
+  font-size:
+    clamp(
+      3.2rem,
+      7vw,
+      8rem
+    );
 
   font-weight: 900;
 
@@ -65,22 +107,134 @@
 
 
 /* ========================================
+   LARGE DESKTOP
+   1920PX+
+======================================== */
+
+@media (min-width: 1800px) {
+
+  .new-packs-section {
+    /*
+      Prevent ultra-wide screens from
+      pulling NewPacks any further upward.
+    */
+    margin-top: -150px;
+  }
+
+
+  .new-packs-content {
+    padding-top: 6.5rem;
+  }
+
+}
+
+
+/* ========================================
+   DESKTOP / 1440PX AREA
+======================================== */
+
+@media (
+  min-width: 1101px
+) and (
+  max-width: 1799px
+) {
+
+  .new-packs-section {
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          100px,
+          7.5vw,
+          140px
+        )
+      );
+  }
+
+}
+
+
+/* ========================================
+   1024PX
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .new-packs-section {
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          85px,
+          9vw,
+          110px
+        )
+      );
+  }
+
+
+  .new-packs-content {
+    padding-top:
+      clamp(
+        4rem,
+        6vw,
+        5rem
+      );
+  }
+
+
+  .new-packs-title {
+    font-size:
+      clamp(
+        3.2rem,
+        8vw,
+        6rem
+      );
+  }
+
+}
+
+
+/* ========================================
    TABLET
 ======================================== */
 
 @media (max-width: 900px) {
 
+  .new-packs-section {
+    /*
+      Shallower overlap once the layout
+      becomes stacked.
+    */
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          70px,
+          10vw,
+          90px
+        )
+      );
+  }
+
+
   .new-packs-content {
-    padding-top: 4rem;
+    padding-top:
+      clamp(
+        3.5rem,
+        7vw,
+        4.5rem
+      );
   }
 
 
   .new-packs-title {
-    font-size: clamp(
-      3.2rem,
-      10vw,
-      6rem
-    );
+    font-size:
+      clamp(
+        3.2rem,
+        10vw,
+        6rem
+      );
   }
 
 }
@@ -92,8 +246,31 @@
 
 @media (max-width: 600px) {
 
+  .new-packs-section {
+    /*
+      Keep just enough overlap to preserve
+      the layered diagonal identity without
+      crowding the GamePacksIntro title.
+    */
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          50px,
+          14vw,
+          70px
+        )
+      );
+  }
+
+
   .new-packs-content {
-    padding-top: 3rem;
+    padding-top:
+      clamp(
+        2.75rem,
+        8vw,
+        3.5rem
+      );
   }
 
 
@@ -103,13 +280,32 @@
 
 
   .new-packs-title {
-    font-size: clamp(
-      2.8rem,
-      12vw,
-      4.7rem
-    );
+    font-size:
+      clamp(
+        2.8rem,
+        12vw,
+        4.7rem
+      );
 
     line-height: 0.82;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .new-packs-section {
+    margin-top: -48px;
+  }
+
+
+  .new-packs-content {
+    padding-top: 2.75rem;
   }
 
 }

@@ -12,6 +12,7 @@
   overflow: visible;
 }
 
+
 /* ========================================
    ACTIVE GAME DESCRIPTION
 ======================================== */
@@ -31,10 +32,20 @@
     0.5rem;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
+  padding:
+    0
+    clamp(
+      0.5rem,
+      2vw,
+      1.5rem
+    );
+
   font-family: "Outfit", sans-serif;
+
   font-weight: 700;
 
   line-height: 1.15;
@@ -45,28 +56,35 @@
 }
 
 
-/* One-line descriptions */
+/* ========================================
+   ONE-LINE DESCRIPTIONS
+======================================== */
 
 .games-carousel-description-large {
-  font-size: clamp(
-    1.15rem,
-    1.7vw,
-    1.65rem
-  );
+  font-size:
+    clamp(
+      1.15rem,
+      1.7vw,
+      1.65rem
+    );
 }
 
 
-/* Longer / two-line descriptions */
+/* ========================================
+   LONGER / TWO-LINE DESCRIPTIONS
+======================================== */
 
 .games-carousel-description-small {
-  font-size: clamp(
-    1rem,
-    1.35vw,
-    1.35rem
-  );
-
   max-width: 760px;
+
+  font-size:
+    clamp(
+      1rem,
+      1.35vw,
+      1.35rem
+    );
 }
+
 
 /* ========================================
    CAROUSEL
@@ -83,12 +101,15 @@
   overflow-y: hidden;
 
   /*
-    Gives the first and last cards enough room
-    to sit towards the centre of the viewport.
+    Gives first and last cards enough
+    room to sit towards the centre.
   */
   padding:
     0.5rem
-    max(14vw, calc((100vw - 900px) / 2))
+    max(
+      14vw,
+      calc((100vw - 900px) / 2)
+    )
     2rem;
 
   scroll-behavior: smooth;
@@ -115,7 +136,13 @@
 .game-card {
   position: relative;
 
-  flex: 0 0 min(68vw, 900px);
+  flex:
+    0
+    0
+    min(
+      68vw,
+      900px
+    );
 
   aspect-ratio: 16 / 9;
 
@@ -129,9 +156,17 @@
 
   background: var(--qe-blue);
 
-  border-radius: 24px;
+  border-radius:
+    clamp(
+      18px,
+      1.5vw,
+      24px
+    );
 
-  border: 6px solid rgba(255, 255, 255, 0.18);
+  border:
+    6px
+    solid
+    rgba(255, 255, 255, 0.18);
 
   opacity: 0.34;
 
@@ -140,7 +175,8 @@
   transition:
     opacity 0.4s ease,
     transform 0.4s ease,
-    border-color 0.4s ease;
+    border-color 0.4s ease,
+    border-width 0.4s ease;
 }
 
 
@@ -154,6 +190,7 @@
   transform: scale(1);
 
   border-color: #ffbd00;
+
   border-width: 10px;
 
   cursor: default;
@@ -179,17 +216,20 @@
 
 
 /*
-  Neighbouring cards are both darker
+  Neighbouring cards are darker
   and slightly less saturated.
 */
-.game-card:not(.game-card-active) .game-card-image {
+
+.game-card:not(.game-card-active)
+.game-card-image {
   filter:
     saturate(0.65)
     brightness(0.68);
 }
 
 
-.game-card-active:hover .game-card-image {
+.game-card-active:hover
+.game-card-image {
   transform: scale(1.015);
 }
 
@@ -203,15 +243,25 @@
 
   inset: 0;
 
-  background: rgba(83, 0, 112, 0.42);
+  background:
+    rgba(
+      83,
+      0,
+      112,
+      0.42
+    );
 
   pointer-events: none;
 
-  transition: opacity 0.4s ease;
+  transition:
+    opacity
+    0.4s
+    ease;
 }
 
 
-.game-card-active .game-card-fade {
+.game-card-active
+.game-card-fade {
   opacity: 0;
 }
 
@@ -227,7 +277,10 @@
   right: 0;
   bottom: 0;
 
-  padding: 4rem 2rem 1.5rem;
+  padding:
+    4rem
+    2rem
+    1.5rem;
 
   background:
     linear-gradient(
@@ -238,7 +291,10 @@
 
   opacity: 0;
 
-  transform: translateY(12px);
+  transform:
+    translateY(
+      12px
+    );
 
   transition:
     opacity 0.35s ease,
@@ -246,19 +302,30 @@
 }
 
 
-.game-card-active .game-card-label {
+.game-card-active
+.game-card-label {
   opacity: 1;
 
-  transform: translateY(0);
+  transform:
+    translateY(
+      0
+    );
 }
 
 
 .game-card-label h3 {
   margin: 0;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(1.6rem, 3vw, 3rem);
+  font-size:
+    clamp(
+      1.6rem,
+      3vw,
+      3rem
+    );
 
   font-weight: 900;
 
@@ -278,16 +345,45 @@
   display: grid;
 
   grid-template-columns:
-    clamp(70px, 7vw, 110px)
-    minmax(220px, 420px)
-    clamp(70px, 7vw, 110px);
+    clamp(
+      70px,
+      7vw,
+      110px
+    )
+    minmax(
+      220px,
+      420px
+    )
+    clamp(
+      70px,
+      7vw,
+      110px
+    );
 
   justify-content: center;
+
   align-items: center;
 
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap:
+    clamp(
+      1.5rem,
+      3vw,
+      3rem
+    );
 
-  margin-top: 2.5rem;
+  width:
+    min(
+      760px,
+      calc(
+        100%
+        - 3rem
+      )
+    );
+
+  margin:
+    2.5rem
+    auto
+    0;
 }
 
 
@@ -301,8 +397,19 @@
   align-items: center;
   justify-content: center;
 
-  width: clamp(70px, 7vw, 110px);
-  height: clamp(70px, 7vw, 110px);
+  width:
+    clamp(
+      70px,
+      7vw,
+      110px
+    );
+
+  height:
+    clamp(
+      70px,
+      7vw,
+      110px
+    );
 
   padding: 0;
 
@@ -312,7 +419,10 @@
 
   cursor: pointer;
 
-  transition: transform 0.2s ease;
+  transition:
+    transform
+    0.2s
+    ease;
 }
 
 
@@ -329,29 +439,44 @@
 
 
 /*
-  The SVG points left by default.
+  SVG points left by default.
 */
+
 .games-arrow-left img {
-  transform: rotate(0deg);
+  transform:
+    rotate(
+      0deg
+    );
 }
 
 
 /*
-  Flip the same SVG for the next arrow.
+  Flip same SVG for next arrow.
 */
+
 .games-arrow-right img {
-  transform: rotate(180deg);
+  transform:
+    rotate(
+      180deg
+    );
 }
 
 
 .games-arrow:hover {
-  transform: scale(1.1);
+  transform:
+    scale(
+      1.1
+    );
 }
 
 
 .games-arrow:active {
-  transform: scale(0.96);
+  transform:
+    scale(
+      0.96
+    );
 }
+
 
 /* ========================================
    ACTIVE GAME CATEGORY
@@ -363,24 +488,279 @@
   align-items: center;
   justify-content: center;
 
+  min-width: 0;
+
   min-height: 70px;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(1.6rem, 2.8vw, 3rem);
+  font-size:
+    clamp(
+      1.6rem,
+      2.8vw,
+      3rem
+    );
 
   font-weight: 900;
 
   line-height: 0.95;
 
   text-align: center;
+
   text-transform: uppercase;
 
   color: white;
 }
 
+
 /* ========================================
-   RESPONSIVE
+   2560px+ / ULTRA-WIDE
+======================================== */
+
+@media (min-width: 2200px) {
+
+  .games-carousel-wrapper {
+    margin-top: 5rem;
+  }
+
+
+  .games-carousel {
+    gap: 2.5rem;
+
+    padding-left:
+      max(
+        16vw,
+        calc(
+          (
+            100vw
+            - 1000px
+          )
+          / 2
+        )
+      );
+
+    padding-right:
+      max(
+        16vw,
+        calc(
+          (
+            100vw
+            - 1000px
+          )
+          / 2
+        )
+      );
+  }
+
+
+  .game-card {
+    flex-basis: 900px;
+  }
+
+
+  .games-carousel-description {
+    max-width: 950px;
+  }
+
+
+  .games-carousel-controls {
+    max-width: 760px;
+  }
+
+}
+
+
+/* ========================================
+   1920px / LARGE DESKTOP
+======================================== */
+
+@media (
+  min-width: 1800px
+) and (
+  max-width: 2199px
+) {
+
+  .games-carousel-wrapper {
+    margin-top:
+      clamp(
+        4rem,
+        4vw,
+        5rem
+      );
+  }
+
+
+  .games-carousel {
+    gap:
+      clamp(
+        2rem,
+        2.5vw,
+        2.75rem
+      );
+
+    padding-left:
+      max(
+        14vw,
+        calc(
+          (
+            100vw
+            - 1000px
+          )
+          / 2
+        )
+      );
+
+    padding-right:
+      max(
+        14vw,
+        calc(
+          (
+            100vw
+            - 1000px
+          )
+          / 2
+        )
+      );
+  }
+
+
+  .game-card {
+    flex-basis:
+      min(
+        58vw,
+        950px
+      );
+  }
+
+
+  .games-carousel-controls {
+    width:
+      min(
+        760px,
+        80vw
+      );
+  }
+
+}
+
+
+/* ========================================
+   1440px / STANDARD DESKTOP
+======================================== */
+
+@media (
+  min-width: 1101px
+) and (
+  max-width: 1799px
+) {
+
+  .games-carousel {
+    gap:
+      clamp(
+        1.5rem,
+        2vw,
+        2rem
+      );
+  }
+
+
+  .game-card {
+    flex-basis:
+      min(
+        68vw,
+        900px
+      );
+  }
+
+}
+
+
+/* ========================================
+   1024px / SMALL DESKTOP + TABLET
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .games-carousel {
+    gap:
+      clamp(
+        1.25rem,
+        2vw,
+        2rem
+      );
+  }
+
+
+  .game-card {
+    flex-basis:
+      min(
+        72vw,
+        760px
+      );
+  }
+
+
+  .games-carousel-controls {
+    grid-template-columns:
+      clamp(
+        60px,
+        7vw,
+        80px
+      )
+      minmax(
+        180px,
+        360px
+      )
+      clamp(
+        60px,
+        7vw,
+        80px
+      );
+
+    gap:
+      clamp(
+        1rem,
+        3vw,
+        2rem
+      );
+
+    width:
+      min(
+        720px,
+        calc(
+          100%
+          - 3rem
+        )
+      );
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .games-arrow {
+    width:
+      clamp(
+        60px,
+        7vw,
+        80px
+      );
+
+    height:
+      clamp(
+        60px,
+        7vw,
+        80px
+      );
+  }
+
+}
+
+
+/* ========================================
+   768px / TABLET
 ======================================== */
 
 @media (max-width: 768px) {
@@ -389,6 +769,48 @@
     margin-top: 3rem;
   }
 
+
+  /* DESCRIPTION */
+
+  .games-carousel-description {
+    width: 88vw;
+
+    height:
+      clamp(
+        68px,
+        11vw,
+        82px
+      );
+
+    margin-bottom: 0.75rem;
+
+    padding:
+      0
+      0.5rem;
+  }
+
+
+  .games-carousel-description-large {
+    font-size:
+      clamp(
+        1.1rem,
+        3vw,
+        1.45rem
+      );
+  }
+
+
+  .games-carousel-description-small {
+    font-size:
+      clamp(
+        1rem,
+        2.7vw,
+        1.25rem
+      );
+  }
+
+
+  /* CAROUSEL */
 
   .games-carousel {
     gap: 1rem;
@@ -404,23 +826,23 @@
     flex-basis: 82vw;
 
     border-width: 4px;
+
+    border-radius:
+      clamp(
+        16px,
+        3vw,
+        24px
+      );
   }
 
 
-  .games-carousel-controls {
-    gap: 4rem;
-
-    margin-top: 1.5rem;
-  }
-
-
-  .games-arrow {
-    width: 54px;
-    height: 54px;
-
-    border-width: 3px;
-
-    font-size: 3.2rem;
+  .game-card-active {
+    border-width:
+      clamp(
+        6px,
+        1.4vw,
+        8px
+      );
   }
 
 
@@ -429,6 +851,249 @@
       3rem
       1rem
       1rem;
+  }
+
+
+  .game-card-label h3 {
+    font-size:
+      clamp(
+        1.4rem,
+        5vw,
+        2.5rem
+      );
+  }
+
+
+  /* CONTROLS */
+
+  .games-carousel-controls {
+    grid-template-columns:
+      54px
+      minmax(
+        0,
+        1fr
+      )
+      54px;
+
+    gap:
+      clamp(
+        0.75rem,
+        3vw,
+        1.5rem
+      );
+
+    width:
+      min(
+        520px,
+        calc(
+          100%
+          - 2rem
+        )
+      );
+
+    margin:
+      1.5rem
+      auto
+      0;
+  }
+
+
+  .games-arrow {
+    width: 54px;
+    height: 54px;
+  }
+
+
+  .games-carousel-category {
+    min-width: 0;
+
+    min-height: 54px;
+
+    font-size:
+      clamp(
+        1.4rem,
+        5vw,
+        2.3rem
+      );
+
+    overflow-wrap: anywhere;
+  }
+
+}
+
+
+/* ========================================
+   430px / LARGE PHONE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .games-carousel-wrapper {
+    margin-top: 2.5rem;
+  }
+
+
+  .games-carousel-description {
+    width: 90vw;
+
+    height: 74px;
+
+    padding: 0;
+  }
+
+
+  .games-carousel-description-large {
+    font-size:
+      clamp(
+        1.05rem,
+        4.5vw,
+        1.25rem
+      );
+  }
+
+
+  .games-carousel-description-small {
+    font-size:
+      clamp(
+        0.95rem,
+        4vw,
+        1.1rem
+      );
+  }
+
+
+  .games-carousel {
+    gap: 0.8rem;
+
+    padding:
+      0.75rem
+      6vw
+      1.25rem;
+  }
+
+
+  .game-card {
+    flex-basis: 86vw;
+
+    border-width: 3px;
+
+    border-radius: 18px;
+  }
+
+
+  .game-card-active {
+    border-width: 6px;
+  }
+
+
+  .games-carousel-controls {
+    grid-template-columns:
+      48px
+      minmax(
+        0,
+        1fr
+      )
+      48px;
+
+    width:
+      calc(
+        100%
+        - 1.5rem
+      );
+
+    gap:
+      clamp(
+        0.5rem,
+        2.5vw,
+        0.9rem
+      );
+
+    margin-top: 1.25rem;
+  }
+
+
+  .games-arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+
+  .games-carousel-category {
+    min-height: 48px;
+
+    font-size:
+      clamp(
+        1.25rem,
+        5.5vw,
+        1.8rem
+      );
+
+    line-height: 0.9;
+  }
+
+}
+
+
+/* ========================================
+   375px / SMALL PHONE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .games-carousel-description {
+    width: 92vw;
+
+    height: 72px;
+  }
+
+
+  .games-carousel {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+
+  .game-card {
+    flex-basis: 88vw;
+
+    border-radius: 16px;
+  }
+
+
+  .games-carousel-controls {
+    grid-template-columns:
+      44px
+      minmax(
+        0,
+        1fr
+      )
+      44px;
+
+    width:
+      calc(
+        100%
+        - 1rem
+      );
+
+    gap: 0.45rem;
+  }
+
+
+  .games-arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+
+  .games-carousel-category {
+    min-height: 44px;
+
+    font-size:
+      clamp(
+        1.15rem,
+        5.5vw,
+        1.55rem
+      );
   }
 
 }

@@ -3,20 +3,74 @@
 ======================================== */
 
 .unique-section {
+  /*
+    RESPONSIVE GEOMETRY
+  */
+
+  --unique-top-depth:
+    clamp(
+      26px,
+      4vw,
+      76px
+    );
+
+  --unique-bottom-depth:
+    clamp(
+      26px,
+      4vw,
+      76px
+    );
+
+  /*
+    One consistent stripe thickness.
+  */
+  --unique-stripe: 10px;
+
+  --unique-section-height:
+    clamp(
+      300px,
+      27vw,
+      450px
+    );
+
+  --unique-gutter:
+    clamp(
+      28px,
+      6vw,
+      110px
+    );
+
   position: relative;
 
   width: 100%;
 
-  min-height: clamp(180px, 18vw, 320px);
-
-  margin-top: -4vw;
-  margin-bottom: -10.5vw;
+  min-height:
+    var(--unique-section-height);
 
   /*
-    This becomes the visible diagonal
-    stripe around the purple panel.
+    CRITICAL:
+    overlap by exactly the top diagonal depth.
+
+    This means the transparent area above
+    the diagonal reveals GamesSection,
+    rather than the white page background.
   */
-  background: var(--qe-pink);
+  margin-top:
+    calc(
+      -1 * var(--unique-top-depth)
+    );
+
+  /*
+    Same principle at the bottom:
+    Customisation comes underneath the
+    clipped diagonal area.
+  */
+  margin-bottom:
+    calc(
+      -1 * var(--unique-bottom-depth)
+    );
+
+  background: transparent;
 
   z-index: 6;
 
@@ -25,34 +79,39 @@
 
 
 /* ========================================
-   PURPLE UNIQUE PANEL
+   OUTER PINK SHAPE
 ======================================== */
 
-.unique-section::before {
+.unique-section::after {
   content: "";
 
   position: absolute;
 
   inset: 0;
 
+  background:
+    var(--qe-pink);
+
   /*
-    Move the purple shape slightly down
-    to expose the QE-pink stripe along
-    the top diagonal.
+    OUTER SHAPE
+
+    Top:
+    lower left → higher right
+
+    Bottom:
+    higher left → lower right
   */
-  top: 14px;
-
-  background: linear-gradient(
-    90deg,
-    #6600FF 0%,
-    #34005D 100%
-  );
-
   clip-path: polygon(
-    0 12%,
+    0 var(--unique-top-depth),
     100% 0,
-    100% 87%,
-    0 72%
+
+    100% 100%,
+
+    0
+    calc(
+      100%
+      - var(--unique-bottom-depth)
+    )
   );
 
   z-index: 0;
@@ -62,17 +121,61 @@
 
 
 /* ========================================
-   CUT THE WHOLE SECTION TO ITS SHAPE
+   INNER PURPLE PANEL
 ======================================== */
 
-.unique-section {
+.unique-section::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6600FF 0%,
+      #34005D 100%
+    );
+
+  /*
+    SAME ANGLES as the outer pink shape.
+
+    Purple is simply inset vertically
+    by --unique-stripe.
+
+    This keeps the pink line parallel
+    at both the top and bottom.
+  */
   clip-path: polygon(
-    0 12%,
-    100% 0,
-    100% 87%,
-    0 72%
+    0
+    calc(
+      var(--unique-top-depth)
+      + var(--unique-stripe)
+    ),
+
+    100%
+    var(--unique-stripe),
+
+    100%
+    calc(
+      100%
+      - var(--unique-stripe)
+    ),
+
+    0
+    calc(
+      100%
+      - var(--unique-bottom-depth)
+      - var(--unique-stripe)
+    )
   );
+
+  z-index: 1;
+
+  pointer-events: none;
 }
+
 
 /* ========================================
    CONTENT
@@ -81,31 +184,59 @@
 .unique-content {
   position: relative;
 
+  z-index: 2;
+
   display: grid;
+
   grid-template-columns:
-    minmax(240px, 0.8fr)
-    minmax(320px, 1fr);
+    minmax(180px, 0.8fr)
+    minmax(300px, 1.2fr);
 
   align-items: center;
 
-  gap: clamp(2rem, 5vw, 7rem);
+  gap:
+    clamp(
+      2rem,
+      5vw,
+      7rem
+    );
 
-  width: min(1200px, 84vw);
+  width:
+    min(
+      1200px,
+      calc(
+        100%
+        - (var(--unique-gutter) * 2)
+      )
+    );
 
-  min-height: clamp(180px, 18vw, 320px);
+  min-height:
+    var(--unique-section-height);
 
-  margin: 0 auto;
-
-  /*
-    Extra room compensates for the
-    clipped top/bottom.
-  */
-  padding:
-    clamp(3.5rem, 5vw, 6rem)
+  margin:
     0
-    clamp(4rem, 6vw, 7rem);
+    auto;
 
-  z-index: 2;
+  padding:
+    calc(
+      var(--unique-top-depth)
+      + clamp(
+        1.5rem,
+        2vw,
+        2.5rem
+      )
+    )
+    0
+    calc(
+      var(--unique-bottom-depth)
+      + clamp(
+        1.5rem,
+        2vw,
+        2.5rem
+      )
+    );
+
+  box-sizing: border-box;
 }
 
 
@@ -114,24 +245,28 @@
 ======================================== */
 
 .unique-star {
+  position: relative;
+
+  z-index: 5;
+
   display: block;
 
-  width: clamp(180px, 23vw, 360px);
+  width:
+    clamp(
+      180px,
+      22vw,
+      350px
+    );
+
+  max-width: 100%;
+
   height: auto;
 
   justify-self: center;
 
-  /*
-    Let the star poke beyond the purple
-    strip like the designer version.
-  */
+  margin: 0;
+
   transform-origin: center;
-
-  margin-top: -1rem;
-
-  position: relative;
-
-  z-index: 5;
 }
 
 
@@ -140,6 +275,10 @@
 ======================================== */
 
 .unique-title {
+  position: relative;
+
+  z-index: 4;
+
   display: flex;
 
   flex-direction: column;
@@ -148,13 +287,16 @@
 
   margin: 0;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(
-    2.8rem,
-    5.2vw,
-    6.2rem
-  );
+  font-size:
+    clamp(
+      2.8rem,
+      5vw,
+      6rem
+    );
 
   font-weight: 900;
 
@@ -168,12 +310,12 @@
 
   color: #ffffff;
 
-  /*
-    Purple depth/outline similar to
-    the sticker typography elsewhere.
-  */
   -webkit-text-stroke:
-    clamp(2px, 0.22vw, 4px)
+    clamp(
+      2px,
+      0.22vw,
+      4px
+    )
     #5020a8;
 
   paint-order: stroke fill;
@@ -182,10 +324,6 @@
     0 3px 0 #481493,
     0 6px 0 #35106e,
     0 9px 8px rgba(21, 4, 48, 0.3);
-
-  position: relative;
-
-  z-index: 4;
 }
 
 
@@ -196,116 +334,487 @@
 }
 
 
-/* GAMESHOW! slightly larger */
-
 .unique-title span:last-child {
   font-size: 1.08em;
 }
 
 
 /* ========================================
-   TABLET / MOBILE
+   2560px+ / ULTRA-WIDE
+======================================== */
+
+@media (min-width: 2200px) {
+
+  .unique-section {
+    --unique-top-depth: 76px;
+    --unique-bottom-depth: 76px;
+
+    --unique-section-height: 450px;
+
+    --unique-gutter: 120px;
+  }
+
+
+  .unique-content {
+    max-width: 1250px;
+
+    gap: 7rem;
+  }
+
+
+  .unique-star {
+    width: 340px;
+  }
+
+
+  .unique-title {
+    font-size: 5.8rem;
+  }
+
+}
+
+
+/* ========================================
+   1920px / LARGE DESKTOP
+======================================== */
+
+@media (
+  min-width: 1800px
+) and (
+  max-width: 2199px
+) {
+
+  .unique-section {
+    --unique-top-depth:
+      clamp(
+        64px,
+        3.8vw,
+        74px
+      );
+
+    --unique-bottom-depth:
+      clamp(
+        64px,
+        3.8vw,
+        74px
+      );
+
+    --unique-section-height:
+      clamp(
+        380px,
+        24vw,
+        440px
+      );
+  }
+
+
+  .unique-content {
+    max-width: 1200px;
+  }
+
+
+  .unique-star {
+    width:
+      clamp(
+        280px,
+        18vw,
+        340px
+      );
+  }
+
+
+  .unique-title {
+    font-size:
+      clamp(
+        4.8rem,
+        4.5vw,
+        5.8rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   1440px / STANDARD DESKTOP
+======================================== */
+
+@media (
+  min-width: 1101px
+) and (
+  max-width: 1799px
+) {
+
+  .unique-section {
+    --unique-section-height:
+      clamp(
+        320px,
+        26vw,
+        410px
+      );
+  }
+
+
+  .unique-content {
+    grid-template-columns:
+      minmax(190px, 0.8fr)
+      minmax(300px, 1fr);
+  }
+
+
+  .unique-star {
+    width:
+      clamp(
+        210px,
+        21vw,
+        320px
+      );
+  }
+
+
+  .unique-title {
+    font-size:
+      clamp(
+        3.5rem,
+        5vw,
+        5.5rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   1024px
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .unique-section {
+    --unique-top-depth:
+      clamp(
+        38px,
+        5vw,
+        56px
+      );
+
+    --unique-bottom-depth:
+      clamp(
+        38px,
+        5vw,
+        56px
+      );
+
+    --unique-section-height:
+      clamp(
+        290px,
+        32vw,
+        350px
+      );
+
+    --unique-gutter:
+      clamp(
+        28px,
+        5vw,
+        55px
+      );
+  }
+
+
+  .unique-content {
+    grid-template-columns:
+      minmax(160px, 0.78fr)
+      minmax(270px, 1.22fr);
+
+    gap:
+      clamp(
+        1.5rem,
+        4vw,
+        3.5rem
+      );
+  }
+
+
+  .unique-star {
+    width:
+      clamp(
+        170px,
+        23vw,
+        250px
+      );
+  }
+
+
+  .unique-title {
+    font-size:
+      clamp(
+        2.8rem,
+        5.8vw,
+        4.3rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   768px / TABLET
 ======================================== */
 
 @media (max-width: 768px) {
 
   .unique-section {
-    min-height: 300px;
+    --unique-top-depth:
+      clamp(
+        30px,
+        6vw,
+        44px
+      );
 
-    margin-top: -30px;
+    --unique-bottom-depth:
+      clamp(
+        30px,
+        6vw,
+        44px
+      );
 
-    clip-path: polygon(
-      0 10%,
-      100% 0,
-      100% 90%,
-      0 78%
-    );
+    /*
+      Keep the line visually substantial.
+    */
+    --unique-stripe: 9px;
+
+    --unique-section-height:
+      clamp(
+        250px,
+        38vw,
+        310px
+      );
+
+    --unique-gutter: 5vw;
   }
 
 
-  .unique-section::before {
-    inset: -4px;
-
-    clip-path: polygon(
-      0 10%,
-      100% 0,
-      100% 90%,
-      0 78%
-    );
-  }
-
-
+  /*
+    Keep star and title side by side.
+  */
   .unique-content {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      minmax(120px, 0.78fr)
+      minmax(210px, 1.22fr);
 
-    gap: 0.5rem;
+    gap:
+      clamp(
+        1rem,
+        3vw,
+        2rem
+      );
 
-    width: 90vw;
-
-    min-height: 300px;
-
-    padding:
-      3.5rem
-      0
-      4.5rem;
+    width:
+      calc(
+        100%
+        - (var(--unique-gutter) * 2)
+      );
   }
 
 
   .unique-star {
-    width: clamp(
-      160px,
-      46vw,
-      260px
-    );
-
-    margin:
-      -1rem
-      auto
-      0;
+    width:
+      clamp(
+        135px,
+        28vw,
+        205px
+      );
   }
 
 
   .unique-title {
-    font-size: clamp(
-      2.4rem,
-      10vw,
-      4.5rem
-    );
+    font-size:
+      clamp(
+        2.3rem,
+        6.5vw,
+        3.5rem
+      );
+
+    -webkit-text-stroke:
+      clamp(
+        2px,
+        0.4vw,
+        3px
+      )
+      #5020a8;
   }
+
 }
 
 
 /* ========================================
-   SMALL MOBILE
+   430px / LARGE PHONE
 ======================================== */
 
 @media (max-width: 480px) {
 
   .unique-section {
-    min-height: 270px;
+    --unique-top-depth:
+      clamp(
+        22px,
+        7vw,
+        30px
+      );
+
+    --unique-bottom-depth:
+      clamp(
+        22px,
+        7vw,
+        30px
+      );
+
+    --unique-stripe: 8px;
+
+    --unique-section-height:
+      clamp(
+        205px,
+        53vw,
+        235px
+      );
+
+    --unique-gutter:
+      clamp(
+        12px,
+        4vw,
+        18px
+      );
   }
 
 
   .unique-content {
-    min-height: 270px;
+    grid-template-columns:
+      minmax(105px, 0.8fr)
+      minmax(190px, 1.2fr);
+
+    gap:
+      clamp(
+        0.5rem,
+        2vw,
+        0.8rem
+      );
 
     padding:
-      3rem
+      calc(
+        var(--unique-top-depth)
+        + 0.8rem
+      )
       0
-      4rem;
+      calc(
+        var(--unique-bottom-depth)
+        + 0.8rem
+      );
   }
 
 
   .unique-star {
-    width: 48vw;
+    width:
+      clamp(
+        105px,
+        31vw,
+        135px
+      );
   }
 
 
   .unique-title {
-    font-size: clamp(
-      2rem,
-      9.5vw,
-      3.5rem
-    );
+    font-size:
+      clamp(
+        1.75rem,
+        7.6vw,
+        2.2rem
+      );
+
+    line-height: 0.77;
+
+    letter-spacing: -0.055em;
+
+    -webkit-text-stroke:
+      2px
+      #5020a8;
+
+    text-shadow:
+      0 2px 0 #481493,
+      0 4px 0 #35106e,
+      0 6px 6px rgba(21, 4, 48, 0.3);
   }
+
+}
+
+
+/* ========================================
+   375px / SMALL PHONE
+======================================== */
+
+@media (max-width: 390px) {
+
+  .unique-section {
+    --unique-top-depth:
+      clamp(
+        20px,
+        6vw,
+        25px
+      );
+
+    --unique-bottom-depth:
+      clamp(
+        20px,
+        6vw,
+        25px
+      );
+
+    --unique-stripe: 8px;
+
+    --unique-section-height:
+      clamp(
+        190px,
+        54vw,
+        215px
+      );
+
+    --unique-gutter: 10px;
+  }
+
+
+  .unique-content {
+    grid-template-columns:
+      minmax(95px, 0.78fr)
+      minmax(175px, 1.22fr);
+
+    gap: 0.35rem;
+  }
+
+
+  .unique-star {
+    width:
+      clamp(
+        96px,
+        30vw,
+        116px
+      );
+  }
+
+
+  .unique-title {
+    font-size:
+      clamp(
+        1.55rem,
+        7.2vw,
+        1.9rem
+      );
+
+    -webkit-text-stroke:
+      1.5px
+      #5020a8;
+
+    text-shadow:
+      0 2px 0 #481493,
+      0 4px 0 #35106e,
+      0 5px 5px rgba(21, 4, 48, 0.28);
+  }
+
 }

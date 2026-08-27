@@ -1,24 +1,41 @@
+/* ========================================
+   INTRO SECTION
+======================================== */
+
 .intro-section {
   position: relative;
 
-  background: linear-gradient(
-    90deg,
-    #6600FF 0%,
-    #34005D 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #6600FF 0%,
+      #34005D 100%
+    );
 
   z-index: 1;
 }
 
+
+/* ========================================
+   CONTENT
+======================================== */
+
 .intro-content {
-  width: min(1200px, 90vw);
+  width: min(
+    1200px,
+    calc(100% - 8vw)
+  );
 
   margin: 0 auto;
 
-  padding: 2rem 0 4rem;
+  padding:
+    clamp(2rem, 3vw, 3.5rem)
+    0
+    clamp(4rem, 7vw, 7rem);
 
   text-align: center;
 }
+
 
 /* ========================================
    LOGO
@@ -27,21 +44,43 @@
 .intro-logo {
   display: block;
 
-  width: clamp(280px, 42vw, 650px);
+  width:
+    clamp(
+      280px,
+      42vw,
+      650px
+    );
+
   height: auto;
 
-  margin: 0 auto 2rem;
+  margin:
+    0
+    auto
+    clamp(1.5rem, 3vw, 2.5rem);
 }
+
 
 /* ========================================
    TITLE
 ======================================== */
 
 .intro-title {
-  margin: 1.8rem 0 3rem;
+  max-width: 1200px;
+
+  margin:
+    clamp(1rem, 2vw, 1.8rem)
+    auto
+    clamp(2rem, 4vw, 3rem);
 
   font-family: "Outfit", sans-serif;
-  font-size: clamp(3.5rem, 8vw, 8rem);
+
+  font-size:
+    clamp(
+      3.5rem,
+      7vw,
+      8rem
+    );
+
   font-weight: 900;
 
   line-height: 0.85;
@@ -50,9 +89,17 @@
 
   color: var(--qe-pink);
 
-  -webkit-text-stroke: 5px white;
+  -webkit-text-stroke:
+    clamp(
+      2px,
+      0.28vw,
+      5px
+    )
+    white;
+
   paint-order: stroke fill;
 }
+
 
 /* ========================================
    COPY
@@ -64,7 +111,14 @@
   margin: 0 auto;
 
   font-family: "Outfit", sans-serif;
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
+
+  font-size:
+    clamp(
+      1.2rem,
+      1.6vw,
+      1.8rem
+    );
+
   font-weight: 500;
 
   line-height: 1.4;
@@ -76,20 +130,143 @@
 
 
 /* ========================================
-   RESPONSIVE
+   LARGE / ULTRA-WIDE DESKTOP
 ======================================== */
 
-@media (max-width: 768px) {
+@media (min-width: 1800px) {
+
   .intro-content {
-    width: 88vw;
-    padding: 4rem 0 5rem;
+    width: min(
+      1300px,
+      calc(100% - 12vw)
+    );
   }
-}
 
   .intro-title {
-    font-size: clamp(3rem, 12vw, 5rem);
+    font-size:
+      clamp(
+        4.8rem,
+        5.5vw,
+        7.6rem
+      );
   }
 
   .intro-copy {
-    font-size: clamp(1.1rem, 5vw, 1.5rem);
+    max-width: 1050px;
+
+    font-size:
+      clamp(
+        1.4rem,
+        1.25vw,
+        1.8rem
+      );
   }
+
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .intro-content {
+    width: min(
+      900px,
+      calc(100% - 10vw)
+    );
+
+    padding-bottom:
+      clamp(
+        4rem,
+        9vw,
+        6rem
+      );
+  }
+
+  .intro-title {
+    font-size:
+      clamp(
+        3.2rem,
+        8vw,
+        5.5rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .intro-content {
+    width: 88vw;
+
+    padding:
+      4rem
+      0
+      5rem;
+  }
+
+  .intro-title {
+    margin-bottom: 2rem;
+
+    font-size:
+      clamp(
+        3rem,
+        12vw,
+        5rem
+      );
+
+    line-height: 0.88;
+
+    -webkit-text-stroke:
+      clamp(
+        2px,
+        0.8vw,
+        4px
+      )
+      white;
+  }
+
+  .intro-copy {
+    font-size:
+      clamp(
+        1.1rem,
+        5vw,
+        1.5rem
+      );
+
+    line-height: 1.35;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .intro-content {
+    width: 86vw;
+
+    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .intro-title {
+    font-size:
+      clamp(
+        2.6rem,
+        13vw,
+        4rem
+      );
+  }
+
+}
