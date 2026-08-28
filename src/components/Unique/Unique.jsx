@@ -4,8 +4,16 @@ import "./Unique.css";
 const Unique = () => {
   return (
     <section className="unique-section">
+
       <div className="unique-content">
-        {/* STAR / UNIQUE FUN GAMESHOW GRAPHIC */}
+
+        {/* ========================================
+            STAR / STICKER
+
+            This is visually independent from
+            the purple band layout.
+        ======================================== */}
+
         <motion.img
           className="unique-star"
           src="/images/Unique/Unique_gameshow.png"
@@ -45,7 +53,14 @@ const Unique = () => {
           }}
         />
 
-        {/* RIGHT-HAND TITLE */}
+
+        {/* ========================================
+            RIGHT-HAND TITLE
+
+            This remains fully inside the
+            purple band.
+        ======================================== */}
+
         <motion.h2
           className="unique-title"
           initial={{
@@ -69,7 +84,9 @@ const Unique = () => {
           <span>JUST A</span>
           <span>GAMESHOW!</span>
         </motion.h2>
+
       </div>
+
     </section>
   );
 };

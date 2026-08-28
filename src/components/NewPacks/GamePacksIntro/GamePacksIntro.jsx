@@ -11,19 +11,16 @@ const GamePacksIntro = () => {
       <div className="game-packs-intro-bg" />
 
       <div className="game-packs-intro-content">
-
         {/* ========================================
             MAIN TWO-COLUMN LAYOUT
         ======================================== */}
 
         <div className="game-packs-intro-grid">
-
           {/* ========================================
               LEFT COMPOSITION
           ======================================== */}
 
           <div className="game-packs-intro-left">
-
             {/* TITLE */}
 
             <motion.h2
@@ -50,7 +47,6 @@ const GamePacksIntro = () => {
               <span>WEEKLY QUIZ</span>
             </motion.h2>
 
-
             {/* COPY */}
 
             <motion.p
@@ -76,11 +72,13 @@ const GamePacksIntro = () => {
               plenty to choose from.
             </motion.p>
 
-
-            {/* LANDSCAPE IMAGE */}
+            {/* LARGE WEEKLY PACK IMAGE */}
 
             <motion.div
-              className="game-packs-intro-image-wrap game-packs-intro-image-wrap-left"
+              className="
+                game-packs-intro-image-wrap
+                game-packs-intro-image-wrap-left
+              "
               initial={{
                 opacity: 0,
                 x: -50,
@@ -100,14 +98,15 @@ const GamePacksIntro = () => {
               }}
             >
               <img
-                className="game-packs-intro-image"
+                className="
+                  game-packs-intro-image
+                  game-packs-intro-weekly-pack-image
+                "
                 src="/images/NewPacks/GamePacksIntro/QEthingWeeklyPack.jpg"
                 alt="QEthing Weekly game pack"
               />
             </motion.div>
-
           </div>
-
 
           {/* ========================================
               RIGHT COMPOSITION
@@ -133,7 +132,12 @@ const GamePacksIntro = () => {
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            <div className="game-packs-intro-image-wrap game-packs-intro-image-wrap-right">
+            <div
+              className="
+                game-packs-intro-image-wrap
+                game-packs-intro-image-wrap-right
+              "
+            >
               <img
                 className="game-packs-intro-image"
                 src="/images/NewPacks/GamePacksIntro/QEthing_Weekly.jpg"
@@ -141,7 +145,6 @@ const GamePacksIntro = () => {
               />
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

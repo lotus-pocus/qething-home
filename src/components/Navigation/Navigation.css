@@ -158,19 +158,19 @@
 
 .site-navigation-about
 .nav-link:hover {
-  color: var(--player-yellow);
+  color: white;
 }
 
 
 .site-navigation-about
 .nav-link::after {
-  background: var(--player-yellow);
+  background: white;
 }
 
 
 .site-navigation-about
 .nav-link-active {
-  color: var(--player-yellow);
+  color: white;
 }
 
 

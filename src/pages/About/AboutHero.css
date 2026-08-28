@@ -74,7 +74,11 @@
     );
 
   background:
-    var(--qe-pink);
+  linear-gradient(
+    90deg,
+    #FF11DE 0%,
+    #FFCF67 100%
+  );
 
   /*
     Shallower diagonal than the original.

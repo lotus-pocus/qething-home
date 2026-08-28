@@ -40,22 +40,12 @@
       var(--about-diagonal)
     );
 
-  /*
-    OUTER SECTION IS TEAL.
-
-    The gradient sits on top of this,
-    leaving approximately 12px visible
-    along the bottom diagonal.
-  */
   background:
     var(--qe-teal);
 
   color:
     var(--qe-purple);
 
-  /*
-    STORY OWNS ONLY ITS BOTTOM EDGE.
-  */
   clip-path:
     polygon(
       0 0,
@@ -69,11 +59,9 @@
     );
 }
 
+
 /* ========================================
    STORY GRADIENT LAYER
-
-   Leaves a 12px teal diagonal exposed
-   along the bottom edge.
 ======================================== */
 
 .about-story::before {
@@ -161,7 +149,14 @@
 
   flex-direction: column;
 
-  max-width: 1250px;
+  /*
+    Give the two designer-defined lines
+    as much horizontal room as the main
+    About container allows.
+  */
+  width: 100%;
+
+  max-width: 1320px;
 
   margin:
     clamp(
@@ -172,21 +167,69 @@
     0
     0;
 
+  /*
+    Slightly smaller than before.
+
+    This allows:
+    "designed as a scalable platform."
+    to stay together at desktop sizes
+    without resorting to very tight tracking.
+  */
   font-size:
     clamp(
-      3.5rem,
-      5.25vw,
-      6.6rem
+      3.25rem,
+      4.65vw,
+      5.9rem
     );
 
   font-weight: 900;
 
-  line-height: 0.88;
+  line-height: 0.92;
 
-  letter-spacing: -0.055em;
+  /*
+    Still bold and compact, but less
+    compressed than the original -0.055em.
+  */
+  letter-spacing: -0.032em;
 
   color:
     var(--qe-purple);
+}
+
+
+/* ========================================
+   DESKTOP TITLE LINES
+
+   The JSX already gives us two spans:
+
+   1. From day one, QEThing was
+   2. designed as a scalable platform.
+
+   Keep those exact lines on desktop.
+======================================== */
+
+.about-story-title > span {
+  display: block;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   TITLE HIGHLIGHT
+
+   "scalable platform." remains white.
+======================================== */
+
+.about-story-title strong {
+  color: #ffffff;
+
+  font-weight: inherit;
+
+  /*
+    Never split scalable from platform.
+  */
+  white-space: nowrap;
 }
 
 
@@ -221,6 +264,7 @@
     var(--qe-purple);
 }
 
+
 /* ========================================
    ULTRA WIDE
    1920px+
@@ -251,7 +295,11 @@
 
 
   .about-story-title {
-    font-size: 6.2rem;
+    max-width: 1350px;
+
+    font-size: 5.8rem;
+
+    letter-spacing: -0.03em;
   }
 
 
@@ -259,6 +307,7 @@
     font-size: 1.8rem;
   }
 }
+
 
 /* ========================================
    VERY LARGE / 2560px+
@@ -289,7 +338,9 @@
 
 
   .about-story-title {
-    font-size: 6.6rem;
+    max-width: 1450px;
+
+    font-size: 6.1rem;
   }
 
 
@@ -334,10 +385,14 @@
   .about-story-title {
     font-size:
       clamp(
-        3.4rem,
-        6.4vw,
-        5.4rem
+        3rem,
+        5.9vw,
+        4.7rem
       );
+
+    line-height: 0.93;
+
+    letter-spacing: -0.028em;
   }
 }
 
@@ -379,10 +434,35 @@
   .about-story-title {
     font-size:
       clamp(
-        3rem,
-        7vw,
-        4.5rem
+        2.8rem,
+        6.5vw,
+        4rem
       );
+
+    line-height: 0.94;
+
+    letter-spacing: -0.025em;
+  }
+
+
+  /*
+    From tablet down, let the two main
+    title spans wrap naturally if required.
+
+    This prevents overflow on narrower
+    screens while retaining the intended
+    desktop layout.
+  */
+  .about-story-title > span {
+    white-space: normal;
+  }
+
+
+  /*
+    But always keep these two words together.
+  */
+  .about-story-title strong {
+    white-space: nowrap;
   }
 
 
@@ -450,12 +530,14 @@
 
     font-size:
       clamp(
-        2.8rem,
-        8vw,
-        3.8rem
+        2.6rem,
+        7.4vw,
+        3.5rem
       );
 
-    line-height: 0.9;
+    line-height: 0.95;
+
+    letter-spacing: -0.022em;
   }
 
 
@@ -507,10 +589,14 @@
   .about-story-title {
     font-size:
       clamp(
-        2.4rem,
-        9.2vw,
-        3.2rem
+        2.3rem,
+        8.6vw,
+        3rem
       );
+
+    line-height: 0.96;
+
+    letter-spacing: -0.02em;
   }
 
 }
@@ -553,12 +639,14 @@
   .about-story-title {
     font-size:
       clamp(
-        2.15rem,
-        9.7vw,
-        2.7rem
+        2.05rem,
+        9vw,
+        2.55rem
       );
 
-    line-height: 0.92;
+    line-height: 0.98;
+
+    letter-spacing: -0.018em;
   }
 
 
@@ -599,7 +687,11 @@
 
 
   .about-story-title {
-    font-size: 2.1rem;
+    font-size: 2rem;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.018em;
   }
 
 

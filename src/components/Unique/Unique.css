@@ -3,9 +3,10 @@
 ======================================== */
 
 .unique-section {
-  /*
-    RESPONSIVE GEOMETRY
-  */
+
+  /* ========================================
+     DIAGONAL GEOMETRY
+  ======================================== */
 
   --unique-top-depth:
     clamp(
@@ -21,17 +22,26 @@
       76px
     );
 
-  /*
-    One consistent stripe thickness.
-  */
   --unique-stripe: 16px;
+
+
+  /* ========================================
+     PURPLE BAND HEIGHT
+
+     Slightly taller again.
+
+     This gives the heading more breathing
+     room and lets the star sit slightly
+     further away from the carousel above.
+  ======================================== */
 
   --unique-section-height:
     clamp(
-      300px,
-      27vw,
-      450px
+      380px,
+      30vw,
+      470px
     );
+
 
   --unique-gutter:
     clamp(
@@ -40,35 +50,27 @@
       110px
     );
 
+
   position: relative;
 
   width: 100%;
 
-  min-height:
+  height:
     var(--unique-section-height);
 
-  /*
-    CRITICAL:
-    overlap by exactly the top diagonal depth.
+  min-height: 0;
 
-    This means the transparent area above
-    the diagonal reveals GamesSection,
-    rather than the white page background.
-  */
+
   margin-top:
     calc(
       -1 * var(--unique-top-depth)
     );
 
-  /*
-    Same principle at the bottom:
-    Customisation comes underneath the
-    clipped diagonal area.
-  */
   margin-bottom:
     calc(
       -1 * var(--unique-bottom-depth)
     );
+
 
   background: transparent;
 
@@ -92,20 +94,20 @@
   background:
     var(--qe-pink);
 
+
   /*
-    OUTER SHAPE
-
-    Top:
-    lower left → higher right
-
-    Bottom:
-    higher left → lower right
+    Divider angle unchanged.
   */
   clip-path: polygon(
-    0 var(--unique-top-depth),
-    100% 0,
 
-    100% 100%,
+    0
+    var(--unique-top-depth),
+
+    100%
+    0,
+
+    100%
+    100%,
 
     0
     calc(
@@ -113,6 +115,7 @@
       - var(--unique-bottom-depth)
     )
   );
+
 
   z-index: 0;
 
@@ -138,16 +141,13 @@
       #34005D 100%
     );
 
+
   /*
-    SAME ANGLES as the outer pink shape.
-
-    Purple is simply inset vertically
-    by --unique-stripe.
-
-    This keeps the pink line parallel
-    at both the top and bottom.
+    Divider angle and stripe geometry
+    remain unchanged.
   */
   clip-path: polygon(
+
     0
     calc(
       var(--unique-top-depth)
@@ -171,6 +171,7 @@
     )
   );
 
+
   z-index: 1;
 
   pointer-events: none;
@@ -178,28 +179,13 @@
 
 
 /* ========================================
-   CONTENT
+   CONTENT WRAPPER
 ======================================== */
 
 .unique-content {
   position: relative;
 
   z-index: 2;
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(180px, 0.8fr)
-    minmax(300px, 1.2fr);
-
-  align-items: center;
-
-  gap:
-    clamp(
-      2rem,
-      5vw,
-      7rem
-    );
 
   width:
     min(
@@ -210,63 +196,84 @@
       )
     );
 
-  min-height:
-    var(--unique-section-height);
+  height: 100%;
+
+  min-height: 0;
 
   margin:
     0
     auto;
 
-  padding:
-    calc(
-      var(--unique-top-depth)
-      + clamp(
-        1.5rem,
-        2vw,
-        2.5rem
-      )
-    )
-    0
-    calc(
-      var(--unique-bottom-depth)
-      + clamp(
-        1.5rem,
-        2vw,
-        2.5rem
-      )
-    );
+  padding: 0;
 
   box-sizing: border-box;
+
+  overflow: visible;
 }
 
 
 /* ========================================
-   STAR GRAPHIC
+   STAR / STICKER
+
+   Completely removed from normal layout.
+
+   The larger purple band naturally moves
+   this down slightly because top is 50%.
 ======================================== */
 
 .unique-star {
-  position: relative;
+  position: absolute;
 
-  z-index: 5;
+  z-index: 10;
+
+
+  top: 50%;
+
+
+  left:
+    clamp(
+      -150px,
+      -7vw,
+      -70px
+    );
+
 
   display: block;
 
+
   width:
     clamp(
-      180px,
-      22vw,
-      350px
+      500px,
+      48vw,
+      740px
     );
 
-  max-width: 100%;
+  max-width: none;
 
   height: auto;
 
-  justify-self: center;
 
-  margin: 0;
+  /*
+    Slightly less aggressive upward offset
+    than before.
+
+    This gives more clearance from the
+    carousel arrows above.
+  */
+  margin-top:
+    calc(
+      -1 *
+      clamp(
+        235px,
+        22vw,
+        325px
+      )
+    );
+
 
   transform-origin: center;
+
+  pointer-events: none;
 }
 
 
@@ -275,9 +282,41 @@
 ======================================== */
 
 .unique-title {
-  position: relative;
+  position: absolute;
 
   z-index: 4;
+
+
+  top: 50%;
+
+  right: 0;
+
+
+  width:
+    min(
+      58%,
+      700px
+    );
+
+
+  /*
+    Title remains centred inside purple band.
+  */
+  margin-top:
+    calc(
+      -1 *
+      clamp(
+        78px,
+        8vw,
+        125px
+      )
+    );
+
+
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+
 
   display: flex;
 
@@ -285,11 +324,11 @@
 
   align-items: center;
 
-  margin: 0;
 
   font-family:
     "Outfit",
     sans-serif;
+
 
   font-size:
     clamp(
@@ -297,6 +336,7 @@
       5vw,
       6rem
     );
+
 
   font-weight: 900;
 
@@ -310,6 +350,7 @@
 
   color: #ffffff;
 
+
   -webkit-text-stroke:
     clamp(
       2px,
@@ -318,7 +359,9 @@
     )
     #5020a8;
 
+
   paint-order: stroke fill;
+
 
   text-shadow:
     0 3px 0 #481493,
@@ -340,16 +383,22 @@
 
 
 /* ========================================
-   2560px+ / ULTRA-WIDE
+   2560PX+ / ULTRA-WIDE
 ======================================== */
 
 @media (min-width: 2200px) {
 
   .unique-section {
+
     --unique-top-depth: 76px;
+
     --unique-bottom-depth: 76px;
 
-    --unique-section-height: 450px;
+    /*
+      Fixed upper limit prevents excessive
+      growth on very wide screens.
+    */
+    --unique-section-height: 470px;
 
     --unique-gutter: 120px;
   }
@@ -357,25 +406,36 @@
 
   .unique-content {
     max-width: 1250px;
-
-    gap: 7rem;
   }
 
 
   .unique-star {
-    width: 340px;
+
+    width: 740px;
+
+    left: -135px;
+
+    /*
+      More space above than before.
+    */
+    margin-top: -320px;
   }
 
 
   .unique-title {
+
+    width: 58%;
+
     font-size: 5.8rem;
+
+    margin-top: -110px;
   }
 
 }
 
 
 /* ========================================
-   1920px / LARGE DESKTOP
+   1920PX / LARGE DESKTOP
 ======================================== */
 
 @media (
@@ -385,12 +445,14 @@
 ) {
 
   .unique-section {
+
     --unique-top-depth:
       clamp(
         64px,
         3.8vw,
         74px
       );
+
 
     --unique-bottom-depth:
       clamp(
@@ -399,10 +461,18 @@
         74px
       );
 
+
+    /*
+      This is the breakpoint affecting
+      roughly 1920px screens.
+
+      Increased quite noticeably from
+      the previous 350–380px range.
+    */
     --unique-section-height:
       clamp(
-        380px,
-        24vw,
+        405px,
+        22vw,
         440px
       );
   }
@@ -414,21 +484,60 @@
 
 
   .unique-star {
+
     width:
       clamp(
-        280px,
-        18vw,
-        340px
+        630px,
+        36vw,
+        720px
+      );
+
+
+    left:
+      clamp(
+        -125px,
+        -5vw,
+        -85px
+      );
+
+
+    /*
+      Less negative than before so the
+      star settles slightly lower.
+    */
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          275px,
+          15.5vw,
+          310px
+        )
       );
   }
 
 
   .unique-title {
+
+    width: 58%;
+
+
     font-size:
       clamp(
         4.8rem,
         4.5vw,
         5.8rem
+      );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          95px,
+          5.5vw,
+          112px
+        )
       );
   }
 
@@ -436,7 +545,7 @@
 
 
 /* ========================================
-   1440px / STANDARD DESKTOP
+   1440PX / STANDARD DESKTOP
 ======================================== */
 
 @media (
@@ -446,38 +555,67 @@
 ) {
 
   .unique-section {
+
     --unique-section-height:
       clamp(
-        320px,
-        26vw,
+        365px,
+        27vw,
         410px
       );
   }
 
 
-  .unique-content {
-    grid-template-columns:
-      minmax(190px, 0.8fr)
-      minmax(300px, 1fr);
-  }
-
-
   .unique-star {
+
     width:
       clamp(
-        210px,
-        21vw,
-        320px
+        520px,
+        47vw,
+        680px
+      );
+
+
+    left:
+      clamp(
+        -105px,
+        -6vw,
+        -65px
+      );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          225px,
+          20vw,
+          290px
+        )
       );
   }
 
 
   .unique-title {
+
+    width: 57%;
+
+
     font-size:
       clamp(
         3.5rem,
         5vw,
         5.5rem
+      );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          75px,
+          7vw,
+          105px
+        )
       );
   }
 
@@ -485,18 +623,20 @@
 
 
 /* ========================================
-   1024px
+   1024PX
 ======================================== */
 
 @media (max-width: 1100px) {
 
   .unique-section {
+
     --unique-top-depth:
       clamp(
         38px,
         5vw,
         56px
       );
+
 
     --unique-bottom-depth:
       clamp(
@@ -505,12 +645,14 @@
         56px
       );
 
+
     --unique-section-height:
       clamp(
-        290px,
-        32vw,
-        350px
+        320px,
+        36vw,
+        365px
       );
+
 
     --unique-gutter:
       clamp(
@@ -521,36 +663,57 @@
   }
 
 
-  .unique-content {
-    grid-template-columns:
-      minmax(160px, 0.78fr)
-      minmax(270px, 1.22fr);
-
-    gap:
-      clamp(
-        1.5rem,
-        4vw,
-        3.5rem
-      );
-  }
-
-
   .unique-star {
+
     width:
       clamp(
-        170px,
-        23vw,
-        250px
+        390px,
+        46vw,
+        500px
+      );
+
+
+    left:
+      clamp(
+        -55px,
+        -4vw,
+        -30px
+      );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          175px,
+          20vw,
+          220px
+        )
       );
   }
 
 
   .unique-title {
+
+    width: 58%;
+
+
     font-size:
       clamp(
         2.8rem,
         5.8vw,
         4.3rem
+      );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          62px,
+          6.5vw,
+          78px
+        )
       );
   }
 
@@ -558,18 +721,20 @@
 
 
 /* ========================================
-   768px / TABLET
+   768PX / TABLET
 ======================================== */
 
 @media (max-width: 768px) {
 
   .unique-section {
+
     --unique-top-depth:
       clamp(
         30px,
         6vw,
         44px
       );
+
 
     --unique-bottom-depth:
       clamp(
@@ -578,62 +743,75 @@
         44px
       );
 
-    /*
-      Keep the line visually substantial.
-    */
+
     --unique-stripe: 9px;
+
 
     --unique-section-height:
       clamp(
-        250px,
-        38vw,
-        310px
+        270px,
+        39vw,
+        315px
       );
+
 
     --unique-gutter: 5vw;
   }
 
 
-  /*
-    Keep star and title side by side.
-  */
-  .unique-content {
-    grid-template-columns:
-      minmax(120px, 0.78fr)
-      minmax(210px, 1.22fr);
-
-    gap:
-      clamp(
-        1rem,
-        3vw,
-        2rem
-      );
-
-    width:
-      calc(
-        100%
-        - (var(--unique-gutter) * 2)
-      );
-  }
-
-
   .unique-star {
+
     width:
       clamp(
-        135px,
-        28vw,
-        205px
+        285px,
+        45vw,
+        350px
+      );
+
+
+    left:
+      clamp(
+        -30px,
+        -3vw,
+        -15px
+      );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          125px,
+          19vw,
+          150px
+        )
       );
   }
 
 
   .unique-title {
+
+    width: 59%;
+
+
     font-size:
       clamp(
-        2.3rem,
-        6.5vw,
-        3.5rem
+        2.25rem,
+        6.3vw,
+        3.3rem
       );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          50px,
+          6vw,
+          62px
+        )
+      );
+
 
     -webkit-text-stroke:
       clamp(
@@ -648,18 +826,20 @@
 
 
 /* ========================================
-   430px / LARGE PHONE
+   430PX / LARGE PHONE
 ======================================== */
 
 @media (max-width: 480px) {
 
   .unique-section {
+
     --unique-top-depth:
       clamp(
         22px,
         7vw,
         30px
       );
+
 
     --unique-bottom-depth:
       clamp(
@@ -668,14 +848,17 @@
         30px
       );
 
+
     --unique-stripe: 8px;
+
 
     --unique-section-height:
       clamp(
-        205px,
-        53vw,
-        235px
+        225px,
+        58vw,
+        255px
       );
+
 
     --unique-gutter:
       clamp(
@@ -686,56 +869,69 @@
   }
 
 
-  .unique-content {
-    grid-template-columns:
-      minmax(105px, 0.8fr)
-      minmax(190px, 1.2fr);
-
-    gap:
-      clamp(
-        0.5rem,
-        2vw,
-        0.8rem
-      );
-
-    padding:
-      calc(
-        var(--unique-top-depth)
-        + 0.8rem
-      )
-      0
-      calc(
-        var(--unique-bottom-depth)
-        + 0.8rem
-      );
-  }
-
-
   .unique-star {
+
     width:
       clamp(
-        105px,
-        31vw,
-        135px
+        195px,
+        48vw,
+        225px
+      );
+
+
+    left:
+      clamp(
+        -14px,
+        -2vw,
+        -7px
+      );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          86px,
+          21vw,
+          100px
+        )
       );
   }
 
 
   .unique-title {
+
+    width: 59%;
+
+
     font-size:
       clamp(
-        1.75rem,
-        7.6vw,
-        2.2rem
+        1.65rem,
+        7vw,
+        2.05rem
       );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          36px,
+          8vw,
+          44px
+        )
+      );
+
 
     line-height: 0.77;
 
     letter-spacing: -0.055em;
 
+
     -webkit-text-stroke:
       2px
       #5020a8;
+
 
     text-shadow:
       0 2px 0 #481493,
@@ -747,18 +943,20 @@
 
 
 /* ========================================
-   375px / SMALL PHONE
+   375PX / SMALL PHONE
 ======================================== */
 
 @media (max-width: 390px) {
 
   .unique-section {
+
     --unique-top-depth:
       clamp(
         20px,
         6vw,
         25px
       );
+
 
     --unique-bottom-depth:
       clamp(
@@ -767,49 +965,75 @@
         25px
       );
 
+
     --unique-stripe: 8px;
+
 
     --unique-section-height:
       clamp(
-        190px,
-        54vw,
-        215px
+        205px,
+        56vw,
+        230px
       );
+
 
     --unique-gutter: 10px;
   }
 
 
-  .unique-content {
-    grid-template-columns:
-      minmax(95px, 0.78fr)
-      minmax(175px, 1.22fr);
-
-    gap: 0.35rem;
-  }
-
-
   .unique-star {
+
     width:
       clamp(
-        96px,
-        30vw,
-        116px
+        175px,
+        47vw,
+        195px
+      );
+
+
+    left: -5px;
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          76px,
+          20vw,
+          88px
+        )
       );
   }
 
 
   .unique-title {
+
+    width: 60%;
+
+
     font-size:
       clamp(
-        1.55rem,
-        7.2vw,
-        1.9rem
+        1.45rem,
+        6.8vw,
+        1.8rem
       );
+
+
+    margin-top:
+      calc(
+        -1 *
+        clamp(
+          32px,
+          8vw,
+          38px
+        )
+      );
+
 
     -webkit-text-stroke:
       1.5px
       #5020a8;
+
 
     text-shadow:
       0 2px 0 #481493,

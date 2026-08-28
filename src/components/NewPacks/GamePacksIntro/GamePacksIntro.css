@@ -7,9 +7,6 @@
 
   width: 100%;
 
-  /*
-    Internal pull-up within NewPacks.
-  */
   margin-top:
     calc(
       -1 * clamp(150px, 16vw, 270px)
@@ -24,23 +21,10 @@
       1120px
     );
 
-  /*
-    The teal transition extends below
-    this section.
-  */
   overflow: visible;
 
   z-index: auto;
 
-
-  /* ========================================
-     SHARED TRANSITION GEOMETRY
-  ======================================== */
-
-  /*
-    Vertical difference between the left
-    and right ends of the diagonal.
-  */
   --game-packs-diagonal-depth:
     clamp(
       32px,
@@ -48,10 +32,6 @@
       52px
     );
 
-
-  /*
-    Teal stripe thickness.
-  */
   --game-packs-stripe-thickness:
     clamp(
       12px,
@@ -59,16 +39,6 @@
       18px
     );
 
-
-  /*
-    Tiny extra lift on the LEFT edge only.
-
-    This gives us a few pixels of intentional
-    overlap to prevent anti-aliasing / background
-    bleed along the left end of the transition.
-
-    The right edge does not move.
-  */
   --game-packs-stripe-left-lift:
     clamp(
       2px,
@@ -80,9 +50,6 @@
 
 /* ========================================
    BACKGROUND / TRANSITION CONTAINER
-
-   GAMEPACKSINTRO OWNS:
-   GRADIENT → TEAL → PLAYMODES
 ======================================== */
 
 .game-packs-intro-bg {
@@ -119,9 +86,6 @@
       #ffcf67 100%
     );
 
-  /*
-    Master diagonal.
-  */
   clip-path:
     polygon(
       0 0,
@@ -140,13 +104,6 @@
 
 /* ========================================
    TEAL BOTTOM STRIPE
-
-   Same transition geometry as the gradient.
-
-   LEFT edge receives a tiny controlled lift
-   to eliminate any fractional-pixel bleed.
-
-   RIGHT edge stays exactly where it was.
 ======================================== */
 
 .game-packs-intro-bg::after {
@@ -164,11 +121,6 @@
 
   width: 100%;
 
-  /*
-    The extra left-lift gives the polygon
-    enough physical space to move upward
-    without clipping.
-  */
   height:
     calc(
       var(--game-packs-diagonal-depth)
@@ -182,19 +134,8 @@
 
   clip-path:
     polygon(
-
-      /*
-        LEFT TOP
-        Slightly higher than before.
-      */
       0 0,
 
-
-      /*
-        RIGHT TOP
-        Remains aligned with original
-        gradient edge.
-      */
       100%
       calc(
         var(--game-packs-diagonal-depth)
@@ -202,11 +143,6 @@
         var(--game-packs-stripe-left-lift)
       ),
 
-
-      /*
-        RIGHT BOTTOM
-        Original stripe thickness preserved.
-      */
       100%
       calc(
         var(--game-packs-diagonal-depth)
@@ -216,11 +152,6 @@
         var(--game-packs-stripe-thickness)
       ),
 
-
-      /*
-        LEFT BOTTOM
-        Keeps stripe thickness consistent.
-      */
       0
       var(--game-packs-stripe-thickness)
     );
@@ -251,11 +182,11 @@
   box-sizing: border-box;
 
   padding-top:
-   clamp(
-     16rem,
-     20vw,
-     21rem
-   );
+    clamp(
+      16rem,
+      20vw,
+      21rem
+    );
 
   padding-bottom:
     clamp(
@@ -263,6 +194,8 @@
       8vw,
       9rem
     );
+
+  overflow: visible;
 }
 
 
@@ -293,6 +226,8 @@
     );
 
   margin: 0 auto;
+
+  overflow: visible;
 }
 
 
@@ -301,6 +236,8 @@
 ======================================== */
 
 .game-packs-intro-left {
+  position: relative;
+
   display: flex;
 
   flex-direction: column;
@@ -310,6 +247,10 @@
   width: 100%;
 
   min-width: 0;
+
+  overflow: visible;
+
+  z-index: 35;
 }
 
 
@@ -442,17 +383,53 @@
 
 
 /* ========================================
-   LEFT LANDSCAPE IMAGE
+   LEFT WEEKLY PACK IMAGE
+
+   This is deliberately allowed to extend
+   outside its normal column.
 ======================================== */
 
 .game-packs-intro-image-wrap-left {
+  position: relative;
+
   width:
     min(
       100%,
       360px
     );
 
-  overflow: hidden;
+  overflow: visible;
+
+  z-index: 40;
+}
+
+
+/*
+  The actual image is approximately
+  twice its old visual size.
+
+  We enlarge the IMG rather than the
+  motion wrapper so Framer Motion can
+  continue controlling the wrapper's
+  translate animation cleanly.
+*/
+
+.game-packs-intro-weekly-pack-image {
+  position: relative;
+
+  z-index: 40;
+
+  width: 185%;
+
+  max-width: none;
+
+  height: auto;
+
+  transform:
+    translateX(-18%);
+
+  transform-origin:
+    center center;
 }
 
 
@@ -531,6 +508,22 @@
 
 
 /* ========================================
+   LARGE / STANDARD DESKTOP
+======================================== */
+
+@media (min-width: 1101px) {
+
+  .game-packs-intro-weekly-pack-image {
+    width: 185%;
+
+    transform:
+      translateX(-18%);
+  }
+
+}
+
+
+/* ========================================
    SMALL DESKTOP / 1024PX AREA
 ======================================== */
 
@@ -578,6 +571,14 @@
 
   .game-packs-intro-image-wrap-left {
     width: 92%;
+  }
+
+
+  .game-packs-intro-weekly-pack-image {
+    width: 165%;
+
+    transform:
+      translateX(-16%);
   }
 
 
@@ -750,6 +751,18 @@
       );
 
     margin: 0 auto;
+
+    overflow: visible;
+  }
+
+
+  .game-packs-intro-weekly-pack-image {
+    width: 145%;
+
+    max-width: none;
+
+    transform:
+      translateX(-15%);
   }
 
 
@@ -891,6 +904,25 @@
         78%,
         300px
       );
+
+    overflow: visible;
+  }
+
+
+  /*
+    Still enlarged on mobile,
+    but not quite as aggressively as desktop
+    so it doesn't become unmanageable on
+    375px / 430px screens.
+  */
+
+  .game-packs-intro-weekly-pack-image {
+    width: 130%;
+
+    max-width: none;
+
+    transform:
+      translateX(-11%);
   }
 
 
@@ -948,6 +980,14 @@
 
   .game-packs-intro-image-wrap-left {
     width: 82%;
+  }
+
+
+  .game-packs-intro-weekly-pack-image {
+    width: 125%;
+
+    transform:
+      translateX(-10%);
   }
 
 
