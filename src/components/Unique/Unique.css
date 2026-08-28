@@ -35,12 +35,13 @@
      further away from the carousel above.
   ======================================== */
 
+  /* BASE */
   --unique-section-height:
-    clamp(
-      380px,
-      30vw,
-      470px
-    );
+   clamp(
+     500px,
+     38vw,
+     620px
+   );
 
 
   --unique-gutter:
@@ -398,7 +399,7 @@
       Fixed upper limit prevents excessive
       growth on very wide screens.
     */
-    --unique-section-height: 470px;
+    --unique-section-height: 620px;
 
     --unique-gutter: 120px;
   }
@@ -471,9 +472,9 @@
     */
     --unique-section-height:
       clamp(
-        405px,
-        22vw,
-        440px
+        520px,
+        28vw,
+        570px
       );
   }
 
@@ -558,9 +559,9 @@
 
     --unique-section-height:
       clamp(
-        365px,
-        27vw,
-        410px
+        470px,
+        34vw,
+        525px
       );
   }
 
@@ -648,9 +649,9 @@
 
     --unique-section-height:
       clamp(
-        320px,
-        36vw,
-        365px
+        410px,
+        46vw,
+        455px
       );
 
 
@@ -749,9 +750,9 @@
 
     --unique-section-height:
       clamp(
-        270px,
-        39vw,
-        315px
+        350px,
+        51vw,
+        400px
       );
 
 
@@ -854,9 +855,9 @@
 
     --unique-section-height:
       clamp(
-        225px,
-        58vw,
-        255px
+        300px,
+        75vw,
+        335px
       );
 
 
@@ -971,9 +972,9 @@
 
     --unique-section-height:
       clamp(
-        205px,
-        56vw,
-        230px
+        275px,
+        72vw,
+        305px
       );
 
 
