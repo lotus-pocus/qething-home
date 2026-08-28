@@ -24,25 +24,84 @@
 
 .site-navigation-logo-link {
   position: fixed;
+
   top: 24px;
   left: 28px;
-  z-index: 1000;
+
+  z-index: 1200;
 
   display: block;
 
   opacity: 1;
   visibility: visible;
+
   pointer-events: auto;
+
+  transform: scale(1);
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    visibility 0.2s ease;
 }
+
 
 .site-navigation-logo {
   display: block;
-  width: clamp(72px, 7vw, 105px);
+
+  width:
+    clamp(
+      72px,
+      7vw,
+      105px
+    );
+
   height: auto;
 }
 
 
 .site-navigation-logo-link:hover {
+  transform: scale(1.04);
+}
+
+
+
+/* ========================================
+   INNER PAGE STICKY LOGO
+
+   Logo only:
+   - no white rhombus
+   - no background
+   - no rotation
+   - no drop shadow
+======================================== */
+
+.site-navigation-logo-sticky {
+  position: fixed;
+
+  top: 24px;
+  left: 28px;
+
+  z-index: 1200;
+
+  padding: 0;
+
+  background: transparent;
+
+  clip-path: none;
+
+  filter: none;
+
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform: scale(1);
+}
+
+
+.site-navigation-logo-sticky:hover {
   transform: scale(1.04);
 }
 
@@ -63,11 +122,17 @@
   align-items: center;
   justify-content: center;
 
-  gap: clamp(1.5rem, 3vw, 3.5rem);
+  gap:
+    clamp(
+      1.5rem,
+      3vw,
+      3.5rem
+    );
 
   padding: 0;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   pointer-events: auto;
 
@@ -81,9 +146,16 @@
 .nav-link {
   position: relative;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  font-size:
+    clamp(
+      1rem,
+      1.3vw,
+      1.3rem
+    );
 
   font-weight: 900;
 
@@ -115,27 +187,35 @@
   width: 100%;
   height: 4px;
 
-  background: var(--qe-pink);
+  background:
+    var(--qe-pink);
 
-  transform: scaleX(0);
+  transform:
+    scaleX(0);
 
-  transform-origin: left center;
+  transform-origin:
+    left center;
 
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease;
 }
 
 
 .nav-link:hover {
-  color: var(--qe-pink);
+  color:
+    var(--qe-pink);
 
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 }
 
 
 .nav-link:hover::after,
 .nav-link-active::after {
-  transform: scaleX(1);
+  transform:
+    scaleX(1);
 }
+
 
 
 /* ========================================
@@ -143,14 +223,20 @@
    ABOUT / NEWS / CONTACT
 ======================================== */
 
-.site-navigation-light .nav-link {
-  color: var(--qe-purple);
+.site-navigation-light
+.nav-link {
+  color:
+    var(--qe-purple);
 }
 
 
-.site-navigation-light .nav-link:hover {
-  color: var(--qe-pink);
+.site-navigation-light
+.nav-link:hover {
+  color:
+    var(--qe-pink);
 }
+
+
 
 /* ========================================
    ABOUT PAGE NAVIGATION HIGHLIGHT
@@ -174,6 +260,7 @@
 }
 
 
+
 /* ========================================
    SCROLLED NAVIGATION
 ======================================== */
@@ -183,7 +270,10 @@
 }
 
 
-/* Hide ABOUT / NEWS / CONTACT after scroll */
+
+/* ========================================
+   HIDE DESKTOP LINKS AFTER SCROLL
+======================================== */
 
 .site-navigation-scrolled
 .site-navigation-links {
@@ -199,13 +289,16 @@
 }
 
 
+
 /* ========================================
    HOME PAGE LOGO
    HIDE AFTER SCROLL
 ======================================== */
 
 .site-navigation-scrolled
-.site-navigation-logo-link:not(.site-navigation-logo-sticky) {
+.site-navigation-logo-link:not(
+  .site-navigation-logo-sticky
+) {
   opacity: 0;
 
   visibility: hidden;
@@ -214,38 +307,28 @@
 }
 
 
+
 /* ========================================
-   INNER PAGE STICKY HOME LOGO
-   ABOUT / NEWS / CONTACT
+   INNER PAGE STICKY LOGO
+   KEEP VISIBLE AFTER SCROLL
 ======================================== */
 
 .site-navigation-scrolled
 .site-navigation-logo-sticky {
   position: fixed;
 
-  top: 26px;
-  left: 30px;
+  top: 24px;
+  left: 28px;
 
-  width: clamp(105px, 9vw, 150px);
+  z-index: 1200;
 
-  padding:
-    10px
-    14px;
+  padding: 0;
 
-  background: white;
+  background: transparent;
 
-  clip-path: polygon(
-    3% 5%,
-    100% 0,
-    96% 94%,
-    0 100%
-  );
+  clip-path: none;
 
-  filter:
-    drop-shadow(
-      0 6px 10px
-      rgba(35, 8, 79, 0.18)
-    );
+  filter: none;
 
   opacity: 1;
 
@@ -253,18 +336,15 @@
 
   pointer-events: auto;
 
-  transform: rotate(-2deg);
-
-  z-index: 1200;
+  transform: scale(1);
 }
 
 
 .site-navigation-scrolled
 .site-navigation-logo-sticky:hover {
-  transform:
-    rotate(-2deg)
-    scale(1.06);
+  transform: scale(1.04);
 }
+
 
 
 /* ========================================
@@ -280,6 +360,7 @@
   z-index: 1200;
 
   display: flex;
+
   flex-direction: column;
 
   align-items: center;
@@ -292,10 +373,15 @@
 
   padding: 0;
 
-  border: 4px solid white;
+  border:
+    4px
+    solid
+    white;
+
   border-radius: 50%;
 
-  background: var(--qe-purple);
+  background:
+    var(--qe-purple);
 
   cursor: pointer;
 
@@ -327,9 +413,11 @@
 
 
 .navigation-burger:hover {
-  background: var(--qe-pink);
+  background:
+    var(--qe-pink);
 
-  transform: scale(1.08);
+  transform:
+    scale(1.08);
 }
 
 
@@ -343,7 +431,8 @@
 
   background: white;
 
-  transform-origin: center;
+  transform-origin:
+    center;
 
   transition:
     transform 0.25s ease,
@@ -351,27 +440,32 @@
 }
 
 
+
 /* ========================================
    BURGER → X
 ======================================== */
 
-.navigation-burger-open span:nth-child(1) {
+.navigation-burger-open
+span:nth-child(1) {
   transform:
     translateY(10px)
     rotate(45deg);
 }
 
 
-.navigation-burger-open span:nth-child(2) {
+.navigation-burger-open
+span:nth-child(2) {
   opacity: 0;
 }
 
 
-.navigation-burger-open span:nth-child(3) {
+.navigation-burger-open
+span:nth-child(3) {
   transform:
     translateY(-10px)
     rotate(-45deg);
 }
+
 
 
 /* ========================================
@@ -389,9 +483,15 @@
 
   align-items: center;
 
-  padding: clamp(2rem, 7vw, 8rem);
+  padding:
+    clamp(
+      2rem,
+      7vw,
+      8rem
+    );
 
-  background: var(--qe-purple);
+  background:
+    var(--qe-purple);
 
   overflow: hidden;
 
@@ -401,15 +501,23 @@
 
   pointer-events: none;
 
-  clip-path: polygon(
-    100% 0,
-    100% 0,
-    100% 100%,
-    100% 100%
-  );
+  clip-path:
+    polygon(
+      100% 0,
+      100% 0,
+      100% 100%,
+      100% 100%
+    );
 
   transition:
-    clip-path 0.45s cubic-bezier(0.77, 0, 0.18, 1),
+    clip-path
+      0.45s
+      cubic-bezier(
+        0.77,
+        0,
+        0.18,
+        1
+      ),
     opacity 0.2s ease,
     visibility 0.45s;
 }
@@ -422,13 +530,15 @@
 
   pointer-events: auto;
 
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
 }
+
 
 
 /* ========================================
@@ -441,6 +551,7 @@
   z-index: 2;
 
   display: flex;
+
   flex-direction: column;
 
   align-items: flex-start;
@@ -450,9 +561,16 @@
 
 
 .navigation-overlay-links a {
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(4rem, 10vw, 10rem);
+  font-size:
+    clamp(
+      4rem,
+      10vw,
+      10rem
+    );
 
   font-weight: 900;
 
@@ -471,17 +589,22 @@
 }
 
 
-.navigation-overlay-links a:hover {
-  color: var(--qe-pink);
+.navigation-overlay-links
+a:hover {
+  color:
+    var(--qe-pink);
 
-  transform: translateX(15px);
+  transform:
+    translateX(15px);
 }
 
 
 .navigation-overlay-links
 .overlay-link-active {
-  color: var(--qe-pink);
+  color:
+    var(--qe-pink);
 }
+
 
 
 /* ========================================
@@ -494,9 +617,16 @@
   right: -3vw;
   bottom: -2vw;
 
-  font-family: "Outfit", sans-serif;
+  font-family:
+    "Outfit",
+    sans-serif;
 
-  font-size: clamp(5rem, 14vw, 15rem);
+  font-size:
+    clamp(
+      5rem,
+      14vw,
+      15rem
+    );
 
   font-weight: 900;
 
@@ -504,16 +634,25 @@
 
   white-space: nowrap;
 
-  color: rgba(255, 255, 255, 0.05);
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
 
-  transform: rotate(-7deg);
+  transform:
+    rotate(-7deg);
 
   pointer-events: none;
 }
 
 
+
 /* ========================================
    MOBILE
+   768px AND BELOW
 ======================================== */
 
 @media (max-width: 768px) {
@@ -523,33 +662,40 @@
   }
 
 
-  .site-navigation-logo-link {
-    width: min(30vw, 160px);
-  }
-
-
-  /* Hide desktop navigation links */
-
-  .site-navigation-links {
-    display: none;
-  }
-
-
   /* ======================================
-     INNER PAGE STICKY LOGO — MOBILE
+     LOGO — MOBILE
   ====================================== */
 
+  .site-navigation-logo-link,
+  .site-navigation-logo-sticky,
   .site-navigation-scrolled
   .site-navigation-logo-sticky {
     top: 18px;
     left: 18px;
 
-    width: 105px;
-
-    padding:
-      8px
-      11px;
+    padding: 0;
   }
+
+
+  .site-navigation-logo {
+    width:
+      clamp(
+        68px,
+        22vw,
+        92px
+      );
+  }
+
+
+
+  /* ======================================
+     HIDE DESKTOP LINKS
+  ====================================== */
+
+  .site-navigation-links {
+    display: none;
+  }
+
 
 
   /* ======================================
@@ -567,8 +713,10 @@
 
     visibility: visible;
 
-    transform: scale(1);
+    transform:
+      scale(1);
   }
+
 
 
   /* ======================================
@@ -604,8 +752,10 @@
 }
 
 
+
 /* ========================================
    SMALL MOBILE
+   430px AND BELOW
 ======================================== */
 
 @media (max-width: 430px) {
