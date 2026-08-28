@@ -8,6 +8,8 @@ import News from "./pages/News/News";
 import Contact from "./pages/Contact/Contact";
 import PlayGame from "./pages/PlayGame/PlayGame";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Footer from "./components/Footer/Footer";
+import Privacy from "./pages/Privacy/Privacy";
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/PlayGame" element={<PlayGame />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
+      <Footer />
     </>
   );
 }

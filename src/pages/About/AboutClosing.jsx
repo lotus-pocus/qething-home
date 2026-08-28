@@ -6,12 +6,18 @@ const AboutClosing = () => {
       <div className="about-container">
 
         <p className="about-closing-copy">
-          WE MAKE EXPERIENCES
+          QETHING STUDIOS
           <br />
-          THAT BRING PEOPLE
+          AMBITIOUS EXPERIENCED
           <br />
-          <span>TOGETHER.</span>
+          <span>AND BUILT TO SCALE.</span>
         </p>
+
+        <img
+          src="/images/About/QEthing_Studios_black.svg"
+          alt="QEthing Studios"
+          className="about-closing-logo"
+        />
 
       </div>
     </section>

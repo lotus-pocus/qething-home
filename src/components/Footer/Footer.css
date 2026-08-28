@@ -1,0 +1,582 @@
+/* ========================================
+   QEthing FOOTER
+======================================== */
+
+.site-footer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--qe-purple) 0%,
+      #35106d 100%
+    );
+
+  color: #ffffff;
+}
+
+
+/* ========================================
+   INNER
+======================================== */
+
+.site-footer-inner {
+  width: min(
+    92%,
+    1500px
+  );
+
+  margin: 0 auto;
+
+  padding:
+    clamp(70px, 7vw, 120px)
+    clamp(20px, 4vw, 70px)
+    clamp(35px, 4vw, 60px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ========================================
+   BRAND
+======================================== */
+
+.site-footer-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom:
+    clamp(
+      38px,
+      4vw,
+      60px
+    );
+}
+
+
+.site-footer-logo {
+  display: block;
+
+  width:
+    clamp(
+      180px,
+      18vw,
+      300px
+    );
+
+  height: auto;
+
+  /*
+   * The current QEthing Studios asset is black.
+   * This converts it to white for the dark footer.
+   */
+  filter:
+    brightness(0)
+    invert(1);
+}
+
+
+/* ========================================
+   FOOTER NAVIGATION
+======================================== */
+
+.site-footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap:
+    clamp(
+      24px,
+      3vw,
+      50px
+    );
+
+  margin-bottom:
+    clamp(
+      30px,
+      3vw,
+      45px
+    );
+}
+
+
+.site-footer-nav a {
+  position: relative;
+
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    clamp(
+      0.95rem,
+      1.1vw,
+      1.15rem
+    );
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.site-footer-nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    var(--qe-pink);
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    center;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.site-footer-nav a:hover {
+  color:
+    var(--qe-pink);
+
+  transform:
+    translateY(-2px);
+}
+
+
+.site-footer-nav a:hover::after {
+  transform:
+    scaleX(1);
+}
+
+
+.site-footer-nav a:focus-visible {
+  outline:
+    2px solid
+    var(--qe-pink);
+
+  outline-offset:
+    7px;
+
+  border-radius:
+    2px;
+}
+
+
+/* ========================================
+   SOCIAL LINKS
+======================================== */
+
+.site-footer-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap:
+    clamp(
+      18px,
+      2vw,
+      32px
+    );
+
+  margin-bottom:
+    clamp(
+      50px,
+      5vw,
+      75px
+    );
+}
+
+
+.site-footer-socials a {
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    clamp(
+      0.8rem,
+      0.9vw,
+      0.95rem
+    );
+
+  font-weight: 500;
+
+  letter-spacing:
+    0.04em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.site-footer-socials a:hover {
+  color:
+    var(--qe-pink);
+
+  transform:
+    translateY(-2px);
+}
+
+
+.site-footer-socials a:focus-visible {
+  outline:
+    2px solid
+    var(--qe-pink);
+
+  outline-offset:
+    6px;
+}
+
+
+/* ========================================
+   COPYRIGHT
+======================================== */
+
+.site-footer-bottom {
+  width: 100%;
+
+  padding-top:
+    clamp(
+      25px,
+      3vw,
+      38px
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  text-align: center;
+}
+
+
+.site-footer-bottom p {
+  margin: 0;
+
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    clamp(
+      0.72rem,
+      0.8vw,
+      0.85rem
+    );
+
+  font-weight: 400;
+
+  letter-spacing:
+    0.03em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.6
+    );
+}
+
+
+/* ========================================
+   LARGE DESKTOP
+   1920px+
+======================================== */
+
+@media (min-width: 1920px) {
+
+  .site-footer-inner {
+    width:
+      min(
+        88%,
+        1650px
+      );
+  }
+
+}
+
+
+/* ========================================
+   TABLET
+   1024px and below
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .site-footer-inner {
+    width: 92%;
+
+    padding-top:
+      clamp(
+        65px,
+        8vw,
+        90px
+      );
+  }
+
+
+  .site-footer-logo {
+    width:
+      clamp(
+        180px,
+        24vw,
+        250px
+      );
+  }
+
+}
+
+
+/* ========================================
+   SMALL TABLET
+   768px and below
+======================================== */
+
+@media (max-width: 768px) {
+
+  .site-footer-inner {
+    padding:
+      65px
+      24px
+      35px;
+  }
+
+
+  .site-footer-brand {
+    margin-bottom:
+      42px;
+  }
+
+
+  .site-footer-logo {
+    width:
+      clamp(
+        175px,
+        34vw,
+        230px
+      );
+  }
+
+
+  .site-footer-nav {
+    gap:
+      20px
+      32px;
+
+    margin-bottom:
+      32px;
+  }
+
+
+  .site-footer-socials {
+    gap:
+      16px
+      25px;
+
+    margin-bottom:
+      50px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+   600px and below
+======================================== */
+
+@media (max-width: 600px) {
+
+  .site-footer-inner {
+    width: 100%;
+
+    padding:
+      60px
+      22px
+      32px;
+  }
+
+
+  .site-footer-brand {
+    margin-bottom:
+      38px;
+  }
+
+
+  .site-footer-logo {
+    width:
+      clamp(
+        170px,
+        48vw,
+        215px
+      );
+  }
+
+
+  .site-footer-nav {
+    flex-direction: column;
+
+    gap:
+      22px;
+
+    margin-bottom:
+      38px;
+  }
+
+
+  .site-footer-nav a {
+    font-size:
+      1rem;
+  }
+
+
+  .site-footer-socials {
+    max-width:
+      320px;
+
+    gap:
+      18px
+      24px;
+
+    margin-bottom:
+      45px;
+  }
+
+
+  .site-footer-bottom {
+    padding-top:
+      25px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   430px and below
+======================================== */
+
+@media (max-width: 430px) {
+
+  .site-footer-inner {
+    padding:
+      55px
+      18px
+      28px;
+  }
+
+
+  .site-footer-logo {
+    width:
+      clamp(
+        165px,
+        52vw,
+        205px
+      );
+  }
+
+
+  .site-footer-socials {
+    max-width:
+      280px;
+  }
+
+
+  .site-footer-bottom p {
+    line-height:
+      1.5;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+   375px and below
+======================================== */
+
+@media (max-width: 375px) {
+
+  .site-footer-inner {
+    padding-left:
+      16px;
+
+    padding-right:
+      16px;
+  }
+
+
+  .site-footer-nav {
+    gap:
+      20px;
+  }
+
+
+  .site-footer-socials {
+    gap:
+      16px
+      20px;
+  }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .site-footer-nav a,
+  .site-footer-nav a::after,
+  .site-footer-socials a {
+    transition: none;
+  }
+
+}

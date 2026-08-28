@@ -1,11 +1,37 @@
 /* ========================================
    ABOUT LONDON
+
+   RESPONSIBILITY:
+   - flat top
+   - image + purple split layout
+   - owns LONDON → NEXT SECTION
+     bottom diagonal
 ======================================== */
 
 .about-london {
   position: relative;
+  z-index: 1;
 
-  z-index: 2;
+  /*
+    London-specific bottom diagonal.
+
+    LEFT is cropped slightly more than RIGHT,
+    giving us the shallow downward diagonal
+    seen in the designer mock-up.
+  */
+  --about-london-left-cut:
+    clamp(
+      40px,
+      3vw,
+      65px
+    );
+
+  --about-london-right-cut:
+    clamp(
+      15px,
+      1.5vw,
+      30px
+    );
 
   display: grid;
 
@@ -16,12 +42,47 @@
   min-height:
     clamp(
       500px,
-      60vw,
+      48vw,
       780px
     );
 
+  /*
+    Pulls London underneath the outgoing
+    diagonal owned by AboutCommercial.
+  */
+  margin-top:
+    calc(
+      -1 *
+      var(--about-diagonal)
+    );
+
+  padding-bottom: 0;
+
   background:
     var(--qe-purple);
+
+  /*
+    Bottom diagonal:
+    higher on left,
+    slightly lower on right.
+  */
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+
+      100%
+        calc(
+          100% -
+          var(--about-london-right-cut)
+        ),
+
+      0
+        calc(
+          100% -
+          var(--about-london-left-cut)
+        )
+    );
 }
 
 
@@ -33,12 +94,17 @@
   position: relative;
 
   min-width: 0;
+  min-height: 0;
 
   overflow: hidden;
 
+  /*
+    Internal diagonal between photograph
+    and purple copy panel.
+  */
   clip-path:
     polygon(
-      0 var(--about-diagonal),
+      0 0,
       100% 0,
       92% 100%,
       0 100%
@@ -53,11 +119,22 @@
   height: 100%;
 
   object-fit: cover;
+
+  /*
+    Pull the photograph upward so the
+    building roof sits closer to the
+    incoming diagonal.
+
+    Lower percentage = image moves up.
+  */
+  object-position:
+    center
+    43%;
 }
 
 
 /* ========================================
-   COPY
+   COPY PANEL
 ======================================== */
 
 .about-london-copy {
@@ -72,7 +149,7 @@
   padding:
     clamp(
       3rem,
-      6vw,
+      5vw,
       6rem
     )
     clamp(
@@ -85,43 +162,214 @@
 }
 
 
+/* ========================================
+   EYEBROW
+======================================== */
+
 .about-london-copy span {
   font-size:
     clamp(
       1rem,
-      1.6vw,
-      1.4rem
+      1.25vw,
+      1.45rem
     );
 
-  font-weight: 800;
+  font-weight: 900;
+
+  line-height: 1;
 
   letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #ffffff;
 }
 
 
+/* ========================================
+   MAIN LOCATION
+======================================== */
+
 .about-london-copy strong {
   margin:
-    0.5rem
+    clamp(
+      0.4rem,
+      0.8vw,
+      0.8rem
+    )
     0
-    1rem;
+    clamp(
+      0.8rem,
+      1.5vw,
+      1.4rem
+    );
 
   font-size:
     clamp(
-      3.3rem,
-      6.5vw,
+      3.8rem,
+      6vw,
       7rem
     );
 
   font-weight: 900;
 
-  line-height: 0.84;
+  line-height: 0.82;
 
-  letter-spacing: -0.05em;
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+
+  color: #ffffff;
 }
 
 
 /* ========================================
-   TABLET / MOBILE
+   ULTRA WIDE
+   1920px+
+======================================== */
+
+@media (min-width: 1920px) {
+
+  .about-london {
+    min-height: 720px;
+
+    --about-london-left-cut: 65px;
+    --about-london-right-cut: 30px;
+  }
+
+
+  .about-london-image {
+    object-position:
+      center
+      42%;
+  }
+
+
+  .about-london-copy {
+    padding:
+      5rem
+      4.5rem;
+  }
+
+
+  .about-london-copy span {
+    font-size: 1.35rem;
+  }
+
+
+  .about-london-copy strong {
+    font-size: 6.7rem;
+  }
+}
+
+
+/* ========================================
+   VERY LARGE
+   2400px+
+======================================== */
+
+@media (min-width: 2400px) {
+
+  .about-london {
+    min-height: 780px;
+
+    /*
+      Keep geometry restrained on
+      ultra-wide monitors.
+    */
+    --about-london-left-cut: 70px;
+    --about-london-right-cut: 32px;
+  }
+
+
+  .about-london-image {
+    object-position:
+      center
+      41%;
+  }
+
+
+  .about-london-copy strong {
+    font-size: 7rem;
+  }
+}
+
+
+/* ========================================
+   SMALL DESKTOP / LAPTOP
+   1100px AND BELOW
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .about-london {
+    grid-template-columns:
+      minmax(0, 1.15fr)
+      minmax(250px, 0.85fr);
+
+    min-height:
+      clamp(
+        480px,
+        55vw,
+        650px
+      );
+
+    --about-london-left-cut:
+      clamp(
+        38px,
+        4.5vw,
+        55px
+      );
+
+    --about-london-right-cut:
+      clamp(
+        16px,
+        2.2vw,
+        27px
+      );
+  }
+
+
+  .about-london-image {
+    object-position:
+      center
+      43%;
+  }
+
+
+  .about-london-copy {
+    padding:
+      clamp(
+        3rem,
+        5vw,
+        4rem
+      )
+      clamp(
+        2rem,
+        3vw,
+        3rem
+      );
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.6rem,
+        6vw,
+        5.2rem
+      );
+  }
+}
+
+
+/* ========================================
+   TABLET
+   900px AND BELOW
+
+   Layout stacks:
+   image first,
+   purple copy underneath.
 ======================================== */
 
 @media (max-width: 900px) {
@@ -130,6 +378,24 @@
     grid-template-columns: 1fr;
 
     min-height: auto;
+
+    /*
+      Once stacked, the overall London
+      section still owns its bottom edge.
+    */
+    --about-london-left-cut:
+      clamp(
+        34px,
+        5vw,
+        45px
+      );
+
+    --about-london-right-cut:
+      clamp(
+        14px,
+        2.5vw,
+        22px
+      );
   }
 
 
@@ -141,13 +407,25 @@
         540px
       );
 
+    /*
+      Image → purple panel transition.
+      Separate from the section's
+      final bottom diagonal.
+    */
     clip-path:
       polygon(
-        0 var(--about-diagonal),
+        0 0,
         100% 0,
-        100% 100%,
-        0 94%
+        100% 94%,
+        0 100%
       );
+  }
+
+
+  .about-london-image {
+    object-position:
+      center
+      42%;
   }
 
 
@@ -165,10 +443,120 @@
         6rem
       );
   }
+
+
+  .about-london-copy span {
+    font-size:
+      clamp(
+        1rem,
+        2vw,
+        1.25rem
+      );
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        4rem,
+        10vw,
+        6rem
+      );
+  }
 }
 
 
+/* ========================================
+   MOBILE
+   768px AND BELOW
+======================================== */
+
+@media (max-width: 768px) {
+
+  .about-london {
+    --about-london-left-cut:
+      clamp(
+        30px,
+        5.5vw,
+        42px
+      );
+
+    --about-london-right-cut:
+      clamp(
+        13px,
+        2.8vw,
+        21px
+      );
+  }
+
+
+  .about-london-image-wrap {
+    height:
+      clamp(
+        340px,
+        68vw,
+        470px
+      );
+  }
+
+
+  .about-london-image {
+    object-position:
+      center
+      42%;
+  }
+
+
+  .about-london-copy {
+    padding:
+      clamp(
+        3.5rem,
+        10vw,
+        4.5rem
+      )
+      var(--about-page-gutter)
+      clamp(
+        4rem,
+        11vw,
+        5rem
+      );
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.6rem,
+        12vw,
+        5.2rem
+      );
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   600px AND BELOW
+======================================== */
+
 @media (max-width: 600px) {
+
+  .about-london {
+    --about-london-left-cut:
+      clamp(
+        28px,
+        6vw,
+        36px
+      );
+
+    --about-london-right-cut:
+      clamp(
+        12px,
+        3vw,
+        18px
+      );
+  }
+
 
   .about-london-image-wrap {
     height:
@@ -178,10 +566,49 @@
         410px
       );
   }
+
+
+  .about-london-image {
+    object-position:
+      center
+      41%;
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.4rem,
+        15vw,
+        4.8rem
+      );
+  }
 }
 
 
+/* ========================================
+   PHONE
+   430px AND BELOW
+======================================== */
+
 @media (max-width: 430px) {
+
+  .about-london {
+    --about-london-left-cut:
+      clamp(
+        25px,
+        7vw,
+        30px
+      );
+
+    --about-london-right-cut:
+      clamp(
+        10px,
+        3.5vw,
+        15px
+      );
+  }
+
 
   .about-london-image-wrap {
     height:
@@ -193,10 +620,63 @@
   }
 
 
+  .about-london-image {
+    object-position:
+      center
+      40%;
+  }
+
+
   .about-london-copy {
     padding:
       3.5rem
       var(--about-page-gutter)
       4rem;
+  }
+
+
+  .about-london-copy strong {
+    font-size:
+      clamp(
+        3.2rem,
+        16vw,
+        4rem
+      );
+  }
+}
+
+
+/* ========================================
+   VERY SMALL PHONE
+   375px AND BELOW
+======================================== */
+
+@media (max-width: 375px) {
+
+  .about-london {
+    --about-london-left-cut: 25px;
+    --about-london-right-cut: 11px;
+  }
+
+
+  .about-london-image-wrap {
+    height: 295px;
+  }
+
+
+  .about-london-image {
+    object-position:
+      center
+      40%;
+  }
+
+
+  .about-london-copy span {
+    font-size: 0.95rem;
+  }
+
+
+  .about-london-copy strong {
+    font-size: 3.1rem;
   }
 }
