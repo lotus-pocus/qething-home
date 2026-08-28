@@ -24,7 +24,7 @@
   /*
     One consistent stripe thickness.
   */
-  --unique-stripe: 10px;
+  --unique-stripe: 16px;
 
   --unique-section-height:
     clamp(

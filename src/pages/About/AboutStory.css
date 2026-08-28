@@ -1,0 +1,614 @@
+/* ========================================
+   ABOUT STORY
+
+   RESPONSIBILITY:
+   - flat top
+   - gradient background
+   - owns STORY → NEXT SECTION diagonal
+   - owns teal bottom divider
+======================================== */
+
+.about-story {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top:
+    calc(
+      -1 *
+      var(--about-diagonal)
+    );
+
+  padding:
+    calc(
+      clamp(
+        100px,
+        8vw,
+        150px
+      )
+      +
+      var(--about-diagonal)
+    )
+    0
+    calc(
+      clamp(
+        145px,
+        11vw,
+        205px
+      )
+      +
+      var(--about-diagonal)
+    );
+
+  /*
+    OUTER SECTION IS TEAL.
+
+    The gradient sits on top of this,
+    leaving approximately 12px visible
+    along the bottom diagonal.
+  */
+  background:
+    var(--qe-teal);
+
+  color:
+    var(--qe-purple);
+
+  /*
+    STORY OWNS ONLY ITS BOTTOM EDGE.
+  */
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0
+        calc(
+          100% -
+          var(--about-diagonal)
+        )
+    );
+}
+
+/* ========================================
+   STORY GRADIENT LAYER
+
+   Leaves a 12px teal diagonal exposed
+   along the bottom edge.
+======================================== */
+
+.about-story::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff11de 0%,
+      #ffcf67 100%
+    );
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+
+      100%
+        calc(
+          100% -
+          12px
+        ),
+
+      0
+        calc(
+          100% -
+          var(--about-diagonal) -
+          12px
+        )
+    );
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.about-story-content {
+  position: relative;
+
+  z-index: 3;
+}
+
+
+/* ========================================
+   LEAD COPY
+======================================== */
+
+.about-story-lead {
+  max-width: 1250px;
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      2rem,
+      2.6vw,
+      3rem
+    );
+
+  font-weight: 900;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+}
+
+
+/* ========================================
+   MAIN TITLE
+======================================== */
+
+.about-story-title {
+  display: flex;
+
+  flex-direction: column;
+
+  max-width: 1250px;
+
+  margin:
+    clamp(
+      2.4rem,
+      3.5vw,
+      4rem
+    )
+    0
+    0;
+
+  font-size:
+    clamp(
+      3.5rem,
+      5.25vw,
+      6.6rem
+    );
+
+  font-weight: 900;
+
+  line-height: 0.88;
+
+  letter-spacing: -0.055em;
+
+  color:
+    var(--qe-purple);
+}
+
+
+/* ========================================
+   SUPPORTING COPY
+======================================== */
+
+.about-story-copy {
+  max-width: 1250px;
+
+  margin:
+    clamp(
+      3rem,
+      4.3vw,
+      5rem
+    )
+    0
+    0;
+
+  font-size:
+    clamp(
+      1.3rem,
+      1.65vw,
+      1.8rem
+    );
+
+  font-weight: 900;
+
+  line-height: 1.05;
+
+  color:
+    var(--qe-purple);
+}
+
+/* ========================================
+   ULTRA WIDE
+   1920px+
+======================================== */
+
+@media (min-width: 1920px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        145px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        195px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-lead {
+    font-size: 3rem;
+  }
+
+
+  .about-story-title {
+    font-size: 6.2rem;
+  }
+
+
+  .about-story-copy {
+    font-size: 1.8rem;
+  }
+}
+
+/* ========================================
+   VERY LARGE / 2560px+
+======================================== */
+
+@media (min-width: 2400px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        150px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        205px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-lead {
+    font-size: 3rem;
+  }
+
+
+  .about-story-title {
+    font-size: 6.6rem;
+  }
+
+
+  .about-story-copy {
+    font-size: 1.8rem;
+  }
+}
+
+
+/* ========================================
+   SMALL DESKTOP
+   1100px AND BELOW
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        clamp(
+          95px,
+          9vw,
+          125px
+        )
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          130px,
+          12vw,
+          175px
+        )
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-title {
+    font-size:
+      clamp(
+        3.4rem,
+        6.4vw,
+        5.4rem
+      );
+  }
+}
+
+
+/* ========================================
+   TABLET
+   900px AND BELOW
+======================================== */
+
+@media (max-width: 900px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        90px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        125px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-lead {
+    font-size:
+      clamp(
+        1.55rem,
+        3.3vw,
+        2.1rem
+      );
+  }
+
+
+  .about-story-title {
+    font-size:
+      clamp(
+        3rem,
+        7vw,
+        4.5rem
+      );
+  }
+
+
+  .about-story-copy {
+    font-size:
+      clamp(
+        1rem,
+        2vw,
+        1.2rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+   768px AND BELOW
+======================================== */
+
+@media (max-width: 768px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        82px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        110px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-lead br,
+  .about-story-copy br {
+    display: none;
+  }
+
+
+  .about-story-lead {
+    font-size:
+      clamp(
+        1.4rem,
+        4.2vw,
+        1.9rem
+      );
+
+    line-height: 1;
+  }
+
+
+  .about-story-title {
+    margin-top:
+      clamp(
+        2rem,
+        6vw,
+        3rem
+      );
+
+    font-size:
+      clamp(
+        2.8rem,
+        8vw,
+        3.8rem
+      );
+
+    line-height: 0.9;
+  }
+
+
+  .about-story-copy {
+    margin-top:
+      clamp(
+        2.5rem,
+        7vw,
+        3.5rem
+      );
+
+    font-size:
+      clamp(
+        1rem,
+        2.8vw,
+        1.15rem
+      );
+
+    line-height: 1.15;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   600px AND BELOW
+======================================== */
+
+@media (max-width: 600px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        75px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        98px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-title {
+    font-size:
+      clamp(
+        2.4rem,
+        9.2vw,
+        3.2rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   PHONE
+   430px AND BELOW
+======================================== */
+
+@media (max-width: 430px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        70px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        88px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-lead {
+    font-size:
+      clamp(
+        1.25rem,
+        5.2vw,
+        1.55rem
+      );
+  }
+
+
+  .about-story-title {
+    font-size:
+      clamp(
+        2.15rem,
+        9.7vw,
+        2.7rem
+      );
+
+    line-height: 0.92;
+  }
+
+
+  .about-story-copy {
+    font-size:
+      clamp(
+        1rem,
+        4.2vw,
+        1.08rem
+      );
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL PHONE
+   375px AND BELOW
+======================================== */
+
+@media (max-width: 375px) {
+
+  .about-story {
+    padding-top:
+      calc(
+        66px
+        +
+        var(--about-diagonal)
+      );
+
+    padding-bottom:
+      calc(
+        82px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-story-title {
+    font-size: 2.1rem;
+  }
+
+
+  .about-story-lead {
+    font-size: 1.2rem;
+  }
+
+
+  .about-story-copy {
+    font-size: 0.98rem;
+  }
+}

@@ -1,0 +1,90 @@
+/* ========================================
+   ABOUT CLOSING
+======================================== */
+
+.about-closing {
+  padding:
+    clamp(
+      100px,
+      12vw,
+      170px
+    )
+    0;
+
+  background: #ffffff;
+}
+
+
+.about-closing-copy {
+  margin: 0;
+
+  font-size:
+    clamp(
+      3.2rem,
+      6.4vw,
+      7rem
+    );
+
+  font-weight: 900;
+
+  line-height: 0.88;
+
+  letter-spacing: -0.05em;
+
+  text-transform: uppercase;
+
+  color:
+    var(--qe-purple);
+}
+
+
+.about-closing-copy span {
+  color:
+    var(--qe-pink);
+}
+
+
+@media (max-width: 768px) {
+
+  .about-closing {
+    padding:
+      clamp(
+        80px,
+        14vw,
+        105px
+      )
+      0;
+  }
+
+
+  .about-closing-copy {
+    font-size:
+      clamp(
+        2.7rem,
+        8vw,
+        3.8rem
+      );
+
+    line-height: 0.92;
+  }
+}
+
+
+@media (max-width: 430px) {
+
+  .about-closing {
+    padding:
+      75px
+      0;
+  }
+
+
+  .about-closing-copy {
+    font-size:
+      clamp(
+        2.15rem,
+        9.3vw,
+        2.5rem
+      );
+  }
+}

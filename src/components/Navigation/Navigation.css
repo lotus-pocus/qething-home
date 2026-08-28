@@ -152,6 +152,27 @@
   color: var(--qe-pink);
 }
 
+/* ========================================
+   ABOUT PAGE NAVIGATION HIGHLIGHT
+======================================== */
+
+.site-navigation-about
+.nav-link:hover {
+  color: var(--player-yellow);
+}
+
+
+.site-navigation-about
+.nav-link::after {
+  background: var(--player-yellow);
+}
+
+
+.site-navigation-about
+.nav-link-active {
+  color: var(--player-yellow);
+}
+
 
 /* ========================================
    SCROLLED NAVIGATION

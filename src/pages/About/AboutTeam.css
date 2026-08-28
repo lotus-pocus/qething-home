@@ -1,0 +1,153 @@
+/* ========================================
+   ABOUT TEAM
+======================================== */
+
+.about-network {
+  position: relative;
+
+  z-index: 1;
+
+  margin-top:
+    calc(
+      -1 *
+      var(--about-diagonal)
+    );
+
+  padding:
+    calc(
+      clamp(
+        100px,
+        12vw,
+        170px
+      )
+      +
+      var(--about-diagonal)
+    )
+    0
+    clamp(
+      110px,
+      12vw,
+      160px
+    );
+
+  background: #ffffff;
+}
+
+
+/* ========================================
+   HEADING
+======================================== */
+
+.about-network-heading {
+  display: flex;
+
+  flex-direction: column;
+
+  margin:
+    0
+    0
+    clamp(
+      2.5rem,
+      4vw,
+      4rem
+    );
+
+  font-size:
+    clamp(
+      3rem,
+      5.6vw,
+      6rem
+    );
+
+  font-weight: 900;
+
+  line-height: 0.86;
+
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+}
+
+
+.about-network-heading span {
+  display: block;
+}
+
+
+.about-network-heading span:first-child {
+  color:
+    var(--qe-purple);
+}
+
+
+.about-network-heading span:last-child {
+  color:
+    var(--qe-pink);
+}
+
+
+/* ========================================
+   COPY
+======================================== */
+
+.about-network-copy {
+  max-width:
+    var(--about-copy-width);
+
+  font-size:
+    clamp(
+      1.05rem,
+      1.45vw,
+      1.35rem
+    );
+
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  color:
+    var(--qe-purple);
+}
+
+
+.about-network-copy p {
+  margin: 0;
+}
+
+
+@media (max-width: 768px) {
+
+  .about-network-heading {
+    font-size:
+      clamp(
+        2.7rem,
+        8vw,
+        3.8rem
+      );
+  }
+
+
+  .about-network-copy {
+    font-size:
+      clamp(
+        1rem,
+        2.8vw,
+        1.15rem
+      );
+
+    line-height: 1.2;
+  }
+}
+
+
+@media (max-width: 430px) {
+
+  .about-network-heading {
+    font-size:
+      clamp(
+        2.2rem,
+        9.7vw,
+        2.6rem
+      );
+  }
+}

@@ -10,9 +10,14 @@ const Navigation = () => {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
-  const isLightPage = ["/home", "/about", "/news", "/contact", "/PlayGame"].includes(
-    location.pathname,
-  );
+  const isAbout = location.pathname === "/about";
+  const isLightPage = [
+    "/home",
+    "/about",
+    "/news",
+    "/contact",
+    "/PlayGame",
+  ].includes(location.pathname);
 
   /* ========================================
      SCROLL DETECTION
@@ -63,7 +68,9 @@ const Navigation = () => {
       <header
         className={`site-navigation ${
           hasScrolled ? "site-navigation-scrolled" : ""
-        } ${isLightPage ? "site-navigation-light" : ""}`}
+        } ${isLightPage ? "site-navigation-light" : ""} ${
+          isAbout ? "site-navigation-about" : ""
+        }`}
       >
         {/* LOGO */}
 
@@ -190,7 +197,7 @@ const Navigation = () => {
           >
             News
           </NavLink>
-          
+
           <NavLink
             to="/PlayGame"
             onClick={closeMenu}

@@ -1,0 +1,708 @@
+/* ========================================
+   ABOUT HERO
+
+   RESPONSIBILITY:
+   - owns pink navigation stripe
+   - owns HERO → STORY bottom diagonal
+======================================== */
+
+.about-hero {
+  position: relative;
+
+  z-index: 3;
+
+  isolation: isolate;
+
+  padding-top:
+    clamp(
+      155px,
+      10vw,
+      220px
+    );
+
+  padding-bottom:
+    calc(
+      clamp(
+        80px,
+        7vw,
+        135px
+      )
+      +
+      var(--about-diagonal)
+    );
+
+  background: #ffffff;
+
+  /*
+    HERO OWNS ITS BOTTOM DIAGONAL.
+
+    Left side finishes lower than right side.
+  */
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100%
+        calc(
+          100% -
+          var(--about-diagonal)
+        ),
+      0 100%
+    );
+}
+
+
+/* ========================================
+   PINK NAVIGATION STRIPE
+======================================== */
+
+.about-hero::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  height:
+    clamp(
+      110px,
+      9vw,
+      175px
+    );
+
+  background:
+    var(--qe-pink);
+
+  /*
+    Shallower diagonal than the original.
+    Adjust 50% if we later need to match
+    GamesSection even more closely.
+  */
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100% 50%,
+      0 100%
+    );
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   HERO CONTENT LAYER
+======================================== */
+
+.about-hero > .about-container {
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* ========================================
+   STUDIOS LOGO
+======================================== */
+
+.about-studios-logo {
+  display: block;
+
+  width:
+    clamp(
+      185px,
+      18vw,
+      320px
+    );
+
+  height: auto;
+
+  margin-left: auto;
+
+  margin-bottom:
+    clamp(
+      1.75rem,
+      2.5vw,
+      3rem
+    );
+}
+
+
+/* ========================================
+   HERO TITLE
+======================================== */
+
+.about-title {
+  display: flex;
+
+  flex-direction: column;
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      4.2rem,
+      7.4vw,
+      9rem
+    );
+
+  font-weight: 900;
+
+  line-height: 0.82;
+
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+
+  color:
+    var(--qe-purple);
+}
+
+
+.about-title span {
+  display: block;
+
+  white-space: nowrap;
+}
+
+
+.about-title-pink {
+  color:
+    var(--qe-pink);
+}
+
+
+/* ========================================
+   HERO INTRO
+======================================== */
+
+.about-intro {
+  max-width: 1100px;
+
+  margin:
+    clamp(
+      1.75rem,
+      2.6vw,
+      3rem
+    )
+    0
+    0;
+
+  font-size:
+    clamp(
+      1.45rem,
+      1.8vw,
+      2.2rem
+    );
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  color:
+    var(--qe-purple);
+}
+
+
+.about-intro-line {
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   ULTRA WIDE
+   1920px+
+======================================== */
+
+@media (min-width: 1920px) {
+
+  .about-hero {
+    padding-top: 210px;
+
+    padding-bottom:
+      calc(
+        130px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-hero::before {
+    height: 170px;
+  }
+
+
+  .about-studios-logo {
+    width: 310px;
+
+    margin-bottom: 2.75rem;
+  }
+
+
+  .about-title {
+    font-size: 8.6rem;
+  }
+
+
+  .about-intro {
+    font-size: 2rem;
+  }
+}
+
+
+/* ========================================
+   VERY LARGE / 2560px+
+======================================== */
+
+@media (min-width: 2400px) {
+
+  .about-hero {
+    padding-top: 220px;
+  }
+
+
+  .about-hero::before {
+    height: 175px;
+  }
+
+
+  .about-title {
+    font-size: 9rem;
+  }
+}
+
+
+/* ========================================
+   SMALL DESKTOP
+   1100px AND BELOW
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .about-hero {
+    padding-top:
+      clamp(
+        145px,
+        14vw,
+        175px
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          75px,
+          8vw,
+          100px
+        )
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-hero::before {
+    height:
+      clamp(
+        105px,
+        13vw,
+        145px
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        180px,
+        24vw,
+        270px
+      );
+
+    margin-bottom:
+      clamp(
+        1.6rem,
+        3vw,
+        2.4rem
+      );
+  }
+
+
+  .about-title {
+    font-size:
+      clamp(
+        4rem,
+        8.5vw,
+        6rem
+      );
+  }
+
+
+  .about-intro {
+    font-size:
+      clamp(
+        1.35rem,
+        2.3vw,
+        1.75rem
+      );
+  }
+}
+
+
+/* ========================================
+   TABLET
+   900px AND BELOW
+======================================== */
+
+@media (max-width: 900px) {
+
+  .about-hero {
+    padding-top:
+      clamp(
+        135px,
+        17vw,
+        160px
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          70px,
+          9vw,
+          90px
+        )
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-hero::before {
+    height:
+      clamp(
+        100px,
+        15vw,
+        135px
+      );
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 52%,
+        0 100%
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        180px,
+        28vw,
+        240px
+      );
+
+    margin-bottom:
+      clamp(
+        1.5rem,
+        4vw,
+        2.2rem
+      );
+  }
+
+
+  .about-title {
+    font-size:
+      clamp(
+        3.7rem,
+        8.5vw,
+        5rem
+      );
+  }
+
+
+  .about-intro {
+    max-width: 720px;
+
+    font-size:
+      clamp(
+        1.3rem,
+        2.8vw,
+        1.65rem
+      );
+  }
+}
+
+
+/* ========================================
+   TABLET / LARGE MOBILE
+   768px AND BELOW
+======================================== */
+
+@media (max-width: 768px) {
+
+  .about-hero {
+    padding-top:
+      clamp(
+        125px,
+        20vw,
+        150px
+      );
+
+    padding-bottom:
+      calc(
+        clamp(
+          65px,
+          10vw,
+          82px
+        )
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-hero::before {
+    height:
+      clamp(
+        95px,
+        17vw,
+        125px
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        170px,
+        34vw,
+        220px
+      );
+  }
+
+
+  .about-title {
+    font-size:
+      clamp(
+        3rem,
+        8.6vw,
+        4.2rem
+      );
+
+    line-height: 0.84;
+  }
+
+
+  .about-intro {
+    margin-top:
+      clamp(
+        1.6rem,
+        4vw,
+        2.25rem
+      );
+
+    font-size:
+      clamp(
+        1.2rem,
+        3.3vw,
+        1.45rem
+      );
+
+    line-height: 1.22;
+  }
+
+
+  .about-intro-line {
+    white-space: normal;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   600px AND BELOW
+======================================== */
+
+@media (max-width: 600px) {
+
+  .about-hero {
+    padding-top:
+      clamp(
+        115px,
+        24vw,
+        135px
+      );
+
+    padding-bottom:
+      calc(
+        62px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-hero::before {
+    height:
+      clamp(
+        90px,
+        21vw,
+        112px
+      );
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 55%,
+        0 100%
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        160px,
+        42vw,
+        205px
+      );
+
+    margin-bottom:
+      clamp(
+        1.35rem,
+        5vw,
+        1.8rem
+      );
+  }
+
+
+  .about-title {
+    font-size:
+      clamp(
+        2rem,
+        8.4vw,
+        3.15rem
+      );
+
+    line-height: 0.87;
+  }
+
+
+  .about-intro {
+    max-width: 470px;
+
+    font-size:
+      clamp(
+        1.1rem,
+        4.2vw,
+        1.35rem
+      );
+  }
+}
+
+
+/* ========================================
+   PHONE
+   430px AND BELOW
+======================================== */
+
+@media (max-width: 430px) {
+
+  .about-hero {
+    padding-top:
+      clamp(
+        105px,
+        28vw,
+        122px
+      );
+
+    padding-bottom:
+      calc(
+        58px
+        +
+        var(--about-diagonal)
+      );
+  }
+
+
+  .about-hero::before {
+    height:
+      clamp(
+        82px,
+        24vw,
+        102px
+      );
+  }
+
+
+  .about-studios-logo {
+    width:
+      clamp(
+        155px,
+        45vw,
+        190px
+      );
+
+    margin-bottom:
+      clamp(
+        1.25rem,
+        5vw,
+        1.65rem
+      );
+  }
+
+
+  .about-title {
+    font-size: 8.3vw;
+
+    line-height: 0.88;
+  }
+
+
+  .about-intro {
+    margin-top: 1.6rem;
+
+    font-size:
+      clamp(
+        1.08rem,
+        4.8vw,
+        1.25rem
+      );
+  }
+}
+
+
+/* ========================================
+   VERY SMALL PHONE
+   375px AND BELOW
+======================================== */
+
+@media (max-width: 375px) {
+
+  .about-hero {
+    padding-top: 102px;
+  }
+
+
+  .about-hero::before {
+    height: 88px;
+  }
+
+
+  .about-title {
+    font-size: 8.1vw;
+  }
+
+
+  .about-intro {
+    font-size: 1.05rem;
+  }
+}
