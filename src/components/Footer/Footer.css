@@ -4,7 +4,9 @@
 
 .site-footer {
   position: relative;
+
   width: 100%;
+
   overflow: hidden;
 
   background:
@@ -23,61 +25,56 @@
 ======================================== */
 
 .site-footer-inner {
-  width: min(
-    92%,
-    1500px
-  );
+  width:
+    min(
+      92%,
+      1500px
+    );
 
-  margin: 0 auto;
+  margin:
+    0 auto;
 
   padding:
-    clamp(70px, 7vw, 120px)
-    clamp(20px, 4vw, 70px)
-    clamp(35px, 4vw, 60px);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    clamp(
+      34px,
+      3vw,
+      52px
+    )
+    clamp(
+      20px,
+      4vw,
+      70px
+    )
+    clamp(
+      26px,
+      2.5vw,
+      40px
+    );
 }
 
 
 /* ========================================
-   BRAND
+   TOP ROW
 ======================================== */
 
-.site-footer-brand {
+.site-footer-top {
   display: flex;
-  justify-content: center;
-  align-items: center;
 
-  margin-bottom:
+  justify-content:
+    flex-end;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
     clamp(
-      38px,
+      28px,
       4vw,
       60px
     );
-}
-
-
-.site-footer-logo {
-  display: block;
-
-  width:
-    clamp(
-      180px,
-      18vw,
-      300px
-    );
-
-  height: auto;
-
-  /*
-   * The current QEthing Studios asset is black.
-   * This converts it to white for the dark footer.
-   */
-  filter:
-    brightness(0)
-    invert(1);
 }
 
 
@@ -87,23 +84,21 @@
 
 .site-footer-nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
 
-  flex-wrap: wrap;
+  justify-content:
+    flex-end;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
 
   gap:
     clamp(
       24px,
       3vw,
-      50px
-    );
-
-  margin-bottom:
-    clamp(
-      30px,
-      3vw,
-      45px
+      48px
     );
 }
 
@@ -117,18 +112,22 @@
 
   font-size:
     clamp(
-      0.95rem,
-      1.1vw,
-      1.15rem
+      0.88rem,
+      1vw,
+      1.05rem
     );
 
-  font-weight: 600;
+  font-weight:
+    650;
 
-  line-height: 1;
+  line-height:
+    1;
 
-  color: #ffffff;
+  color:
+    #ffffff;
 
-  text-decoration: none;
+  text-decoration:
+    none;
 
   transition:
     color 0.25s ease,
@@ -142,7 +141,7 @@
   position: absolute;
 
   left: 0;
-  bottom: -8px;
+  bottom: -7px;
 
   width: 100%;
   height: 2px;
@@ -195,23 +194,21 @@
 
 .site-footer-socials {
   display: flex;
-  justify-content: center;
-  align-items: center;
 
-  flex-wrap: wrap;
+  justify-content:
+    flex-end;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
 
   gap:
     clamp(
-      18px,
+      16px,
       2vw,
-      32px
-    );
-
-  margin-bottom:
-    clamp(
-      50px,
-      5vw,
-      75px
+      28px
     );
 }
 
@@ -223,25 +220,27 @@
 
   font-size:
     clamp(
-      0.8rem,
-      0.9vw,
-      0.95rem
+      0.75rem,
+      0.8vw,
+      0.88rem
     );
 
-  font-weight: 500;
+  font-weight:
+    500;
 
   letter-spacing:
-    0.04em;
+    0.03em;
 
   color:
     rgba(
       255,
       255,
       255,
-      0.72
+      0.66
     );
 
-  text-decoration: none;
+  text-decoration:
+    none;
 
   transition:
     color 0.25s ease,
@@ -269,33 +268,96 @@
 
 
 /* ========================================
-   COPYRIGHT
+   DIVIDER
 ======================================== */
 
-.site-footer-bottom {
+.site-footer-divider {
   width: 100%;
+  height: 1px;
 
-  padding-top:
+  margin:
     clamp(
-      25px,
-      3vw,
-      38px
+      26px,
+      2.5vw,
+      36px
+    )
+    0
+    clamp(
+      22px,
+      2vw,
+      30px
     );
 
-  border-top:
-    1px solid
+  background:
     rgba(
       255,
       255,
       255,
       0.18
     );
-
-  text-align: center;
 }
 
 
-.site-footer-bottom p {
+/* ========================================
+   BOTTOM ROW
+======================================== */
+
+.site-footer-bottom {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-end;
+
+  gap:
+    30px;
+}
+
+
+/* ========================================
+   BRAND
+======================================== */
+
+.site-footer-brand {
+  display: flex;
+
+  justify-content:
+    flex-start;
+
+  align-items:
+    flex-end;
+
+  flex-shrink:
+    0;
+}
+
+
+.site-footer-logo {
+  display: block;
+
+  width:
+    clamp(
+      125px,
+      12vw,
+      190px
+    );
+
+  height:
+    auto;
+
+  filter:
+    brightness(0)
+    invert(1);
+}
+
+
+/* ========================================
+   COPYRIGHT
+======================================== */
+
+.site-footer-copyright {
   margin: 0;
 
   font-family:
@@ -304,22 +366,29 @@
 
   font-size:
     clamp(
-      0.72rem,
-      0.8vw,
-      0.85rem
+      0.7rem,
+      0.75vw,
+      0.82rem
     );
 
-  font-weight: 400;
+  font-weight:
+    400;
+
+  line-height:
+    1.4;
 
   letter-spacing:
-    0.03em;
+    0.025em;
+
+  text-align:
+    right;
 
   color:
     rgba(
       255,
       255,
       255,
-      0.6
+      0.58
     );
 }
 
@@ -339,6 +408,12 @@
       );
   }
 
+
+  .site-footer-logo {
+    width:
+      180px;
+  }
+
 }
 
 
@@ -350,23 +425,17 @@
 @media (max-width: 1024px) {
 
   .site-footer-inner {
-    width: 92%;
-
-    padding-top:
-      clamp(
-        65px,
-        8vw,
-        90px
-      );
+    width:
+      92%;
   }
 
 
   .site-footer-logo {
     width:
       clamp(
-        180px,
-        24vw,
-        250px
+        125px,
+        17vw,
+        165px
       );
   }
 
@@ -382,45 +451,45 @@
 
   .site-footer-inner {
     padding:
-      65px
+      38px
       24px
-      35px;
+      30px;
   }
 
 
-  .site-footer-brand {
-    margin-bottom:
-      42px;
-  }
-
-
-  .site-footer-logo {
-    width:
-      clamp(
-        175px,
-        34vw,
-        230px
-      );
+  .site-footer-top {
+    justify-content:
+      center;
   }
 
 
   .site-footer-nav {
-    gap:
-      20px
-      32px;
+    justify-content:
+      center;
 
-    margin-bottom:
+    gap:
+      22px
       32px;
   }
 
 
   .site-footer-socials {
-    gap:
-      16px
-      25px;
+    justify-content:
+      center;
+  }
 
-    margin-bottom:
-      50px;
+
+  .site-footer-divider {
+    margin:
+      30px
+      0
+      24px;
+  }
+
+
+  .site-footer-bottom {
+    align-items:
+      center;
   }
 
 }
@@ -437,61 +506,67 @@
     width: 100%;
 
     padding:
-      60px
+      34px
       22px
-      32px;
+      26px;
   }
 
 
-  .site-footer-brand {
-    margin-bottom:
-      38px;
+  .site-footer-top {
+    flex-direction:
+      column;
+
+    align-items:
+      center;
+
+    gap:
+      24px;
+  }
+
+
+  .site-footer-nav {
+    gap:
+      20px
+      26px;
+  }
+
+
+  .site-footer-nav a {
+    font-size:
+      0.92rem;
+  }
+
+
+  .site-footer-divider {
+    margin:
+      28px
+      0
+      22px;
+  }
+
+
+  .site-footer-bottom {
+    align-items:
+      flex-end;
   }
 
 
   .site-footer-logo {
     width:
       clamp(
-        170px,
-        48vw,
-        215px
+        115px,
+        32vw,
+        145px
       );
   }
 
 
-  .site-footer-nav {
-    flex-direction: column;
-
-    gap:
-      22px;
-
-    margin-bottom:
-      38px;
-  }
-
-
-  .site-footer-nav a {
-    font-size:
-      1rem;
-  }
-
-
-  .site-footer-socials {
+  .site-footer-copyright {
     max-width:
-      320px;
+      190px;
 
-    gap:
-      18px
-      24px;
-
-    margin-bottom:
-      45px;
-  }
-
-
-  .site-footer-bottom {
-    padding-top:
-      25px;
+    font-size:
+      0.7rem;
   }
 
 }
@@ -506,31 +581,41 @@
 
   .site-footer-inner {
     padding:
-      55px
+      30px
       18px
-      28px;
+      24px;
+  }
+
+
+  .site-footer-nav {
+    gap:
+      18px
+      22px;
+  }
+
+
+  .site-footer-bottom {
+    gap:
+      18px;
   }
 
 
   .site-footer-logo {
     width:
       clamp(
-        165px,
-        52vw,
-        205px
+        105px,
+        30vw,
+        130px
       );
   }
 
 
-  .site-footer-socials {
+  .site-footer-copyright {
     max-width:
-      280px;
-  }
+      170px;
 
-
-  .site-footer-bottom p {
-    line-height:
-      1.5;
+    font-size:
+      0.66rem;
   }
 
 }
@@ -554,14 +639,25 @@
 
   .site-footer-nav {
     gap:
-      20px;
+      18px;
   }
 
 
-  .site-footer-socials {
-    gap:
-      16px
-      20px;
+  .site-footer-bottom {
+    align-items:
+      flex-end;
+  }
+
+
+  .site-footer-logo {
+    width:
+      105px;
+  }
+
+
+  .site-footer-copyright {
+    max-width:
+      150px;
   }
 
 }
@@ -576,7 +672,8 @@
   .site-footer-nav a,
   .site-footer-nav a::after,
   .site-footer-socials a {
-    transition: none;
+    transition:
+      none;
   }
 
 }
