@@ -125,17 +125,21 @@
     )
   );
 }
+
+
 /* ========================================
-   CAMERA / WORLD
+   BACKGROUND CAMERA
 ======================================== */
 
-.games-feature-world {
-  position: relative;
+.games-feature-background-camera {
+  position: absolute;
+
+  inset: 0;
 
   width: 100%;
   height: 100%;
 
-  transform-origin: 50% -4%;
+  transform-origin: 50% 46%;
 
   will-change: transform;
 }
@@ -221,24 +225,38 @@
 
 
 /* ========================================
-   AUDIENCE
+   AUDIENCE CAMERA
 ======================================== */
 
-.games-feature-audience {
+.games-feature-audience-camera {
   position: absolute;
 
   inset: 0;
 
   z-index: 3;
 
+  width: 100%;
+  height: 100%;
+
+  transform-origin: 50% 62%;
+
+  will-change: transform;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   AUDIENCE
+======================================== */
+
+.games-feature-audience {
   display: block;
 
   width: 100%;
   height: 100%;
 
   object-fit: contain;
-
-  transform: translateY(-8%);
 
   pointer-events: none;
 }
@@ -428,8 +446,13 @@
   }
 
 
-  .games-feature-world {
-    transform-origin: 50% 39%;
+  .games-feature-background-camera {
+    transform-origin: 50% 47%;
+  }
+
+
+  .games-feature-audience-camera {
+    transform-origin: 50% 60%;
   }
 
 }
@@ -481,8 +504,13 @@
   }
 
 
-  .games-feature-world {
-    transform-origin: 50% 40%;
+  .games-feature-background-camera {
+    transform-origin: 50% 48%;
+  }
+
+
+  .games-feature-audience-camera {
+    transform-origin: 50% 59%;
   }
 
 }
@@ -568,11 +596,19 @@
   }
 
 
-  .games-feature-world {
+  .games-feature-background-camera {
     width: 100%;
     height: 100%;
 
-    transform-origin: 50% 41%;
+    transform-origin: 50% 48%;
+  }
+
+
+  .games-feature-audience-camera {
+    width: 100%;
+    height: 100%;
+
+    transform-origin: 50% 58%;
   }
 
 
@@ -700,12 +736,9 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .games-feature-world,
-  .games-feature-room,
-  .games-feature-audience {
+  .games-feature-background-camera,
+  .games-feature-audience-camera {
     transform: none !important;
-
-    opacity: 1 !important;
   }
 
 }

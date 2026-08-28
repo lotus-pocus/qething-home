@@ -7,14 +7,30 @@ const Hero = () => {
       <div className="hero-video-mask">
         <video
           className="hero-video"
-          src="/video/qething-trailer.mp4"
           autoPlay
           muted
           loop
           playsInline
-        />
+          preload="metadata"
+        >
+          {/* MOBILE / TABLET PORTRAIT TRAILER */}
+          <source
+            src="/video/qething-trailerPortrait.mp4"
+            media="(max-width: 768px)"
+            type="video/mp4"
+          />
 
-        <div className="hero-dot-overlay" aria-hidden="true" />
+          {/* DESKTOP LANDSCAPE TRAILER */}
+          <source
+            src="/video/qething-trailer.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        <div
+          className="hero-dot-overlay"
+          aria-hidden="true"
+        />
       </div>
 
       {/* LARGE OVERLAY LOGO */}
