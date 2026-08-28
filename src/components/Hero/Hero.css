@@ -3,8 +3,19 @@
 ======================================== */
 
 .hero {
-  --hero-diagonal: clamp(70px, 7vw, 130px);
-  --hero-edge: clamp(4px, 0.45vw, 7px);
+  --hero-diagonal:
+    clamp(
+      70px,
+      7vw,
+      130px
+    );
+
+  --hero-edge:
+    clamp(
+      7px,
+      0.7vw,
+      12px
+    );
 
   position: relative;
 
@@ -36,12 +47,17 @@
 
   overflow: hidden;
 
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - var(--hero-diagonal)),
-    0 100%
-  );
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100%
+      calc(
+        100%
+        - var(--hero-diagonal)
+      ),
+      0 100%
+    );
 
   z-index: 1;
 }
@@ -73,11 +89,20 @@
 
   background-image:
     radial-gradient(
-      rgba(0, 0, 0, 0.35) 1px,
-      transparent 1px
+      rgba(
+        0,
+        0,
+        0,
+        0.35
+      )
+      1px,
+      transparent
+      1px
     );
 
-  background-size: 4px 4px;
+  background-size:
+    4px
+    4px;
 
   opacity: 0.3;
 }
@@ -98,22 +123,51 @@
 
   pointer-events: none;
 
-  background: rgba(255, 255, 255, 0.7);
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.78
+    );
 
-  clip-path: polygon(
-    0 calc(100% - var(--hero-edge)),
-    100% calc(
+  clip-path:
+    polygon(
+
+      /*
+       * TOP LEFT
+       */
+      0
+      calc(
+        100%
+        - var(--hero-edge)
+      ),
+
+      /*
+       * TOP RIGHT
+       */
       100%
-      - var(--hero-diagonal)
-      - var(--hero-edge)
-    ),
-    100% calc(
+      calc(
+        100%
+        - var(--hero-diagonal)
+        - var(--hero-edge)
+      ),
+
+      /*
+       * BOTTOM RIGHT
+       */
       100%
-      - var(--hero-diagonal)
-      + var(--hero-edge)
-    ),
-    0 calc(100% + var(--hero-edge))
-  );
+      calc(
+        100%
+        - var(--hero-diagonal)
+      ),
+
+      /*
+       * BOTTOM LEFT
+       */
+      0
+      100%
+    );
 }
 
 
@@ -125,13 +179,25 @@
   position: absolute;
 
   left: 50%;
-  bottom: clamp(-36px, -2vw, -12px);
+
+  bottom:
+    clamp(
+      -36px,
+      -2vw,
+      -12px
+    );
 
   z-index: 8;
 
-  width: clamp(320px, 38vw, 650px);
+  width:
+    clamp(
+      320px,
+      38vw,
+      650px
+    );
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   pointer-events: none;
 }
@@ -152,12 +218,28 @@
 .hero-logo-wrap {
   position: absolute;
 
-  top: clamp(20px, 2vw, 32px);
-  left: clamp(20px, 2vw, 32px);
+  top:
+    clamp(
+      20px,
+      2vw,
+      32px
+    );
+
+  left:
+    clamp(
+      20px,
+      2vw,
+      32px
+    );
 
   z-index: 5;
 
-  width: clamp(120px, 14vw, 230px);
+  width:
+    clamp(
+      120px,
+      14vw,
+      230px
+    );
 
   pointer-events: none;
 }
@@ -179,11 +261,13 @@
   position: absolute;
 
   left: 0;
-  bottom: clamp(
-    -30px,
-    -1.5vw,
-    -12px
-  );
+
+  bottom:
+    clamp(
+      -30px,
+      -1.5vw,
+      -12px
+    );
 
   width: 100%;
 
@@ -198,12 +282,20 @@
 
   padding:
     0
-    clamp(20px, 4vw, 80px);
+    clamp(
+      20px,
+      4vw,
+      80px
+    );
 
   text-align: center;
-  text-transform: uppercase;
 
-  font-family: "Outfit", sans-serif;
+  text-transform:
+    uppercase;
+
+  font-family:
+    "Outfit",
+    sans-serif;
 
   font-size:
     clamp(
@@ -213,9 +305,11 @@
     );
 
   font-weight: 900;
+
   line-height: 0.95;
 
-  color: var(--qe-pink);
+  color:
+    var(--qe-pink);
 }
 
 
@@ -226,15 +320,34 @@
 @media (min-width: 1800px) {
 
   .hero {
-    --hero-diagonal: clamp(95px, 5vw, 140px);
+    --hero-diagonal:
+      clamp(
+        95px,
+        5vw,
+        140px
+      );
+
+    --hero-edge:
+      clamp(
+        8px,
+        0.6vw,
+        12px
+      );
   }
+
 
   .hero-main-logo-wrap {
-    width: min(34vw, 650px);
+    width:
+      min(
+        34vw,
+        650px
+      );
   }
 
+
   .hero-video {
-    object-position: center;
+    object-position:
+      center;
   }
 
 }
@@ -247,11 +360,17 @@
 @media (min-width: 2200px) {
 
   .hero {
-    --hero-diagonal: 140px;
+    --hero-diagonal:
+      140px;
+
+    --hero-edge:
+      12px;
   }
 
+
   .hero-main-logo-wrap {
-    width: 620px;
+    width:
+      620px;
   }
 
 }
@@ -271,8 +390,17 @@
         90px
       );
 
-    min-height: 560px;
+    --hero-edge:
+      clamp(
+        6px,
+        0.8vw,
+        9px
+      );
+
+    min-height:
+      560px;
   }
+
 
   .hero-main-logo-wrap {
     width:
@@ -300,14 +428,17 @@
         70px
       );
 
-    --hero-edge: 2px;
+    --hero-edge:
+      5px;
 
-    min-height: 540px;
+    min-height:
+      540px;
   }
 
 
   .hero-video {
-    object-position: center;
+    object-position:
+      center;
   }
 
 
@@ -329,8 +460,11 @@
 
 
   .hero-logo-wrap {
-    top: 20px;
-    left: 20px;
+    top:
+      20px;
+
+    left:
+      20px;
 
     width:
       min(
@@ -341,7 +475,9 @@
 
 
   .hero-tagline {
-    padding: 0 1rem;
+    padding:
+      0
+      1rem;
 
     font-size:
       clamp(
@@ -361,12 +497,17 @@
 @media (max-width: 480px) {
 
   .hero {
-    min-height: 520px;
+    --hero-edge:
+      4px;
+
+    min-height:
+      520px;
   }
 
 
   .hero-main-logo-wrap {
-    width: 78vw;
+    width:
+      78vw;
   }
 
 }
