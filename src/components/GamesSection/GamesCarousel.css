@@ -7,82 +7,14 @@
 
   width: 100%;
 
-  margin-top: 5rem;
+  margin-top:
+    clamp(
+      1.5rem,
+      2.5vw,
+      2.75rem
+    );
 
   overflow: visible;
-}
-
-
-/* ========================================
-   ACTIVE GAME DESCRIPTION
-======================================== */
-
-.games-carousel-description {
-  width: min(900px, 88vw);
-
-  /*
-    Fixed description area so changing
-    font size cannot move the carousel.
-  */
-  height: clamp(60px, 5vw, 82px);
-
-  margin:
-    0
-    auto
-    0.5rem;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding:
-    0
-    clamp(
-      0.5rem,
-      2vw,
-      1.5rem
-    );
-
-  font-family: "Outfit", sans-serif;
-
-  font-weight: 700;
-
-  line-height: 1.15;
-
-  text-align: center;
-
-  color: var(--qe-purple);
-}
-
-
-/* ========================================
-   ONE-LINE DESCRIPTIONS
-======================================== */
-
-.games-carousel-description-large {
-  font-size:
-    clamp(
-      1.15rem,
-      1.7vw,
-      1.65rem
-    );
-}
-
-
-/* ========================================
-   LONGER / TWO-LINE DESCRIPTIONS
-======================================== */
-
-.games-carousel-description-small {
-  max-width: 760px;
-
-  font-size:
-    clamp(
-      1rem,
-      1.35vw,
-      1.35rem
-    );
 }
 
 
@@ -100,17 +32,18 @@
   overflow-x: auto;
   overflow-y: hidden;
 
-  /*
-    Gives first and last cards enough
-    room to sit towards the centre.
-  */
   padding:
     0.5rem
     max(
       14vw,
-      calc((100vw - 900px) / 2)
+      calc(
+        (
+          100vw - 900px
+        )
+        / 2
+      )
     )
-    2rem;
+    1.35rem;
 
   scroll-behavior: smooth;
 
@@ -166,7 +99,12 @@
   border:
     6px
     solid
-    rgba(255, 255, 255, 0.18);
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
 
   opacity: 0.34;
 
@@ -215,11 +153,6 @@
 }
 
 
-/*
-  Neighbouring cards are darker
-  and slightly less saturated.
-*/
-
 .game-card:not(.game-card-active)
 .game-card-image {
   filter:
@@ -254,86 +187,13 @@
   pointer-events: none;
 
   transition:
-    opacity
-    0.4s
-    ease;
+    opacity 0.4s ease;
 }
 
 
 .game-card-active
 .game-card-fade {
   opacity: 0;
-}
-
-
-/* ========================================
-   CARD LABEL
-======================================== */
-
-.game-card-label {
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  padding:
-    4rem
-    2rem
-    1.5rem;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(83, 0, 112, 0.92),
-      rgba(83, 0, 112, 0)
-    );
-
-  opacity: 0;
-
-  transform:
-    translateY(
-      12px
-    );
-
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
-}
-
-
-.game-card-active
-.game-card-label {
-  opacity: 1;
-
-  transform:
-    translateY(
-      0
-    );
-}
-
-
-.game-card-label h3 {
-  margin: 0;
-
-  font-family:
-    "Outfit",
-    sans-serif;
-
-  font-size:
-    clamp(
-      1.6rem,
-      3vw,
-      3rem
-    );
-
-  font-weight: 900;
-
-  text-align: center;
-
-  text-transform: uppercase;
-
-  color: white;
 }
 
 
@@ -351,8 +211,8 @@
       110px
     )
     minmax(
-      220px,
-      420px
+      280px,
+      520px
     )
     clamp(
       70px,
@@ -362,7 +222,7 @@
 
   justify-content: center;
 
-  align-items: center;
+  align-items: start;
 
   gap:
     clamp(
@@ -373,7 +233,7 @@
 
   width:
     min(
-      760px,
+      900px,
       calc(
         100%
         - 3rem
@@ -381,9 +241,47 @@
     );
 
   margin:
-    2.5rem
+    clamp(
+      0.45rem,
+      0.8vw,
+      0.8rem
+    )
     auto
     0;
+}
+
+
+/* ========================================
+   TITLE + DESCRIPTION WRAPPER
+
+   FIXED HEIGHT:
+   This reserves enough room for the
+   largest expected combination:
+   title + two-line description.
+
+   This prevents the section height
+   changing from slide to slide.
+======================================== */
+
+.games-carousel-info {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  min-width: 0;
+
+  height:
+    clamp(
+      118px,
+      9vw,
+      150px
+    );
+
+  text-align: center;
 }
 
 
@@ -411,6 +309,13 @@
       110px
     );
 
+  margin-top:
+    clamp(
+      0.1rem,
+      0.4vw,
+      0.4rem
+    );
+
   padding: 0;
 
   border: 0;
@@ -420,9 +325,8 @@
   cursor: pointer;
 
   transition:
-    transform
-    0.2s
-    ease;
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 
@@ -438,48 +342,35 @@
 }
 
 
-/*
-  SVG points left by default.
-*/
-
 .games-arrow-left img {
-  transform:
-    rotate(
-      0deg
-    );
+  transform: rotate(0deg);
 }
 
-
-/*
-  Flip same SVG for next arrow.
-*/
 
 .games-arrow-right img {
-  transform:
-    rotate(
-      180deg
-    );
+  transform: rotate(180deg);
 }
 
 
-.games-arrow:hover {
-  transform:
-    scale(
-      1.1
-    );
+.games-arrow:hover:not(:disabled) {
+  transform: scale(1.1);
 }
 
 
-.games-arrow:active {
-  transform:
-    scale(
-      0.96
-    );
+.games-arrow:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+
+.games-arrow:disabled {
+  opacity: 0.28;
+
+  cursor: default;
 }
 
 
 /* ========================================
-   ACTIVE GAME CATEGORY
+   ACTIVE GAME CATEGORY / TITLE
 ======================================== */
 
 .games-carousel-category {
@@ -490,7 +381,7 @@
 
   min-width: 0;
 
-  min-height: 70px;
+  min-height: 52px;
 
   font-family:
     "Outfit",
@@ -516,13 +407,98 @@
 
 
 /* ========================================
+   ACTIVE GAME DESCRIPTION
+
+   FIXED TWO-LINE AREA:
+   Even one-line descriptions reserve
+   space for two full lines.
+======================================== */
+
+.games-carousel-description {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  width:
+    min(
+      100%,
+      540px
+    );
+
+  min-height:
+    2.36em;
+
+  margin:
+    clamp(
+      0.3rem,
+      0.55vw,
+      0.5rem
+    )
+    auto
+    0;
+
+  padding:
+    0
+    clamp(
+      0.25rem,
+      1vw,
+      0.75rem
+    );
+
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-weight: 700;
+
+  line-height: 1.18;
+
+  text-align: center;
+
+  color:
+    var(--qe-purple);
+}
+
+
+/* ========================================
+   ONE-LINE DESCRIPTIONS
+======================================== */
+
+.games-carousel-description-large {
+  font-size:
+    clamp(
+      1.15rem,
+      1.55vw,
+      1.5rem
+    );
+}
+
+
+/* ========================================
+   LONGER / TWO-LINE DESCRIPTIONS
+======================================== */
+
+.games-carousel-description-small {
+  max-width: 520px;
+
+  font-size:
+    clamp(
+      1rem,
+      1.3vw,
+      1.25rem
+    );
+}
+
+
+/* ========================================
    2560px+ / ULTRA-WIDE
 ======================================== */
 
 @media (min-width: 2200px) {
 
   .games-carousel-wrapper {
-    margin-top: 5rem;
+    margin-top: 2.5rem;
   }
 
 
@@ -560,13 +536,30 @@
   }
 
 
-  .games-carousel-description {
-    max-width: 950px;
+  .games-carousel-controls {
+    max-width: 900px;
+
+    margin-top: 0.65rem;
   }
 
 
-  .games-carousel-controls {
-    max-width: 760px;
+  .games-carousel-info {
+    height: 150px;
+  }
+
+
+  .games-carousel-description {
+    max-width: 560px;
+  }
+
+
+  .games-carousel-description-large {
+    font-size: 1.5rem;
+  }
+
+
+  .games-carousel-description-small {
+    font-size: 1.25rem;
   }
 
 }
@@ -585,9 +578,9 @@
   .games-carousel-wrapper {
     margin-top:
       clamp(
-        4rem,
-        4vw,
-        5rem
+        2rem,
+        2vw,
+        2.5rem
       );
   }
 
@@ -638,8 +631,21 @@
   .games-carousel-controls {
     width:
       min(
-        760px,
-        80vw
+        900px,
+        82vw
+      );
+
+    margin-top:
+      0.6rem;
+  }
+
+
+  .games-carousel-info {
+    height:
+      clamp(
+        130px,
+        8vw,
+        145px
       );
   }
 
@@ -674,6 +680,16 @@
       );
   }
 
+
+  .games-carousel-info {
+    height:
+      clamp(
+        122px,
+        9vw,
+        140px
+      );
+  }
+
 }
 
 
@@ -682,6 +698,16 @@
 ======================================== */
 
 @media (max-width: 1100px) {
+
+  .games-carousel-wrapper {
+    margin-top:
+      clamp(
+        1.5rem,
+        2.5vw,
+        2rem
+      );
+  }
+
 
   .games-carousel {
     gap:
@@ -710,8 +736,8 @@
         80px
       )
       minmax(
-        180px,
-        360px
+        220px,
+        440px
       )
       clamp(
         60px,
@@ -728,15 +754,27 @@
 
     width:
       min(
-        720px,
+        760px,
         calc(
           100%
           - 3rem
         )
       );
 
+    margin-top: 0.55rem;
+
     margin-left: auto;
     margin-right: auto;
+  }
+
+
+  .games-carousel-info {
+    height:
+      clamp(
+        116px,
+        11vw,
+        132px
+      );
   }
 
 
@@ -756,6 +794,11 @@
       );
   }
 
+
+  .games-carousel-description {
+    max-width: 450px;
+  }
+
 }
 
 
@@ -766,59 +809,17 @@
 @media (max-width: 768px) {
 
   .games-carousel-wrapper {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
 
-
-  /* DESCRIPTION */
-
-  .games-carousel-description {
-    width: 88vw;
-
-    height:
-      clamp(
-        68px,
-        11vw,
-        82px
-      );
-
-    margin-bottom: 0.75rem;
-
-    padding:
-      0
-      0.5rem;
-  }
-
-
-  .games-carousel-description-large {
-    font-size:
-      clamp(
-        1.1rem,
-        3vw,
-        1.45rem
-      );
-  }
-
-
-  .games-carousel-description-small {
-    font-size:
-      clamp(
-        1rem,
-        2.7vw,
-        1.25rem
-      );
-  }
-
-
-  /* CAROUSEL */
 
   .games-carousel {
     gap: 1rem;
 
     padding:
-      1rem
+      0.75rem
       7vw
-      1.5rem;
+      1rem;
   }
 
 
@@ -846,26 +847,6 @@
   }
 
 
-  .game-card-label {
-    padding:
-      3rem
-      1rem
-      1rem;
-  }
-
-
-  .game-card-label h3 {
-    font-size:
-      clamp(
-        1.4rem,
-        5vw,
-        2.5rem
-      );
-  }
-
-
-  /* CONTROLS */
-
   .games-carousel-controls {
     grid-template-columns:
       54px
@@ -884,7 +865,7 @@
 
     width:
       min(
-        520px,
+        620px,
         calc(
           100%
           - 2rem
@@ -892,9 +873,19 @@
       );
 
     margin:
-      1.5rem
+      0.45rem
       auto
       0;
+  }
+
+
+  .games-carousel-info {
+    height:
+      clamp(
+        108px,
+        17vw,
+        126px
+      );
   }
 
 
@@ -907,7 +898,7 @@
   .games-carousel-category {
     min-width: 0;
 
-    min-height: 54px;
+    min-height: 44px;
 
     font-size:
       clamp(
@@ -917,6 +908,43 @@
       );
 
     overflow-wrap: anywhere;
+  }
+
+
+  .games-carousel-description {
+    width:
+      min(
+        100%,
+        440px
+      );
+
+    min-height: 2.36em;
+
+    margin-top: 0.25rem;
+
+    padding:
+      0
+      0.25rem;
+  }
+
+
+  .games-carousel-description-large {
+    font-size:
+      clamp(
+        1.08rem,
+        3.3vw,
+        1.35rem
+      );
+  }
+
+
+  .games-carousel-description-small {
+    font-size:
+      clamp(
+        0.98rem,
+        3vw,
+        1.18rem
+      );
   }
 
 }
@@ -929,36 +957,7 @@
 @media (max-width: 480px) {
 
   .games-carousel-wrapper {
-    margin-top: 2.5rem;
-  }
-
-
-  .games-carousel-description {
-    width: 90vw;
-
-    height: 74px;
-
-    padding: 0;
-  }
-
-
-  .games-carousel-description-large {
-    font-size:
-      clamp(
-        1.05rem,
-        4.5vw,
-        1.25rem
-      );
-  }
-
-
-  .games-carousel-description-small {
-    font-size:
-      clamp(
-        0.95rem,
-        4vw,
-        1.1rem
-      );
+    margin-top: 1.25rem;
   }
 
 
@@ -966,9 +965,9 @@
     gap: 0.8rem;
 
     padding:
-      0.75rem
+      0.5rem
       6vw
-      1.25rem;
+      0.85rem;
   }
 
 
@@ -998,17 +997,27 @@
     width:
       calc(
         100%
-        - 1.5rem
+        - 1.25rem
       );
 
     gap:
       clamp(
-        0.5rem,
-        2.5vw,
-        0.9rem
+        0.4rem,
+        2vw,
+        0.75rem
       );
 
-    margin-top: 1.25rem;
+    margin-top: 0.35rem;
+  }
+
+
+  .games-carousel-info {
+    height:
+      clamp(
+        104px,
+        27vw,
+        120px
+      );
   }
 
 
@@ -1019,7 +1028,7 @@
 
 
   .games-carousel-category {
-    min-height: 48px;
+    min-height: 40px;
 
     font-size:
       clamp(
@@ -1031,6 +1040,37 @@
     line-height: 0.9;
   }
 
+
+  .games-carousel-description {
+    width: 100%;
+
+    min-height: 2.36em;
+
+    margin-top: 0.2rem;
+
+    padding: 0;
+  }
+
+
+  .games-carousel-description-large {
+    font-size:
+      clamp(
+        1rem,
+        4.5vw,
+        1.18rem
+      );
+  }
+
+
+  .games-carousel-description-small {
+    font-size:
+      clamp(
+        0.9rem,
+        4.1vw,
+        1.06rem
+      );
+  }
+
 }
 
 
@@ -1040,10 +1080,8 @@
 
 @media (max-width: 390px) {
 
-  .games-carousel-description {
-    width: 92vw;
-
-    height: 72px;
+  .games-carousel-wrapper {
+    margin-top: 1rem;
   }
 
 
@@ -1072,10 +1110,17 @@
     width:
       calc(
         100%
-        - 1rem
+        - 0.75rem
       );
 
-    gap: 0.45rem;
+    gap: 0.35rem;
+
+    margin-top: 0.3rem;
+  }
+
+
+  .games-carousel-info {
+    height: 112px;
   }
 
 
@@ -1086,13 +1131,33 @@
 
 
   .games-carousel-category {
-    min-height: 44px;
+    min-height: 38px;
 
     font-size:
       clamp(
         1.15rem,
         5.5vw,
         1.55rem
+      );
+  }
+
+
+  .games-carousel-description-large {
+    font-size:
+      clamp(
+        0.98rem,
+        4.5vw,
+        1.08rem
+      );
+  }
+
+
+  .games-carousel-description-small {
+    font-size:
+      clamp(
+        0.88rem,
+        4vw,
+        0.98rem
       );
   }
 
