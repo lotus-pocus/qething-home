@@ -147,6 +147,13 @@
 
 /* ========================================
    ROOM
+
+   CHANGED:
+   The room image is shifted downward
+   independently from the TV.
+
+   Increase 5% if you want the cabinet
+   to sit even lower.
 ======================================== */
 
 .games-feature-room {
@@ -162,6 +169,8 @@
   object-fit: cover;
   object-position: center top;
 
+  transform: translateY(5%);
+
   pointer-events: none;
 }
 
@@ -174,7 +183,7 @@
   position: absolute;
 
   left: 26%;
-  top: 19%;
+  top: 21%;
 
   width: 45%;
 
@@ -206,6 +215,7 @@
     0.5% 99.5%
   );
 }
+
 
 /* ========================================
    TV VIDEO
@@ -567,17 +577,6 @@
   }
 
 
-  /* ========================================
-     TALLER MOBILE IMAGE AREA
-
-     CHANGED:
-     Previous:
-     clamp(310px, 78vw, 390px)
-
-     New:
-     clamp(420px, 108vw, 520px)
-  ======================================== */
-
   .games-feature-media {
     position: relative;
 
@@ -633,9 +632,8 @@
   /* ========================================
      MOBILE ROOM
 
-     The room now fills the taller scene.
-     It remains anchored at the TOP so the
-     upper part of the room is retained.
+     Mobile keeps its existing positioning.
+     The desktop translate is removed here.
   ======================================== */
 
   .games-feature-room {
@@ -646,6 +644,8 @@
 
     object-fit: cover;
     object-position: center top;
+
+    transform: none;
   }
 
 
@@ -761,8 +761,6 @@
 
 /* ========================================
    SMALL MOBILE
-   Applies IN ADDITION to the 600px rules
-   on screens 420px wide and smaller.
 ======================================== */
 
 @media (max-width: 420px) {
