@@ -64,6 +64,7 @@ const GamesFeature = () => {
               <video
                 className="games-feature-tv-video"
                 src="/video/GamesFeature/TV_movie.mp4"
+                poster="/images/GamesFeature/TV_movie_poster.jpg"
                 autoPlay
                 muted
                 loop

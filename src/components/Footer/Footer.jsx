@@ -25,7 +25,7 @@ const Footer = () => {
     },
     {
       name: "LinkedIn",
-      url: "",
+      url: "https://www.linkedin.com/company/qething/",
     },
   ];
 

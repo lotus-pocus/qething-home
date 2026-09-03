@@ -220,6 +220,8 @@ const PlayModes = () => {
 
               src="/images/NewPacks/solo_1.mp4"
 
+              poster="/images/NewPacks/PlaySolo.jpg"
+
               autoPlay
               muted
               loop
@@ -276,6 +278,8 @@ const PlayModes = () => {
               "
 
               src="/images/NewPacks/teams.mp4"
+
+              poster="/images/NewPacks/OrInTeams.jpg"
 
               autoPlay
               muted

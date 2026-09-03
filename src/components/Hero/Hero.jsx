@@ -1,10 +1,33 @@
+import { useEffect, useState } from "react";
 import "./Hero.css";
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(
+    () => window.innerWidth <= 768
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    setIsMobile(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
   return (
     <section className="hero">
+
       {/* VIDEO */}
       <div className="hero-video-mask">
+
         <video
           className="hero-video"
           autoPlay
@@ -12,7 +35,13 @@ const Hero = () => {
           loop
           playsInline
           preload="metadata"
+          poster={
+            isMobile
+              ? "/images/Hero/hero-mobile.jpg"
+              : "/images/Hero/hero-desktop.jpg"
+          }
         >
+
           {/* MOBILE / TABLET PORTRAIT TRAILER */}
           <source
             src="/video/qething-trailerPortrait.mp4"
@@ -25,12 +54,14 @@ const Hero = () => {
             src="/video/qething-trailer.mp4"
             type="video/mp4"
           />
+
         </video>
 
         <div
           className="hero-dot-overlay"
           aria-hidden="true"
         />
+
       </div>
 
       {/* LARGE OVERLAY LOGO */}
@@ -41,6 +72,7 @@ const Hero = () => {
           alt="QEthing"
         />
       </div>
+
     </section>
   );
 };
