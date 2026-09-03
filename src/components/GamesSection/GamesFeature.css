@@ -128,18 +128,16 @@
 
 
 /* ========================================
-   BACKGROUND CAMERA
+   CAMERA / WORLD
 ======================================== */
 
-.games-feature-background-camera {
-  position: absolute;
-
-  inset: 0;
+.games-feature-world {
+  position: relative;
 
   width: 100%;
   height: 100%;
 
-  transform-origin: 50% 46%;
+  transform-origin: 50% -4%;
 
   will-change: transform;
 }
@@ -225,38 +223,24 @@
 
 
 /* ========================================
-   AUDIENCE CAMERA
+   AUDIENCE
 ======================================== */
 
-.games-feature-audience-camera {
+.games-feature-audience {
   position: absolute;
 
   inset: 0;
 
   z-index: 3;
 
-  width: 100%;
-  height: 100%;
-
-  transform-origin: 50% 62%;
-
-  will-change: transform;
-
-  pointer-events: none;
-}
-
-
-/* ========================================
-   AUDIENCE
-======================================== */
-
-.games-feature-audience {
   display: block;
 
   width: 100%;
   height: 100%;
 
   object-fit: contain;
+
+  transform: translateY(-8%);
 
   pointer-events: none;
 }
@@ -446,13 +430,8 @@
   }
 
 
-  .games-feature-background-camera {
-    transform-origin: 50% 47%;
-  }
-
-
-  .games-feature-audience-camera {
-    transform-origin: 50% 60%;
+  .games-feature-world {
+    transform-origin: 50% 39%;
   }
 
 }
@@ -504,13 +483,8 @@
   }
 
 
-  .games-feature-background-camera {
-    transform-origin: 50% 48%;
-  }
-
-
-  .games-feature-audience-camera {
-    transform-origin: 50% 59%;
+  .games-feature-world {
+    transform-origin: 50% 40%;
   }
 
 }
@@ -571,11 +545,20 @@
   .games-feature-media {
     position: relative;
 
+    /*
+      CHANGED:
+      Previously:
+        310px / 78vw / 390px
+
+      Mobile now gets considerably more
+      vertical room without changing
+      tablet or desktop.
+    */
     height:
       clamp(
-        310px,
-        78vw,
-        390px
+        400px,
+        105vw,
+        500px
       );
 
     overflow: visible;
@@ -596,19 +579,11 @@
   }
 
 
-  .games-feature-background-camera {
+  .games-feature-world {
     width: 100%;
     height: 100%;
 
-    transform-origin: 50% 48%;
-  }
-
-
-  .games-feature-audience-camera {
-    width: 100%;
-    height: 100%;
-
-    transform-origin: 50% 58%;
+    transform-origin: 50% 41%;
   }
 
 
@@ -736,9 +711,12 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .games-feature-background-camera,
-  .games-feature-audience-camera {
+  .games-feature-world,
+  .games-feature-room,
+  .games-feature-audience {
     transform: none !important;
+
+    opacity: 1 !important;
   }
 
 }

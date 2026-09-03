@@ -106,7 +106,7 @@ const GamesFeature = () => {
             }}
 
             transition={{
-              duration: 4.1,
+              duration: 2.05,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
