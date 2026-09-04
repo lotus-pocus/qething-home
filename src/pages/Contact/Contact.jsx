@@ -27,7 +27,7 @@ const Contact = () => {
             </p>
 
             <h2 className="contact-studio-title">
-              Our Studio
+              QEthing Studio
             </h2>
 
             <address className="contact-address">
@@ -46,10 +46,10 @@ const Contact = () => {
               </p>
 
               <a
-                href="mailto:hello@gamoola.com"
+                href="mailto:hello@qething.studio"
                 className="contact-email"
               >
-                hello@gamoola.com
+                hello@qething.studio
               </a>
             </div>
 

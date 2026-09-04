@@ -33,6 +33,14 @@ const Footer = () => {
     (social) => social.url
   );
 
+  const handleCookiePreferences = () => {
+    window.dispatchEvent(
+      new Event(
+        "qething-open-cookie-preferences"
+      )
+    );
+  };
+
   return (
     <footer className="site-footer">
 
@@ -59,6 +67,14 @@ const Footer = () => {
             <Link to="/privacy">
               Privacy Policy
             </Link>
+
+            <button
+              type="button"
+              className="site-footer-cookie-button"
+              onClick={handleCookiePreferences}
+            >
+              Cookie preferences
+            </button>
           </nav>
 
 

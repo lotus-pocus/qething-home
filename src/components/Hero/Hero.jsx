@@ -3,7 +3,7 @@ import "./Hero.css";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(
-    () => window.innerWidth <= 768
+    () => window.matchMedia("(max-width: 768px)").matches
   );
 
   useEffect(() => {
@@ -12,8 +12,6 @@ const Hero = () => {
     const handleChange = (event) => {
       setIsMobile(event.matches);
     };
-
-    setIsMobile(mediaQuery.matches);
 
     mediaQuery.addEventListener("change", handleChange);
 

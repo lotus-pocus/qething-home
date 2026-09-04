@@ -186,6 +186,97 @@
   border-radius:
     2px;
 }
+/* ========================================
+   COOKIE PREFERENCES
+======================================== */
+
+.site-footer-cookie-button {
+  position: relative;
+
+  padding: 0;
+
+  border: 0;
+
+  background: none;
+
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    clamp(
+      0.88rem,
+      1vw,
+      1.05rem
+    );
+
+  font-weight:
+    650;
+
+  line-height: 1;
+
+  color:
+    #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.site-footer-cookie-button::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    var(--qe-pink);
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    center;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.site-footer-cookie-button:hover {
+  color:
+    var(--qe-pink);
+
+  transform:
+    translateY(-2px);
+}
+
+
+.site-footer-cookie-button:hover::after {
+  transform:
+    scaleX(1);
+}
+
+
+.site-footer-cookie-button:focus-visible {
+  outline:
+    2px solid
+    var(--qe-pink);
+
+  outline-offset:
+    7px;
+
+  border-radius:
+    2px;
+}
 
 
 /* ========================================
@@ -667,7 +758,97 @@
    REDUCED MOTION
 ======================================== */
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {/* ========================================
+   COOKIE PREFERENCES
+======================================== */
+
+.site-footer-cookie-button {
+  position: relative;
+
+  padding: 0;
+
+  border: 0;
+
+  background: none;
+
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    clamp(
+      0.88rem,
+      1vw,
+      1.05rem
+    );
+
+  font-weight:
+    650;
+
+  line-height: 1;
+
+  color:
+    #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.site-footer-cookie-button::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    var(--qe-pink);
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    center;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.site-footer-cookie-button:hover {
+  color:
+    var(--qe-pink);
+
+  transform:
+    translateY(-2px);
+}
+
+
+.site-footer-cookie-button:hover::after {
+  transform:
+    scaleX(1);
+}
+
+
+.site-footer-cookie-button:focus-visible {
+  outline:
+    2px solid
+    var(--qe-pink);
+
+  outline-offset:
+    7px;
+
+  border-radius:
+    2px;
+}
 
   .site-footer-nav a,
   .site-footer-nav a::after,

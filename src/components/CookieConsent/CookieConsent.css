@@ -1,0 +1,571 @@
+/* ========================================
+   QETHING COOKIE CONSENT
+======================================== */
+
+.cookie-consent {
+  position: fixed;
+
+  right:
+    clamp(
+      18px,
+      2vw,
+      32px
+    );
+
+  bottom:
+    clamp(
+      18px,
+      2vw,
+      32px
+    );
+
+  z-index: 9999;
+
+  width:
+    min(
+      calc(100vw - 36px),
+      390px
+    );
+
+  font-family:
+    "Outfit",
+    sans-serif;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.cookie-consent-inner {
+  padding:
+    24px
+    24px
+    22px;
+
+  background:
+    #ffffff;
+
+  border:
+    1px solid
+    rgba(
+      74,
+      28,
+      120,
+      0.14
+    );
+
+  border-radius:
+    16px;
+
+  box-shadow:
+    0
+    12px
+    40px
+    rgba(
+      34,
+      11,
+      63,
+      0.2
+    );
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.cookie-consent-title {
+  margin:
+    0
+    0
+    9px;
+
+  font-size:
+    1.15rem;
+
+  font-weight:
+    800;
+
+  line-height:
+    1.15;
+
+  letter-spacing:
+    -0.015em;
+
+  color:
+    var(--qe-purple);
+
+  transition:
+    color 0.25s ease;
+}
+
+
+/* ========================================
+   COPY
+======================================== */
+
+.cookie-consent-copy {
+  margin:
+    0
+    0
+    10px;
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.5;
+
+  color:
+    #39333f;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+/* ========================================
+   PRIVACY LINK
+======================================== */
+
+.cookie-consent-privacy {
+  display:
+    inline-block;
+
+  margin-bottom:
+    18px;
+
+  font-size:
+    0.82rem;
+
+  font-weight:
+    650;
+
+  line-height:
+    1.3;
+
+  color:
+    var(--qe-purple);
+
+  text-decoration:
+    underline;
+
+  text-decoration-color:
+    var(--qe-pink);
+
+  text-decoration-thickness:
+    2px;
+
+  text-underline-offset:
+    3px;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.cookie-consent-privacy:hover {
+  color:
+    var(--qe-pink);
+}
+
+
+.cookie-consent-privacy:focus-visible {
+  outline:
+    2px solid
+    var(--qe-pink);
+
+  outline-offset:
+    4px;
+
+  border-radius:
+    2px;
+}
+
+
+/* ========================================
+   ACTIONS
+======================================== */
+
+.cookie-consent-actions {
+  display: flex;
+
+  align-items: stretch;
+
+  gap:
+    10px;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.cookie-consent-button {
+  flex:
+    1 1 0;
+
+  min-width: 0;
+
+  min-height:
+    42px;
+
+  padding:
+    10px
+    14px;
+
+  border:
+    2px solid
+    var(--qe-purple);
+
+  border-radius:
+    999px;
+
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  font-size:
+    0.8rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.1;
+
+  cursor:
+    pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* ========================================
+   ACCEPT
+======================================== */
+
+.cookie-consent-accept {
+  background:
+    var(--qe-purple);
+
+  color:
+    #ffffff;
+}
+
+
+.cookie-consent-accept:hover {
+  background:
+    var(--qe-pink);
+
+  border-color:
+    var(--qe-pink);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   REJECT
+======================================== */
+
+.cookie-consent-reject {
+  background:
+    #ffffff;
+
+  color:
+    var(--qe-purple);
+}
+
+
+.cookie-consent-reject:hover {
+  background:
+    rgba(
+      74,
+      28,
+      120,
+      0.06
+    );
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ========================================
+   DARK CARD
+   Used over light page backgrounds
+======================================== */
+
+.cookie-consent--dark
+.cookie-consent-inner {
+  background:
+    var(--qe-purple);
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  box-shadow:
+    0
+    12px
+    42px
+    rgba(
+      34,
+      11,
+      63,
+      0.28
+    );
+}
+
+
+.cookie-consent--dark
+.cookie-consent-title {
+  color:
+    #ffffff;
+}
+
+
+.cookie-consent--dark
+.cookie-consent-copy {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.86
+    );
+}
+
+
+.cookie-consent--dark
+.cookie-consent-privacy {
+  color:
+    #ffffff;
+
+  text-decoration-color:
+    var(--qe-pink);
+}
+
+
+.cookie-consent--dark
+.cookie-consent-privacy:hover {
+  color:
+    var(--qe-pink);
+}
+
+
+.cookie-consent--dark
+.cookie-consent-accept {
+  background:
+    var(--qe-pink);
+
+  border-color:
+    var(--qe-pink);
+
+  color:
+    #ffffff;
+}
+
+
+.cookie-consent--dark
+.cookie-consent-accept:hover {
+  background:
+    #ffffff;
+
+  border-color:
+    #ffffff;
+
+  color:
+    var(--qe-purple);
+}
+
+
+.cookie-consent--dark
+.cookie-consent-reject {
+  background:
+    transparent;
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  color:
+    #ffffff;
+}
+
+
+.cookie-consent--dark
+.cookie-consent-reject:hover {
+  background:
+    #ffffff;
+
+  border-color:
+    #ffffff;
+
+  color:
+    var(--qe-purple);
+}
+
+
+/* ========================================
+   KEYBOARD FOCUS
+======================================== */
+
+.cookie-consent-button:focus-visible {
+  outline:
+    3px solid
+    var(--qe-pink);
+
+  outline-offset:
+    3px;
+}
+
+
+/* ========================================
+   MOBILE
+   600px and below
+======================================== */
+
+@media (max-width: 600px) {
+
+  .cookie-consent {
+    right:
+      14px;
+
+    bottom:
+      14px;
+
+    width:
+      calc(
+        100vw - 28px
+      );
+  }
+
+
+  .cookie-consent-inner {
+    padding:
+      20px
+      20px
+      18px;
+
+    border-radius:
+      14px;
+  }
+
+
+  .cookie-consent-title {
+    font-size:
+      1.05rem;
+  }
+
+
+  .cookie-consent-copy {
+    font-size:
+      0.86rem;
+  }
+
+
+  .cookie-consent-actions {
+    gap:
+      8px;
+  }
+
+
+  .cookie-consent-button {
+    min-height:
+      40px;
+
+    padding:
+      9px
+      11px;
+
+    font-size:
+      0.76rem;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   375px and below
+======================================== */
+
+@media (max-width: 375px) {
+
+  .cookie-consent {
+    right:
+      10px;
+
+    bottom:
+      10px;
+
+    width:
+      calc(
+        100vw - 20px
+      );
+  }
+
+
+  .cookie-consent-inner {
+    padding:
+      18px;
+  }
+
+
+  .cookie-consent-actions {
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+  }
+
+
+  .cookie-consent-button {
+    width:
+      100%;
+  }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .cookie-consent-inner,
+  .cookie-consent-title,
+  .cookie-consent-copy,
+  .cookie-consent-privacy,
+  .cookie-consent-button {
+    transition:
+      none;
+  }
+
+}
